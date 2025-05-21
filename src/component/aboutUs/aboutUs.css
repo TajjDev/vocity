@@ -1,0 +1,78 @@
+#About {
+    padding: 80px 80px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 56px;
+}
+#abt{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+}
+#abtLink{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#abtLink h3{
+    font-size: 4rem;
+    font-weight: 600;
+}
+#abt p{
+    font-size: 1.4rem;
+    width: 927px;
+    font-weight: 500;
+}
+#MissVis{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+#MissVis img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+#img{
+    width: 48%;
+}
+#misVis{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content:  center;
+}
+#misVis h4{
+    font-size: 2.4rem;
+}
+#misVis p{
+    font-size: 1.4rem;
+}
+#misVis h4 span{
+    color: rgba(255, 233, 152, 1);
+}
+#miss{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+#vis{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+#count{
+    border-top: 1px solid rgba(47, 47, 47, 0.5);
+    border-bottom: 1px solid rgba(47, 47, 47, 0.5);
+    display: flex;
+    padding-bottom: 20px;
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+}
+#count p{
+    font-size: 1.5rem;
+}
