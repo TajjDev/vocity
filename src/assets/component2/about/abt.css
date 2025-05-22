@@ -1,0 +1,116 @@
+#aboutt {
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    padding: 0 30px;
+    background-color: #000000;
+    color: rgba(255, 255, 255, 1);
+    font-family: lato;
+}
+
+#abt #p {
+    font-size: 24px;
+    width: 60%;
+    text-align: center;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+ #abt #ppp {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+    text-align: center;
+}
+#abt #pp {
+    display: none;
+}
+#abt {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+#misvis {
+    width: 100%;
+}
+
+#vision,
+#mission {
+    border-left: 1px solid rgba(247, 190, 89, 1);
+    padding-left: 16px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#vision h3,
+#mission h3 {
+    width: 100%;
+}
+
+#vision p,
+#mission p {
+    width: 100%;
+}
+
+#vision span,
+#mission span {
+    color: rgba(247, 190, 89, 1);
+}
+
+@media screen and (max-width:425px) {}
+
+@media (max-width:5000px) and (min-width:769px) {
+    #aboutt {
+        flex-direction: row;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        text-align: start;
+    }
+
+    #abt #p {
+        width: 70%;
+        text-align: start;
+        padding-right: 20px;
+        align-self: start;
+        font-family: lato;
+        font-size: 30px;
+        line-height: 44px;
+    }
+    #abt{
+        gap: 20px;
+    }
+    #abt #pp{
+        width: 100%;
+        font-size: 20px;
+        line-height: 35px;
+        text-align: start;
+        padding-right: 20px;
+        display: block;
+    }
+    #abt #ppp{
+        display: none;
+    }
+
+    #vision,
+    #mission {
+        border-left: 5px solid rgba(247, 190, 89, 1);
+    }
+
+    #vision p,
+    #mission p {
+        font-size: 20px;
+        line-height: 35px;
+    }
+
+    #vision span {
+        cursor: pointer;
+    }
+
+}

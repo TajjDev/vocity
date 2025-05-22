@@ -1,0 +1,19 @@
+.wrap{
+    position: relative;
+    width: 100vw;
+
+    display: flex;
+    justify-content: ;
+    align-items: start;
+    color: white;
+}
+.wrap video{
+    width: 100%;
+    position: absolute;
+    height: 772px;
+    top: 0;
+}
+#show{
+    z-index: 1;
+    align-self: center;
+}

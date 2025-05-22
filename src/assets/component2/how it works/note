@@ -1,0 +1,371 @@
+import React from 'react'
+import './about.css'
+import image from '/src/assets/vote.png'
+import image2 from '/src/assets/voteimg.png'
+import Button from '../join/Button'
+// import Button from '../../component/join/Button'
+// import image1 from '/src/assets/votepic.jpg'
+
+
+const Aboutt = () => {
+  return (
+    <div id='about'>
+    <div id="head">
+      <div id="image">
+        {/* <img id='im' src={image1} alt="" /> */}
+        <img id='idm' src={image2} alt="" />
+        <p>VOTECITY</p>
+      </div>
+      <div id="text">
+        <h1>Join the Movement with <span>VoteCity</span></h1>
+        <p>VoteCity empowers you to participate in community decisions, stay updated on events, support local causes, and engage in announcements</p>
+      </div>
+      <div className="bbb">
+      <Button idd={"idd"} href={"/#"} text={"Download Now"}></Button>
+<Button idd={"idd"} bod={"1px solid rgba(224, 224, 224, 1)"} fon={'none'} the={"rgba(224, 224, 224, 1)"} href={"/#"} text={"Learn More"}></Button>
+      </div>
+    </div>
+    {/* <Button */}
+    <div id="body1">
+      <Button idd={"idd"} href={"/#"} text={"Download Now"}></Button>
+      <Button idd={"idd"} bod={"1px solid rgba(224, 224, 224, 1)"} fon={'none'} the={"rgba(224, 224, 224, 1)"} href={"/#"} text={"Learn More"}></Button>
+    </div>
+    </div>
+  )
+}
+
+export default Aboutt
+
+
+
+
+
+
+
+
+#head{
+    background-image:url(/src/assets/vidBG.gif);
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 621px;
+    width: 100%;
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 50px;
+    font-family: poppins;
+   color: #fff;
+   /* animation-name: ex; */
+   animation-duration: 2s;
+   animation-iteration-count: infinite;
+}
+@keyframes ex {
+    0% {
+        background-image:linear-gradient(180deg, #0000006a,rgba(170, 112, 232, 0.134)), url(/src/assets/head.png);
+    }
+    25% {
+        background-image: linear-gradient(180deg, #0000006a,rgba(214, 82, 46, 0.126)), url(/src/assets/head.png);
+    }
+    50% {
+        background-image: linear-gradient(180deg, #0000006a,#0000006a), url(/src/assets/head.png);
+    }
+    
+    
+    
+}
+#image{
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: grid;
+    background:rgba(0, 0, 0, 0.801);
+    /* justify-content: center; */
+    justify-content: start;
+    position: fixed;
+    /* border-bottom: 50px; */
+    border-bottom: 1px solid rgb(226, 179, 98);
+}
+#image p{
+    color: rgb(201, 170, 117);
+    font-family: poppins;
+    margin-left: 15px;
+    font-weight: 700;
+    font-size: 14px;
+}
+#image #im1{
+    height: 44px;
+    width: 123px;
+}
+#image #idm{
+    width: 40px;
+    height: 40px;
+    padding:4px;
+    margin-top: 5px;
+    margin-left: 30px;
+}
+#text{
+    /* padding: 16px 32px; */
+    width: 90%;
+    position: relative;
+    top: 400px;
+}
+#text p{
+    font-size: 14px;
+    text-shadow: 4px 2px #000;
+    line-height: 22px;
+    
+    font-weight: 600;
+    /* word-wrap: break-word; */
+    /* word-break: break-all; */
+    width: 100%;
+}
+#text h1{
+    /* word-break: break-all; */
+    text-shadow: 4px 2px #000;
+    width: 100%;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 53px;
+}
+#text span{
+    color: rgba(247, 190, 89, 1);
+}
+#about{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+#body1 {
+    border-radius: 50px;
+    background: #000;
+    /* height: 600px; */
+    width: 100%;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    /* background-color: red; */
+}
+
+.bbb{
+    gap: 40px;
+    /* border-radius: 50px; */
+    /* background: #000; */
+    /* height: 600px; */
+    width: 100%;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    padding-left: 75px;
+    /* background-color: red; */
+}
+#btn{
+    padding-top: 32px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+}
+#idd{
+    display: flex;
+    align-items: center;
+}
+#body1 a, #body a, .bbb a{
+    margin-bottom: 20px;
+    text-align: center;
+    align-items: center;
+    font-family: lato;
+    text-decoration: none;
+    color: rgba(31, 31, 31, 1);
+    height: 48px;
+    width: 155px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 8px;
+    background-image: linear-gradient(to right ,rgba(232, 189, 112, 1), rgba(214, 158, 46, 1), rgba(237, 209, 133, 1));
+    /* background-color: rgba(245, 235, 140, 1); */
+    padding: 12px 24px 12px 24px;
+}
+@media (max-width:1250px) and (min-width:770px) {
+    #head{
+        height:772px ;
+        background-image:url(/src/assets/vidBG.gif);
+    }
+    #text h1{
+        /* word-break: break-all; */
+        text-shadow: 5px 5px #000;
+        width: 60%;
+        /* text-align: end; */
+        margin-bottom: 25px;
+        flex-direction: row;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 50px;
+    }
+    #body1{
+        display: none;
+    }
+    .bbb{
+        padding-left: 48px;
+    }
+    #text p{
+        font-size: 18px;
+        text-shadow: 5px 5px #000;
+        line-height: 30px;
+        font-weight: 600;
+        /* word-wrap: break-word; */
+        /* word-break: break-all; */
+        width: 65%;
+    }
+    #image{
+        padding: 10px;
+    }
+    #image #idm{
+        width: 45px;
+        height: 45px;
+    }
+    #image p{
+        font-size: 16px;
+    }
+}
+@media screen and (max-width:350px) {
+    #text p{
+        font-size: 13px;
+        text-shadow: 5px 5px #000;
+        line-height: 20px;
+        font-weight: 600;
+        /* word-wrap: break-word; */
+        /* word-break: break-all; */
+        width: 100%;
+    }
+    #text h1{
+        /* word-break: break-all; */
+        text-shadow: 5px 5px #000;
+        width: 100%;
+        font-size: 29px;
+        font-weight: 700;
+        line-height: 50px;
+    }
+    #image p{
+        font-size: 12px;
+        margin-left: 23px;
+    }
+}
+@media screen and (max-width:320px) {
+    #image p{
+        font-size: 12px;
+        margin-left: 18px;
+    }
+    #text p{
+        font-size: 12px;
+        text-shadow: 5px 5px #000;
+        line-height: 20px;
+        font-weight: 600;
+        /* word-wrap: break-word; */
+        /* word-break: break-all; */
+        width: 100%;
+    }
+    #text h1{
+        /* word-break: break-all; */
+        text-shadow: 5px 5px #000;
+        width: 100%;
+        font-size: 27px;
+        font-weight: 700;
+        line-height: 45px;
+    }
+    #image #idm{
+        width: 35px;
+        height: 35px;
+        padding:4px;
+        margin-top: 5px;
+        margin-left: 30px;
+    }
+}
+@media screen and (max-width:295px) {
+    #image #idm{
+        width: 32px;
+        height: 32px;
+        padding:4px;
+        margin-top: 5px;
+        margin-left: 30px;
+    }
+    #text p{
+        font-size: 12px;
+        text-shadow: 5px 5px #000;
+        line-height: 18px;
+        font-weight: 600;
+        /* word-wrap: break-word; */
+        /* word-break: break-all; */
+        width: 100%;
+    }
+    #text h1{
+        /* word-break: break-all; */
+        text-shadow: 5px 5px #000;
+        width: 100%;
+        font-size: 25px;
+      font-weight: 700;
+        line-height: 44px;
+    }
+}
+@media  (max-width:769px)  and (min-width:1px) {
+    .bbb{
+        display: none;
+    }
+}
+@media  (max-width:5000px) and (min-width:1251px){
+    
+    
+    
+    #head{
+        height:772px ;
+        background-image:url(/src/assets/vidBG.gif);
+    }
+    #text h1{
+        /* word-break: break-all; */
+        text-shadow: 5px 5px #000;
+        width: 60%;
+        /* text-align: end; */
+        margin-bottom: 30px;
+        flex-direction: row;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 53px;
+    }
+    #text p{
+        font-size: 22px;
+        text-shadow: 5px 5px #000;
+        line-height: 33px;
+        font-weight: 600;
+        /* word-wrap: break-word; */
+        /* word-break: break-all; */
+        width: 60%;
+    }
+    #image{
+        padding: 10px;
+    }
+    #image #idm{
+        width: 45px;
+        height: 45px;
+    }
+    #image p{
+        font-size: 16px;
+    }
+    #body1{
+        display: none;
+    }
+}
