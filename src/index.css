@@ -1,4 +1,10 @@
 html{
   scrollbar-gutter: stable;
   overflow-y: scroll;
+
 }
+body,html{
+    overflow-x:hidden;
+}
+*{
+  outline:1px solid red;
