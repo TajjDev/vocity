@@ -1,10 +1,10 @@
 #Features {
-    padding: 80px 80px;
+    padding: 4% 80px;
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 56px;
-    /* background: radial-gradient(circle 4000px at 75% bottom, transparent, rgba(255, 255, 255, 0.139)); */
+    /* background: radial-gradient(circle 2000px at bottom right , rgba(255, 0, 0, 0), rgba(255, 255, 255, 0.139),rgba(10, 14, 21, 1)); */
 }
 
 #feat {
