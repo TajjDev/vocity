@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from '../nav/Nav'
+// import Nav from '../nav/Nav'
 import Features from '../features/Features'
 import "./renderAll.css"
 import Header from '../header/Header'
@@ -10,7 +10,7 @@ const RenderAll = () => {
     return (
         <div id='render'>
             <div id="navAndHead">
-                <Nav/>
+{/*                 <Nav/> */}
                 <Header/>
             </div>
             <Features/>
