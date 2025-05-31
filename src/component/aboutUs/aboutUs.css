@@ -2,13 +2,13 @@
     padding: 0 80px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    max-width: 100%;
     gap: 56px;
 }
 #abt{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    max-width: 100%;
     gap: 32px;
 }
 #abtLink{
@@ -21,7 +21,7 @@
     font-weight: 600;
 }
 #abtP{
-    width: 65%;
+    max-width: 65%;
 }
 #abt p{
     font-size: 1.4rem;
@@ -29,19 +29,21 @@
 }
 #MissVis{
     display: flex;
-    width: 100%;
+    max-width: 100%;
     justify-content: space-between;
 }
 #MissVis img{
     width: 100%;
-    height: 545px;
+    height: auto;
     border-radius: 10px;
 }
 #img{
-    width: 48%;
+    max-width: 48%;
+    display: flex;
+    align-items: center;
 }
 #misVis{
-    width: 48%;
+    max-width: 48%;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -71,7 +73,7 @@
     border-bottom: 1px solid rgba(47, 47, 47, 0.5);
     display: flex;
     padding-bottom: 20px;
-    width: 100%;
+    max-width: 100%;
     justify-content: space-between;
     text-align: center;
 }

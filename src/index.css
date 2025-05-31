@@ -1,9 +1,4 @@
 html{
   scrollbar-gutter: stable;
   overflow-y: scroll;
-
 }
-body,html{
-    overflow-x:hidden;
-}
-
