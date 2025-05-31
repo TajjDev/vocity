@@ -10,7 +10,7 @@ body{
     background: rgba(10, 14, 21, 1);
 }
 #render{
-    align-items: center;
+
     gap: 50px;
     width: 100%;
     display: flex;
