@@ -10,14 +10,14 @@ body{
     background: rgba(10, 14, 21, 1);
 }
 #render{
-
+    align-items: center;
     gap: 50px;
-    max-width: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
 #navAndHead{
-    max-width: 100%;
+    width: 100%;
     background-image: url('/src/assets/image/headBg.png');
     background-repeat: no-repeat;
     background-position: center;

@@ -1,8 +1,8 @@
 #Features {
-    padding: 4% 80px;
+    /* padding: 40px 80px; */
     display: flex;
     flex-direction: column;
-    max-width: 100%;
+    max-width: 85%;
     gap: 56px;
     /* background: radial-gradient(circle 2000px at bottom right , rgba(255, 0, 0, 0), rgba(255, 255, 255, 0.139),rgba(10, 14, 21, 1)); */
 }
@@ -73,7 +73,7 @@ font-weight: 500;
     font-weight: 500;
 }
 #eachFeat{
-/*     gap: 80px; */
+    /* gap: 80px; */
     display: flex;
     border: 1px solid rgba(192, 192, 192, 0.05);
     flex-direction: column;

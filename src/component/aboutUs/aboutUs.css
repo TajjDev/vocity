@@ -1,8 +1,8 @@
 #About {
-    padding: 0 80px;
+    /* padding: 0 80px; */
     display: flex;
     flex-direction: column;
-    max-width: 100%;
+    max-width: 85%;
     gap: 56px;
 }
 #abt{
