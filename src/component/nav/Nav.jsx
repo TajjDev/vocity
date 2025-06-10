@@ -54,7 +54,7 @@ const Nav = () => {
         <div className={`nav ${scrolled ? 'scrolled' : ''}`}>
             {/* <div className='nav'> */}
             <div id="navImg">
-                <img src={vocityLogo} alt="" />
+                <img id='iimg' src={vocityLogo} alt="" />
                 <p>Vocity</p>
             </div>
 

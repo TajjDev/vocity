@@ -29,3 +29,8 @@ body{
     gap: 126px;
     /* background: linear-gradient(180deg, rgba(10, 14, 21, 1) , #ffffff09); */
 }
+@media  (max-width:1179px) and (min-width:1024px){
+    #navAndHead{
+        gap: 100px;
+    }
+}

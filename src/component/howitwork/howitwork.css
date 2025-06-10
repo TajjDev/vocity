@@ -19,7 +19,7 @@
     justify-content: space-between;
 }
 #hiwLink h3{
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 600;
 }
 #hiwP{
@@ -36,7 +36,6 @@
 }
 
 #HowitworkProb{
-    gap: 80px;
     display: flex;
     border: 1px solid rgba(192, 192, 192, 0.05);
     flex-direction: column;
@@ -80,4 +79,33 @@
     color: rgba(10, 14, 21, 1);
     text-align: center;
     text-decoration: none;
+}
+@media  (max-width:1179px) and (min-width:1024px){
+    #howitwork {    
+        padding: 2% 80px;
+        gap: 50px;
+    }
+    #hiw{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;  
+    }
+    #hiwLink h3{
+        font-size: 2.3rem;
+    }
+    #hiw p{
+        font-size: 1.1rem;
+    }
+    #imgWordHiw p{
+        font-size: 0.9rem;
+    }
+    #imgWordHiw span{
+        font-size: 1.1rem;
+    }
+    #downloadHiww {
+        font-size: 0.9rem;
+        
+        padding: 15px 30px;
+    }
 }

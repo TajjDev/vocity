@@ -4,7 +4,6 @@
     flex-direction: column;
     width: 100%;
     gap: 56px;
-    /* background: radial-gradient(circle 2000px at bottom right , rgba(255, 0, 0, 0), rgba(255, 255, 255, 0.139),rgba(10, 14, 21, 1)); */
 }
 
 #feat {
@@ -19,60 +18,55 @@
     flex-direction: row;
     justify-content: space-between;
 }
-#featLink h3{
-    font-size: 4rem;
+
+#featLink h3 {
+    font-size: 3rem;
     font-weight: 600;
 }
-#feat p{
+
+#feat p {
     font-size: 1.4rem;
     font-weight: 500;
 }
-#pollProb p{
+
+#pollProb p {
     font-size: 1rem;
-font-weight: 500;
+    font-weight: 500;
 }
-#feattlink{
+
+#feattlink {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-#downloadFeat {
-    padding: 20px 30px;
-    border-radius: 40px;
-    border: none;
-    
-    font-weight: 700;
-    background-color: rgba(255, 255, 255, 1);
-    color: rgba(10, 14, 21, 1);
-    text-align: center;
-    text-decoration: none;
-}
-#pollProb{
+
+#pollProb {
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
-#pollProb img{
+
+#pollProb img {
     width: 48px;
     height: 48px;
 }
-#textFeat{
+
+#textFeat {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     flex-direction: column;
 }
-#textFeat span{
+
+#textFeat span {
     color: rgba(255, 233, 152, 1);
 }
-#textFeat h4{
+
+#textFeat h4 {
     font-size: 2.10125rem;
     font-weight: 600;
 }
-#textFeat {
-    font-size: 0.840625rem;
-    font-weight: 500;
-}
-#eachFeat{
+
+#eachFeat {
     gap: 80px;
     display: flex;
     border: 1px solid rgba(192, 192, 192, 0.05);
@@ -81,4 +75,45 @@ font-weight: 500;
     padding: 50px 25px;
     border-radius: 10px;
     background: rgba(25, 25, 25, 0.3);
+}
+
+@media (max-width:1179px) and (min-width:1024px) {
+    #Features {
+        padding: 2% 80px;
+        gap: 50px;
+    }
+
+    #feat {
+        gap: 20px;
+    }
+
+    #featLink h3 {
+        font-size: 2.3rem;
+    }
+
+    #feat p {
+        font-size: 1.1rem;
+    }
+
+    #pollProb p {
+        font-size: 0.9rem;
+    }
+
+    #pollProb img {
+        width: 35px;
+        height: 35px;
+    }
+
+    #textFeat {
+        gap: 20px;
+    }
+
+    #textFeat h4 {
+        font-size: 2rem;
+    }
+
+    #eachFeat {
+        gap: 70px;
+        padding: 40px 25px;
+    }
 }

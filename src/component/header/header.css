@@ -14,7 +14,7 @@
     align-items: center;
 }
 #headWord h5{
-    font-size: 4.6875rem;
+    font-size: 4.4rem;
     line-height: 120%;
     font-weight: 700;
     width: 717px;
@@ -37,9 +37,9 @@
 #headBtn a{
     text-decoration: none;
     font-size: 0.875rem;
+    padding: 20px 30px;
 }
 #downloadHead{
-    padding: 20px 30px;
     border-radius: 40px;
     border: none;
     font-weight: 700;
@@ -48,7 +48,6 @@
     text-align: center;
 }
 #downloadHead2{
-    padding: 20px 30px;
     border-radius: 40px;
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 1);
@@ -62,4 +61,32 @@
 #phone img{
     width: 100%;
     height: 100%;
+}
+@media  (max-width:1179px) and (min-width:1024px){
+    #header{
+        gap: 30px;
+    
+    }
+    #headWord{
+        gap: 30px;
+    }
+    #headWord h5{
+        font-size: 4rem;
+        line-height: 120%;
+        width: 700px;
+    }
+    #headWord p{
+        font-size: 1.1rem;
+        width: 750px;
+    }
+    #headBtn{
+        gap: 50px;
+    }
+    #headBtn a{
+        font-size: 0.8rem;
+        padding: 15px 30px;
+    }
+    #phone{
+        width:80% ;
+    }
 }

@@ -17,7 +17,7 @@
     justify-content: space-between;
 }
 #abtLink h3{
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 600;
 }
 #abtP{
@@ -79,4 +79,56 @@
 }
 #count p{
     font-size: 1.5rem;
+}
+#counting{
+    font-size: 3.8rem;
+    font-weight: bold;
+}
+@media  (max-width:1179px) and (min-width:1024px){
+    #About {
+        padding: 0 80px;
+        gap: 50px;
+    }
+    #abt{
+        gap: 20px;
+    }
+    #abtLink{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    #abtLink h3{
+        font-size: 2.3rem;
+    }
+    #abtP{
+        width: 65%;
+    }
+    #abt p{
+        font-size: 1.1rem;
+    }
+    #misVis{
+        gap: 20px;
+    }
+    #misVis h4{
+        font-size: 2.3rem;
+    }
+    #misVis p{
+        font-size: 1.1rem;
+    }
+    #miss{
+        gap: 20px;
+    }
+    #vis{
+        gap: 20px;
+    }
+    #count{
+        padding-bottom: 20px;
+    }
+    #count p{
+        font-size: 1.2rem;
+    }#counting{
+        font-size: 3.2rem;
+        font-weight: bold;
+    
+    }
 }

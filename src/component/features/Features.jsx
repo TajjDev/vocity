@@ -11,18 +11,18 @@ const Features = () => {
         {
             img: poll,
             h4: 'Poll',
-            p: 'We are passionate about helping businesses grow and succeed in the digital age. We take pride in our work and strive to exceed your expectations every time.',
+            p: 'Create your own polls, cast your vote,join the conversation and make an impact',
             span: 'Voting'
         },
         {
             img: event,
             h4: 'Event',
-            p: 'Our vision is to become the leading e-service platform for voting, ticketing and fundraising in Africa, driving innovation, transparency and financial inclusion.',
+            p: 'Discover, Organize, and Register for local events.Stay connected!',
             span: 'Booking'
         }, {
             img: crowd,
             h4: 'Crowd',
-            p: 'Our vision is to become the leading e-service platform for voting, ticketing and fundraising in Africa, driving innovation, transparency and financial inclusion.',
+            p: 'Bring your idea to life, get funding and donate to support cause that matters to you',
             span: 'Funding'
         }
     ]

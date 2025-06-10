@@ -6,6 +6,7 @@ import Header from '../header/Header'
 import AboutUs from '../aboutUs/AboutUs'
 import HowItWorks from '../howitwork/Howitworks'
 import Ready from '../ready/Ready'
+import Footer from '../footer/Footer'
 const RenderAll = () => {
     return (
         <div id='render'>
@@ -17,6 +18,7 @@ const RenderAll = () => {
             <AboutUs/>
             <HowItWorks/>
             <Ready/>
+            <Footer/>
         </div>
     )
 }

@@ -36,7 +36,7 @@ const CountUp = ({ target = 100, duration = 2000, label }) => {
         }
     }, [target, duration])
     return (
-        <div ref={ref} style={{ fontSize: '4rem', fontWeight: 'bold' }}>
+        <div id='counting' ref={ref}>
             {count}+
         </div>
     )

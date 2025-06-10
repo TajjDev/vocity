@@ -12,19 +12,19 @@ const HowItWorks = () => {
       img: image1,
       span: "Step 1:",
       p: ` Download the App`,
-      pp: '"Available on both Android and iOS."'
+      pp: 'Available on both Android and iOS.'
     },
     {
       img: image2,
       span: "Step 2:",
-      p: ` Create an account`,
-      pp: '"Available on both Android and iOS."'
+      p: ` Create your Account`,
+      pp: 'Sign up in minutes'
     },
     {
       img: image3,
       span: "Step 3:",
-      p: ` Explore the app`,
-      pp: '"Available on both Android and iOS"'
+      p: ` Explore and Engage`,
+      pp: 'Join polls, donates, register for events'
     }
   ]
   return (
