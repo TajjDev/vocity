@@ -51,7 +51,7 @@
     color: rgba(254, 254, 254, 1);
     text-align: center;
 }
-@media  (max-width:1179px) and (min-width:1024px){
+@media  (max-width:1179px) and (min-width:900px){
     #Ready {
         padding: 2% 80px ;
         gap: 50px;
@@ -61,10 +61,10 @@
         gap: 20px;
     }
     #readLink h3{
-        font-size: 2.5rem;
+        font-size: 2.3rem;
     }
     #read p{
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     #ReadBtn{
         gap: 35px;
@@ -72,5 +72,28 @@
     #ReadBtn a{
         padding: 15px 30px;
         font-size: 0.9rem;
+    }
+}
+@media  (max-width:899px) and (min-width:600px){
+    #Ready {
+        padding: 2% 40px ;
+        gap: 40px;
+    }
+        
+    #read {
+        gap: 20px;
+    }
+    #readLink h3{
+        font-size: 2.1rem;
+    }
+    #read p{
+        font-size: 0.89rem;
+    }
+    #ReadBtn{
+        gap: 35px;
+    }
+    #ReadBtn a{
+                font-size: 0.7rem;
+                padding: 13px 20px;
     }
 }

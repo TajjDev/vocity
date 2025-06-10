@@ -117,8 +117,8 @@ const handleClosen = () => {
                         </div>
                         <div id="loc">
                             <p>Location</p>
-                            <p>
-                                david's Court 2 Orchid road Lekki
+                            <p id='david'>
+                                David's Court 2 Orchid road Lekki
                             </p>
                         </div>
                     </div>

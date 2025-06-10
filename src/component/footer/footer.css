@@ -214,9 +214,12 @@ h5 a,
     border-radius: 8px;
 
 }
-@media  (max-width:1179px) and (min-width:1024px){
+#Footer #david{
+    color: #fff;
+}
+@media  (max-width:1179px) and (min-width:900px){
     #Footer {
-        gap: 100px;
+        gap: 80px;
     }
     #conts {
         display: flex;
@@ -224,7 +227,7 @@ h5 a,
     }
     
     #Footer p {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
     
     #Footer a {
@@ -277,75 +280,120 @@ h5 a,
     }
     
     #Footer button {
-        background: none;
-        border: navajowhite;
-        color: rgba(255, 255, 255, 0.4);
         font-size: 1rem;
-        font-weight: 500;
-        text-decoration: underline;
-        cursor: pointer;
     }
     
-    #footTwo {
-        width: 100%;
+    
+}
+@media  (max-width:899px) and (min-width:830px){
+    #Footer {
+        gap: 80px;
+    }
+    #conts {
         display: flex;
+        gap: 60px;
+    }   
+    #Footer p {
+        font-size: 0.95rem;
+    }   
+    #Footer a {
+        font-size: 0.9rem;
+    }
+    #links {
+        gap: 60px;
+    }
+    #navi {
+        gap: 20px;
+    }
+    #con {
+        gap: 35px;
+    }
+    #contactss {
+        gap: 20px;
+    }
+    #conn {
+        gap: 20px;
+    }
+    #loc {
+        gap: 20px;
+    } 
+    #folChat {
+        display: flex;
+        gap: 60px;
+    }
+    #tex {
+        gap: 175px;
+    }
+    #folChat a {
+        padding: 8px;
+    }  
+    #foll {
+        gap: 10px;
+    }  
+    #chat {
+        gap: 10px;
+    }  
+    #Footer button {
+        font-size: 1rem;
+    }
+}
+@media  (max-width:830px) and (min-width:600px){
+
+    #Footer {
+        gap: 80px;
+        padding: 4% 40px;
+    }
+    #conts {
+        display: flex;
+        gap: 50px;
+    }   
+    #Footer p {
+        font-size: 0.9rem;
+    }   
+    #Footer a {
+        font-size: 0.85rem;
+    }
+    #links {
+        gap: 50px;
+        flex-direction: column;
+    }
+    #navi {
+        gap: 10px;
+        width: 20%;
+    }
+    #con {
+        gap: 35px;
+        width: 70%;
+    }
+    #contactss {
+        gap: 10px;
+    }
+    #conn {
+        gap: 10px;
+    }
+    #footOne{
         justify-content: space-between;
-        flex-direction: row;
-        align-items: end;
     }
-    
-    #en {
+    #loc {
+        gap: 10px;
+    } 
+    #folChat {
         display: flex;
-        gap: 24px;
+        gap: 50px;
     }
-    
-    h5 a,
-    .popup p a {
-        color: #000;
-        /* text-decoration: none; */
+    #tex {
+        gap: 150px;
     }
-    
-    .popup p,
-    .popup h5 {
-        line-height: 25px;
-    }
-    
-    .popup {
-        color: #000;
-        position: fixed;
-        top: 50%;
-        z-index: 90;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #c52121;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-        border-radius: 8px;
-        width: 100%;
-        height: 100%;
-        overflow-y: auto;
-    }
-    
-    #priv {
-        display: flex;
-        /* height: 1000px; */
-        flex-direction: row;
-    
-    }
-    
-    .btn {
-        padding-left: 0;
-        width: 100px;
-        float: right;
-        text-align: center;
-        text-decoration: none;
-        background-color: #e6e3e3;
-        color: #000;
-        padding: 5px 10px;
-        font-size: 18px;
-        margin-top: 20px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.792);
-        border-radius: 8px;
-    
+    #folChat a {
+        padding: 5px;
+    }  
+    #foll {
+        gap: 10px;
+    }  
+    #chat {
+        gap: 10px;
+    }  
+    #Footer button {
+        font-size: 0.9rem;
     }
 }

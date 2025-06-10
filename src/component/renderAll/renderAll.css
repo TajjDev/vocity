@@ -34,3 +34,19 @@ body{
         gap: 100px;
     }
 }
+@media  (max-width:1024px) and (min-width:900px){
+    #navAndHead{
+    padding: 0 40px;
+    }
+    #navAndHead{
+        gap: 90px;
+    }
+}
+@media  (max-width:899px) and (min-width:600px){
+    #navAndHead{
+        gap: 75px;
+    }
+    #navAndHead{
+        padding: 0 40px;
+        }
+}

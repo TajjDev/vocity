@@ -62,7 +62,7 @@
     width: 100%;
     height: 100%;
 }
-@media  (max-width:1179px) and (min-width:1024px){
+@media  (max-width:1179px) and (min-width:900px){
     #header{
         gap: 30px;
     
@@ -85,6 +85,34 @@
     #headBtn a{
         font-size: 0.8rem;
         padding: 15px 30px;
+    }
+    #phone{
+        width:80% ;
+    }
+}
+@media  (max-width:899px) and (min-width:600px){
+    #header{
+        gap: 25px;
+        
+    }
+    #headWord{
+        gap: 25px;
+    }
+    #headWord h5{
+        font-size: 3.2rem;
+        line-height: 120%;
+        width: 520px;
+    }
+    #headWord p{
+        font-size: 0.89rem;
+        width: 520px;
+    }
+    #headBtn{
+        gap: 50px;
+    }
+    #headBtn a{
+        font-size: 0.7rem;
+        padding: 12px 20px;
     }
     #phone{
         width:80% ;
