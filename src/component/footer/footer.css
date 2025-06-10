@@ -371,12 +371,18 @@ h5 a,
     #conn {
         gap: 10px;
     }
+    #conn p{
+        font-size: 0.9rem;
+    }
     #footOne{
         justify-content: space-between;
     }
     #loc {
         gap: 10px;
     } 
+    #loc p{
+        font-size: .9rem;
+    }
     #folChat {
         display: flex;
         gap: 50px;
