@@ -155,5 +155,51 @@
     #eachFeat {
         gap: 40px;
         padding: 25px 15px;
+        width: 32%;
+        padding-bottom: 20px;
+
+    }
+}
+@media  (max-width:599px) and (min-width:425px){
+    #Features {
+        padding: 2% 25px;
+        gap: 30px;
+    }
+    #feat {
+        gap: 10px;
+    }
+    #featLink h3 {
+        font-size: 1.6rem;
+    }
+    #feat p {
+        font-size: 0.75rem;
+    }
+    #pollProb p {
+        font-size: 0.7rem;
+    }
+    #pollProb img {
+        width: 27px;
+        height: 27px;
+    }
+    #textFeat {
+        gap: 8px;
+    }
+    #textFeat h4 {
+        font-size: 1rem;
+    }
+    #eachFeat {
+        gap: 35px;
+        padding: 25px 15px;
+        padding-bottom: 20px;
+        width: 32%;
+    }
+}
+@media  (max-width:500px) and (min-width:425px){
+    #pollProb{
+        gap: 30px;
+        flex-direction: column;
+    }
+    #eachFeat{
+        width: 70%;
     }
 }

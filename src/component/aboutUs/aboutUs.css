@@ -50,7 +50,8 @@
     justify-content:  center;
 }
 #misVis h4{
-    font-size: 2.4rem;
+    font-size: 2rem;
+    font-weight: 600;
 }
 #misVis p{
     font-size: 1.4rem;
@@ -105,7 +106,7 @@
         gap: 20px;
     }
     #misVis h4{
-        font-size: 2.2rem;
+        font-size: 1.6rem;
     }
     #misVis p{
         font-size: 1.1rem;
@@ -154,7 +155,7 @@
         gap: 10px;
     }
     #misVis h4{
-        font-size: 2.2rem;
+        font-size: 1.2rem;
     }
     #misVis p{
         font-size: 0.89rem;
@@ -170,7 +171,8 @@
     }
     #count p{
         font-size: 1rem;
-    }#counting{
+    }
+    #counting{
         font-size: 2.9rem;
         font-weight: bold;
         
@@ -194,5 +196,56 @@
     }
     #misVis{
         width: 100%;
+    }
+}
+@media  (max-width:599px) and (min-width:425px){
+    #counting{
+        font-size: 2.1rem;
+        font-weight: bold;
+    }
+    #count p{
+        font-size: 0.8rem;
+    }
+    #About {
+        padding: 0 25px;
+        gap: 30px;
+    }
+    #abt{
+        gap: 10px;
+    }
+    #abtLink h3{
+        font-size: 1.6rem;
+    }
+    #abtP{
+        width: 65%;
+    }
+    #abt p{
+        font-size: 0.75rem;
+    }
+    #misVis{
+        gap: 10px;
+        width:80%;
+    }
+    #misVis h4{
+        font-size: 1rem;
+    }
+    #misVis p{
+        font-size: 0.75rem;
+    }
+    #miss{
+        gap: 10px;
+    }
+    #vis{
+        gap: 10px;
+    }
+    #count{
+        padding-bottom: 20px;
+    }
+    #img{
+        width: 70%;
+    }
+    #MissVis{
+        gap: 20px;
+        flex-direction: column;
     }
 }

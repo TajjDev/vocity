@@ -84,7 +84,7 @@ const handleClosen = () => {
                     </div>
                     <div id="con">
                         <div id="conn">
-                            <p>Contact us</p>
+                            <p id='conP'>Contact us</p>
                             <div id="conts">
                                 <div id="contsO">
                                     <a href="tel:++2349139265486">+234 913  926-5486</a>
@@ -99,7 +99,7 @@ const handleClosen = () => {
                         <div id="contactss">
                             <div id="tex">
                                 <p>Follow us</p>
-                                <p>Follow us</p>
+                                <p>Let's chat</p>
                             </div>
                             <div id="folChat">
                                 <div id="foll">
@@ -127,9 +127,9 @@ const handleClosen = () => {
             <RevealOnScroll>
                 <div id="footTwo">
                     <div id="copy">
-                        <p>©Copyright</p>
-                        <p>Votcity Ltd</p>
-                        <p>All rghts reserved</p>
+                        <p>©Copyright
+                        Votcity Ltd
+                        All rghts reserved</p>
                     </div>
                     <div id="enO">
                         {/* <PPandTC/> */}
@@ -480,10 +480,10 @@ const handleClosen = () => {
 </div>
                         {/* <p><button>Privacy Policy</button> and <button>Terms & Conditions</button></p> */}
                     </div>
-                    <div id="en">
-                            <p>En</p>
-                            <p>Es</p>
-                    </div>
+                    {/* <div id="en"> */}
+                            {/* <p>En</p> */}
+                            {/* <p>Es</p> */}
+                    {/* </div> */}
                 </div>
             </RevealOnScroll>
         </div>

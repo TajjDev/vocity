@@ -172,3 +172,43 @@
         width: 100%;
    }
 }
+@media  (max-width:599px) and (min-width:425px){
+    .nav {
+        padding-top: 18px;
+    }
+    #navs {
+        padding: 12px;
+        gap: 15px;
+        width: 52%;
+    }
+    .nav.scrolled {
+        padding: 9px 20px;
+        
+    }
+    .nav a {
+        font-size: 0.5rem;
+    }
+        
+    #navImg img{
+        width: 30px;
+        height: 25px;
+        padding-right: 6px;
+    }
+    #navImg p{
+        font-size: 0.6rem;
+        
+    }
+    #downloadNav {
+        padding: 12px 0;
+        width: 100%;
+       }
+}
+@media  (max-width:500px) and (min-width:425px){
+    #navs {
+        padding: 11px;
+        gap: 13px;
+        width: 58%;
+    }
+    #downloadNav {
+        padding: 11px 0;}
+}

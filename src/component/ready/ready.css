@@ -97,3 +97,27 @@
                 padding: 13px 20px;
     }
 }
+
+@media  (max-width:599px) and (min-width:425px){
+    #Ready {
+        padding: 2% 25px ;
+        gap: 30px;
+    }
+        
+    #read {
+        gap: 10px;
+    }
+    #readLink h3{
+        font-size: 1.6rem;
+    }
+    #read p{
+        font-size: 0.75rem;
+    }
+    #ReadBtn{
+        gap: 30px;
+    }
+    #ReadBtn a{
+                font-size: 0.7rem;
+                padding: 10px 20px;
+    }
+}

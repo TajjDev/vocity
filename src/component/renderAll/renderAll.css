@@ -37,16 +37,26 @@ body{
 @media  (max-width:1024px) and (min-width:900px){
     #navAndHead{
     padding: 0 40px;
-    }
-    #navAndHead{
-        gap: 90px;
+    gap: 90px;
     }
 }
 @media  (max-width:899px) and (min-width:600px){
-    #navAndHead{
-        gap: 75px;
-    }
+
     #navAndHead{
         padding: 0 40px;
+        gap: 75px;
+    }
+}
+@media  (max-width:599px) and (min-width:425px){
+    #navAndHead{
+        padding: 0 25px;
+        background-image: url('/src/assets/image/headerBgtab.png');
+        gap: 60px;
+        }
+}
+@media  (max-width:470px) and (min-width:425px){
+    #navAndHead{
+        background-image: url('/src/assets/image/headerBgmob.png');
+
         }
 }
