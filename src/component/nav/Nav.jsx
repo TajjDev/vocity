@@ -24,13 +24,13 @@ const Nav = () => {
 
 
     const scrollToFeatures = () => {
-        const Features = document.getElementById('Features');
+        const Features = document.getElementById('phone');
         if (Features) {
             Features.scrollIntoView({ behavior: "smooth" });
         }
     }
     const scrollToAbout = () => {
-        const About = document.getElementById('About');
+        const About = document.getElementById('useAbt');
         if (About) {
             About.scrollIntoView
                 ({ behavior: "smooth" });

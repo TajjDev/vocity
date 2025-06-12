@@ -138,28 +138,30 @@
     }
 
     #hiwLink h3 {
-        font-size: 2.1rem;
+        font-size: 2.5rem;
     }
 
     #hiw p {
-        font-size: 0.89rem;
+        font-size: 1.1rem;
     }
-
+    #hiwP{
+        width: 90%;
+    }
     #imgWordHiw p {
-        font-size: 0.75rem;
+        font-size: 0.92rem;
     }
 
     #imgWordHiw span {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     #downloadHiww {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         padding: 13px 0;
     }
 }
 
-@media (max-width:599px) and (min-width:420px) {
+@media (max-width:599px) and (min-width:425px) {
     #howitwork {
         padding: 2% 25px;
         gap: 30px;
@@ -174,15 +176,15 @@
     }
 
     #hiwLink h3 {
-        font-size: 1.6rem;
+        font-size: 2.2rem;
     }
 
     #hiw p {
-        font-size: 0.75rem;
+        font-size: 0.9rem;
     }
 
     #imgWordHiw p {
-        font-size: 0.67rem;
+        font-size: 0.835rem;
     }
 
     #HowitworkProb {
@@ -191,16 +193,19 @@
     }
 
     #imgWordHiw span {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
 
     #downloadHiww {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         padding: 10px;
+    }
+    #hiwP{
+        width: 90%;
     }
 }
 
-@media (max-width:500px) and (min-width:420px) {
+@media (max-width:500px) and (min-width:425px) {
     #howProbs {
         flex-direction: column;
         gap: 20px;
@@ -210,5 +215,57 @@
     }
     #downloadHiww{
         width: 120%;
+    }
+    #hiwwlink{
+        width: 50%;
+    }
+    #hiwP{
+        width: 85%;
+    }
+}
+@media (max-width: 424px) {
+    #howProbs {
+        flex-direction: column;
+        gap: 65px;
+    }
+    #hiwP{
+        width:80% ;
+    }
+    #HowitworkProb{
+        width: 85%;
+        /* align-self: center; */
+    }
+    #downloadHiww{
+        width: 80%;
+        /* align-self: center; */
+    }
+    #howitwork {
+        padding: 2% 25px;
+        gap: 30px;
+    }
+    #hiw {
+        gap: 10px;
+    }
+    #hiwwlink {
+        width: auto;
+        /* align-self: center; */
+        /* display: flex; */
+    }
+    #hiwLink h3 {
+        font-size: 1.9rem;
+    }
+    #hiw p {
+        font-size: 0.88rem;
+    }
+    #imgWordHiw p {
+        font-size: 0.84rem;
+    }
+    #imgWordHiw span {
+        font-size: 1.05rem;
+    }
+    #downloadHiww{
+        font-size: 0.75rem;
+        width: 65%;
+        padding: 15px ;
     }
 }

@@ -45,7 +45,6 @@ const Header = () => {
             <div id="phone">
                 <img src={imageSrc} alt="" />
             </div>
-           
         </div>
     )
 }

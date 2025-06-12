@@ -1,31 +1,37 @@
-import React from 'react'
-import { useState } from 'react'
-import "./ppandtc.css"
+import React, { forwardRef, useImperativeHandle, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
+import './ppandtc.css'
 
-const PPandTC = () => {
-    const [isOpen, setIsOpen] = useState(false)
-    const handleOpen = () => {
-        setIsOpen(true)
-        //   document.body.style.overflowY = "hidden"
-        document.body.style.overflowY = "hidden"
-        // document.body.style.filter = "blur(2px)"
+const Modal = forwardRef(({ children }, ref) => {
+  const modalRef = useRef()
+  const overlayRef = useRef()
+  
+  const close = () => {
+    if (ref.current && ref.current.onClose) {
+      ref.current.onClose()
     }
-    const handleClose = () => {
-        setIsOpen(false)
-        document.body.style.overflowY = "auto"
-    }
-    const [isOpenn, setIsOpenn] = useState(false)
-    const handleOpenn = () => {
-        setIsOpenn(true)
-        document.body.style.overflowY = "hidden"
-    }
-    const handleClosen = () => {
-        setIsOpenn(false)
-        document.body.style.overflowY = "auto"
-    }
-    return (
-        <></>
-    )
-}
+  }
 
-export default PPandTC
+  useImperativeHandle(ref, () => ({
+    open: () => modalRef.current.classList.add('open'),
+    close
+  }))
+
+  useEffect(() => {
+    const escHandler = e => e.key === 'Escape' && close()
+    document.addEventListener('keydown', escHandler)
+    return () => document.removeEventListener('keydown', escHandler)
+  })
+
+  return createPortal(
+    <div ref={modalRef} className="modal-overlay">
+      <div className="modal-window">
+        <button className="modal-close" onClick={close}>×</button>
+        <div className="modal-body">{children}</div>
+      </div>
+    </div>,
+    document.getElementById('modal-root')
+  )
+})
+
+export default Modal

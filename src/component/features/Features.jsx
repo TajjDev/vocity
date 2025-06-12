@@ -48,8 +48,11 @@ const Features = () => {
                             return <FeatProb key={index} img={data.img} h4={data.h4} p={data.p} span={data.span} />
                         })
                     }
+                    
                 </div>
+                <div id="useAbt"></div>
             </RevealOnScroll>
+           
         </div>
     )
 }
