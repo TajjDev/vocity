@@ -179,7 +179,7 @@
     }
 
     #abtLink h3 {
-        font-size: 2.1rem;
+        font-size: 2.5rem;
     }
 
     #abtP {
@@ -187,7 +187,7 @@
     }
 
     #abt p {
-        font-size: 0.89rem;
+        font-size: 1.1rem;
     }
 
     #misVis {
@@ -199,7 +199,7 @@
     }
 
     #misVis p {
-        font-size: 0.89rem;
+        font-size: 0.92rem;
     }
 
     #miss {
@@ -215,11 +215,11 @@
     }
 
     #count p {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     #counting {
-        font-size: 2.9rem;
+        font-size: 3rem;
         font-weight: bold;
 
     }
@@ -252,12 +252,12 @@
 
 @media (max-width:599px) and (min-width:420px) {
     #counting {
-        font-size: 2.1rem;
+        font-size: 2.3rem;
         font-weight: bold;
     }
 
     #count p {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     #About {
@@ -270,15 +270,16 @@
     }
 
     #abtLink h3 {
-        font-size: 1.6rem;
+        font-size: 2.2rem;
     }
 
     #abtP {
-        width: 65%;
+        width: 85%;
     }
 
     #abt p {
-        font-size: 0.75rem;
+        font-size: 0.9rem;
+        width: 100%;
     }
 
     #misVis {
@@ -287,11 +288,11 @@
     }
 
     #misVis h4 {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     #misVis p {
-        font-size: 0.75rem;
+        font-size: 0.88rem;
     }
 
     #miss {
@@ -318,12 +319,12 @@
 
 @media (max-width: 424px) {
     #counting {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         font-weight: bold;
     }
 
     #count p {
-        font-size: 0.6rem;
+        font-size: 0.76rem;
     }
 
     #About {
@@ -336,7 +337,7 @@
     }
 
     #abtLink h3 {
-        font-size: 1.6rem;
+        font-size: 1.9rem;
     }
 
     #abtP {
@@ -344,7 +345,7 @@
     }
 
     #abt p {
-        font-size: 0.75rem;
+        font-size: 0.88rem;
         width: 100%;
     }
 
@@ -354,11 +355,11 @@
     }
 
     #misVis h4 {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     #misVis p {
-        font-size: 0.75rem;
+        font-size: 0.84rem;
     }
 
     #miss {

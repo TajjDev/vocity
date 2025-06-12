@@ -104,14 +104,14 @@
         width: 520px;
     }
     #headWord p{
-        font-size: 0.89rem;
-        width: 520px;
+        font-size: 1.1rem;
+        width: 530px;
     }
     #headBtn{
         gap: 50px;
     }
     #headBtn a{
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         padding: 12px 20px;
     }
     #phone{
@@ -125,7 +125,7 @@
         width: 390px;
     }
     #headWord p{
-        font-size: 0.75rem;
+        font-size: 0.9rem;
         width: 420px;
     }
     #header{
@@ -154,7 +154,7 @@
         width: 300px;
     }
     #headWord p{
-        font-size: 0.75rem;
+        font-size: 0.895rem;
         width: 400px;
     }
 }
@@ -166,7 +166,7 @@
         width: 250px;
     }
     #headWord p{
-        font-size: 0.7rem;
+        font-size: 0.88rem;
         width: 330px;
     }
     #header{
