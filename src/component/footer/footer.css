@@ -216,7 +216,6 @@ h5 a,
 }
 #Footer #david{
     color: #fff;
-    font-size: 1rem;
 }
 @media  (max-width:1179px) and (min-width:900px){
     #Footer {
@@ -284,10 +283,6 @@ h5 a,
         font-size: 1rem;
     }
     
-    #Footer #david{
-        color: #fff;
-        font-size: 0.85rem;
-    }
 }
 @media  (max-width:899px) and (min-width:830px){
     #Footer {
@@ -340,10 +335,6 @@ h5 a,
     #Footer button {
         font-size: 1rem;
     }
-    #Footer #david{
-        color: #fff;
-        font-size: 0.8rem;
-    }
 }
 @media  (max-width:830px) and (min-width:600px){
 
@@ -379,18 +370,12 @@ h5 a,
     #conn {
         gap: 10px;
     }
-    #conn p{
-        font-size: 0.9rem;
-    }
     #footOne{
         justify-content: space-between;
     }
     #loc {
         gap: 10px;
     } 
-    #loc p{
-        font-size: .9rem;
-    }
     #folChat {
         display: flex;
         gap: 50px;
@@ -410,16 +395,12 @@ h5 a,
     #Footer button {
         font-size: 0.9rem;
     }
-    #Footer #david{
-        color: #fff;
-        font-size: 0.75rem;
-    }
     #folChat a img{
         width: 15px;
         height: 15px;
     } 
 }
-@media  (max-width:599px) and (min-width:425px){
+@media  (max-width:599px) and (min-width:420px){
     #Footer {
         gap: 70px;
         padding: 4% 25px;
@@ -452,18 +433,12 @@ h5 a,
     #conn {
         gap: 10px;
     }
-    #conn p{
-        font-size: 0.8rem;
-    }
     #footOne{
         justify-content: space-between;
     }
     #loc {
         gap: 10px;
     } 
-    #loc p{
-        font-size: .8rem;
-    }
     #folChat {
         display: flex;
         gap: 50px;
@@ -487,12 +462,8 @@ h5 a,
     #Footer button {
         font-size: 0.8rem;
     }
-    #Footer #david{
-        color: #fff;
-        font-size: 0.65rem;
-    }
 }
-@media  (max-width:500px) and (min-width:425px){
+@media  (max-width:500px) and (min-width:420px){
     #links, #conts, #folChat, #tex {
         gap: 40px;
         flex-direction: row;
@@ -508,7 +479,7 @@ h5 a,
     }
     #navi,  #conn, #contactss, #loc{
         width: 100%;
-        padding: 0 60px;
+        padding: 0 40px;
         align-items: center;
     }
     #loc{

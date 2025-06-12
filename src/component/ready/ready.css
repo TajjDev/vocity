@@ -98,7 +98,7 @@
     }
 }
 
-@media  (max-width:599px) and (min-width:425px){
+@media  (max-width:599px) and (min-width:420px){
     #Ready {
         padding: 2% 25px ;
         gap: 30px;

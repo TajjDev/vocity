@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import vocityLogo from '/src/assets/image/logoVocity.png'
 import "./nav.css"
+import MobileMenu from './MobileMenu'
 
 const Nav = () => {
     const [activeLink, setActiveLink] = useState('home')
@@ -67,6 +68,7 @@ const Nav = () => {
             <div id="downNav">
                 <a id='downloadNav' href="#">Download now</a>
             </div>
+            <MobileMenu/>
         </div>
     )
 }

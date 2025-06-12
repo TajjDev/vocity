@@ -159,7 +159,7 @@
     }
 }
 
-@media (max-width:599px) and (min-width:425px) {
+@media (max-width:599px) and (min-width:420px) {
     #howitwork {
         padding: 2% 25px;
         gap: 30px;
@@ -200,12 +200,15 @@
     }
 }
 
-@media (max-width:500px) and (min-width:425px) {
+@media (max-width:500px) and (min-width:420px) {
     #howProbs {
         flex-direction: column;
         gap: 20px;
     }
     #HowitworkProb{
         width: 60%;
+    }
+    #downloadHiww{
+        width: 120%;
     }
 }

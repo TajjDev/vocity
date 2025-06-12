@@ -47,16 +47,23 @@ body{
         gap: 75px;
     }
 }
-@media  (max-width:599px) and (min-width:425px){
+@media  (max-width:599px) and (min-width:420px){
     #navAndHead{
         padding: 0 25px;
         background-image: url('/src/assets/image/headerBgtab.png');
         gap: 60px;
         }
 }
-@media  (max-width:470px) and (min-width:425px){
+@media  (max-width:470px) and (min-width:420px){
     #navAndHead{
         background-image: url('/src/assets/image/headerBgmob.png');
 
+        }
+}
+@media (max-width: 424px) {
+    #navAndHead{
+        padding: 0 25px;
+        background-image: url('/src/assets/image/headerBgmob.png');
+        gap: 50px;
         }
 }

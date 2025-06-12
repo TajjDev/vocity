@@ -1,8 +1,10 @@
 import React from 'react'
 import './howitwork.css'
+import RevealOnScroll from '../onscroll/ReavealOnScroll'
 
 const HowitworkProb = ({img,span,p,pp}) => {
   return (
+    <RevealOnScroll>
     <div id='HowitworkProb'>
         <div id="imgWordHiw">
             <div id="imgHiw">
@@ -15,6 +17,7 @@ const HowitworkProb = ({img,span,p,pp}) => {
             </div>
         </div>
     </div>
+    </RevealOnScroll>
   )
 }
 

@@ -62,6 +62,7 @@ const handleClosen = () => {
         <div id='Footer'>
             <RevealOnScroll>
                 <div id="footOne">
+                    <RevealOnScroll>
                     <div id="navi">
                         <div id="navvi">
                             <p>Navigation</p>
@@ -82,7 +83,10 @@ const handleClosen = () => {
                             </div>
                         </div>
                     </div>
+                    </RevealOnScroll>
+                    
                     <div id="con">
+                    <RevealOnScroll>
                         <div id="conn">
                             <p id='conP'>Contact us</p>
                             <div id="conts">
@@ -96,6 +100,8 @@ const handleClosen = () => {
                                 </div>
                             </div>
                         </div>
+                        </RevealOnScroll>
+                        <RevealOnScroll>
                         <div id="contactss">
                             <div id="tex">
                                 <p>Follow us</p>
@@ -121,7 +127,9 @@ const handleClosen = () => {
                                 David's Court 2 Orchid road Lekki
                             </p>
                         </div>
+                        </RevealOnScroll>
                     </div>
+                    
                 </div>
             </RevealOnScroll>
             <RevealOnScroll>

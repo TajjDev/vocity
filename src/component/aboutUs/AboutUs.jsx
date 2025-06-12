@@ -64,14 +64,18 @@ const AboutUs = () => {
                         <img src={image} alt="" />
                     </div>
                     <div id="misVis">
+                        <RevealOnScroll>
                         <div id="miss">
                             <h4>Our <span>Missions</span></h4>
                             <p>We are passionate about helping businesses grow and succeed in the digital age. We take pride in our work and strive to exceed your expectations every time.</p>
                         </div>
+                        </RevealOnScroll>
+                        <RevealOnScroll>
                         <div id="vis">
                             <h4>Our <span>Vision</span></h4>
                             <p>Our vision is to become the leading e-service platform for voting, ticketing and fundraising in Africa, driving innovation, transparency and financial inclusion.</p>
                         </div>
+                        </RevealOnScroll>
                     </div>
                 </div>
             </RevealOnScroll>

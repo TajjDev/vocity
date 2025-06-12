@@ -160,7 +160,7 @@
 
     }
 }
-@media  (max-width:599px) and (min-width:425px){
+@media  (max-width:599px) and (min-width:420px){
     #Features {
         padding: 2% 25px;
         gap: 30px;
@@ -194,12 +194,50 @@
         width: 32%;
     }
 }
-@media  (max-width:500px) and (min-width:425px){
+@media  (max-width:500px) and (min-width:420px){
     #pollProb{
         gap: 30px;
         flex-direction: column;
     }
     #eachFeat{
         width: 70%;
+    }
+}
+@media (max-width: 424px) {
+    #pollProb{
+        gap: 30px;
+        flex-direction: column;
+    }
+    #eachFeat{
+        width: 85%;
+        gap: 56px;
+        justify-self: center;
+        padding: 15px;
+    }
+    #Features {
+        padding: 2% 25px;
+        gap: 56px;
+    }
+    #feat {
+        gap: 10px;
+    }
+    #featLink h3 {
+        font-size: 1.6rem;
+    }
+    #feat p {
+        font-size: 0.75rem;
+    }
+    #pollProb p {
+        font-size: 0.7rem;
+    }
+    #pollProb img {
+        width: 25px;
+        height: 25px;
+    }
+    #textFeat {
+        gap: 8px;
+    }
+    #textFeat h4 {
+        font-size: 0.95rem;
     }
 }

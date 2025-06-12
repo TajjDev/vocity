@@ -16,9 +16,9 @@ const RenderAll = () => {
             </div>
             <Features/>
             <AboutUs/>
-            <HowItWorks/>
-            <Ready/>
-            <Footer/>
+            {/* <HowItWorks/> */}
+            {/* <Ready/> */}
+            {/* <Footer/> */}
         </div>
     )
 }

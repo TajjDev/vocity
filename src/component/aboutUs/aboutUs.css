@@ -5,71 +5,86 @@
     width: 100%;
     gap: 56px;
 }
-#abt{
+
+#abt {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 32px;
 }
-#abtLink{
+
+#abtLink {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-#abtLink h3{
+
+#abtLink h3 {
     font-size: 3rem;
     font-weight: 600;
 }
-#abtP{
+
+#abtP {
     width: 65%;
 }
-#abt p{
+
+#abt p {
     font-size: 1.4rem;
     font-weight: 500;
 }
-#MissVis{
+
+#MissVis {
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
-#MissVis img{
+
+#MissVis img {
     width: 100%;
     height: auto;
     border-radius: 10px;
 }
-#img{
+
+#img {
     width: 48%;
     display: flex;
     align-items: center;
 }
-#misVis{
+
+#misVis {
     width: 48%;
     display: flex;
     flex-direction: column;
     gap: 25px;
-    justify-content:  center;
+    justify-content: center;
 }
-#misVis h4{
+
+#misVis h4 {
     font-size: 2rem;
     font-weight: 600;
 }
-#misVis p{
+
+#misVis p {
     font-size: 1.4rem;
 }
-#misVis h4 span{
+
+#misVis h4 span {
     color: rgb(255, 233, 152);
 }
-#miss{
+
+#miss {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
-#vis{
+
+#vis {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
-#count{
+
+#count {
     border-top: 1px solid rgba(47, 47, 47, 0.5);
     border-bottom: 1px solid rgba(47, 47, 47, 0.5);
     display: flex;
@@ -78,173 +93,294 @@
     justify-content: space-between;
     text-align: center;
 }
-#count p{
+
+#count p {
     font-size: 1.5rem;
 }
-#counting{
+
+#counting {
     font-size: 3.8rem;
     font-weight: bold;
 }
-@media  (max-width:1179px) and (min-width:900px){
+
+@media (max-width:1179px) and (min-width:900px) {
     #About {
         padding: 0 80px;
         gap: 50px;
     }
-    #abt{
+
+    #abt {
         gap: 20px;
     }
-    #abtLink h3{
+
+    #abtLink h3 {
         font-size: 2.3rem;
     }
-    #abtP{
+
+    #abtP {
         width: 65%;
     }
-    #abt p{
+
+    #abt p {
         font-size: 1.1rem;
     }
-    #misVis{
+
+    #misVis {
         gap: 20px;
     }
-    #misVis h4{
+
+    #misVis h4 {
         font-size: 1.6rem;
     }
-    #misVis p{
+
+    #misVis p {
         font-size: 1.1rem;
     }
-    #miss{
+
+    #miss {
         gap: 20px;
     }
-    #vis{
+
+    #vis {
         gap: 20px;
     }
-    #count{
+
+    #count {
         padding-bottom: 20px;
     }
-    #count p{
+
+    #count p {
         font-size: 1.2rem;
-    }#counting{
+    }
+
+    #counting {
         font-size: 3.2rem;
         font-weight: bold;
-    
+
     }
-    #img{
+
+    #img {
         width: 51%;
     }
-    #misVis{
-        width:45%;
+
+    #misVis {
+        width: 45%;
     }
 }
-@media  (max-width:899px) and (min-width:600px){
+
+@media (max-width:899px) and (min-width:600px) {
     #About {
         padding: 0 40px;
         gap: 40px;
     }
-    #abt{
+
+    #abt {
         gap: 20px;
     }
-    #abtLink h3{
+
+    #abtLink h3 {
         font-size: 2.1rem;
     }
-    #abtP{
+
+    #abtP {
         width: 65%;
     }
-    #abt p{
+
+    #abt p {
         font-size: 0.89rem;
     }
-    #misVis{
+
+    #misVis {
         gap: 10px;
     }
-    #misVis h4{
+
+    #misVis h4 {
         font-size: 1.2rem;
     }
-    #misVis p{
+
+    #misVis p {
         font-size: 0.89rem;
     }
-    #miss{
+
+    #miss {
         gap: 10px;
     }
-    #vis{
+
+    #vis {
         gap: 10px;
     }
-    #count{
+
+    #count {
         padding-bottom: 20px;
     }
-    #count p{
+
+    #count p {
         font-size: 1rem;
     }
-    #counting{
+
+    #counting {
         font-size: 2.9rem;
         font-weight: bold;
-        
-    }
-    #img{
-        width: 51%;
-    }
-    #misVis{
-        width:45%;
-    }
-}
-@media  (max-width:700px) and (min-width:600px){
-    #MissVis{
-        /* align-items: center; */
-        gap: 30px;
-        flex-direction:column ;
 
     }
-    #img{
+
+    #img {
+        width: 51%;
+    }
+
+    #misVis {
+        width: 45%;
+    }
+}
+
+@media (max-width:700px) and (min-width:600px) {
+    #MissVis {
+        /* align-items: center; */
+        gap: 30px;
+        flex-direction: column;
+
+    }
+
+    #img {
         width: 70%;
     }
-    #misVis{
+
+    #misVis {
         width: 100%;
     }
 }
-@media  (max-width:599px) and (min-width:425px){
-    #counting{
+
+@media (max-width:599px) and (min-width:420px) {
+    #counting {
         font-size: 2.1rem;
         font-weight: bold;
     }
-    #count p{
+
+    #count p {
         font-size: 0.8rem;
     }
+
     #About {
         padding: 0 25px;
         gap: 30px;
     }
-    #abt{
+
+    #abt {
         gap: 10px;
     }
-    #abtLink h3{
+
+    #abtLink h3 {
         font-size: 1.6rem;
     }
-    #abtP{
+
+    #abtP {
         width: 65%;
     }
-    #abt p{
+
+    #abt p {
         font-size: 0.75rem;
     }
-    #misVis{
+
+    #misVis {
         gap: 10px;
-        width:80%;
+        width: 80%;
     }
-    #misVis h4{
+
+    #misVis h4 {
         font-size: 1rem;
     }
-    #misVis p{
+
+    #misVis p {
         font-size: 0.75rem;
     }
-    #miss{
+
+    #miss {
         gap: 10px;
     }
-    #vis{
+
+    #vis {
         gap: 10px;
     }
-    #count{
+
+    #count {
         padding-bottom: 20px;
     }
-    #img{
+
+    #img {
         width: 70%;
     }
-    #MissVis{
+
+    #MissVis {
+        gap: 20px;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 424px) {
+    #counting {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    #count p {
+        font-size: 0.6rem;
+    }
+
+    #About {
+        padding: 0 25px;
+        gap: 56px;
+    }
+
+    #abt {
+        gap: 10px;
+    }
+
+    #abtLink h3 {
+        font-size: 1.6rem;
+    }
+
+    #abtP {
+        width: 80%;
+    }
+
+    #abt p {
+        font-size: 0.75rem;
+        width: 100%;
+    }
+
+    #misVis {
+        gap: 10px;
+        width: 80%;
+    }
+
+    #misVis h4 {
+        font-size: 0.9rem;
+    }
+
+    #misVis p {
+        font-size: 0.75rem;
+    }
+
+    #miss {
+        gap: 10px;
+    }
+
+    #vis {
+        gap: 10px;
+    }
+
+    #count {
+        padding-bottom: 20px;
+    }
+
+    #MissVis img {
+        width: 100%;
+    }
+
+    #MissVis #img {
+        width: 100%;
+        }
+    #MissVis {
         gap: 20px;
         flex-direction: column;
     }
