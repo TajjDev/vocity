@@ -123,7 +123,7 @@
     }
 
     #navImg p {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
 }
 
@@ -148,8 +148,8 @@
     }
 
     #navImg img {
-        width: 35px;
-        height: 30px;
+        width: 40px;
+        height: 35px;
     }
 
     #navImg p {
@@ -183,8 +183,8 @@
     }
 
     #navImg img {
-        width: 35px;
-        height: 30px;
+        width: 40px;
+        height: 35px;
     }
 
     #navImg p {
@@ -200,12 +200,14 @@
 @media (max-width:599px) and (min-width:425px) {
     .nav {
         padding-top: 18px;
+
     }
 
     #navs {
         padding: 12px;
         gap: 15px;
-        width: 60%;
+        width: 60%;        margin-right: -5px;
+        margin-right: -20px;
     }
 
     .nav.scrolled {
@@ -218,19 +220,20 @@
     }
 
     #navImg img {
-        width: 30px;
-        height: 25px;
+        width: 35px;
+        height: 30px;
         padding-right: 6px;
     }
 
     #navImg p {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
 
     }
 
     #downloadNav {
         padding: 12px 0;
         width: 100%;
+        margin-left: 5px;
     }
 }
 
@@ -350,12 +353,12 @@
         padding: 9px 20px;
     }
     #navImg img {
-        width: 30px;
-        height: 25px;
+        width: 35px;
+        height: 30px;
         padding-right: 6px;
     }
     #navImg p {
-        font-size: 0.7rem;
+        font-size: 0.84rem;
     }
     #downloadNav {
         padding: 12px 0;
