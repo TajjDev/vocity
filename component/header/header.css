@@ -1,0 +1,198 @@
+#header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+    gap: 35px;
+    width: 100%;
+
+}
+#headWord{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+#headWord h5{
+    font-size: 4.4rem;
+    line-height: 120%;
+    font-weight: 700;
+    width: 717px;
+    text-align: center;
+}
+#headWord p{
+    font-size: 1.375rem;
+    line-height: 130%;
+    font-weight: 500;
+    text-align: center;
+    width: 810px;
+}
+#headSpan{
+    color: rgba(255, 233, 152, 1);
+}
+#headBtn{
+    display: flex;
+    gap: 57px;
+}
+#headBtn a{
+    text-decoration: none;
+    font-size: 0.875rem;
+    padding: 20px 30px;
+}
+#downloadHead{
+    border-radius: 40px;
+    border: none;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(10, 14, 21, 1);
+    text-align: center;
+}
+#downloadHead2{
+    border-radius: 40px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0);
+    color: rgba(254, 254, 254, 1);
+    text-align: center;
+}
+#phone{
+    width:70% ;
+}
+#phone img{
+    width: 100%;
+    height: 100%;
+}
+@media  (max-width:1179px) and (min-width:900px){
+    #header{
+        gap: 30px;
+    
+    }
+    #headWord{
+        gap: 30px;
+    }
+    #headWord h5{
+        font-size: 4rem;
+        line-height: 120%;
+        width: 700px;
+    }
+    #headWord p{
+        font-size: 1.1rem;
+        width: 750px;
+    }
+    #headBtn{
+        gap: 50px;
+    }
+    #headBtn a{
+        font-size: 0.8rem;
+        padding: 15px 30px;
+    }
+    #phone{
+        width:80% ;
+    }
+}
+@media  (max-width:899px) and (min-width:600px){
+    #header{
+        gap: 25px;
+        
+    }
+    #headWord{
+        gap: 25px;
+    }
+    #headWord h5{
+        font-size: 3.2rem;
+        line-height: 120%;
+        width: 520px;
+    }
+    #headWord p{
+        font-size: 1.1rem;
+        width: 530px;
+    }
+    #headBtn{
+        gap: 50px;
+    }
+    #headBtn a{
+        font-size: 0.75rem;
+        padding: 12px 20px;
+    }
+    #phone{
+        width:80% ;
+    }
+}
+@media  (max-width:599px) and (min-width:420px){
+    #headWord h5{
+        font-size: 2.5rem;
+        line-height: 120%;
+        width: 390px;
+    }
+    #headWord p{
+        font-size: 0.9rem;
+        width: 420px;
+    }
+    #header{
+        gap: 2px;
+        
+    }
+    #headWord{
+        gap: 20px;
+    }
+    #headBtn{
+        gap: 50px;
+    }
+    #headBtn a{
+        font-size: 0.7rem;
+        padding: 10px 18px;
+        margin-bottom: 10%;
+    }
+    #phone{
+        width:95% ;
+    }
+}
+@media  (max-width:470px) and (min-width:420px){
+    #headWord h5{
+        font-size: 2.5rem;
+        line-height: 120%;
+        width: 300px;
+    }
+    #headWord p{
+        font-size: 0.895rem;
+        width: 400px;
+    }
+}
+
+@media (max-width: 424px) {
+    #headWord h5{
+        font-size: 2.4rem;
+        line-height: 120%;
+        width: 250px;
+    }
+    #headWord p{
+        font-size: 0.88rem;
+        width: 330px;
+    }
+    #header{
+        gap: 56px;
+        
+    }
+    #headWord{
+        gap: 15px;
+    }
+    #headBtn{
+        gap: 5px;
+        flex-direction: column;
+    }
+    #headBtn a{
+        font-size: 0.7rem;
+        padding: 10px 18px;
+        margin-bottom: 5%;
+    }
+    #phone{
+        /* margin-top: 25px; */
+        width:100% ;
+    }
+}
+@media (max-width: 370px) {
+    #headWord p{
+        font-size: 0.7rem;
+        width: 290px;
+    }
+}

@@ -1,0 +1,383 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    /* gap: 120px; */
+    padding-top: 28px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.nav.scrolled {
+    position: fixed;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.372);
+    background: rgba(10, 14, 21, 0.963);
+    top: 0;
+    z-index: 1000;
+    padding: 14px 60px;
+
+}
+
+#navs {
+    gap: 57px;
+    display: flex;
+    border: 1px solid rgba(64, 64, 64, 0.3);
+    border-radius: 40px;
+    padding: 20px;
+    justify-content: center;
+    width: 50%;
+    /* transition: color 0.3s; */
+}
+
+#navs a {
+    text-align: center;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    /* font-size: 16px; */
+}
+
+#navImg {
+    display: flex;
+    width: 15%;
+    align-items: center;
+}
+
+#navImg img {
+    width: 45px;
+    height: 40px;
+    padding-right: 10px;
+}
+
+#navImg p {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+#downNav {
+    display: flex;
+    width: 20%;
+    justify-content: end;
+}
+
+#downloadNav {
+    padding: 20px 30px;
+    border-radius: 40px;
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+}
+
+@media (max-width:1179px) and (min-width:1024px) {
+    .nav {
+        padding-top: 20px;
+    }
+
+    .nav.scrolled {
+        padding: 12px 60px;
+
+    }
+
+    #navs {
+        padding: 18px;
+        gap: 47px;
+    }
+
+    .nav a {
+        font-size: 0.82rem;
+        font-weight: 700;
+    }
+
+    #navImg img {
+        width: 40px;
+        height: 35px;
+    }
+
+    #navImg p {
+        font-size: 1rem;
+    }
+
+    #downloadNav {
+        padding: 18px 25px
+    }
+}
+
+@media (max-width:1024px) and (min-width:900px) {
+    .nav a {
+        font-size: 0.7rem;
+        font-weight: 700;
+    }
+
+    #navs {
+        padding: 16px;
+        gap: 40px;
+    }
+
+    #downloadNav {
+        padding: 16px 25px;
+    }
+
+    #navImg p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width:899px) and (min-width:770px) {
+    .nav {
+        padding-top: 18px;
+    }
+
+    .nav.scrolled {
+        padding: 9px 35px;
+
+    }
+
+    #navs {
+        padding: 18px;
+        gap: 35px;
+        width: 60%;
+    }
+
+    .nav a {
+        font-size: 0.75rem;
+    }
+
+    #navImg img {
+        width: 35px;
+        height: 30px;
+    }
+
+    #navImg p {
+        font-size: 0.95rem;
+    }
+
+    #downloadNav {
+        padding: 18px 0;
+        width: 100%;
+    }
+}
+
+@media (max-width:770px) and (min-width:600px) {
+    .nav {
+        padding-top: 18px;
+    }
+
+    #navs {
+        padding: 15px;
+        gap: 20px;
+        width: 60%;
+    }
+
+    .nav.scrolled {
+        padding: 9px 35px;
+
+    }
+
+    .nav a {
+        font-size: 0.7rem;
+    }
+
+    #navImg img {
+        width: 35px;
+        height: 30px;
+    }
+
+    #navImg p {
+        font-size: 0.9rem;
+    }
+
+    #downloadNav {
+        padding: 15px 0;
+        width: 100%;
+    }
+}
+
+@media (max-width:599px) and (min-width:425px) {
+    .nav {
+        padding-top: 18px;
+    }
+
+    #navs {
+        padding: 12px;
+        gap: 15px;
+        width: 60%;
+    }
+
+    .nav.scrolled {
+        padding: 9px 20px;
+
+    }
+
+    .nav a {
+        font-size: 0.6rem;
+    }
+
+    #navImg img {
+        width: 30px;
+        height: 25px;
+        padding-right: 6px;
+    }
+
+    #navImg p {
+        font-size: 0.75rem;
+
+    }
+
+    #downloadNav {
+        padding: 12px 0;
+        width: 100%;
+    }
+}
+
+@media (max-width:500px) and (min-width:425px) {
+    #navs {
+        padding: 11px;
+        gap: 10px;
+        width: 58%;
+    }
+    .nav a{
+        font-size: 0.55rem;
+    }
+    #downloadNav {
+        padding: 11px 0;
+    }
+}
+
+/* Hide mobile nav by default */
+.mobile-nav {
+    display: none;
+}
+
+/* Show it only on small screens (≤ 424px) */
+@media (max-width: 424px) {
+    .mobile-nav {
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 50%;
+        background-color: transparent;
+        z-index: 1000;
+    }
+
+    #downNav {
+        display: none;
+    }
+    
+    #navs {
+        display: none;
+    }
+
+    .menu-toggle {
+        background: transparent;
+        display: flex;
+        justify-content: end;
+        padding: 20px 20px;
+        border: none;
+        margin-top: -10px;
+        padding-bottom: 0;
+        width: 100%;
+        cursor: pointer;
+        
+    }
+
+    .menu-toggle img {
+        width: 28px;
+        height: 28px;
+        
+    }
+    .menu-content {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+ 
+        display: flex;
+        height: 300px;
+        flex-direction: column;
+        gap:10px ;
+        right: 0;
+        top: 0;
+        width: 180px;
+        background-color: #000000e6;
+        padding: 20px 0;
+        position: fixed;
+    }
+    .slide-in{
+        transform: translateX(0%);
+    }
+    .slide-out{
+        transform: translateX(100%);
+    }
+    #navsM,
+    #downNavM {
+        display: flex;
+        align-items: start;
+        padding-left: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    #navsM{
+        margin-top: 20px;
+    }
+    #navsM a,
+    #downNavM a {
+        /* color: rgb(169, 145, 57); */
+        font-size: 0.6rem;
+        /* text-decoration: ; */
+    }
+
+    .cancel-btn {
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: white;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        cursor: pointer;
+        /* margin-top: 10px; */
+        /* margin-top: -10px; */
+
+    }
+    .nav {
+        padding-top: 18px;
+    }
+    .nav.scrolled {
+        padding: 9px 20px;
+    }
+    #navImg img {
+        width: 30px;
+        height: 25px;
+        padding-right: 6px;
+    }
+    #navImg p {
+        font-size: 0.7rem;
+    }
+    #downloadNav {
+        padding: 12px 0;
+        width: 100%;
+    }
+
+}
+@media (max-width: 355px) {
+    .cancel-btn{
+        font-size: 17.5px;
+    }
+    .menu-toggle img {
+        width: 22px;
+        height: 22px;
+        
+    }
+    #navImg p {
+        font-size: 0.62rem;
+    }
+    #navImg img {
+        width: 25px;
+        height: 20px;
+        padding-right: 6px;
+    }
+}

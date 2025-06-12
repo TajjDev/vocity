@@ -1,0 +1,246 @@
+#Features {
+    padding: 4% 80px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 56px;
+}
+
+#feat {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+}
+
+#featLink {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#featLink h3 {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+#feat p {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+#pollProb p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+#feattlink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#pollProb {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#pollProb img {
+    width: 48px;
+    height: 48px;
+}
+
+#textFeat {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+#textFeat span {
+    color: rgba(255, 233, 152, 1);
+}
+
+#textFeat h4 {
+    font-size: 2.10125rem;
+    font-weight: 600;
+}
+
+#eachFeat {
+    gap: 80px;
+    display: flex;
+    border: 1px solid rgba(192, 192, 192, 0.05);
+    flex-direction: column;
+    width: 30%;
+    padding: 50px 25px;
+    border-radius: 10px;
+    background: rgba(25, 25, 25, 0.3);
+}
+
+@media (max-width:1179px) and (min-width:900px) {
+    #Features {
+        padding: 2% 80px;
+        gap: 50px;
+    }
+
+    #feat {
+        gap: 20px;
+    }
+
+    #featLink h3 {
+        font-size: 2.3rem;
+    }
+
+    #feat p {
+        font-size: 1.1rem;
+    }
+
+    #pollProb p {
+        font-size: 0.9rem;
+    }
+
+    #pollProb img {
+        width: 35px;
+        height: 35px;
+    }
+
+    #textFeat {
+        gap: 20px;
+    }
+
+    #textFeat h4 {
+        font-size: 2rem;
+    }
+
+    #eachFeat {
+        gap: 60px;
+        padding: 40px 25px;
+    }
+}
+@media  (max-width:899px) and (min-width:600px){
+    #Features {
+        padding: 2% 40px;
+        gap: 40px;
+    }
+
+    #feat {
+        gap: 20px;
+    }
+
+    #featLink h3 {
+        font-size: 2.5rem;
+    }
+
+    #feat p {
+        font-size: 1.1rem;
+    }
+
+    #pollProb p {
+        font-size: 0.92rem;
+    }
+
+    #pollProb img {
+        width: 30px;
+        height: 30px;
+    }
+
+    #textFeat {
+        gap: 15px;
+    }
+
+    #textFeat h4 {
+        font-size: 1.3rem;
+    }
+
+    #eachFeat {
+        gap: 40px;
+        padding: 25px 15px;
+        width: 32%;
+        padding-bottom: 20px;
+
+    }
+}
+@media  (max-width:599px) and (min-width:420px){
+    #Features {
+        padding: 2% 25px;
+        gap: 30px;
+    }
+    #feat {
+        gap: 10px;
+    }
+    #featLink h3 {
+        font-size: 2.2rem;
+    }
+    #feat p {
+        font-size: 0.9rem;
+    }
+    #pollProb p {
+        font-size: 0.835rem;
+    }
+    #pollProb img {
+        width: 27px;
+        height: 27px;
+    }
+    #textFeat {
+        gap: 8px;
+    }
+    #textFeat h4 {
+        font-size: 1.2rem;
+    }
+    #eachFeat {
+        gap: 35px;
+        padding: 25px 15px;
+        padding-bottom: 20px;
+        width: 32%;
+    }
+}
+@media  (max-width:500px) and (min-width:420px){
+    #pollProb{
+        gap: 30px;
+        flex-direction: column;
+    }
+    #eachFeat{
+        width: 70%;
+    }
+    #pollProb p {
+        font-size: 0.87rem;
+    }
+}
+@media (max-width: 424px) {
+    #pollProb{
+        gap: 30px;
+        flex-direction: column;
+    }
+    #eachFeat{
+        width: 85%;
+        gap: 56px;
+        justify-self: center;
+        padding: 15px;
+    }
+    #Features {
+        padding: 2% 25px;
+        gap: 56px;
+    }
+    #feat {
+        gap: 10px;
+    }
+    #featLink h3 {
+        font-size: 1.9rem;
+    }
+    #feat p {
+        font-size: 0.88rem;
+    }
+    #pollProb p {
+        font-size: 0.84rem;
+    }
+    #pollProb img {
+        width: 25px;
+        height: 25px;
+    }
+    #textFeat {
+        gap: 8px;
+    }
+    #textFeat h4 {
+        font-size: 1.2rem;
+    }
+}

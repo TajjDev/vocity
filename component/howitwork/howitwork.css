@@ -1,0 +1,214 @@
+#howitwork {
+    /* background: radial-gradient(circle 4000px at left, rgba(255, 255, 255, 0), rgba(10, 14, 21, 1)); */
+
+    padding: 4% 80px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 56px;
+}
+
+#hiw {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+}
+
+#hiwLink {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#hiwLink h3 {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+#hiwP {
+    width: 65%;
+}
+
+#hiw p {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+#howProbs {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#HowitworkProb {
+    display: flex;
+    border: 1px solid rgba(192, 192, 192, 0.05);
+    flex-direction: column;
+    width: 30%;
+    border-radius: 10px;
+    background: rgba(12, 12, 17, 0.426);
+}
+
+#HowitworkProb img {
+    width: 100%;
+    padding: 20px 25px 25px 25px;
+    height: 100%;
+    /* margin-bottom: 25px; */
+}
+
+#wordHiw {
+    padding: 0 25px 20px 15px;
+}
+
+#imgWordHiw hr {
+    border: none;
+    margin-bottom: 10px;
+    border-top: 1px solid rgba(41, 41, 41, 1);
+}
+
+#imgWordHiw p {
+    font-weight: 500;
+}
+
+#imgWordHiw span {
+    color: rgb(255, 233, 152);
+    font-size: 1.2rem;
+}
+
+#hiwwlink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+}
+
+#downloadHiww {
+    padding: 20px 30px;
+    border-radius: 40px;
+    border: none;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(10, 14, 21, 1);
+    text-align: center;
+    text-decoration: none;
+}
+
+@media (max-width:1179px) and (min-width:900px) {
+    #howitwork {
+        padding: 2% 80px;
+        gap: 50px;
+    }
+
+    #hiw {
+        gap: 20px;
+    }
+
+    #hiwLink h3 {
+        font-size: 2.3rem;
+    }
+
+    #hiw p {
+        font-size: 1.1rem;
+    }
+
+    #imgWordHiw p {
+        font-size: 0.9rem;
+    }
+
+    #imgWordHiw span {
+        font-size: 1.1rem;
+    }
+
+    #downloadHiww {
+        font-size: 0.9rem;
+
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width:899px) and (min-width:600px) {
+    #howitwork {
+        padding: 2% 40px;
+        gap: 40px;
+    }
+
+    #hiw {
+        gap: 20px;
+    }
+
+    #hiwLink h3 {
+        font-size: 2.1rem;
+    }
+
+    #hiw p {
+        font-size: 0.89rem;
+    }
+
+    #imgWordHiw p {
+        font-size: 0.75rem;
+    }
+
+    #imgWordHiw span {
+        font-size: 1rem;
+    }
+
+    #downloadHiww {
+        font-size: 0.7rem;
+        padding: 13px 0;
+    }
+}
+
+@media (max-width:599px) and (min-width:420px) {
+    #howitwork {
+        padding: 2% 25px;
+        gap: 30px;
+    }
+
+    #hiw {
+        gap: 10px;
+    }
+
+    #hiwwlink {
+        width: 32%;
+    }
+
+    #hiwLink h3 {
+        font-size: 1.6rem;
+    }
+
+    #hiw p {
+        font-size: 0.75rem;
+    }
+
+    #imgWordHiw p {
+        font-size: 0.67rem;
+    }
+
+    #HowitworkProb {
+        width: 32%;
+        /* padding-bottom: -10px; */
+    }
+
+    #imgWordHiw span {
+        font-size: 0.85rem;
+    }
+
+    #downloadHiww {
+        font-size: 0.7rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width:500px) and (min-width:420px) {
+    #howProbs {
+        flex-direction: column;
+        gap: 20px;
+    }
+    #HowitworkProb{
+        width: 60%;
+    }
+    #downloadHiww{
+        width: 120%;
+    }
+}
