@@ -157,6 +157,7 @@
     justify-content: space-between;
     flex-direction: row;
     align-items: end;
+    gap: 10px;
 }
 
 #en {
@@ -229,7 +230,7 @@ h5 a,
         gap: 60px;
     }
     
-    #footOne p,#copy p, #priv button, #pimm {
+    #footOne p,#copy p, #priv button, #pimm ,#enO p, #enO a button{
         font-size: 1rem;
     }
     
@@ -290,13 +291,13 @@ h5 a,
     }
     #conts {
         display: flex;
-        gap: 60px;
+        gap: 30px;
     }   
-    #footOne p,#copy p, #priv button, #pimm {
-        font-size: 0.95rem;
+    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button {
+        font-size: 1.1rem;
     }   
     #Footer a {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
     #links {
         gap: 60px;
@@ -330,7 +331,7 @@ h5 a,
         gap: 10px;
     }  
     #Footer button {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 }
 @media  (max-width:830px) and (min-width:600px){
@@ -341,13 +342,17 @@ h5 a,
     }
     #conts {
         display: flex;
-        gap: 50px;
-    }   
-    #footOne p,#copy p, #priv button, #pimm {
-        font-size: 0.9rem;
+        gap: 20px;
+        flex-direction: column;
+    } 
+    #enO p{
+        text-align: end;
+    }  
+    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button {
+        font-size: 1rem;
     }   
     #Footer a {
-        font-size: 0.75rem;
+        font-size: 0.95rem;
     }
     #links {
         gap: 50px;
@@ -389,12 +394,25 @@ h5 a,
         gap: 10px;
     }  
     #Footer button {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     #folChat a img{
         width: 15px;
         height: 15px;
     } 
+    #footTwo{
+        gap: 20px;
+    }
+}
+@media  (max-width:737px) and (min-width:600px){
+
+    #contactss{
+        flex-direction: column;
+        gap: 20px;
+    }
+    #con{
+        width: auto;
+    }
 }
 @media  (max-width:599px) and (min-width:420px){
     #Footer {
@@ -404,12 +422,13 @@ h5 a,
     #conts {
         display: flex;
         gap: 40px;
+        flex-direction: column;
     }   
-    #footOne p,#copy p, #priv button, #pimm {
-        font-size: 0.8rem;
+    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button {
+        font-size: 0.9rem;
     }   
     #Footer a {
-        font-size: 0.65rem;
+        font-size: 0.8rem;
     }
     #links {
         gap: 40px;
@@ -439,6 +458,9 @@ h5 a,
         display: flex;
         gap: 10px;
     }
+    #enO p{
+        text-align: end;
+    }
     /* #tex { */
         /* gap: 130px; */
     /* } */
@@ -456,7 +478,7 @@ h5 a,
         gap: 10px;
     }  
     #Footer button {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 }
 @media  (max-width:500px) and (min-width:425px){
@@ -567,11 +589,11 @@ h5 a,
         gap: 70px;
         padding: 4% 25px;
     }
-    #footOne p,#copy p, #priv button, #pimm {
+    #footOne p,#enO p, #copy p, #priv button, #pimm {
         font-size: 0.8rem;
     }   
     #Footer a {
-        font-size: 0.65rem;
+        font-size: 0.75rem;
     }
     #contactss {
         gap: 10px;
