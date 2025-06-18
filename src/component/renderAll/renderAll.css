@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     color: white;
-    /* height: 100%; */
+    height: auto;
     font-family: open Sans;
 }
 body{

@@ -4,7 +4,7 @@
     width: 100%;
     flex-direction: column;
     gap: 110px;
-    /* height: 100%; */
+    height: auto;
     /* background-image: url('/src/assets/image/footerBg.png'); */
     /* background-repeat: no-repeat; */
     /* background-position: center; */
@@ -33,7 +33,8 @@
     gap: 96px;
 }
 
-#footOne p,#copy p, #priv button, #pimm {
+#footOne p,#copy p, #priv button, #pimm, #enO p, #enO a button
+ {
     color: rgba(255, 255, 255, 0.4);
     font-size: 1.155rem;
     font-weight: 500;
@@ -164,8 +165,8 @@
 }
 
 h5 a,
-.popup p a {
-    color: #000;
+.popup p a, .popup p h4, .popup p ,m{
+    color: #000000;
     /* text-decoration: none; */
 }
 
@@ -174,19 +175,23 @@ h5 a,
     line-height: 25px;
 }
 
-.popup {
+#popup {
     color: #000;
     position: fixed;
-    top: 50%;
+    /* top: -400%; */
+    /* bottom: 50%; */
+    /* margin-top: -170px; */
     z-index: 90;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #c52121;
+    background-color: #2f2b2b;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     width: 100%;
-    height: 100%;
+    height: 600px;
+    top: -1100%;
+    bottom: 0;
     overflow-y: auto;
 }
 
@@ -363,10 +368,10 @@ h5 a,
     #conn {
         gap: 10px;
     }
-    #footOne, #footTwo{
+    /* #footOne, #footTwo{ */
         /* justify-content: space-around; */
         /* padding: 0 60px; */
-    }
+    /* } */
     #loc {
         gap: 10px;
     } 
@@ -434,9 +439,9 @@ h5 a,
         display: flex;
         gap: 10px;
     }
-    #tex {
+    /* #tex { */
         /* gap: 130px; */
-    }
+    /* } */
     #folChat a, #tex a{
         padding: 6px;
     } 
