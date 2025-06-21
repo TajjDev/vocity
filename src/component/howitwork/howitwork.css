@@ -266,6 +266,7 @@
     #downloadHiww{
         font-size: 0.75rem;
         width: 65%;
-        padding: 15px ;
+        padding: 14px ;
+        width: 180px;
     }
 }

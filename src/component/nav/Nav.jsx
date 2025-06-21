@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import vocityLogo from '/src/assets/image/logoVocity.png'
+import vocityLogo from '/src/assets/image/logoVC.png'
 import "./nav.css"
 import MobileMenu from './MobileMenu'
 

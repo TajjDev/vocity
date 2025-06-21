@@ -172,6 +172,7 @@
 
     #ReadBtn a {
         font-size: 0.75rem;
-        padding: 10px 20px;
+        padding: 12px 20px;
+        width: 150px;
     }
 }
