@@ -22,6 +22,7 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
         }
         else{
             setFormError('Email submitted')
+            setEmails('')
             setTimeout (()=>{
                 setFormError(null)
             },1500)
@@ -41,7 +42,7 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
 
         if (data) {
             console.log('data')
-            setEmails('')
+            
             setFormError(null)
         }
     }
