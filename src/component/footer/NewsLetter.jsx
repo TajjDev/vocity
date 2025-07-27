@@ -9,6 +9,13 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
     const handleSubmit = async (e) =>{
         e.preventDefault()
 
+        if (!navigator.onLine) {
+            setFormError("Email not submitted, no internet connection");
+            return
+        }
+        if (navigator.onLine) {
+            setFormError("")
+        }
         if (!Emails) {
             setFormError("Please inpute email")
             return
@@ -18,6 +25,7 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
             setTimeout (()=>{
                 setFormError(null)
             },1500)
+            return
         }
         const revEm = Emails;
         setEmails('')
@@ -36,7 +44,6 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
             // setEmails('')
             setFormError(null)
         }
-        
     }
 
 
