@@ -41,7 +41,7 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
 
         if (data) {
             console.log('data')
-            // setEmails('')
+            setEmails('')
             setFormError(null)
         }
     }
