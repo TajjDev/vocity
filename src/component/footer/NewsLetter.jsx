@@ -36,9 +36,7 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
             // setEmails('')
             setFormError(null)
         }
-        else{
-            setFormError('Email submitted')
-        }
+        
     }
 
 
