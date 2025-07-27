@@ -214,7 +214,7 @@
     #eachFeat{
         width: 85%;
         gap: 56px;
-        justify-self: center;
+        align-self: center;
         padding: 15px;
     }
     #Features {

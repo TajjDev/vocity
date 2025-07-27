@@ -54,7 +54,7 @@ const AboutUs = () => {
 
                     </div>
                     <div id="abtP">
-                        <p>VoCity bridges the gap between citizens and their communities by providing tools to make informed decisions, vote , and support local causes.”</p>
+                        <p>VoCity is a robust and integrated platform designed to facilitates seamless voting experiences, hosting of polls, event listing and booking, as well as crowdfunding project. By providing a comprehensive suite of tools, Vocity empowers individuals to participate various activities with ease and efficiency.</p>
                     </div>
                 </div>
             </RevealOnScroll>

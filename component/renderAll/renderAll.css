@@ -3,11 +3,11 @@
     margin: 0;
     box-sizing: border-box;
     color: white;
-
+    height: auto;
     font-family: open Sans;
 }
 body{
-    background: rgba(10, 14, 21, 1);
+    background: rgb(10, 14, 21);
 }
 #render{
 
@@ -18,7 +18,7 @@ body{
 }
 #navAndHead{
     width: 100%;
-    background-image: url('/src/assets/image/headBg.png');
+    background-image: url('/src/assets/image/headBg2.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

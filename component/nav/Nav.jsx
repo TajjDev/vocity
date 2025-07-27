@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import vocityLogo from '/src/assets/image/logoVocity.png'
+import vocityLogo from '/src/assets/image/logoVC.png'
 import "./nav.css"
 import MobileMenu from './MobileMenu'
 
@@ -24,13 +24,13 @@ const Nav = () => {
 
 
     const scrollToFeatures = () => {
-        const Features = document.getElementById('Features');
+        const Features = document.getElementById('phone');
         if (Features) {
             Features.scrollIntoView({ behavior: "smooth" });
         }
     }
     const scrollToAbout = () => {
-        const About = document.getElementById('About');
+        const About = document.getElementById('useAbt');
         if (About) {
             About.scrollIntoView
                 ({ behavior: "smooth" });

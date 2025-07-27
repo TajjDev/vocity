@@ -1,5 +1,5 @@
 #Ready {
-    padding: 4% 80px ;
+    padding: 4% 80px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -18,22 +18,27 @@
     flex-direction: row;
     justify-content: space-between;
 }
-#readLink h3{
+
+#readLink h3 {
     font-size: 3rem;
     font-weight: 600;
 }
-#read p{
+
+#read p {
     font-size: 1.4rem;
     font-weight: 500;
 }
-#ReadBtn{
+
+#ReadBtn {
     display: flex;
     gap: 42px;
 }
-#ReadBtn a{
+
+#ReadBtn a {
     text-decoration: none;
 }
-#downloadRead{
+
+#downloadRead {
     padding: 20px 30px;
     border-radius: 40px;
     border: none;
@@ -42,7 +47,8 @@
     color: rgba(10, 14, 21, 1);
     text-align: center;
 }
-#downloadRead2{
+
+#downloadRead2 {
     padding: 20px 30px;
     border-radius: 40px;
     font-weight: 700;
@@ -51,73 +57,122 @@
     color: rgba(254, 254, 254, 1);
     text-align: center;
 }
-@media  (max-width:1179px) and (min-width:900px){
+
+@media (max-width:1179px) and (min-width:900px) {
     #Ready {
-        padding: 2% 80px ;
+        padding: 2% 80px;
         gap: 50px;
     }
-    
+
     #read {
         gap: 20px;
     }
-    #readLink h3{
+
+    #readLink h3 {
         font-size: 2.3rem;
     }
-    #read p{
+
+    #read p {
         font-size: 1.1rem;
     }
-    #ReadBtn{
+
+    #ReadBtn {
         gap: 35px;
     }
-    #ReadBtn a{
+
+    #ReadBtn a {
         padding: 15px 30px;
         font-size: 0.9rem;
     }
 }
-@media  (max-width:899px) and (min-width:600px){
+
+@media (max-width:899px) and (min-width:600px) {
     #Ready {
-        padding: 2% 40px ;
+        padding: 2% 40px;
         gap: 40px;
     }
-        
+
     #read {
         gap: 20px;
     }
-    #readLink h3{
-        font-size: 2.1rem;
+
+    #readLink h3 {
+        font-size: 2.5rem;
     }
-    #read p{
-        font-size: 0.89rem;
+
+    #read p {
+        font-size: 1.1rem;
     }
-    #ReadBtn{
+
+    #ReadBtn {
         gap: 35px;
     }
-    #ReadBtn a{
-                font-size: 0.7rem;
-                padding: 13px 20px;
+
+    #ReadBtn a {
+        font-size: 0.8rem;
+        padding: 13px 20px;
     }
 }
 
-@media  (max-width:599px) and (min-width:420px){
+@media (max-width:599px) and (min-width:420px) {
     #Ready {
-        padding: 2% 25px ;
+        padding: 2% 25px;
         gap: 30px;
     }
-        
+
     #read {
         gap: 10px;
     }
-    #readLink h3{
-        font-size: 1.6rem;
+
+    #readLink h3 {
+        font-size: 2.2rem;
     }
-    #read p{
-        font-size: 0.75rem;
+
+    #read p {
+        font-size: 0.835rem;
+        width: 90%;
     }
-    #ReadBtn{
+
+    #ReadBtn {
         gap: 30px;
     }
-    #ReadBtn a{
-                font-size: 0.7rem;
-                padding: 10px 20px;
+    #ReadBtn a {
+        font-size: 0.75rem;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 424px) {
+    #Ready {
+        padding: 2% 25px;
+        gap: 30px;
+    }
+
+    #read {
+        gap: 10px;
+    }
+
+    #readLink h3 {
+        font-size: 1.9rem;
+    }
+
+    #read p {
+        font-size: 0.88rem;
+        width: 85%;
+    }
+    #Ready .reveal{
+        align-items: center;
+    }
+    #ReadBtn {
+        gap: 30px;
+        flex-direction: column;
+        width: 60%;
+        
+    }
+
+    #ReadBtn a {
+        font-size: 0.75rem;
+        padding: 12px 20px;
+        width: 150px;
     }
 }
