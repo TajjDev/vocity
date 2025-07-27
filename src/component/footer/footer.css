@@ -3,19 +3,55 @@
     padding: 4% 80px;
     width: 100%;
     flex-direction: column;
-    gap: 110px;
+    gap: 60px;
     height: auto;
-    /* background-image: url('/src/assets/image/footerBg.png'); */
-    /* background-repeat: no-repeat; */
-    /* background-position: center; */
-    /* background-size: cover; */
-    background: linear-gradient(rgba(255, 255, 255, 0.015), rgb(0, 0, 0));
+    background-image: url('/src/assets/image/footerBg22.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* background: linear-gradient(rgba(255, 255, 255, 0.015), rgb(0, 0, 0)); */
 
     /* 0.75 */
     /* 0.875 */
 
 }
-
+#loc .cc{
+    color: #ffff;
+}
+input{
+    background: transparent;
+    border: none;
+    font-size: 1.155rem;
+    width: 100%;
+    padding-right: 20px;
+    height: 100%;
+    outline: none;
+}
+input::placeholder{
+    color: #ffff;
+}
+#theForm{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#form{
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 10px;
+}
+#loc p{
+    color: #ffffff66;
+}
+#Footer #form button{
+    text-decoration: none;
+    color: #ffe988;
+    font-weight: 500;
+}
 #linkone a {
     text-decoration: none;
 }
@@ -33,7 +69,7 @@
     gap: 96px;
 }
 
-#footOne p,#copy p, #priv button, #pimm, #enO p, #enO a button
+#footOne p,#copy p, #priv button, #pimm, #enO p, #enO a button,#loc p
  {
     color: rgba(255, 255, 255, 0.4);
     font-size: 1.155rem;
@@ -103,10 +139,16 @@
 
 #loc {
     display: flex;
-    flex-direction: column;
-    gap: 24px;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: space-between;
 }
-
+.dav{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 #footOne {
     width: 100%;
     display: flex;
@@ -223,17 +265,19 @@ h5 a,
 }
 @media  (max-width:1179px) and (min-width:900px){
     #Footer {
-        gap: 80px;
+        gap: 55px;
     }
     #conts {
         display: flex;
         gap: 60px;
     }
     
-    #footOne p,#copy p, #priv button, #pimm ,#enO p, #enO a button{
+    #footOne p,#copy p, #priv button, #pimm ,#enO p, #enO a button,#loc p{
         font-size: 1rem;
     }
-    
+    input{
+        font-size: 1rem;
+    }
     #Footer a {
         font-size: 0.85rem;
     }
@@ -259,7 +303,7 @@ h5 a,
     }
     
     #loc {
-        gap: 20px;
+        gap: 50px;
     }
     
     #folChat,#tex {
@@ -287,15 +331,18 @@ h5 a,
 }
 @media  (max-width:899px) and (min-width:830px){
     #Footer {
-        gap: 80px;
+        gap: 50px;
     }
     #conts {
         display: flex;
         gap: 30px;
     }   
-    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button {
+    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button,#loc p {
         font-size: 1.1rem;
     }   
+    input{
+        font-size: 1.1rem;
+    }
     #Footer a {
         font-size: 1rem;
     }
@@ -315,7 +362,7 @@ h5 a,
         gap: 20px;
     }
     #loc {
-        gap: 20px;
+        gap: 40px;
     } 
     #folChat,#tex {
         display: flex;
@@ -337,7 +384,7 @@ h5 a,
 @media  (max-width:830px) and (min-width:600px){
 
     #Footer {
-        gap: 80px;
+        gap: 45px;
         padding: 4% 40px;
     }
     #conts {
@@ -348,9 +395,12 @@ h5 a,
     #enO p{
         text-align: end;
     }  
-    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button {
+    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button,#loc p {
         font-size: 1rem;
     }   
+    input{
+        font-size: 1rem;
+    }
     #Footer a {
         font-size: 0.95rem;
     }
@@ -364,11 +414,12 @@ h5 a,
     }
     #con {
         gap: 35px;
-        /* width: 70%; */
+        width: auto;
         /* align-items: end; */
     }
     #contactss {
-        gap: 50px;
+        gap: 20px;
+        flex-direction: column;
     }
     #conn {
         gap: 10px;
@@ -378,7 +429,7 @@ h5 a,
         /* padding: 0 60px; */
     /* } */
     #loc {
-        gap: 10px;
+        gap: 40px;
     } 
     #folChat,#tex {
         display: flex;
@@ -396,16 +447,19 @@ h5 a,
     #Footer button {
         font-size: 1rem;
     }
-    #folChat a img{
-        width: 15px;
-        height: 15px;
+    #folChat a img,  #foll a img{
+        width: 18px;
+        height: 18px;
     } 
     #footTwo{
         gap: 20px;
     }
 }
 @media  (max-width:737px) and (min-width:600px){
-
+    #Footer {
+        gap: 45px;
+        padding: 4% 60px;
+    }
     #contactss{
         flex-direction: column;
         gap: 20px;
@@ -413,10 +467,22 @@ h5 a,
     #con{
         width: auto;
     }
+    #theForm{
+        width: 80%;
+    }
+    #dav{
+        width: 80%;
+    }
+}
+@media  (max-width:737px) and (min-width:420px){
+    #loc {
+        gap: 30px;
+        /* flex-direction: row; */
+    }
 }
 @media  (max-width:599px) and (min-width:420px){
     #Footer {
-        gap: 70px;
+        gap: 40px;
         padding: 4% 25px;
     }
     #conts {
@@ -424,9 +490,12 @@ h5 a,
         gap: 40px;
         flex-direction: column;
     }   
-    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button {
+    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button,#loc p {
         font-size: 0.9rem;
     }   
+    input{
+        font-size: 0.9rem;
+    }
     #Footer a {
         font-size: 0.8rem;
     }
@@ -440,19 +509,36 @@ h5 a,
     }
     #con {
         gap: 30px;
-        /* width: 70%; */
+        width: auto;
     }
     #contactss {
         gap: 10px;
+        flex-direction: column;
     }
+    
     #conn {
         gap: 10px;
     }
     #footOne{
         justify-content: space-between;
     }
-    #loc {
+    #theForm{
+        width: 80%;
         gap: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .dav{
+        width: 80%;
+        /* flex-direction: row; */
+        display: flex;
+        gap: 10px;
+    }
+    #loc {
+        gap: 30px;
+        flex-direction: column;
+        /* justify-content: center; */
+        /* align-items: center; */
     } 
     #folChat, #tex {
         display: flex;
@@ -468,8 +554,8 @@ h5 a,
         padding: 6px;
     } 
     #folChat a img, #tex  a img{
-        width: 12px;
-        height: 12px;
+        width: 16px;
+        height: 16px;
     } 
     #foll {
         gap: 10px;
@@ -495,6 +581,17 @@ h5 a,
         /* gap:30px; */
         width:30%;
     }
+    .dav{
+        width: 80%;
+        flex-direction: column;
+    }
+    #theForm{
+        width: 100%;
+        text-align: center;
+    }
+    #nn{
+        text-align: start;
+    }
     #navvi, #conP {
         width: 100%;
     }
@@ -503,7 +600,7 @@ h5 a,
     }
     #navi,  #conn, #contactss, #loc{
         width: 100%;
-        padding: 0 40px;
+        padding: 0 10px;
         align-items: center;
     }
     #loc{
@@ -527,14 +624,29 @@ h5 a,
     }
     #contactss{
         justify-content: space-between;
+        flex-direction: row;
     }
 }
 @media (max-width: 424px) {
+    #theForm{
+        width: 100%;
+        text-align: center;
+    }
+    #loc{
+        flex-direction: column;
+    }
+    #nn{
+        text-align: start;
+    }
     #links {
         gap: 40px;
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
+    }
+    .dav{
+        /* flex-direction: column; */
+        width: 100%;
     }
     #conts{
         flex-direction: column;
@@ -589,9 +701,12 @@ h5 a,
         gap: 70px;
         padding: 4% 25px;
     }
-    #footOne p,#enO p, #copy p, #priv button, #pimm {
+    #footOne p,#enO p, #copy p, #priv button, #pimm,#loc p {
         font-size: 0.8rem;
     }   
+    input{
+        font-size: 0.8rem;
+    }
     #Footer a {
         font-size: 0.75rem;
     }

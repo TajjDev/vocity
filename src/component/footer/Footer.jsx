@@ -9,9 +9,14 @@ import ytbu from "/src/assets/image/youtube.png"
 import whtapp from "/src/assets/image/whatsapp.png"
 import tele from "/src/assets/image/telegram.png"
 import RevealOnScroll from '../onscroll/ReavealOnScroll'
-import PPandTC from './PPandTC'
-import { Link } from 'react-router-dom'
-const Footer = ({onShowP,onShowPP}) => {
+import NewsLetter from './NewsLetter'
+import TC from '../footer/TC'
+import PPandTC from '../footer/PPandtTC'
+// import PPandTC from './PPandTC'
+// import { Link } from 'react-router-dom'
+const Footer = ({ onShowP, onShowPP }) => {
+    const [showP, setShowP] = useState(false)
+    const [showPP, setShowPP] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     const scrollToFeatures = () => {
         const Features = document.getElementById('Features');
@@ -73,11 +78,11 @@ const Footer = ({onShowP,onShowPP}) => {
                             <p id='conP'>Contact us</p>
                             <div id="conts">
                                 <div id="contsO">
-                                    <a href="tel:++2349139265486">+234 913  926-5486</a>
-                                    <a href="tel:++2349139265486">+234 913  926-5486</a>
+                                    <a href="tel:+2349139265486">+234 913  926-5486</a>
+                                    <a href="tel:+2349139265486">+234 913  926-5486</a>
                                 </div>
                                 <div id="contsT">
-                                    <a href="https://www.votecity.com.ngn">www.votecity.com.ng</a>
+                                    <a href="https://www.vocity.com.ngn">www.vocity.com.ng</a>
                                     <a href="mailto:vocityng@gmail.com">vocityng@gmail.com</a>
                                 </div>
                             </div>
@@ -104,34 +109,45 @@ const Footer = ({onShowP,onShowPP}) => {
                                 </div>
                             </div>
                         </div>
-                        {/* <div id="loc"> */}
-                            {/* <p>Location</p> */}
-                            {/* <p id='david'> */}
-                                {/* David's Court 2 Orchid road Lekki */}
-                            {/* </p> */}
-                        {/* </div> */}
                         {/* </RevealOnScroll> */}
                     </div>
 
+
                 </div>
             </RevealOnScroll>
+            <div id="loc">
+                <NewsLetter 
+                 onShowPP={() =>
+                    setShowPP(true)}
+                             onShowP={() =>
+                    setShowP(true)} />
+                            {showP && (
+            <PPandTC 
+            isActive={showP}
+            onClose={() =>
+                setShowP(false)}/>
+        )}
+        {showPP && (
+<TC onClose={() =>
+    setShowPP(false)}/>
+        )}
+                <div className="dav">
+                    <p>Location</p>
+                    <p id='david'>
+                        David's Court 2 Orchid road Lekki
+                    </p>
+                </div>
+            </div>
             <RevealOnScroll>
                 <div id="footTwo">
                     <div id="copy">
-                        <p>©Copyright
-                            Votcity Ltd
+                        <p>Copyright
+                            Vocity Ltd
                             All rghts reserved</p>
                     </div>
                     <div id="enO">
-                        {/* <PPandTC/> */}
-                       <p> <button onClick={onShowP}>  Privacy policy</button> and <button onClick={onShowPP}>  Terms & Conditions</button></p>
-                        {/* <Link to="/privacy_policy">home</Link> */}
-                        {/* <p><button>Privacy Policy</button> and <button>Terms & Conditions</button></p> */}
+                        <p>© 2025 vocity</p>
                     </div>
-                    {/* <div id="en"> */}
-                    {/* <p>En</p> */}
-                    {/* <p>Es</p> */}
-                    {/* </div> */}
                 </div>
             </RevealOnScroll>
         </div>

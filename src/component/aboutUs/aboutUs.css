@@ -25,7 +25,7 @@
 }
 
 #abtP {
-    width: 65%;
+    width: 76%;
 }
 
 #abt p {
@@ -118,7 +118,7 @@
     }
 
     #abtP {
-        width: 65%;
+        width: 75%;
     }
 
     #abt p {
@@ -183,7 +183,7 @@
     }
 
     #abtP {
-        width: 65%;
+        width: 75%;
     }
 
     #abt p {
@@ -252,7 +252,7 @@
 
 @media (max-width:599px) and (min-width:420px) {
     #counting {
-        font-size: 2.3rem;
+        font-size: 2rem;
         font-weight: bold;
     }
 
@@ -274,7 +274,7 @@
     }
 
     #abtP {
-        width: 85%;
+        width: 90%;
     }
 
     #abt p {

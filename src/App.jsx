@@ -1,7 +1,7 @@
 import React from 'react'
 import RenderAll from './component/renderAll/RenderAll'
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
-import Modal from './component/footer/PPandTC'
+// import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
+// import Modal from './component/footer/PPandTC'
 const App = () => {
   return (
     <>

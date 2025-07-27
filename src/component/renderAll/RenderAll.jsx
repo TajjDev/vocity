@@ -7,8 +7,9 @@ import AboutUs from '../aboutUs/AboutUs'
 import HowItWorks from '../howitwork/Howitworks'
 import Ready from '../ready/Ready'
 import Footer from '../footer/Footer'
-import PPandTC from '../footer/PPandTC'
+// import PPandTC from '../footer/PPandTC'
 import TC from '../footer/TC'
+import PPandTC from '../footer/PPandtTC'
 const RenderAll = () => {
 
     const [showP, setShowP] = useState(false)
@@ -30,7 +31,9 @@ const RenderAll = () => {
                      onShowP={() =>
             setShowP(true)} />
             {showP && (
-                <PPandTC onClose={() =>
+                <PPandTC 
+                isActive={showP}
+                onClose={() =>
                     setShowP(false)}/>
             )}
             {showPP && (
