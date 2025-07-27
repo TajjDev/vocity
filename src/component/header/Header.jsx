@@ -1,7 +1,7 @@
 import {React,useEffect,useState} from 'react'
 import './header.css'
 import Phone from '/src/assets/image/desktopPh.png'
-import Phone3 from '/src/assets/image/mobilePP.png'
+import Phone3 from '/src/assets/image/tabletPhe.png'
 import Phone2 from '/src/assets/image/tabletPh.png'
 
 const Header = () => {
