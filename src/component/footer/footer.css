@@ -5,7 +5,7 @@
     flex-direction: column;
     gap: 60px;
     height: auto;
-    background-image: url('/src/assets/image/footerBG22.png');
+    background-image: url('/src/assets/image/footerBg22.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -628,6 +628,7 @@ h5 a,
     }
 }
 @media (max-width: 424px) {
+
     #theForm{
         width: 100%;
         text-align: center;
@@ -737,6 +738,7 @@ h5 a,
         gap: 5px;
     }
     #Footer{
-    background-image: url('/src/assets/image/footerBgsm22.png');
+        background-image: url('/src/assets/image/footerBgsm22.png');
+
     }
 }
