@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { supabase } from '../../../supabaseClient'
 
 const NewsLetter = ({ onShowP, onShowPP }) => {
@@ -6,7 +6,7 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
     const [formError, setFormError] = useState(null)
 
 
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (!navigator.onLine) {
@@ -20,48 +20,55 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
             setFormError("Please inpute email")
             return
         }
-        else{
+        else {
             setFormError('Email submitted')
             setEmails('')
-            setTimeout (()=>{
+            setTimeout(() => {
                 setFormError(null)
-            },1500)
-            return
+
+            }, 1500)
+            
         }
         const revEm = Emails;
         setEmails('')
 
-        const {data, error } = await supabase
-        .from('NewsletterEmail')
-        .insert({Emails: revEm})
+        const { data, error } = await supabase
+            .from('Newsletter')
+            .insert({ email: revEm })
 
-        if (error){
+        if (error) {
             console.log(error)
             setFormError("Please input email")
         }
 
         if (data) {
             console.log('data')
-            
+            setEmails('')
             setFormError(null)
         }
+        return
     }
 
 
-  return (
-    <div id='theForm'>
-        <p  id='nn'>Newsletter Signup</p>
-        <form id='form' onSubmit={handleSubmit} action="">
-            <input placeholder='Enter your email address' value={Emails} onChange={(e) => setEmails(e.target.value)} type="email" />
-            <button>Suscribe</button>
-            
-        </form>
-        {formError && <p style={{color:"#FFE988"}}>{formError}</p>}
-        <p className='cc'>By clicking “suscribe” you are accepting Vocity.ng</p>
-        <p className='cc'> <button className='cc' onClick={onShowP}>  Privacy policy</button> and <button className='cc' onClick={onShowPP}>  Terms & Conditions</button></p>
+    return (
+        <div id='theForm'>
+            <p id='nn'>Newsletter Signup</p>
+            <form id='form' onSubmit={handleSubmit} action="">
+                <input placeholder='Enter your email address' value={Emails} onChange={(e) => setEmails(e.target.value)} type="email" />
+                <button>Suscribe</button>
 
-    </div>
-  )
+            </form>
+            {formError && <p style={{
+                color: 'transparent',
+                background: 'linear-gradient(1deg, #ad730c 0%, #f9c04c 50%, #856306 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text'
+            }}>{formError}</p>}
+            <p className='cc'>By clicking “suscribe” you are accepting Vocity.ng</p>
+            <p className='cc'> <button className='cc' onClick={onShowP}>  Privacy policy</button> and <button className='cc' onClick={onShowPP}>  Terms & Conditions</button></p>
+
+        </div>
+    )
 }
 
 export default NewsLetter

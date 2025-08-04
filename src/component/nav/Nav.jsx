@@ -60,10 +60,51 @@ const Nav = () => {
             </div>
 
             <div id="navs">
-                <a style={{ color: activeLink === 'home' ? 'rgba(255, 233, 152, 1)' : 'white', textDecoration: activeLink === 'home' ? 'underline' : 'none', textDecorationThickness: activeLink === 'home' ? '2px' : undefined, textUnderlineOffset: activeLink === 'home' ? '5px' : undefined }} onClick={(e) => { e.preventDefault(); scrollToHeader(); handleLinkClick('home') }} href="#">Home</a>
-                <a style={{ color: activeLink === 'features' ? 'rgba(255, 233, 152, 1)' : 'white', textDecoration: activeLink === 'features' ? 'underline' : 'none', textDecorationThickness: activeLink === 'features' ? '2px' : undefined, textUnderlineOffset: activeLink === 'features' ? '5px' : undefined }} onClick={() => { scrollToFeatures(), handleLinkClick('features') }} href="#features">Features</a>
-                <a style={{ color: activeLink === 'About' ? 'rgba(255, 233, 152, 1)' : 'white', textDecoration: activeLink === 'About' ? 'underline' : 'none', textDecorationThickness: activeLink === 'About' ? '2px' : undefined, textUnderlineOffset: activeLink === 'About' ? '5px' : undefined }} onClick={() => { scrollToAbout(); handleLinkClick('About') }} href="#aboutus">About us</a>
-                <a style={{ color: activeLink === 'howitwork' ? 'rgba(255, 233, 152, 1)' : 'white', textDecoration: activeLink === 'howitwork' ? 'underline' : 'none', textDecorationThickness: activeLink === 'howitwork' ? '2px' : undefined, textUnderlineOffset: activeLink === 'howitwork' ? '5px' : undefined }} onClick={(e) => {e.preventDefault(); scrollToHowItWorks(); handleLinkClick('howitwork') }} href="#howitwork">How it works</a>
+            <a
+  className={`nav-link ${activeLink === 'home' ? 'active' : ''}`}
+  onClick={(e) => {
+    e.preventDefault();
+    scrollToHeader();
+    handleLinkClick('home');
+  }}
+  href="#"
+>
+  Home
+</a>
+
+<a
+  className={`nav-link ${activeLink === 'features' ? 'active' : ''}`}
+  onClick={() => {
+    scrollToFeatures();
+    handleLinkClick('features');
+  }}
+  href="#features"
+>
+  Features
+</a>
+
+<a
+  className={`nav-link ${activeLink === 'About' ? 'active' : ''}`}
+  onClick={() => {
+    scrollToAbout();
+    handleLinkClick('About');
+  }}
+  href="#aboutus"
+>
+  About us
+</a>
+
+<a
+  className={`nav-link ${activeLink === 'howitwork' ? 'active' : ''}`}
+  onClick={(e) => {
+    e.preventDefault();
+    scrollToHowItWorks();
+    handleLinkClick('howitwork');
+  }}
+  href="#howitwork"
+>
+  How it works
+</a>
             </div>
             <div id="downNav">
                 <a id='downloadNav' href="#">Download now</a>

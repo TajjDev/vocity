@@ -34,7 +34,7 @@ const Features = () => {
                     <div id="featLink">
                         <h3>Features</h3>
                         <div id="feattlink">
-                            {/* <a id='downloadFeat' href="#">Download now</a> */}
+                            <a id='downloadFeat' href="#">Download now</a>
                         </div>
 
                     </div>

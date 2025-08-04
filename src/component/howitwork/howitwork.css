@@ -72,7 +72,10 @@
 }
 
 #imgWordHiw span {
-    color: rgb(255, 233, 152);
+    color: transparent;
+    background: linear-gradient(90deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
     font-size: 1.2rem;
 }
 
@@ -88,7 +91,7 @@
     border-radius: 40px;
     border: none;
     font-weight: 700;
-    background-color: rgba(255, 255, 255, 1);
+    background: linear-gradient(1deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
     color: rgba(10, 14, 21, 1);
     text-align: center;
     text-decoration: none;
@@ -144,9 +147,11 @@
     #hiw p {
         font-size: 1.1rem;
     }
-    #hiwP{
+
+    #hiwP {
         width: 90%;
     }
+
     #imgWordHiw p {
         font-size: 0.92rem;
     }
@@ -200,7 +205,8 @@
         font-size: 0.75rem;
         padding: 10px;
     }
-    #hiwP{
+
+    #hiwP {
         width: 90%;
     }
 }
@@ -210,63 +216,79 @@
         flex-direction: column;
         gap: 20px;
     }
-    #HowitworkProb{
+
+    #HowitworkProb {
         width: 60%;
     }
-    #downloadHiww{
+
+    #downloadHiww {
         width: 120%;
     }
-    #hiwwlink{
+
+    #hiwwlink {
         width: 50%;
     }
-    #hiwP{
+
+    #hiwP {
         width: 85%;
     }
 }
+
 @media (max-width: 424px) {
     #howProbs {
         flex-direction: column;
         gap: 65px;
     }
-    #hiwP{
-        width:80% ;
+
+    #hiwP {
+        width: 80%;
     }
-    #HowitworkProb{
+
+    #HowitworkProb {
         width: 85%;
         /* align-self: center; */
     }
-    #downloadHiww{
+
+    #downloadHiww {
         width: 80%;
         /* align-self: center; */
     }
+
     #howitwork {
         padding: 2% 25px;
         gap: 30px;
     }
+
     #hiw {
         gap: 10px;
     }
+
     #hiwwlink {
         width: auto;
         /* align-self: center; */
         /* display: flex; */
     }
+
     #hiwLink h3 {
         font-size: 1.9rem;
     }
+
     #hiw p {
         font-size: 0.88rem;
     }
+
     #imgWordHiw p {
         font-size: 0.84rem;
     }
+
     #imgWordHiw span {
         font-size: 1.05rem;
     }
-    #downloadHiww{
+
+    #downloadHiww {
         font-size: 0.75rem;
         width: 65%;
-        padding: 14px ;
+        padding: 14px;
         width: 180px;
     }
 }

@@ -27,9 +27,13 @@
     text-align: center;
     width: 810px;
 }
-#headSpan{
-    color: rgba(255, 233, 152, 1);
-}
+#headSpan {
+    color: transparent;
+    background: linear-gradient(90deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  
 #headBtn{
     display: flex;
     gap: 57px;
@@ -43,7 +47,7 @@
     border-radius: 40px;
     border: none;
     font-weight: 700;
-    background-color: rgba(255, 255, 255, 1);
+    background: linear-gradient(1deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
     color: rgba(10, 14, 21, 1);
     text-align: center;
 }

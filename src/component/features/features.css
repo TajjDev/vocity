@@ -58,7 +58,10 @@
 }
 
 #textFeat span {
-    color: rgba(255, 233, 152, 1);
+    color: transparent;
+    background: linear-gradient(90deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
 #textFeat h4 {
@@ -76,7 +79,17 @@
     border-radius: 10px;
     background: rgba(25, 25, 25, 0.3);
 }
-
+#downloadFeat {
+    padding: 20px 30px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    border: none;
+    font-weight: 700;
+    text-decoration: none;
+    background: linear-gradient(1deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+}
 @media (max-width:1179px) and (min-width:900px) {
     #Features {
         padding: 2% 80px;

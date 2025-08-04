@@ -15,10 +15,12 @@
     /* 0.875 */
 
 }
-#loc .cc{
+
+#loc .cc {
     color: #ffff;
 }
-input{
+
+input {
     background: transparent;
     border: none;
     font-size: 1.155rem;
@@ -27,16 +29,19 @@ input{
     height: 100%;
     outline: none;
 }
-input::placeholder{
+
+input::placeholder {
     color: #ffff;
 }
-#theForm{
+
+#theForm {
     width: 50%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-#form{
+
+#form {
     border: 1px solid rgba(255, 255, 255, 0.4);
     width: 100%;
     display: flex;
@@ -44,14 +49,20 @@ input::placeholder{
     justify-content: space-between;
     padding: 10px;
 }
-#loc p{
+
+#loc p {
     color: #ffffff66;
 }
-#Footer #form button{
+
+#Footer #form button {
     text-decoration: none;
-    color: #ffe988;
+    color: transparent;
+    background: linear-gradient(90deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
     font-weight: 500;
 }
+
 #linkone a {
     text-decoration: none;
 }
@@ -69,8 +80,13 @@ input::placeholder{
     gap: 96px;
 }
 
-#footOne p,#copy p, #priv button, #pimm, #enO p, #enO a button,#loc p
- {
+#footOne p,
+#copy p,
+#priv button,
+#pimm,
+#enO p,
+#enO a button,
+#loc p {
     color: rgba(255, 255, 255, 0.4);
     font-size: 1.155rem;
     font-weight: 500;
@@ -143,12 +159,14 @@ input::placeholder{
     gap: 30px;
     justify-content: space-between;
 }
-.dav{
+
+.dav {
     width: 50%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+
 #footOne {
     width: 100%;
     display: flex;
@@ -157,14 +175,16 @@ input::placeholder{
 
 }
 
-#folChat, #tex{
+#folChat,
+#tex {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     gap: 24px;
 }
 
-#folChat a, #tex a {
+#folChat a,
+#tex a {
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -208,7 +228,10 @@ input::placeholder{
 }
 
 h5 a,
-.popup p a, .popup p h4, .popup p ,m{
+.popup p a,
+.popup p h4,
+.popup p,
+m {
     color: #000000;
     /* text-decoration: none; */
 }
@@ -260,28 +283,39 @@ h5 a,
     border-radius: 8px;
 
 }
-#Footer #david{
+
+#Footer #david {
     color: #fff;
 }
-@media  (max-width:1179px) and (min-width:900px){
+
+@media (max-width:1179px) and (min-width:900px) {
     #Footer {
         gap: 55px;
     }
+
     #conts {
         display: flex;
         gap: 60px;
     }
-    
-    #footOne p,#copy p, #priv button, #pimm ,#enO p, #enO a button,#loc p{
+
+    #footOne p,
+    #copy p,
+    #priv button,
+    #pimm,
+    #enO p,
+    #enO a button,
+    #loc p {
         font-size: 1rem;
     }
-    input{
+
+    input {
         font-size: 1rem;
     }
+
     #Footer a {
         font-size: 0.85rem;
     }
-    
+
     #links {
         gap: 60px;
     }
@@ -289,455 +323,609 @@ h5 a,
     #navi {
         gap: 20px;
     }
-    
+
     #con {
         gap: 35px;
     }
-    
+
     #contactss {
         gap: 20px;
     }
-    
+
     #conn {
         gap: 20px;
     }
-    
+
     #loc {
         gap: 50px;
     }
-    
-    #folChat,#tex {
+
+    #folChat,
+    #tex {
         display: flex;
         gap: 20px;
     }
-    
-    
-    #folChat a, #tex a {
+
+
+    #folChat a,
+    #tex a {
         padding: 8px;
     }
-    
+
     #foll {
         gap: 10px;
     }
-    
+
     #chat {
         gap: 10px;
     }
-    
+
     #Footer button {
         font-size: 1rem;
     }
-    
+
 }
-@media  (max-width:899px) and (min-width:830px){
+
+@media (max-width:899px) and (min-width:830px) {
     #Footer {
         gap: 50px;
     }
+
     #conts {
         display: flex;
         gap: 30px;
-    }   
-    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button,#loc p {
-        font-size: 1.1rem;
-    }   
-    input{
+    }
+
+    #footOne p,
+    #copy p,
+    #priv button,
+    #pimm,
+    #enO p,
+    #enO a button,
+    #loc p {
         font-size: 1.1rem;
     }
+
+    input {
+        font-size: 1.1rem;
+    }
+
     #Footer a {
         font-size: 1rem;
     }
+
     #links {
         gap: 60px;
     }
+
     #navi {
         gap: 20px;
     }
+
     #con {
         gap: 35px;
     }
+
     #contactss {
         gap: 20px;
     }
+
     #conn {
         gap: 20px;
     }
+
     #loc {
         gap: 40px;
-    } 
-    #folChat,#tex {
+    }
+
+    #folChat,
+    #tex {
         display: flex;
         gap: 20px;
     }
-    #folChat a, #tex a {
+
+    #folChat a,
+    #tex a {
         padding: 8px;
-    }  
+    }
+
     #foll {
         gap: 10px;
-    }  
+    }
+
     #chat {
         gap: 10px;
-    }  
+    }
+
     #Footer button {
         font-size: 1.1rem;
     }
 }
-@media  (max-width:830px) and (min-width:600px){
+
+@media (max-width:830px) and (min-width:600px) {
 
     #Footer {
         gap: 45px;
         padding: 4% 40px;
     }
+
     #conts {
         display: flex;
         gap: 20px;
         flex-direction: column;
-    } 
-    #enO p{
+    }
+
+    #enO p {
         text-align: end;
-    }  
-    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button,#loc p {
-        font-size: 1rem;
-    }   
-    input{
+    }
+
+    #footOne p,
+    #copy p,
+    #priv button,
+    #pimm,
+    #enO p,
+    #enO a button,
+    #loc p {
         font-size: 1rem;
     }
+
+    input {
+        font-size: 1rem;
+    }
+
     #Footer a {
         font-size: 0.95rem;
     }
+
     #links {
         gap: 50px;
         flex-direction: column;
     }
+
     #navi {
         gap: 10px;
         width: 20%;
     }
+
     #con {
         gap: 35px;
         width: auto;
         /* align-items: end; */
     }
+
     #contactss {
         gap: 20px;
         flex-direction: column;
     }
+
     #conn {
         gap: 10px;
     }
+
     /* #footOne, #footTwo{ */
-        /* justify-content: space-around; */
-        /* padding: 0 60px; */
+    /* justify-content: space-around; */
+    /* padding: 0 60px; */
     /* } */
     #loc {
         gap: 40px;
-    } 
-    #folChat,#tex {
+    }
+
+    #folChat,
+    #tex {
         display: flex;
         gap: 10px;
     }
-    #folChat a, #tex a {
+
+    #folChat a,
+    #tex a {
         padding: 7px;
-    }  
+    }
+
     #foll {
         gap: 10px;
-    }  
+    }
+
     #chat {
         gap: 10px;
-    }  
+    }
+
     #Footer button {
         font-size: 1rem;
     }
-    #folChat a img,  #foll a img{
+
+    #folChat a img,
+    #foll a img {
         width: 18px;
         height: 18px;
-    } 
-    #footTwo{
+    }
+
+    #footTwo {
         gap: 20px;
     }
 }
-@media  (max-width:737px) and (min-width:600px){
+
+@media (max-width:737px) and (min-width:600px) {
     #Footer {
         gap: 45px;
         padding: 4% 60px;
     }
-    #contactss{
+
+    #contactss {
         flex-direction: column;
         gap: 20px;
     }
-    #con{
+
+    #con {
         width: auto;
     }
-    #theForm{
+
+    #theForm {
         width: 80%;
     }
-    #dav{
+
+    #dav {
         width: 80%;
     }
 }
-@media  (max-width:737px) and (min-width:420px){
+
+@media (max-width:737px) and (min-width:420px) {
     #loc {
         gap: 30px;
         /* flex-direction: row; */
     }
 }
-@media  (max-width:599px) and (min-width:420px){
+
+@media (max-width:599px) and (min-width:420px) {
     #Footer {
         gap: 40px;
         padding: 4% 25px;
     }
+
     #conts {
         display: flex;
         gap: 40px;
         flex-direction: column;
-    }   
-    #footOne p,#copy p, #priv button, #pimm,#enO p, #enO a button,#loc p {
-        font-size: 0.9rem;
-    }   
-    input{
+    }
+
+    #footOne p,
+    #copy p,
+    #priv button,
+    #pimm,
+    #enO p,
+    #enO a button,
+    #loc p {
         font-size: 0.9rem;
     }
+
+    input {
+        font-size: 0.9rem;
+    }
+
     #Footer a {
         font-size: 0.8rem;
     }
+
     #links {
         gap: 40px;
         flex-direction: column;
     }
+
     #navi {
         gap: 10px;
         width: 20%;
     }
+
     #con {
         gap: 30px;
         width: auto;
     }
+
     #contactss {
         gap: 10px;
         flex-direction: column;
     }
-    
+
     #conn {
         gap: 10px;
     }
-    #footOne{
+
+    #footOne {
         justify-content: space-between;
     }
-    #theForm{
+
+    #theForm {
         width: 80%;
         gap: 10px;
         display: flex;
         flex-direction: column;
     }
-    .dav{
+
+    .dav {
         width: 80%;
         /* flex-direction: row; */
         display: flex;
         gap: 10px;
     }
+
     #loc {
         gap: 30px;
         flex-direction: column;
         /* justify-content: center; */
         /* align-items: center; */
-    } 
-    #folChat, #tex {
+    }
+
+    #folChat,
+    #tex {
         display: flex;
         gap: 10px;
     }
-    #enO p{
+
+    #enO p {
         text-align: end;
     }
+
     /* #tex { */
-        /* gap: 130px; */
+    /* gap: 130px; */
     /* } */
-    #folChat a, #tex a{
+    #folChat a,
+    #tex a {
         padding: 6px;
-    } 
-    #folChat a img, #tex  a img{
+    }
+
+    #folChat a img,
+    #tex a img {
         width: 16px;
         height: 16px;
-    } 
+    }
+
     #foll {
         gap: 10px;
-    }  
+    }
+
     #chat {
         gap: 10px;
-    }  
+    }
+
     #Footer button {
         font-size: 0.9rem;
     }
 }
-@media  (max-width:500px) and (min-width:425px){
-    #links, #conts {
+
+@media (max-width:500px) and (min-width:425px) {
+
+    #links,
+    #conts {
         gap: 40px;
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
     }
-    #navvi p, #conn p{
+
+    #navvi p,
+    #conn p {
         text-align: start;
     }
-    #linktwo{
+
+    #linktwo {
         /* gap:30px; */
-        width:30%;
+        width: 30%;
     }
-    .dav{
+
+    .dav {
         width: 80%;
         flex-direction: column;
     }
-    #theForm{
+
+    #theForm {
         width: 100%;
         text-align: center;
     }
-    #nn{
+
+    #nn {
         text-align: start;
     }
-    #navvi, #conP {
+
+    #navvi,
+    #conP {
         width: 100%;
     }
-    #folChat, #tex{
+
+    #folChat,
+    #tex {
         gap: 20px;
     }
-    #navi,  #conn, #contactss, #loc{
+
+    #navi,
+    #conn,
+    #contactss,
+    #loc {
         width: 100%;
         padding: 0 10px;
         align-items: center;
     }
-    #loc{
+
+    #loc {
         align-items: start;
     }
-    #footOne{
+
+    #footOne {
         flex-direction: column;
         gap: 20px;
     }
-    #conn{
+
+    #conn {
         flex-direction: column;
     }
-    #con{
+
+    #con {
         width: 100%;
     }
-    #footTwo{
+
+    #footTwo {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 20px;
     }
-    #contactss{
+
+    #contactss {
         justify-content: space-between;
         flex-direction: row;
     }
 }
+
 @media (max-width: 424px) {
 
-    #theForm{
+    #theForm {
         width: 100%;
         text-align: center;
     }
-    #loc{
+
+    #loc {
         flex-direction: column;
     }
-    #nn{
+
+    #nn {
         text-align: start;
     }
+
     #links {
         gap: 40px;
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
     }
-    .dav{
+
+    .dav {
         /* flex-direction: column; */
         width: 100%;
     }
-    #conts{
+
+    #conts {
         flex-direction: column;
         gap: 30px;
         align-self: self-start;
     }
-    #navvi p, #conn p{
+
+    #navvi p,
+    #conn p {
         text-align: start;
     }
-    #folChat, #tex{
+
+    #folChat,
+    #tex {
         flex-direction: column;
         gap: 15px;
     }
-    #navvi, #conP {
+
+    #navvi,
+    #conP {
         width: 100%;
     }
-    #navi,  #conn, #contactss, #loc{
+
+    #navi,
+    #conn,
+    #contactss,
+    #loc {
         width: 100%;
         /* padding: 0 50px; */
         align-items: center;
     }
-    #loc{
+
+    #loc {
         align-items: start;
     }
-    #footOne{
+
+    #footOne {
         flex-direction: column;
         gap: 20px;
     }
-    #conn{
+
+    #conn {
         flex-direction: column;
         padding: 0;
-        
+
     }
-    #con{
+
+    #con {
         width: 100%;
         flex-direction: row;
         padding: 0;
     }
-    #linktwo{
+
+    #linktwo {
         width: 45%;
     }
-    #footTwo{
+
+    #footTwo {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 20px;
     }
+
     /* #folChat{ */
-        /* flex-direction: column; */
+    /* flex-direction: column; */
     /* } */
     #Footer {
         gap: 70px;
         padding: 4% 25px;
     }
-    #footOne p,#enO p, #copy p, #priv button, #pimm,#loc p {
-        font-size: 0.8rem;
-    }   
-    input{
+
+    #footOne p,
+    #enO p,
+    #copy p,
+    #priv button,
+    #pimm,
+    #loc p {
         font-size: 0.8rem;
     }
+
+    input {
+        font-size: 0.8rem;
+    }
+
     #Footer a {
         font-size: 0.75rem;
     }
+
     #contactss {
         gap: 10px;
         padding: 0;
         flex-direction: column;
         align-items: self-start;
     }
+
     #conn {
         gap: 10px;
     }
+
     #loc {
         gap: 10px;
-    } 
-    #folChat a, #tex  a  {
+    }
+
+    #folChat a,
+    #tex a {
         padding: 6px;
         gap: 30px;
-    } 
-    #folChat a img, #tex a img{
+    }
+
+    #folChat a img,
+    #tex a img {
         width: 12px;
         height: 12px;
-    } 
+    }
+
     #Footer button {
         font-size: 0.8rem;
     }
-    #foll, #chat{
+
+    #foll,
+    #chat {
         gap: 5px;
     }
-    #Footer{
+
+    #Footer {
         background-image: url('/src/assets/image/footerBgsm22.png');
 
     }

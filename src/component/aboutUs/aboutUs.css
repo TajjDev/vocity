@@ -69,7 +69,10 @@
 }
 
 #misVis h4 span {
-    color: rgb(255, 233, 152);
+    color: transparent;
+    background: linear-gradient(90deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
 #miss {
