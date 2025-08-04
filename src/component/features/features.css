@@ -68,13 +68,16 @@
     font-size: 2.10125rem;
     font-weight: 600;
 }
-
+#pollProb .reveal.visible{
+    width: 30%;
+}
 #eachFeat {
     gap: 80px;
+    height: 100%;
     display: flex;
     border: 1px solid rgba(192, 192, 192, 0.05);
     flex-direction: column;
-    width: 30%;
+    width: 100%;
     padding: 50px 25px;
     border-radius: 10px;
     background: rgba(25, 25, 25, 0.3);
@@ -153,11 +156,13 @@
     #textFeat h4 {
         font-size: 1.3rem;
     }
-
+    #pollProb .reveal.visible{
+        width: 32%;
+    }
     #eachFeat {
         gap: 40px;
         padding: 25px 15px;
-        width: 32%;
+        width: 100%;
         padding-bottom: 20px;
 
     }
@@ -189,11 +194,14 @@
     #textFeat h4 {
         font-size: 1.2rem;
     }
+    #pollProb .reveal.visible{
+        width: 32%;
+    }
     #eachFeat {
         gap: 35px;
         padding: 25px 15px;
         padding-bottom: 20px;
-        width: 32%;
+        width: 100%;
     }
 }
 @media  (max-width:500px) and (min-width:420px){
@@ -201,8 +209,11 @@
         gap: 30px;
         flex-direction: column;
     }
-    #eachFeat{
+    #pollProb .reveal.visible{
         width: 70%;
+    }
+    #eachFeat{
+        width: 100%;
     }
     #pollProb p {
         font-size: 0.87rem;
@@ -213,8 +224,11 @@
         gap: 30px;
         flex-direction: column;
     }
-    #eachFeat{
+    #pollProb .reveal.visible{
         width: 85%;
+    }
+    #eachFeat{
+        width: 100%;
         gap: 56px;
         align-self: center;
         padding: 15px;

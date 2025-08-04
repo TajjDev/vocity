@@ -47,9 +47,9 @@ const Footer = ({ onShowP, onShowPP }) => {
     }
     return (
         <div id='Footer'>
-            <RevealOnScroll>
+            {/* <RevealOnScroll> */}
                 <div id="footOne">
-                    {/* <RevealOnScroll> */}
+                    <RevealOnScroll>
                     <div id="navi">
                         <div id="navvi">
                             <p>Navigation</p>
@@ -70,10 +70,10 @@ const Footer = ({ onShowP, onShowPP }) => {
                             </div>
                         </div>
                     </div>
-                    {/* </RevealOnScroll> */}
+                    </RevealOnScroll>
+                    <RevealOnScroll>
 
                     <div id="con">
-                        {/* <RevealOnScroll> */}
                         <div id="conn">
                             <p id='conP'>Contact us</p>
                             <div id="conts">
@@ -88,7 +88,7 @@ const Footer = ({ onShowP, onShowPP }) => {
                             </div>
                         </div>
                         {/* </RevealOnScroll> */}
-                        {/* <RevealOnScroll> */}
+                        <RevealOnScroll>
                         <div id="contactss">
                             <div id="tex">
                                 <p>Follow us</p>
@@ -109,12 +109,12 @@ const Footer = ({ onShowP, onShowPP }) => {
                                 </div>
                             </div>
                         </div>
-                        {/* </RevealOnScroll> */}
+                        </RevealOnScroll> 
                     </div>
-
+                    </RevealOnScroll>
 
                 </div>
-            </RevealOnScroll>
+            <RevealOnScroll>
             <div id="loc">
                 <NewsLetter 
                  onShowPP={() =>
@@ -138,6 +138,7 @@ const Footer = ({ onShowP, onShowPP }) => {
                     </p>
                 </div>
             </div>
+            </RevealOnScroll>
             <RevealOnScroll>
                 <div id="footTwo">
                     <div id="copy">

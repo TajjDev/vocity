@@ -34,7 +34,7 @@ const Features = () => {
                     <div id="featLink">
                         <h3>Features</h3>
                         <div id="feattlink">
-{/*                             <a id='downloadFeat' href="#">Download now</a> */}
+                            {/* <a id='downloadFeat' href="#">Download now</a> */}
                         </div>
 
                     </div>
@@ -45,7 +45,7 @@ const Features = () => {
                 <div id="pollProb">
                     {
                         probs.map((data, index) => {
-                            return <FeatProb key={index} img={data.img} h4={data.h4} p={data.p} span={data.span} />
+                            return <RevealOnScroll> <FeatProb key={index} img={data.img} h4={data.h4} p={data.p} span={data.span} /></RevealOnScroll>
                         })
                     }
                     
@@ -56,6 +56,5 @@ const Features = () => {
         </div>
     )
 }
-
 
 export default Features

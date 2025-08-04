@@ -46,7 +46,7 @@ const HowItWorks = () => {
         <div id="howProbs">
           {
             hiwProbs.map((data, index) => {
-              return <HowitworkProb key={index} img={data.img} pp={data.pp} p={data.p} span={data.span} />
+              return <RevealOnScroll> <HowitworkProb key={index} img={data.img} pp={data.pp} p={data.p} span={data.span} /> </RevealOnScroll>
             })
           }
         </div>

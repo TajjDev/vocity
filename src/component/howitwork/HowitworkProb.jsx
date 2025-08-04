@@ -1,12 +1,11 @@
-import React from 'react'
+import React, {useEffect,useRef} from 'react'
 import './howitwork.css'
 import RevealOnScroll from '../onscroll/ReavealOnScroll'
+// import { useRef } from 'react'
 
-const HowitworkProb = ({img,span,p,pp}) => {
-  return (
+const HowitworkProb = ({img,span,p,pp}) => {  return (
     
-    <div id='HowitworkProb'>
-
+    <div className='HowitworkProb'>
         <div id="imgWordHiw">
             <div id="imgHiw">
                 <img src={img} alt="" />
