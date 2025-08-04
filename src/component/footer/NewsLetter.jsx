@@ -38,13 +38,13 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
 
         if (error) {
             console.log(error)
-            setFormError("Please input email")
+            // setFormError("Please input email")
         }
 
         if (data) {
             console.log('data')
-            setEmails('')
-            setFormError(null)
+            // setEmails('')
+            // setFormError(null)
         }
         return
     }
@@ -70,5 +70,6 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
         </div>
     )
 }
+
 
 export default NewsLetter
