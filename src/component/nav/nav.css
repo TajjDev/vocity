@@ -33,6 +33,7 @@
 #navs a {
     text-align: center;
 }
+
 /* styles.css or in a styled component */
 .gradient-text {
     background: linear-gradient(1deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
@@ -40,8 +41,8 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     /* color: transparent; */
-  }
-  
+}
+
 .nav a {
     text-decoration: none;
     font-size: 0.9rem;
@@ -87,16 +88,16 @@
     text-decoration: none;
     position: relative;
     display: inline-block;
-  }
-  
-  .nav-link.active {
+}
+
+.nav-link.active {
     color: transparent;
     background: linear-gradient(90deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
     background-clip: text;
     -webkit-background-clip: text;
-  }
-  
-  .nav-link.active::after {
+}
+
+.nav-link.active::after {
     content: '';
     position: absolute;
     left: 0;
@@ -105,8 +106,8 @@
     width: 100%;
     background: linear-gradient(90deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
     border-radius: 2px;
-  }
-  
+}
+
 
 @media (max-width:1179px) and (min-width:1024px) {
     .nav {
@@ -244,7 +245,7 @@
     #navs {
         padding: 12px;
         gap: 15px;
-        width: 60%;        
+        width: 60%;
         /* margin-right: -5px; */
         /* margin-right: -20px; */
     }
@@ -282,9 +283,11 @@
         gap: 10px;
         width: 58%;
     }
-    .nav a{
+
+    .nav a {
         font-size: 0.55rem;
     }
+
     #downloadNav {
         padding: 11px 0;
     }
@@ -311,7 +314,7 @@
     #downNav {
         display: none;
     }
-    
+
     #navs {
         display: none;
     }
@@ -326,14 +329,15 @@
         padding-bottom: 0;
         width: 100%;
         cursor: pointer;
-        
+
     }
 
     .menu-toggle img {
         width: 28px;
         height: 28px;
-        
+
     }
+
     .menu-content {
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
@@ -341,7 +345,7 @@
         display: flex;
         height: 400px;
         flex-direction: column;
-        gap:10px ;
+        gap: 10px;
         right: 0;
         top: 0;
         width: 230px;
@@ -349,12 +353,15 @@
         padding: 20px 0;
         position: fixed;
     }
-    .slide-in{
+
+    .slide-in {
         transform: translateX(0%);
     }
-    .slide-out{
+
+    .slide-out {
         transform: translateX(100%);
     }
+
     #navsM,
     #downNavM {
         display: flex;
@@ -363,12 +370,15 @@
         flex-direction: column;
         gap: 20px;
     }
-    #navsM{
+
+    #navsM {
         margin-top: 20px;
     }
-    #downNavM{
+
+    #downNavM {
         margin-top: 10px;
     }
+
     #navsM a,
     #downNavM a {
         /* color: rgb(169, 145, 57); */
@@ -377,55 +387,67 @@
     }
 
     .cancel-btn {
-        background: none;
+        color: transparent;
+        background: #ffff;
+        background-clip: text;
+        -webkit-background-clip: text;
         border: none;
         font-size: 20px;
-        color: white;
+        /* color: white; */
         font-weight: bolder;
         position: absolute;
         top: 10px;
+        font-weight: 900;
         right: 25px;
         cursor: pointer;
         /* margin-top: 10px; */
         /* margin-top: -10px; */
 
     }
+
     .nav {
         padding-top: 18px;
     }
+
     .nav.scrolled {
         padding: 9px 20px;
     }
+
     #navImg img {
-         width: 32%;
-         height: 100%;
-         padding-right: 4px;
+        width: 32%;
+        height: 100%;
+        padding-right: 4px;
     }
+
     #navImg p {
         font-size: 0.8rem;
     }
+
     #downloadNav {
         padding: 12px 0;
         width: 100%;
     }
 
 }
+
 @media (max-width: 355px) {
-    .cancel-btn{
+    .cancel-btn {
         font-size: 18px;
     }
+
     .menu-toggle img {
         width: 25px;
         height: 25px;
-        
+
     }
+
     #navImg p {
         font-size: 0.75rem;
     }
+
     #navImg img {
         width: 40%;
         height: 100%;
         padding-right: 4px;
     }
-
 }
