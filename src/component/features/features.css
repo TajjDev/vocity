@@ -59,7 +59,7 @@
 
 #textFeat span {
     color: transparent;
-    background: linear-gradient(90deg, #ad730c 0%, #f9c04c 50%, #856306 100%);
+    background: linear-gradient(90deg, rgb(232, 189, 112)0%, rgb(214, 158, 46)50%, rgb(237, 210, 135)100%);
     background-clip: text;
     -webkit-background-clip: text;
 }
