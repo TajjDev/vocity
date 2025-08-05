@@ -60,7 +60,7 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
             </form>
             {formError && <p style={{
                 color: 'transparent',
-                background: 'linear-gradient(90deg, rgb(232, 189, 112)0%, rgb(214, 158, 46)50%, rgb(237, 210, 135)100%))',
+                background: 'linear-gradient(90deg, rgb(232, 189, 112)0%, rgb(214, 158, 46)50%, rgb(237, 210, 135)100%)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text'
             }}>{formError}</p>}
@@ -70,5 +70,6 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
         </div>
     )
 }
+
 
 export default NewsLetter
