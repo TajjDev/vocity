@@ -135,7 +135,7 @@ input::placeholder {
 }
 
 #con {
-    width: 50%;
+    width: 100%;
     gap: 35px;
     display: flex;
     flex-direction: column;
@@ -929,4 +929,5 @@ m {
         background-image: url('/src/assets/image/footerBgsm22.png');
 
     }
+
 }
