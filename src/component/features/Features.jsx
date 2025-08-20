@@ -11,18 +11,18 @@ const Features = () => {
         {
             img: poll,
             h4: 'Poll',
-            p: 'Create your own polls, cast your vote,join the conversation and make an impact',
+            p: 'Create your own poll, cast your vote, join the conversation and make an impact',
             span: 'Voting'
         },
         {
             img: event,
             h4: 'Event',
-            p: 'Discover, Organize, and Register for local events.Stay connected!',
+            p: 'Discover, organise, and book for events. Stay connected!',
             span: 'Booking'
         }, {
             img: crowd,
             h4: 'Crowd',
-            p: 'Bring your idea to life, get funding and donate to support cause that matters to you',
+            p: 'Bring your idea to life, get funding and donate to support causes that matters to you',
             span: 'Funding'
         }
     ]
@@ -38,7 +38,7 @@ const Features = () => {
                         </div>
 
                     </div>
-                    <p>This are the main features of the Vocity app</p>
+                    <p>These are the main features of the Vocity app</p>
                 </div>
             </RevealOnScroll>
             <RevealOnScroll>

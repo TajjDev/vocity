@@ -12,19 +12,19 @@ const HowItWorks = () => {
       img: image1,
       span: "Step 1:",
       p: ` Download the App`,
-      pp: 'Available on both Android and iOS.'
+      pp: 'available on both android and iOS.'
     },
     {
       img: image2,
       span: "Step 2:",
-      p: ` Create your Account`,
-      pp: 'Sign up in minutes'
+      p: ` Create your account`,
+      pp: 'and sign up in minutes'
     },
     {
       img: image3,
       span: "Step 3:",
       p: ` Explore and Engage`,
-      pp: 'Join polls, donates, register for events'
+      pp: 'Join voting polls, donate, and book events.'
     }
   ]
   return (
@@ -32,13 +32,13 @@ const HowItWorks = () => {
       <RevealOnScroll>
         <div id="hiw">
           <div id="hiwLink">
-            <h3>How it works</h3>
+            <h3>How it works:</h3>
             <div id="hiwlink">
               {/* <a id='downloadFeat' href="#">Download now</a> */}
             </div>
           </div>
           <div id="hiwP">
-            <p>VoCity is easy to use! Here's how you can start making a difference in your community.”</p>
+            <p>"It's easy to use! Here's how you can start making a difference in your community"</p>
           </div>
         </div>
       </RevealOnScroll>

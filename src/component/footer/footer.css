@@ -58,7 +58,7 @@ input::placeholder {
     text-decoration: none;
     color: transparent;
     background: linear-gradient(90deg, rgb(232, 189, 112)0%, rgb(214, 158, 46)50%, rgb(237, 210, 135)100%);
-    background-clip: text;
+    background-clip: context;
     -webkit-background-clip: text;
     font-weight: 500;
 }
@@ -929,5 +929,4 @@ m {
         background-image: url('/src/assets/image/footerBgsm22.png');
 
     }
-
 }

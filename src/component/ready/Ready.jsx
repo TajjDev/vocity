@@ -8,12 +8,12 @@ const Ready = () => {
             <RevealOnScroll>
                 <div id="read">
                     <div id="readLink">
-                        <h3>Ready to Take the Next Step</h3>
+                        <h3>Ready to Take the Next Step with Vocity?</h3>
                         <div id="feattlink">
                             {/* <a id='downloadFeat' href="#">Download now</a> */}
                         </div>
                     </div>
-                    <p>Whether you're looking to grow, learn, connect, or earn — our app brings everything to your fingertips.</p>
+                    <p>Whether you're looking to grow, learn, connect, or earn, we've got everything you need at your fingertips.</p>
                 </div>
             </RevealOnScroll>
             <RevealOnScroll>

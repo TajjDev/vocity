@@ -71,5 +71,4 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
     )
 }
 
-
 export default NewsLetter

@@ -34,7 +34,7 @@ const Header = () => {
         <div id='header'>
             <div id="headWord">
                 <h5>Join the movement with <span id='headSpan'>VOCITY</span></h5>
-                <p>VoteCity empowers you to participate in community decisions, stay updated on events, support local causes, and engage in announcements</p>
+                <p>Vocity empowers you to participate in community decisions, stay updated on events, support local causes, and engage in announcements</p>
                 
                 <div id="headBtn">
                 <a id='downloadHead' href="#">Download now</a>
