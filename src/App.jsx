@@ -1,11 +1,12 @@
 import React from 'react'
 import RenderAll from './component/renderAll/RenderAll'
+import ProfileII from './component/Profile/ProfileII'
 // import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 // import Modal from './component/footer/PPandTC'
 const App = () => {
   return (
     <>
-    <RenderAll />
+    <ProfileII />
     {/* <BrowserRouter> */}
       {/* <Routes> */}
         {/* <Route path='/' element={""}/> */}

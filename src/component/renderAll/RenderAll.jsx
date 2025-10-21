@@ -19,27 +19,13 @@ const RenderAll = () => {
     return (
         <div id='render'>
             <div id="navAndHead">
-                <Nav/>
+                {/* <Nav/> */}
                 <Header/>
             </div>
             <Features/>
             <AboutUs/>
             <HowItWorks/>
             <Ready/>
-            <Footer  onShowPP={() =>
-            setShowPP(true)}
-                     onShowP={() =>
-            setShowP(true)} />
-            {showP && (
-                <PPandTC 
-                isActive={showP}
-                onClose={() =>
-                    setShowP(false)}/>
-            )}
-            {showPP && (
-    <TC onClose={() =>
-        setShowPP(false)}/>
-)}
         </div>
     )
 }

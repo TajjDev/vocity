@@ -1,0 +1,32 @@
+// mockUserData.js
+import image from '/src/assets/image/profile4.png'
+export const mockUserProfile = {
+    id: 1,
+    created_time: "2025-01-14T12:00:00Z",
+    last_updated: "2025-10-14T16:00:00Z",
+    last_seen: "2025-10-14T17:00:00Z",
+    user_id: "123",
+    account_type: "personal",
+    email: "donny@example.com",
+    username: "donnydev",
+    fullname: "Donny Developer",
+    phone: "+2348012345678",
+    gender: "male",
+    country: "Nigeria",
+    dob: "1999-07-12",
+    thumbnail: {
+      url: "https://via.placeholder.com/150",
+      blur: "https://via.placeholder.com/10x10",
+      image:image,
+    },
+    email_verified: true,
+    id_verified: true,
+    from_google: true,
+    from_apple: false,
+    email_notify: true,
+    app_notify: true,
+    push_notify: true,
+    is_flagged: false,
+    followers: 1234,
+    following: 567,
+  };
