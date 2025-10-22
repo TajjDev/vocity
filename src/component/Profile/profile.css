@@ -168,3 +168,154 @@
     padding: 10px;
     background: linear-gradient(90deg,rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1)  50%, rgba(149, 109, 1, 1) 100%);
 }
+/* =========================
+   📸 HORIZONTAL LISTINGS SCROLL (2 at a time)
+   ========================= */
+   .listings-scroll {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    overflow-x: auto;            /* 👈 horizontal scroll */
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding: 10px;
+    max-width: 80%;
+    height: 300px;
+    border-radius: 12px;
+    background: #020202be;
+    color: #000;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  /* 📦 Each Listing Card */
+  .listing-item {
+    flex: 0 0 calc(90% - 10px);  /* 👈 shows 2 items per view */
+    /* height: 130px; */
+    border-radius: 12px;
+    flex-direction: column;
+    color: #000;
+    max-width: 220px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .listing-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* 🖼️ Image */
+  .listing-item p{
+    color: #000;
+  }
+  .listing-item img {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  .listing-item img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* =========================
+     🌈 FANCY SCROLLBAR
+     ========================= */
+  .listings-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .listings-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+  }
+  
+  .listings-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #8e44ad, #3498db);
+    border-radius: 10px;
+  }
+  
+  .listings-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #9b59b6, #2980b9);
+  }
+  
+  /* Firefox scrollbar */
+  .listings-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(108, 69, 0, 1) rgba(0, 0, 0, 0.1);
+  }
+  #T{
+    padding: 30px;
+  }
+  #T .tab-btn img{
+    width: 20px;
+    height: 20px;
+  }
+  #T .tab-btn{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  #T button{
+    background: none;
+    cursor: pointer;
+    padding-bottom: 15px;
+    border: none;
+    font-size: 0.9rem;
+  }
+  #T .active{
+    /* color: red; */
+    text-decoration: underline;
+    text-underline-offset: 7px;
+    text-decoration-color: #fff;
+    font-weight: bolder;
+  }
+  #Tt{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .profile-tabs{
+    gap: 20px;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+  }
+  @media (max-width:768px) and (min-width:200px) {
+    .user-profile{
+        flex-direction: column;
+    }
+    #O,#T{
+        width: 100%;
+    }
+    .listings-scroll{
+        max-width: 100%;
+        height: 220px;
+    }
+    .listing-item{
+        max-width: 200px;
+    }
+    #folBtn .bbb, #cls {
+        width: 150px;
+        padding: 12px;
+        font-size: 0.9rem;
+        gap: 10px;
+    }
+    #folBtn #btnn {
+        width: 15px;
+        height: 15px;
+    }
+    #folBtn img {
+        width: 20px;
+        height: 20px;
+  }
+
+  }
