@@ -18,6 +18,7 @@ const Footer = ({ onShowP, onShowPP }) => {
     const [showP, setShowP] = useState(false)
     const [showPP, setShowPP] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+    const navigate = useNavigate(); 
     const scrollToFeatures = () => {
         const Features = document.getElementById('Features');
         if (Features) {
@@ -45,6 +46,18 @@ const Footer = ({ onShowP, onShowPP }) => {
                 ({ behavior: "smooth" });
         }
     }
+
+
+  const goToSection = (sectionId) => {
+    navigate("/");
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 500); 
+  };
+  
     return (
         <div id='Footer'>
             {/* <RevealOnScroll> */}
@@ -56,10 +69,10 @@ const Footer = ({ onShowP, onShowPP }) => {
                         </div>
                         <div id="links">
                             <div id="linkone">
-                                <a onClick={(e) => { e.preventDefault(); scrollToHeader(); handleLinkClick('home') }} href="#">Home</a>
-                                <a onClick={() => { scrollToFeatures(), handleLinkClick('features') }} href="#features">Features</a>
-                                <a onClick={() => { scrollToAbout(); handleLinkClick('About') }} href="#aboutus">About us</a>
-                                <a onClick={(e) => { e.preventDefault(); scrollToHowItWorks(); handleLinkClick('howitwork') }} href="#howitwork">How it works</a>
+                                <a onClick={(e) => { e.preventDefault(); scrollToHeader(); handleLinkClick('home');goToSection("render") }} href="#">Home</a>
+                                <a onClick={() => { scrollToFeatures(), handleLinkClick('features'): goToSection("Features"); }} href="#features">Features</a>
+                                <a onClick={() => { scrollToAbout(); handleLinkClick('About'); goToSection("About"); }} href="#aboutus">About us</a>
+                                <a onClick={(e) => { e.preventDefault(); scrollToHowItWorks(); handleLinkClick('howitwork'); goToSection("howitwork"); }} href="#howitwork">How it works</a>
                                 <a href="#">Download</a>
                             </div>
                             <div id="linktwo">
@@ -154,5 +167,6 @@ const Footer = ({ onShowP, onShowPP }) => {
         </div>
     )
 }
+
 
 export default Footer
