@@ -259,8 +259,9 @@
   color: #ffffff;
   text-align: start;
   width: 100%;
-  background: rgb(4, 1, 12);
+  background: rgb(16, 14, 34);
   border-radius: 10px;
+  height: 100px;
   padding-left: 10px;
   margin-top: 5px;
   /* border-radius: 40px; */
@@ -335,8 +336,10 @@
 
 #butt {
   margin-top: 20px;
-  background: rgb(4, 1, 12);
+  background: rgb(16, 14, 34);
   padding: 15px;
+  display: flex;
+  justify-content: center;
   border-radius: 10px;
 }
 
