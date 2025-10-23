@@ -175,7 +175,6 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                                         style={{
                                             padding: "8px 15px",
                                             borderRadius: "5px",
-                                            fontSize: "1rem",
                                             fontWeight: sort === option ? "bolder" : "",
                                             border: sort === option ? "none" : "none",
                                             background: sort === option ? "#fff" : "transparent",
@@ -234,5 +233,6 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
         </div>
     );
 }
+
 
 export default UserProfile;
