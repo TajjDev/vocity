@@ -404,6 +404,10 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+  overflow-x: auto;
+  /* 👈 horizontal scroll */
+  overflow-y: hidden;
+  scroll-behavior: smooth;
 }
 
 .shot-item {
@@ -481,6 +485,7 @@
   }
 
 }
+
 
 
 
