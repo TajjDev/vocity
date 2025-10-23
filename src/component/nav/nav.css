@@ -5,7 +5,9 @@
     padding-top: 28px;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.372);
+    padding: 10px 20px 10px 25px;
     justify-self: center;
 
 }
@@ -16,7 +18,7 @@
     background: rgba(10, 14, 21, 0.979);
     top: 0;
     z-index: 1;
-    padding: 14px 80px;
+    padding: 20px 80px;
     width: 100%;
 
 }
@@ -105,7 +107,7 @@
 
 @media (max-width:1179px) and (min-width:1023px) {
     .nav {
-        padding-top: 20px;
+        padding-top: 10px;
     }
 
     .nav.scrolled {
@@ -161,7 +163,7 @@
 @media (max-width:899px) and (min-width:770px) {
     
     .nav {
-        padding-top: 18px;
+        padding-top: 10px;
     }
 
     .nav.scrolled {
@@ -197,7 +199,7 @@
 
 @media (max-width:770px) and (min-width:600px) {
     .nav {
-        padding-top: 18px;
+        padding-top: 10px;
     }
 
     #navs {
@@ -233,7 +235,7 @@
 
 @media (max-width:599px) and (min-width:425px) {
     .nav {
-        padding-top: 18px;
+        padding-top: 10px;
 
     }
 
@@ -405,7 +407,7 @@
     }
 
     .nav.scrolled {
-        padding: 9px 25px;
+        padding: 15px 25px;
     }
 
     #navImg img {
