@@ -23,7 +23,7 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
     const BASE_URL_LISTINGS = "https://api.votecity.ng/v1/post/create/listings";
     const BASE_URL_SHOTS = "https://api.votecity.ng/v1/shot/user";
 
-    const Link = `https://vocity.vercel.app/${userId}`;
+    const Link = `https://vocity.vercel.app/user/${userId}`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(Link);
@@ -236,3 +236,4 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
 
 
 export default UserProfile;
+
