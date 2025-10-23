@@ -14,14 +14,16 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
     const [loadingUser, setLoadingUser] = useState(true);
     const [loadingListings, setLoadingListings] = useState(true);
     const [sort, setSort] = useState("ongoing");
-    const [activeTab, setActiveTab] = useState("listings"); // ✅ Added
+    const [activeTab, setActiveTab] = useState("listings");
     const [showPopup, setShowPopup] = useState(false);
     const [Copied, setCopied] = useState(false);
-
+    const [shots, setShots] = useState([]);
+    const [loadingShots, setLoadingShots] = useState(true)
     const BASE_URL_USER = "https://api.votecity.ng/v1/user";
     const BASE_URL_LISTINGS = "https://api.votecity.ng/v1/post/create/listings";
+    const BASE_URL_SHOTS = "https://api.votecity.ng/v1/shot/user";
 
-    const Link = `https://vocity.vercel.app/user/${userId}`;
+    const Link = `https://vocity.vercel.app/${userId}`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(Link);
@@ -61,6 +63,17 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
             .catch(err => console.error("Fetch listings error:", err))
             .finally(() => setLoadingListings(false));
     }, [userId, sort]);
+    useEffect(() => {
+        setLoadingShots(true);
+        fetch(`${BASE_URL_SHOTS}/${userId}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log("shots:", data);
+                setShots(data?.data?.shots || [])
+            })
+            .catch(err => console.error("Fetch shots error:", err))
+            .finally(() => setLoadingShots(false));
+    }, [])
 
     if (loadingUser) return <p>Loading user profile...</p>;
     if (!user) return <p>No user found</p>;
@@ -73,11 +86,11 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                         <p id='full'>{user.fullname}</p>
                         {user.id_verified === 1 && <img src={verified} alt="Verified" />}
                     </div>
-                    <p>@{user.username}</p>
+                    <p id='userrr'>@{user.username}</p>
                 </div>
 
                 <div id="img">
-                    <img
+                    <img id='dp'
                         className='profile'
                         src={`https://api.votecity.ng${user.thumbnail?.url}`}
                         alt={user.fullname || "User avatar"}
@@ -111,6 +124,26 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                         </button>
                     </div>
                 </div>
+                <div id="shots-section">
+                    {loadingShots ? (
+                        <p>Loading shots...</p>
+                    ) : shots.length === 0 ? (
+                        <p>No shots found</p>
+                    ) : (
+                        <div className="shots-scroll">
+                            {shots.map(shot => (
+                                <div key={shot.id} className="shot-item">
+                                    <img
+                                        src={`https://api.votecity.ng${shot.photo.url}`}
+                                        alt={shot.text || "User shot"}
+                                        className="shot-thumbnail"
+                                    />
+                                    {/* <p className="shot-text">{shot.text}</p> */}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
             <div id="T">
                 {/* ✅ Toggle Tabs */}
@@ -132,10 +165,9 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                 <div className="tab-content">
                     {activeTab === "listings" ? (
                         <div id="Tt">
-                            <h3></h3>
 
                             {/* 🔹 Sort Buttons */}
-                            <div style={{ display: "flex", gap: "10px", marginBottom: "15px" }}>
+                            <div id='butt' style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
                                 {["upcoming", "ongoing", "ended"].map(option => (
                                     <button
                                         key={option}
@@ -155,21 +187,40 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                                     </button>
                                 ))}
                             </div>
-
+                            <div id="userus">
+                                <img id='dpp'
+                                    className='profilee'
+                                    src={`https://api.votecity.ng${user.thumbnail?.url}`}
+                                    alt={user.fullname || "User avatar"}
+                                />
+                                <div id="us">
+                                    <div id="uss">
+                                        <p>{user.fullname}</p>
+                                        {user.id_verified === 1 && <img src={verified} alt="Verified" />}
+                                    </div>
+                                    <p id='userrr'>{user.username}</p>
+                                </div>
+                            </div>
                             {/* 🔹 Listing Results */}
                             {loadingListings ? (
                                 <p>Loading {sort} listings...</p>
                             ) : listings.length === 0 ? (
-                                <p>No {sort} Post found</p>
+                                <p style={{ textAlign: "center" }}>No {sort} Post found</p>
                             ) : (
                                 <div className='listings-scroll'>
                                     {listings.map(listing => (
                                         <div key={listing.id} className='listing-item'>
-                                            <img
-                                                src={`https://api.votecity.ng${listing.thumbnail?.url}`}
-                                                alt="Listing thumbnail"
-                                            />
-                                            <p>{listing.title || listing.text || "Untitled post"}</p>
+                                            <div className="listing-image-container">
+                                                <img
+                                                    src={`https://api.votecity.ng${listing.thumbnail?.url}`}
+                                                    alt="Listing thumbnail"
+                                                    className="listing-image"
+                                                />
+                                                <p className={`status-label ${sort}`}>
+                                                    {listing.status ? listing.status.charAt(0).toUpperCase() + listing.status.slice(1) : sort}
+                                                </p>
+                                            </div>
+                                            <p className="listing-title">{listing.title || listing.text || "Untitled post"}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -183,6 +234,5 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
         </div>
     );
 }
-
 
 export default UserProfile;

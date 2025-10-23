@@ -1,321 +1,478 @@
 .profile {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
 }
 
 .verified {
-    width: 15px;
-    height: 15px;
-    margin: 3px;
+  width: 15px;
+  height: 15px;
+  margin: 3px;
 }
 
 .user-profile h2 {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .user-profile {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
-    color: rgba(16, 16, 16, 1);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  color: rgba(16, 16, 16, 1);
 }
 
 #O,
 #T {
-    width: 50%;
-    /* background: red; */
+  width: 50%;
+  /* background: red; */
+  padding: 20px;
 }
-#O{
-    padding: 10px;
-    display: flex;
-    gap: 25px;
-    flex-direction: column;
-    align-items: center;
+
+#O {
+  padding: 10px;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+  align-items: center;
 }
-#userNaVe{
-    display: flex;
-    gap: 3px;
+
+#userNaVe {
+  display: flex;
+  gap: 3px;
 }
-#userNaVe img{
-    /* width: 100%; */
-    display: flex;
-    align-self: center;
-    height: 100%;
+
+#userNaVe img {
+  /* width: 100%; */
+  display: flex;
+  align-self: center;
+  height: 100%;
 }
-#name p{
-    text-align: center;
+
+#name p {
+  text-align: center;
 }
-#name{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+
+#name {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap:3px;
 }
-#img{
-    display: flex;
-    justify-content: center;
+
+#img {
+  display: flex;
+  justify-content: center;
 }
-#img img{
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
+
+#img #dp {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
 }
-#follow{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    gap: 25px;
+
+#dpp {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
 }
-#fol{
-    display: flex;
-    gap: 12px;
+
+#follow {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 25px;
 }
-#fol p span{
-    font-weight: bold;
+
+#fol {
+  display: flex;
+  gap: 12px;
 }
-#folBtn{
-    width: 100%;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
+
+#fol p span {
+  font-weight: bold;
 }
-#folBtn .bbb, #cls{
-    width: 190px;
-    background: linear-gradient(90deg,rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1)  50%, rgba(149, 109, 1, 1) 100%);
-    border: 1px solid rgba(41, 41, 41, 1);
-    color: rgba(41, 41, 41, 1);
-    display: flex;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1rem;
-    gap: 12px;
+
+#folBtn {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
-#folBtn img{
-    width: 25px;
-    height: 25px;
+
+#folBtn .bbb,
+#cls {
+  width: 190px;
+  background: linear-gradient(90deg, rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1) 50%, rgba(149, 109, 1, 1) 100%);
+  border: 1px solid rgba(41, 41, 41, 1);
+  color: rgba(41, 41, 41, 1);
+  display: flex;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  gap: 12px;
 }
-#folBtn #btnn{
-    width: 20px;
-    height: 20px;
+
+#folBtn img {
+  width: 25px;
+  height: 25px;
 }
-#folBtn #btnT{
-    background: none;
-    color: rgba(141, 141, 141, 1) ;
-    border: 1px solid rgba(141, 141, 141, 1);
+
+#folBtn #btnn {
+  width: 20px;
+  height: 20px;
 }
-#full{
-    font-size: 1.5rem;
-    font-weight: bold;
+
+#folBtn #btnT {
+  background: none;
+  color: rgba(141, 141, 141, 1);
+  border: 1px solid rgba(141, 141, 141, 1);
 }
-#popOver{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+#full {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
-#popUp{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    flex-direction: column;
-    /* gap: 15px; */
-    width: 400px;
-    height: 40%;
-    background: rgba(16, 16, 16, 1);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+
+#popOver {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#apGo{
-    display: flex;
-    gap: 10px;
+
+#popUp {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-direction: column;
+  /* gap: 15px; */
+  width: 400px;
+  height: 40%;
+  background: rgba(16, 16, 16, 1);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
-#popUp .goAp{
-    background: #fff;
-    /* width: 0; */
-    padding: 12px;
-    display: flex;
-    border: none;
-    border-radius: 100%;
-    /* height: 0; */
+
+#apGo {
+  display: flex;
+  gap: 10px;
 }
-#downn{
-    font-weight: bold;
+
+#popUp .goAp {
+  background: #fff;
+  /* width: 0; */
+  padding: 12px;
+  display: flex;
+  border: none;
+  border-radius: 100%;
+  /* height: 0; */
 }
-#folBtn .goAp img{
-    width: 20px;
-    height: 20px;
+
+#downn {
+  font-weight: bold;
 }
-#cls{
-    width: 90px;
-    padding: 10px;
-    background: linear-gradient(90deg,rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1)  50%, rgba(149, 109, 1, 1) 100%);
+
+#folBtn .goAp img {
+  width: 20px;
+  height: 20px;
 }
+
+#cls {
+  width: 90px;
+  padding: 10px;
+  background: linear-gradient(90deg, rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1) 50%, rgba(149, 109, 1, 1) 100%);
+}
+
 /* =========================
    📸 HORIZONTAL LISTINGS SCROLL (2 at a time)
    ========================= */
-   .listings-scroll {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    overflow-x: auto;            /* 👈 horizontal scroll */
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    padding: 10px;
-    max-width: 80%;
-    height: 300px;
-    border-radius: 12px;
-    background: #020202be;
-    color: #000;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  /* 📦 Each Listing Card */
-  .listing-item {
-    flex: 0 0 calc(90% - 10px);  /* 👈 shows 2 items per view */
-    /* height: 130px; */
-    border-radius: 12px;
-    flex-direction: column;
-    color: #000;
-    max-width: 220px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .listing-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* 🖼️ Image */
-  .listing-item p{
-    color: #000;
-  }
-  .listing-item img {
-    width: 70%;
-    height: 70%;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-  }
-  
-  .listing-item img:hover {
-    transform: scale(1.05);
-  }
-  
-  /* =========================
+.listings-scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  overflow-x: auto;
+  border-radius: 100%;
+  /* 👈 horizontal scroll */
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 0 15px 15px 15px;
+  max-width: 80%;
+  height: 400px;
+  border-radius: 12px;
+  /* background: #020202be; */
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 📦 Each Listing Card */
+.listing-item {
+  flex: 0 0 calc(100% - 10px);
+  /* 👈 shows 2 items per view */
+  /* height: 130px; */
+  border-radius: 10px;
+  flex-direction: column;
+  color: #000;
+  max-width: 100%;
+  /* height: 100%; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* text-align: start; */
+}
+
+.listing-item:hover {
+  transform: translateY(-4px);
+  /* box-shadow: 0 5px 15px rgb(0, 0, 0); */
+}
+
+.listing-image-container {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+/* 🖼️ Image */
+.listing-item .listing-title {
+  color: #ffffff;
+  text-align: start;
+  width: 100%;
+  background: rgb(4, 1, 12);
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-top: 5px;
+  /* border-radius: 40px; */
+  padding: 10px 30px 30px 10px;
+}
+
+.listing-item img {
+  width: 100%;
+  display: flex;
+  align-self: self-start;
+  justify-self: self-start;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+.status-label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+}
+
+/* Optional: color variations for each status */
+.status-label.ended {
+  background: rgb(31, 1, 1) !important;
+  color: red;
+}
+
+.status-label.ongoing {
+  background: rgb(1, 18, 1) !important;
+  color: green;
+}
+
+.status-label.upcoming {
+  background: rgba(255, 165, 0, 0.8) !important;
+}
+#us img{
+  padding-left: 3px;
+  /* width: 10px; */
+  height: 20px;
+}
+#userus {
+  display: flex;
+  /* margin-top: 20px; */
+  /* border: 1px solid rgba(128, 128, 128, 0.182); */
+  gap: 20px;
+  padding: 6px;
+  border-radius: 10px;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+#uss {
+  display: flex;
+  align-items: center;
+}
+#userrr{
+  color: #ffffffb4;
+}
+#userus .profilee {
+  width: 60px;
+  /* border-radius: ; */
+  height: 60px;
+}
+
+#butt {
+  margin-top: 20px;
+  background: rgb(4, 1, 12);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+
+
+/* =========================
      🌈 FANCY SCROLLBAR
      ========================= */
-  .listings-scroll::-webkit-scrollbar {
-    height: 8px;
+.listings-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.listings-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.listings-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #8e44ad, #3498db);
+  border-radius: 10px;
+}
+
+.listings-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #9b59b6, #2980b9);
+}
+
+/* Firefox scrollbar */
+.listings-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(108, 69, 0, 1) rgba(0, 0, 0, 0.1);
+}
+
+#T {
+  padding: 30px;
+}
+
+#T .tab-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+#T .tab-btn {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.shot-item img {
+  width: 85px;
+  height: 115px;
+  border-radius: 5px;
+}
+
+#shots-section {
+  width: 100%;
+}
+
+.shots-scroll {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.shot-item {
+  display: flex;
+  gap: 10px;
+}
+
+#T button {
+  background: none;
+  cursor: pointer;
+  padding-bottom: 15px;
+  border: none;
+  font-size: 0.9rem;
+}
+
+#T .active {
+  /* color: red; */
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  text-decoration-color: #fff;
+  font-weight: bolder;
+}
+
+#Tt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-tabs {
+  gap: 20px;
+  border-bottom: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width:768px) and (min-width:200px) {
+  .user-profile {
+    flex-direction: column;
   }
-  
-  .listings-scroll::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
+
+  #O,
+  #T {
+    width: 100%;
   }
-  
-  .listings-scroll::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, #8e44ad, #3498db);
-    border-radius: 10px;
-  }
-  
-  .listings-scroll::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(90deg, #9b59b6, #2980b9);
-  }
-  
-  /* Firefox scrollbar */
+
   .listings-scroll {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(108, 69, 0, 1) rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: 290px;
   }
-  #T{
-    padding: 30px;
+
+  .listing-item {
+    max-width: 100%;
+    height: 270px;
+
+
   }
-  #T .tab-btn img{
+
+  #folBtn .bbb,
+  #cls {
+    width: 150px;
+    padding: 12px;
+    font-size: 0.9rem;
+    gap: 10px;
+  }
+
+  #folBtn #btnn {
+    width: 15px;
+    height: 15px;
+  }
+
+  #folBtn img {
     width: 20px;
     height: 20px;
   }
-  #T .tab-btn{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  #T button{
-    background: none;
-    cursor: pointer;
-    padding-bottom: 15px;
-    border: none;
-    font-size: 0.9rem;
-  }
-  #T .active{
-    /* color: red; */
-    text-decoration: underline;
-    text-underline-offset: 7px;
-    text-decoration-color: #fff;
-    font-weight: bolder;
-  }
-  #Tt{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  .profile-tabs{
-    gap: 20px;
-    border-bottom: 1px solid #fff;
-    display: flex;
-    justify-content: center;
-  }
-  @media (max-width:768px) and (min-width:200px) {
-    .user-profile{
-        flex-direction: column;
-    }
-    #O,#T{
-        width: 100%;
-    }
-    .listings-scroll{
-        max-width: 100%;
-        height: 220px;
-    }
-    .listing-item{
-        max-width: 200px;
-    }
-    #folBtn .bbb, #cls {
-        width: 150px;
-        padding: 12px;
-        font-size: 0.9rem;
-        gap: 10px;
-    }
-    #folBtn #btnn {
-        width: 15px;
-        height: 15px;
-    }
-    #folBtn img {
-        width: 20px;
-        height: 20px;
-  }
 
-  }
+}

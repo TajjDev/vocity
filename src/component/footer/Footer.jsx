@@ -171,4 +171,3 @@ const Footer = ({ onShowP, onShowPP }) => {
 
 
 export default Footer
-
