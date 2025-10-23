@@ -10,7 +10,7 @@ const App = () => {
     <>
     <ProfileII />
     {/* <UserProfile/> */}
-    <UserCreation/>
+    
     {/* <BrowserRouter> */}
       {/* <Routes> */}
         {/* <Route path='/' element={""}/> */}
