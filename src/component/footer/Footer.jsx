@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 // import React from 'react'
 import "./footer.css"
 import face from "/src/assets/image/facebk.png"
@@ -49,14 +50,14 @@ const Footer = ({ onShowP, onShowPP }) => {
 
 
   const goToSection = (sectionId) => {
-    navigate("/");
-    setTimeout(() => {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 500); 
-  };
+  navigate("/"); // Go to homepage
+  setTimeout(() => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }, 500); // Wait for homepage to load
+};
   
     return (
         <div id='Footer'>
@@ -69,10 +70,10 @@ const Footer = ({ onShowP, onShowPP }) => {
                         </div>
                         <div id="links">
                             <div id="linkone">
-                                <a onClick={(e) => { e.preventDefault(); scrollToHeader(); handleLinkClick('home');goToSection("render") }} href="#">Home</a>
-                                <a onClick={() => { scrollToFeatures(), handleLinkClick('features'): goToSection("Features"); }} href="#features">Features</a>
-                                <a onClick={() => { scrollToAbout(); handleLinkClick('About'); goToSection("About"); }} href="#aboutus">About us</a>
-                                <a onClick={(e) => { e.preventDefault(); scrollToHowItWorks(); handleLinkClick('howitwork'); goToSection("howitwork"); }} href="#howitwork">How it works</a>
+                                <a onClick={(e) => { e.preventDefault() ;goToSection("render") }} href="#">Home</a>
+                                <a onClick={() => {  goToSection("Features"); }} href="#features">Features</a>
+                                <a onClick={() => {  goToSection("About"); }} href="#aboutus">About us</a>
+                                <a onClick={(e) => { e.preventDefault(); goToSection("howitwork"); }} href="#howitwork">How it works</a>
                                 <a href="#">Download</a>
                             </div>
                             <div id="linktwo">
@@ -170,3 +171,4 @@ const Footer = ({ onShowP, onShowPP }) => {
 
 
 export default Footer
+
