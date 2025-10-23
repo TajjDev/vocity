@@ -259,7 +259,7 @@
   color: #ffffff;
   text-align: start;
   width: 100%;
-  background: rgb(16, 14, 34);
+  background: rgb(4, 1, 26);
   border-radius: 10px;
   height: 100px;
   padding-left: 10px;
@@ -336,7 +336,7 @@
 
 #butt {
   margin-top: 20px;
-  background: rgb(16, 14, 34);
+  background: rgb(4, 1, 26);
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -373,7 +373,7 @@
 }
 
 #T {
-  padding: 30px;
+  /* padding: 30px; */
 }
 
 #T .tab-btn img {
