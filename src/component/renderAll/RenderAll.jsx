@@ -17,17 +17,27 @@ const RenderAll = () => {
 
 
     return (
-        <div id='render'>
-            <div id="navAndHead">
-                {/* <Nav/> */}
-                <Header/>
-            </div>
-            <Features/>
-            <AboutUs/>
-            <HowItWorks/>
-            <Ready/>
-        </div>
+    <div id='render'>
+      <div id="navAndHead">
+        <Header />
+      </div>
+
+      <section id="features">
+        <Features />
+      </section>
+
+      <section id="about-us">
+        <AboutUs />
+      </section>
+
+      <section id="how-it-works">
+        <HowItWorks />
+      </section>
+
+      <Ready />
+    </div>
     )
 }
+
 
 export default RenderAll
