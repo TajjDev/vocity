@@ -343,7 +343,8 @@ function UserProfile({ userId}) {
                                 ) : (
                                     <ul style={{ listStyle: "none",width: "100%", padding: 0 }}>
                                         {list.map((item) => (
-                                            <li
+                                            <a href={`https://vocity.vercel.app/user/${item?.user_id}`}>
+                                            <li 
                                                 key={item.user_id}
                                                 style={{
                                                     display: "flex",
@@ -381,6 +382,7 @@ function UserProfile({ userId}) {
                                                     />
                                                 )}
                                             </li>
+                                            </a>
                                         ))}
                                     </ul>
                                 )
