@@ -345,7 +345,7 @@ function UserProfile({ userId}) {
                                         {list.map((item) => (
                                             <li
                                             key={item.user_id}
-                                            onClick={() => window.open(`https://vocity.vercel.app/user/${item.user_id}`)}
+                                            onClick={() => (window.location.href = `https://vocity.vercel.app/user/${item.user_id}`)}
                                             style={{
                                               display: "flex",
                                               alignItems: "center",
@@ -427,3 +427,4 @@ function UserProfile({ userId}) {
 }
 
 export default UserProfile;
+
