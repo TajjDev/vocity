@@ -390,8 +390,10 @@
 }
 
 .shot-item img {
-  width: 85px;
-  height: 115px;
+  width: 96px;
+  padding: 3px;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.397);
   border-radius: 5px;
 }
 
@@ -399,20 +401,30 @@
   width: 100%;
 }
 
+/* 📦 Each Listing Card */
 .shots-scroll {
-  width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: row;
+  gap: 15px;
   overflow-x: auto;
+  border-radius: 100%;
   /* 👈 horizontal scroll */
   overflow-y: hidden;
   scroll-behavior: smooth;
+  padding: 3px;
+  max-width: 100%;
+  height: 150px;
+  border-radius: 5px;
+  /* background: #020202be; */
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
-
 .shot-item {
   display: flex;
   gap: 10px;
+  max-width: 100%;
+  /* flex: 0 0 calc(100% - 10px); */
+
 }
 
 #T button {
@@ -484,9 +496,13 @@
     height: 20px;
   }
 
+
 }
-
-
+@media (max-width:425px) and (min-width:200px) {
+  #popUp{
+    width: 300px;
+  }
+}
 
 
 

@@ -13,7 +13,7 @@ const ProfileII = () => {
 
             <Routes>
                 <Route path='/' element={<RenderAll />} />
-                <Route path='/profile/:userID' element={<UserProWrap />} />k
+                <Route path='/user/:userID' element={<UserProWrap />} />
             </Routes>
 
             <Footer />      {/* Always visible */}
@@ -27,6 +27,4 @@ function UserProWrap() {
     return <UserProfile userId={userID} />;
 }
 
-
 export default ProfileII;
-
