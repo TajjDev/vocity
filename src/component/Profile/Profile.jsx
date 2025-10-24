@@ -343,46 +343,77 @@ function UserProfile({ userId}) {
                                 ) : (
                                     <ul style={{ listStyle: "none",width: "100%", padding: 0 }}>
                                         {list.map((item) => (
-                                            <a href={`https://vocity.vercel.app/user/${item?.user_id}`}>
-                                            <li 
-                                                key={item.user_id}
+                                            <li
+                                            key={item.user_id}
+                                            onClick={() => window.open(`https://vocity.vercel.app/user/${item.user_id}`)}
+                                            style={{
+                                              display: "flex",
+                                              alignItems: "center",
+                                              gap: "10px",
+                                              marginBottom: "15px",
+                                              background: "rgba(255,255,255,0.02)",
+                                              padding: "10px",
+                                              borderRadius: "8px",
+                                              width: "100%",
+                                              marginInline: "auto",
+                                              cursor: "pointer",
+                                              textDecoration: "none",     // removes any underline on hover
+                                              color: "inherit",           // keeps inherited text color
+                                              transition: "background 0.2s ease",
+                                            }}
+                                            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+                                            onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.02)")}
+                                          >
+                                            <img
+                                              src={
+                                                item.thumbnail?.url
+                                                  ? `https://api.votecity.ng${item.thumbnail.url}`
+                                                  : alt
+                                              }
+                                              alt={item.username}
+                                              style={{
+                                                width: "45px",
+                                                height: "45px",
+                                                borderRadius: "50%",
+                                                objectFit: "cover",
+                                              }}
+                                            />
+                                          
+                                            <div>
+                                              <p
                                                 style={{
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    gap: "10px",
-                                                    marginBottom: "15px",
-                                                    background: "rgba(255,255,255,0.02)",
-                                                    padding: "10px",
-                                                    borderRadius: "8px",
-                                                    width: "100%",
-                                                    marginInline: "auto",
+                                                  margin: 0,
+                                                  display: "flex",
+                                                  fontSize: "0.9rem",
+                                                  fontWeight: "bold",
+                                                  color: "#fff",
                                                 }}
-                                            >
-                                                <img
-                                                    src={item.thumbnail?.url ? `https://api.votecity.ng${item.thumbnail?.url}` : alt}
-                                                    alt={item.username}
-                                                    style={{
-                                                        width: "45px",
-                                                        height: "45px",
-                                                        borderRadius: "50%",
-                                                        objectFit: "cover",
-                                                    }}
-                                                />
-                                                <div>
-                                                    <p style={{ margin: 0, display:"flex", fontSize:"0.9rem", fontWeight: "bold", color: "#fff" }}>{item.fullname} {item.id_verified === 1 && <img style={{height:"15px",paddingLeft:"2px", display:"flex", alignSelf:"center"}} src={verified} alt="Verified" />}</p>
-                                                    <p style={{ margin: 0, fontSize:"0.75rem", color: "rgba(255,255,255,0.6)" }}>
-                                                        @{item.username}
-                                                    </p>
-                                                </div>
+                                              >
+                                                {item.fullname}
                                                 {item.id_verified === 1 && (
-                                                    <img
-                                                        src={verified}
-                                                        alt="Verified"
-                                                        style={{ width: "16px", height: "16px", marginLeft: "auto" }}
-                                                    />
+                                                  <img
+                                                    style={{
+                                                      height: "15px",
+                                                      paddingLeft: "2px",
+                                                      display: "flex",
+                                                      alignSelf: "center",
+                                                    }}
+                                                    src={verified}
+                                                    alt="Verified"
+                                                  />
                                                 )}
-                                            </li>
-                                            </a>
+                                              </p>
+                                              <p
+                                                style={{
+                                                  margin: 0,
+                                                  fontSize: "0.75rem",
+                                                  color: "rgba(255,255,255,0.6)",
+                                                }}
+                                              >
+                                                @{item.username}
+                                              </p>
+                                            </div>
+                                          </li>
                                         ))}
                                     </ul>
                                 )
