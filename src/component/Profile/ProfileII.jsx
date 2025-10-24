@@ -13,7 +13,7 @@ const ProfileII = () => {
 
             <Routes>
                 <Route path='/' element={<RenderAll />} />
-                <Route path='/user/:userID' element={<UserProWrap />} />
+                <Route path='/profile/:userID' element={<UserProWrap />} />
             </Routes>
 
             <Footer />      {/* Always visible */}
