@@ -368,8 +368,8 @@ function UserProfile({ userId}) {
                                                     }}
                                                 />
                                                 <div>
-                                                    <p style={{ margin: 0, fontWeight: "bold", color: "#fff" }}>{item.fullname}</p>
-                                                    <p style={{ margin: 0, fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>
+                                                    <p style={{ margin: 0, display:"flex", fontSize:"0.9rem", fontWeight: "bold", color: "#fff" }}>{item.fullname} {item.id_verified === 1 && <img style={{height:"15px",paddingLeft:"2px", display:"flex", alignSelf:"center"}} src={verified} alt="Verified" />}</p>
+                                                    <p style={{ margin: 0, fontSize:"0.75rem", color: "rgba(255,255,255,0.6)" }}>
                                                         @{item.username}
                                                     </p>
                                                 </div>
@@ -394,4 +394,3 @@ function UserProfile({ userId}) {
 }
 
 export default UserProfile;
-
