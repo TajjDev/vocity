@@ -12,6 +12,7 @@ import participant from '/src/assets/image/participant.png';
 import comment from '/src/assets/image/comment.png';
 import saved from '/src/assets/image/saves.png';
 import alt from '/src/assets/image/alt.jpg';
+import load from '/src/assets/image/load.png';
 import ongoing from '/src/assets/image/ongoing.png';
 import upcoming from '/src/assets/image/upcoming.png';
 import ended from '/src/assets/image/ended.png';
@@ -37,7 +38,7 @@ function UserProfile({ userId}) {
     const BASE_URL_USER = "https://api.votecity.ng/v1/user";
     const BASE_URL_LISTINGS = "https://api.votecity.ng/v1/post/create/listings";
     const BASE_URL_SHOTS = "https://api.votecity.ng/v1/shot/user";
-    const Link = `https://vocity.vercel.app/user/${userId}`;
+    const Link = `https://vocity.vercel.app/profile/${userId}`;
 
     // 🔹 Fetch followers/following
     const fetchFollowData = () => {
@@ -125,11 +126,11 @@ function UserProfile({ userId}) {
             .finally(() => setLoadingShots(false));
     }, [userId]);
 
-    if (loadingUser) return <p>Loading user profile...</p>;
+    if (loadingUser) return <div  style={{width:"100%", height:"100vh", display:"flex", alignItems:"center", justifyContent:"center"}} > <img src={load} alt="" /></div>;
     if (!user) return <p>No user found</p>;
     userId = user.user_id
     return (
-        <div className="user-profile">
+        <div className="user-profile" style={{opacity:loadingUser ? 0.6 : 1, transition:"opacity 0.3s ease"}}>
             <div id="O">
                 <div id="name">
                     <div id="userNaVe">
@@ -345,7 +346,7 @@ function UserProfile({ userId}) {
                                         {list.map((item) => (
                                             <li
                                             key={item.user_id}
-                                            onClick={() => (window.location.href = `https://vocity.vercel.app/user/${item.user_id}`)}
+                                            onClick={() => (window.location.href = `https://vocity.vercel.app/profile/${item.user_id}`)}
                                             style={{
                                               display: "flex",
                                               alignItems: "center",
@@ -427,4 +428,3 @@ function UserProfile({ userId}) {
 }
 
 export default UserProfile;
-
