@@ -7,8 +7,16 @@ import apple from '/src/assets/image/Apple.png';
 import creation from '/src/assets/image/creation.png';
 import folllow from '/src/assets/image/follows.png';
 import google from '/src/assets/image/Google.png';
+import view from '/src/assets/image/view.png';
+import participant from '/src/assets/image/participant.png';
+import comment from '/src/assets/image/comment.png';
+import saved from '/src/assets/image/saves.png';
+import alt from '/src/assets/image/alt.jpg';
+import ongoing from '/src/assets/image/ongoing.png';
+import upcoming from '/src/assets/image/upcoming.png';
+import ended from '/src/assets/image/ended.png';
 
-function UserProfile({ userId = "USER-17468269976523805" }) {
+function UserProfile({ userId}) {
     const [user, setUser] = useState(null);
     const [listings, setListings] = useState([]);
     const [loadingUser, setLoadingUser] = useState(true);
@@ -18,13 +26,53 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
     const [showPopup, setShowPopup] = useState(false);
     const [Copied, setCopied] = useState(false);
     const [shots, setShots] = useState([]);
-    const [loadingShots, setLoadingShots] = useState(true)
+    const [loadingShots, setLoadingShots] = useState(true);
+    const [sortII, setSortII] = useState("followers");
+    const [page, setPage] = useState(1);
+    const [q, setQ] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [list, setList] = useState([]);
+
     const BASE_URL_USER = "https://api.votecity.ng/v1/user";
     const BASE_URL_LISTINGS = "https://api.votecity.ng/v1/post/create/listings";
     const BASE_URL_SHOTS = "https://api.votecity.ng/v1/shot/user";
-
     const Link = `https://vocity.vercel.app/user/${userId}`;
 
+    // 🔹 Fetch followers/following
+    const fetchFollowData = () => {
+        setLoading(true);
+        setError("");
+
+        const params = new URLSearchParams({
+            sort: sortII,
+            ...(q && { q }),
+        });
+
+        fetch(`https://api.votecity.ng/v1/user/follow/${userId}?${params}`)
+            .then((res) => {
+                if (!res.ok) throw new Error(`Status ${res.status}`);
+                return res.json();
+            })
+            .then((data) => {
+                console.log("Follow data:", data);
+                const followList = data?.data?.follows || [];
+                setList(Array.isArray(followList) ? followList : []);
+            })
+            .catch((err) => {
+                console.error("Error fetching follow data:", err);
+                setError("Failed to load followers/following");
+            })
+            .finally(() => setLoading(false));
+    };
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            fetchFollowData();
+        }, 500);
+        return () => clearTimeout(timeout);
+    }, [sortII, q]);
+
+    // 🔹 Copy profile link
     const handleCopy = () => {
         navigator.clipboard.writeText(Link);
         setCopied(true);
@@ -63,21 +111,23 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
             .catch(err => console.error("Fetch listings error:", err))
             .finally(() => setLoadingListings(false));
     }, [userId, sort]);
+
+    // 🔹 Fetch Shots
     useEffect(() => {
         setLoadingShots(true);
         fetch(`${BASE_URL_SHOTS}/${userId}`)
             .then(res => res.json())
             .then(data => {
                 console.log("shots:", data);
-                setShots(data?.data?.shots || [])
+                setShots(data?.data?.shots || []);
             })
             .catch(err => console.error("Fetch shots error:", err))
             .finally(() => setLoadingShots(false));
-    }, [])
+    }, [userId]);
 
     if (loadingUser) return <p>Loading user profile...</p>;
     if (!user) return <p>No user found</p>;
-
+    userId = user.user_id
     return (
         <div className="user-profile">
             <div id="O">
@@ -90,14 +140,15 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                 </div>
 
                 <div id="img">
-                    <img id='dp'
+                    <img
+                        id='dp'
                         className='profile'
-                        src={`https://api.votecity.ng${user.thumbnail?.url}`}
+                        src={user.thumbnail?.url ? `https://api.votecity.ng${user.thumbnail?.url}` : alt}
                         alt={user.fullname || "User avatar"}
                     />
                 </div>
 
-                <div id="follow">
+                <div id="followw">
                     <div id="fol">
                         <p><span>{user.following}</span> Following</p>
                         <p><span>{user.followers}</span> Followers</p>
@@ -106,6 +157,7 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                         <button className='bbb' onClick={() => setShowPopup(true)}>
                             Follow <img id='btnn' src={follow} alt="" />
                         </button>
+
                         {showPopup && (
                             <div id='popOver'>
                                 <div id='popUp'>
@@ -115,20 +167,23 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                                         <a href="" className='goAp'><img src={apple} alt="" /></a>
                                     </div>
                                     <p>Available both on <br />Play store and Apple store</p>
-                                    <button id='cls' onClick={() => setShowPopup(false)}>close</button>
+                                    <button id='cls' onClick={() => setShowPopup(false)}>Close</button>
                                 </div>
                             </div>
                         )}
+
                         <button onClick={handleCopy} className='bbb' id='btnT'>
                             Share Profile <img src={share} alt="" />
                         </button>
                     </div>
                 </div>
+
+                {/* 🔹 Shots */}
                 <div id="shots-section">
                     {loadingShots ? (
                         <p>Loading shots...</p>
                     ) : shots.length === 0 ? (
-                        <p style={{textAlign:"center"}}>No shots uploaded</p>
+                        <p style={{ textAlign: "center" }}>No shots uploaded</p>
                     ) : (
                         <div className="shots-scroll">
                             {shots.map(shot => (
@@ -138,18 +193,19 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                                         alt={shot.text || "User shot"}
                                         className="shot-thumbnail"
                                     />
-                                    {/* <p className="shot-text">{shot.text}</p> */}
                                 </div>
                             ))}
                         </div>
                     )}
                 </div>
             </div>
+
+            {/* 🔹 Tabs Section */}
             <div id="T">
-                {/* ✅ Toggle Tabs */}
                 <div className="profile-tabs">
                     <button
-                        className={`tab-btn ${activeTab === "listings" ? "active" : ""}`} onClick={() => setActiveTab("listings")}
+                        className={`tab-btn ${activeTab === "listings" ? "active" : ""}`}
+                        onClick={() => setActiveTab("listings")}
                     >
                         <img src={creation} alt="" /> Creations
                     </button>
@@ -157,16 +213,14 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                         className={`tab-btn ${activeTab === "followers" ? "active" : ""}`}
                         onClick={() => setActiveTab("followers")}
                     >
-                        <img src={folllow} alt="" />  Follows
+                        <img src={folllow} alt="" /> Follows
                     </button>
                 </div>
 
-                {/* ✅ Tab Content */}
+                {/* 🔹 Tab Content */}
                 <div className="tab-content">
                     {activeTab === "listings" ? (
                         <div id="Tt">
-
-                            {/* 🔹 Sort Buttons */}
                             <div id='butt' style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
                                 {["upcoming", "ongoing", "ended"].map(option => (
                                     <button
@@ -176,7 +230,7 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                                             padding: "8px 15px",
                                             borderRadius: "5px",
                                             fontWeight: sort === option ? "bolder" : "",
-                                            border: sort === option ? "none" : "none",
+                                            border: "none",
                                             background: sort === option ? "#fff" : "transparent",
                                             color: sort === option ? "rgba(41, 41, 41, 1)" : "#fff",
                                             cursor: "pointer"
@@ -186,25 +240,12 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                                     </button>
                                 ))}
                             </div>
-                            <div id="userus">
-                                <img id='dpp'
-                                    className='profilee'
-                                    src={`https://api.votecity.ng${user.thumbnail?.url}`}
-                                    alt={user.fullname || "User avatar"}
-                                />
-                                <div id="us">
-                                    <div id="uss">
-                                        <p>{user.fullname}</p>
-                                        {user.id_verified === 1 && <img src={verified} alt="Verified" />}
-                                    </div>
-                                    <p id='userrr'>{user.username}</p>
-                                </div>
-                            </div>
-                            {/* 🔹 Listing Results */}
+
+                            {/* 🔹 Listings */}
                             {loadingListings ? (
                                 <p>Loading {sort} listings...</p>
                             ) : listings.length === 0 ? (
-                                <p style={{ textAlign: "center" }}>No {sort} Post found</p>
+                                <p style={{ textAlign: "center" }}>No {sort} posts found</p>
                             ) : (
                                 <div className='listings-scroll'>
                                     {listings.map(listing => (
@@ -219,14 +260,132 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
                                                     {listing.status ? listing.status.charAt(0).toUpperCase() + listing.status.slice(1) : sort}
                                                 </p>
                                             </div>
-                                            <p className="listing-title">{listing.title || listing.text || "Untitled post"}</p>
+
+                                            <div className="listing-title">
+                                                <p>{listing.title || listing.text || "Untitled post"}</p>
+                                                <div id="views">
+                                                    <p><img src={comment} alt="" />{listing.comments_count}</p>
+                                                    <p><img src={participant} alt="" />{listing.participants_count}</p>
+                                                    <p><img src={saved} alt="" />{listing.saves_count}</p>
+                                                    <p><img src={view} alt="" />{listing.view_count}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
                             )}
                         </div>
                     ) : (
-                        <p className="followers-text">My Followers</p>
+                        <div id="follow">
+                            {/* <h3 style={{ textAlign: "center", marginBottom: "15px", color: "#fff" }}> */}
+                                {/* {sortII === "followers" ? "Followers" : "Following"} */}
+                            {/* </h3> */}
+
+                            {/* Toggle between Followers / Following */}
+                            <div style={{ marginTop:"20px", display: "flex", justifyContent: "center", gap: "10px" }}>
+                                <button
+                                    onClick={() => {setSortII("followers"); setQ("")}}
+                                    style={{
+                                        padding: "8px 16px",
+                                        borderRadius: "6px",
+                                        border: "none",
+                                        cursor: "pointer",
+                                        background: sortII === "followers" ? "#fff" : "none",
+                                        color: sortII === "followers" ? "#000" : "#fff",
+                                        fontWeight: sortII === "followers" ? "bold" : "normal",
+                                    }}
+                                >
+                                    Followers
+                                </button>
+                                <button
+                                    onClick={() => {setSortII("following"); setQ("")}}
+                                    style={{
+                                        padding: "8px 16px",
+                                        borderRadius: "6px",
+                                        border: "none",
+                                        cursor: "pointer",
+                                        background: sortII === "following" ? "#fff" : "none",
+                                        color: sortII === "following" ? "#000" : "#fff",
+                                        fontWeight: sortII === "following" ? "bold" : "normal",
+                                    }}
+                                >
+                                    Following
+                                </button>
+                            </div>
+
+                            {/* Search box */}
+                            <input
+                                placeholder={`Search ${sortII}...`}
+                                value={q}
+                                onChange={(e) => setQ(e.target.value)}
+                                style={{
+                                    padding: "15px 12px",
+                                    width: "100%",
+                                    display: "block",
+                                    borderRadius: "5px",
+                                    border: "1px solid rgba(141, 141, 141, 1)",
+                                    background: "rgb(13, 18, 28)",
+                                    color: "#ffffff99",
+                                    outline: "none",
+                                }}
+                            />
+
+                            {/* Status messages */}
+                            {loading && <p style={{ textAlign: "center", color: "#aaa" }}>Loading...</p>}
+                            {error && <p style={{ textAlign: "center", color: "red" }}>{error}</p>}
+
+                            {/* Followers / Following list */}
+                            {!loading && !error && (
+                                list.length === 0 ? (
+                                    <p style={{ textAlign: "center", color: "#fff", marginTop: "20px" }}>
+                                        {sortII === "followers" ? "No followers found" : "No followings found"}
+                                    </p>
+                                ) : (
+                                    <ul style={{ listStyle: "none",width: "100%", padding: 0 }}>
+                                        {list.map((item) => (
+                                            <li
+                                                key={item.user_id}
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "10px",
+                                                    marginBottom: "15px",
+                                                    background: "rgba(255,255,255,0.02)",
+                                                    padding: "10px",
+                                                    borderRadius: "8px",
+                                                    width: "100%",
+                                                    marginInline: "auto",
+                                                }}
+                                            >
+                                                <img
+                                                    src={item.thumbnail?.url ? `https://api.votecity.ng${item.thumbnail?.url}` : alt}
+                                                    alt={item.username}
+                                                    style={{
+                                                        width: "45px",
+                                                        height: "45px",
+                                                        borderRadius: "50%",
+                                                        objectFit: "cover",
+                                                    }}
+                                                />
+                                                <div>
+                                                    <p style={{ margin: 0, fontWeight: "bold", color: "#fff" }}>{item.fullname}</p>
+                                                    <p style={{ margin: 0, fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>
+                                                        @{item.username}
+                                                    </p>
+                                                </div>
+                                                {item.id_verified === 1 && (
+                                                    <img
+                                                        src={verified}
+                                                        alt="Verified"
+                                                        style={{ width: "16px", height: "16px", marginLeft: "auto" }}
+                                                    />
+                                                )}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )
+                            )}
+                        </div>
                     )}
                 </div>
             </div>
@@ -234,8 +393,4 @@ function UserProfile({ userId = "USER-17468269976523805" }) {
     );
 }
 
-
 export default UserProfile;
-
-
-

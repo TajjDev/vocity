@@ -296,7 +296,7 @@
 }
 
 /* Show it only on small screens (≤ 424px) */
-@media (max-width: 424px) {
+@media (max-width: 430px) {
     .mobile-nav {
         display: block;
         position: fixed;

@@ -80,14 +80,23 @@
   border-radius: 100%;
 }
 
-#follow {
+#followw {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
   gap: 25px;
 }
-
+#follow {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: start;
+  gap: 15px;
+}
+#follow input::placeholder{
+  color:#ffffff99 ;
+}
 #fol {
   display: flex;
   gap: 12px;
@@ -253,23 +262,30 @@
   width: 100%;
   display: inline-block;
 }
-
+.listing-item #views{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
 /* 🖼️ Image */
 .listing-item .listing-title {
   color: #ffffff;
   text-align: start;
+  justify-content: space-between;
   width: 100%;
   background: rgb(13, 18, 28);
   border-radius: 10px;
-  height: 80px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
   padding-left: 10px;
   margin-top: 5px;
   border: 1px solid #ffffff11;
   /* border-radius: 40px; */
-  padding: 10px 30px 30px 10px;
+  padding: 10px 30px 10px 10px;
 }
 
-.listing-item img {
+.listing-item .listing-image-container img {
   width: 100%;
   display: flex;
   align-self: self-start;
@@ -278,6 +294,18 @@
   object-fit: cover;
   border-radius: 12px;
   transition: transform 0.3s ease;
+}
+.listing-title #views p{
+  display: flex;
+  font-size: 0.75rem;
+  align-items: center;
+  /* font-weight: bold; */
+}
+.listing-title img{
+  /* width: 20px; */
+  padding-right: 6px;
+  padding-left: 10px;
+  height: 15px;
 }
 .status-label {
   position: absolute;
@@ -295,16 +323,17 @@
 /* Optional: color variations for each status */
 .status-label.ended {
   background: rgb(31, 1, 1) !important;
-  color: red;
+  color: #ff0000;
 }
 
 .status-label.ongoing {
   background: rgb(1, 18, 1) !important;
-  color: green;
+  color: #008000;
 }
 
 .status-label.upcoming {
-  background: rgba(255, 165, 0, 0.8) !important;
+  background: rgba(158, 155, 155, 0.8) !important;
+  color: white;
 }
 #us img{
   padding-left: 3px;
@@ -337,11 +366,11 @@
 
 #butt {
   margin-top: 20px;
-  background: rgb(13, 18, 28);
-  border: 1px solid #ffffff11;
-  padding: 15px;
+  /* background: rgb(13, 18, 28); */
+  /* border: 1px solid #ffffff11; */
+  /* padding: 15px; */
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   border-radius: 10px;
 }
 
@@ -372,10 +401,6 @@
 .listings-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(108, 69, 0, 1) rgba(0, 0, 0, 0.1);
-}
-
-#T {
-  /* padding: 30px; */
 }
 
 #T .tab-btn img {
@@ -468,12 +493,12 @@
 
   .listings-scroll {
     max-width: 100%;
-    height: 310px;
+    height: 330px;
   }
 
   .listing-item {
     max-width: 100%;
-    height: 280px;
+    height: 300px;
 
 
   }
