@@ -183,7 +183,7 @@ function UserProfile({ userId}) {
                     {loadingShots ? (
                         <p>Loading shots...</p>
                     ) : shots.length === 0 ? (
-                        <p style={{ textAlign: "center" }}>No shots uploaded</p>
+                        <p style={{ textAlign: "center" }}></p>
                     ) : (
                         <div className="shots-scroll">
                             {shots.map(shot => (
@@ -394,3 +394,4 @@ function UserProfile({ userId}) {
 }
 
 export default UserProfile;
+
