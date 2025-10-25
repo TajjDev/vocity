@@ -10,7 +10,7 @@ const MobileMenu = () => {
   const location = useLocation();
   const [animationOut, setAnimationOut] = useState(false);
   const [animationin, setAnimationin] = useState(false)
-  const isUserProfile = location.pathname.startsWith("/user/")
+  const isUserProfile = location.pathname.startsWith("/profile/")
 
   const openMenu = () => {
     // setAnimationOut(false);
@@ -105,3 +105,4 @@ const MobileMenu = () => {
 
 
 export default MobileMenu;
+
