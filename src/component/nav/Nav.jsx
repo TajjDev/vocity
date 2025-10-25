@@ -6,7 +6,7 @@ import MobileMenu from './MobileMenu'
 
 const Nav = () => {
   const location = useLocation();
-  const isUserProfile = location.pathname.startsWith("/user/")
+  const isUserProfile = location.pathname.startsWith("/profile/")
   const [activeLink, setActiveLink] = useState('home')
   const handleLinkClick = (link) => {
     setActiveLink(link)
@@ -118,5 +118,6 @@ const Nav = () => {
     </div>
   )
 }
+
 
 export default Nav
