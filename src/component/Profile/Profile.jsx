@@ -142,6 +142,7 @@ function UserProfile({ userId}) {
 
                 <div id="img">
                     <img
+                        style={{objectFit: "cover", objectPosition: "center"}}
                         id='dp'
                         className='profile'
                         src={user.thumbnail?.url ? `https://api.votecity.ng${user.thumbnail?.url}` : alt}
@@ -190,6 +191,7 @@ function UserProfile({ userId}) {
                             {shots.map(shot => (
                                 <div key={shot.id} className="shot-item">
                                     <img
+                                        style={{objectFit: "cover", objectPosition: "center"}}
                                         src={`https://api.votecity.ng${shot.photo.url}`}
                                         alt={shot.text || "User shot"}
                                         className="shot-thumbnail"
@@ -428,3 +430,4 @@ function UserProfile({ userId}) {
 }
 
 export default UserProfile;
+
