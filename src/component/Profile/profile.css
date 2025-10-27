@@ -22,7 +22,9 @@
   width: 100%;
   color: rgba(16, 16, 16, 1);
 }
-
+#fol p{
+  font-size: 1.2rem;
+}
 #O,
 #T {
   width: 50%;
@@ -31,7 +33,7 @@
 }
 
 #O {
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
   gap: 25px;
   flex-direction: column;
@@ -123,6 +125,7 @@
   padding: 15px;
   border-radius: 10px;
   text-align: center;
+  align-items: center;
   justify-content: center;
   font-weight: bold;
   font-size: 1rem;
@@ -370,6 +373,7 @@
   /* border: 1px solid #ffffff11; */
   /* padding: 15px; */
   display: flex;
+  gap: 10px;
   /* justify-content: center; */
   border-radius: 10px;
 }
@@ -455,11 +459,14 @@
 #T button {
   background: none;
   cursor: pointer;
+  /* padding: 8px 15px; */
   padding-bottom: 15px;
   border: none;
   font-size: 0.9rem;
 }
-
+#butt button{
+  padding: 8px 15px;
+}
 #T .active {
   /* color: red; */
   text-decoration: underline;
@@ -480,8 +487,30 @@
   display: flex;
   justify-content: center;
 }
+@media (max-width:900px) and (min-width:769px) {
+  .listings-scroll{
+    max-width: 100%;
+  }
+  .tab-content{
+    width: 100%;
+  }
+  #Tt{
+    width: 100%;
+  }
+  #folBtn .bbb, #cls{
+    width: 180px;
+    padding: 12px;
+  }
+  #follow{
+    width: 100%;
+  }
+  .listing-item{
+    margin-top: 7px;
+    max-width: 85%;
+  }
+}
 
-@media (max-width:768px) and (min-width:200px) {
+@media (max-width:768px) and (min-width:650px) {
   .user-profile {
     flex-direction: column;
   }
@@ -497,7 +526,56 @@
   }
 
   .listing-item {
+    max-width: 55%;
+    height: 300px;
+
+
+  }
+  #follow{
+    width: 60%;
+  }
+  #folBtn .bbb,
+  #cls {
+    width: 180px;
+    padding: 12px 10x;
+    font-size: 1.1rem;
+    gap: 10px;
+  }
+  #T button{
+    font-size: 1.05rem;
+  }
+  #folBtn #btnn {
+    width: 15px;
+    height: 15px;
+  }
+
+  #folBtn img {
+    width: 20px;
+    height: 20px;
+  }
+
+}
+@media (max-width:649px) and (min-width:520px) {
+  .user-profile {
+    flex-direction: column;
+  }
+  #fol p {
+    font-size: 1rem;
+}
+  #O,
+  #T {
+    width: 100%;
+  }
+  #follow{
+    width: 75%;
+  }
+  .listings-scroll {
     max-width: 100%;
+    height: 330px;
+  }
+
+  .listing-item {
+    max-width: 55%;
     height: 300px;
 
 
@@ -520,15 +598,144 @@
     width: 20px;
     height: 20px;
   }
-
+  .listing-item .listing-image-container img {
+    width: 100%;
+    display: flex;
+    align-self: self-start;
+    justify-self: self-start;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
 
 }
-@media (max-width:425px) and (min-width:200px) {
+@media (max-width:519px) and (min-width:10px) {
+  #fol p {
+    font-size: 1rem;
+}
+  .user-profile {
+    flex-direction: column;
+  }
+  #follow{
+    width: 90%;
+  }
+
+  #O,
+  #T {
+    width: 100%;
+  }
+
+  .listings-scroll {
+    max-width: 100%;
+    height: 330px;
+  }
+
+  .listing-item {
+    max-width: 65%;
+    height: 300px;
+  }
+
+  #folBtn .bbb,
+  #cls {
+    width: 150px;
+    padding: 12px;
+    font-size: 0.9rem;
+    gap: 10px;
+  }
+
+  #folBtn #btnn {
+    width: 15px;
+    height: 15px;
+  }
+
+  #folBtn img {
+    width: 20px;
+    height: 20px;
+  }
+  .listing-item .listing-image-container img {
+    width: 100%;
+    display: flex;
+    align-self: self-start;
+    justify-self: self-start;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+}
+@media (max-width:425px) and (min-width:10px) {
+  #fol p {
+    font-size: 1rem;
+}
   #popUp{
     width: 300px;
   }
+  .listing-item {
+    max-width: 90%;
+    height: 300px;
+  }
+  #follow{
+    width: 100%;
+  }
+  #butt{
+    gap: 15px;
+    justify-content: space-between;
+    margin: 20px 20px 10px;
+  }
 }
 
+@media (max-width:352px) and (min-width:200px) {
+  #butt{
+    gap: 0;
+    justify-content: space-between;
+    margin: 20px 10px ;
+  }
+  #folBtn{
+    flex-direction: column;
+    align-items: center;
+  }
+  #butt button{
+    padding: 8px 8px;
+  }
+  .listing-item {
+    max-width: 95%;
+    height: 300px;
+  }
+  .listing-item .listing-title {
+    height: 80px;
+  }
+}
+@media (max-width:296px) and (min-Width:10px){
+  #links,#con{
+    flex-direction: column;
+  }
+}
 
-
-
+/* Skeleton shimmer animation */
+/* .skeleton { */
+  /* background: linear-gradient( */
+    /* 90deg, */
+    /* rgba(40, 40, 40, 0.25) 25%, */
+    /* rgba(90, 90, 90, 0.4) 50%, */
+    /* rgba(40, 40, 40, 0.25) 75% */
+  /* ); */
+  /* background-size: 200% 100%; */
+  /* animation: skeletonLoading 1.4s ease infinite; */
+  /* border-radius: 6px; */
+/* } */
+/*  */
+/* @keyframes skeletonLoading { */
+  /* 0% { */
+    /* background-position: 200% 0; */
+  /* } */
+  /* 100% { */
+    /* background-position: -200% 0; */
+  /* } */
+/* } */
+/*  */
+/* .skeleton-container { */
+  /* transition: opacity 0.3s ease; */
+/* } */
+/*  */

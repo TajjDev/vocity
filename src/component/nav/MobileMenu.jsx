@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import './nav.css';
 import { useLocation } from 'react-router-dom';
@@ -7,7 +6,6 @@ import menu from '/src/assets/image/menuPh.png'
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
   const [animationOut, setAnimationOut] = useState(false);
   const [animationin, setAnimationin] = useState(false)
   const isUserProfile = location.pathname.startsWith("/profile/")
@@ -103,6 +101,4 @@ const MobileMenu = () => {
   );
 };
 
-
 export default MobileMenu;
-

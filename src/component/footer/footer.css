@@ -484,7 +484,7 @@ m {
 
     #navi {
         gap: 10px;
-        width: 20%;
+        width: auto;
     }
 
     #con {
@@ -612,7 +612,7 @@ m {
 
     #navi {
         gap: 10px;
-        width: 20%;
+        width: auto;
     }
 
     #con {
@@ -930,4 +930,3 @@ m {
 
     }
 }
-

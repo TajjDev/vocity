@@ -19,7 +19,7 @@ const Footer = ({ onShowP, onShowPP }) => {
     const [showP, setShowP] = useState(false)
     const [showPP, setShowPP] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const scrollToFeatures = () => {
         const Features = document.getElementById('Features');
         if (Features) {
@@ -49,30 +49,30 @@ const Footer = ({ onShowP, onShowPP }) => {
     }
 
 
-  const goToSection = (sectionId) => {
-  navigate("/"); // Go to homepage
-  setTimeout(() => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  }, 500); // Wait for homepage to load
-};
-  
+    const goToSection = (sectionId) => {
+        navigate("/"); // Go to homepage
+        setTimeout(() => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        }, 500); // Wait for homepage to load
+    };
+
     return (
         <div id='Footer'>
             {/* <RevealOnScroll> */}
-                <div id="footOne">
-                    <RevealOnScroll>
+            <div id="footOne">
+                <RevealOnScroll>
                     <div id="navi">
                         <div id="navvi">
                             <p>Navigation</p>
                         </div>
                         <div id="links">
                             <div id="linkone">
-                                <a onClick={(e) => { e.preventDefault() ;goToSection("render") }} href="#">Home</a>
-                                <a onClick={() => {  goToSection("Features"); }} href="#features">Features</a>
-                                <a onClick={() => {  goToSection("About"); }} href="#aboutus">About us</a>
+                                <a onClick={(e) => { e.preventDefault(); goToSection("render") }} href="#">Home</a>
+                                <a onClick={() => { goToSection("Features"); }} href="#features">Features</a>
+                                <a onClick={() => { goToSection("About"); }} href="#aboutus">About us</a>
                                 <a onClick={(e) => { e.preventDefault(); goToSection("howitwork"); }} href="#howitwork">How it works</a>
                                 <a href="#">Download</a>
                             </div>
@@ -84,8 +84,8 @@ const Footer = ({ onShowP, onShowPP }) => {
                             </div>
                         </div>
                     </div>
-                    </RevealOnScroll>
-                    <RevealOnScroll>
+                </RevealOnScroll>
+                <RevealOnScroll>
 
                     <div id="con">
                         <div id="conn">
@@ -103,55 +103,55 @@ const Footer = ({ onShowP, onShowPP }) => {
                         </div>
                         {/* </RevealOnScroll> */}
                         <RevealOnScroll>
-                        <div id="contactss">
-                            <div id="tex">
-                                <p>Follow us</p>
-                                <div id="foll">
-                                    {/* <Link>hi</Link> */}
-                                    <a href="#"><img src={face} alt="" /></a>
-                                    <a href="#"><img src={google} alt="" /></a>
-                                    <a href="#"><img src={insta} alt="" /></a>
-                                    <a href="#"> <img src={ytbu} alt="" /></a>
-                                </div>
+                            <div id="contactss">
+                                <div id="tex">
+                                    <p>Follow us</p>
+                                    <div id="foll">
+                                        {/* <Link>hi</Link> */}
+                                        <a href="#"><img src={face} alt="" /></a>
+                                        <a href="#"><img src={google} alt="" /></a>
+                                        <a href="#"><img src={insta} alt="" /></a>
+                                        <a href="#"> <img src={ytbu} alt="" /></a>
+                                    </div>
 
-                            </div>
-                            <div id="folChat">
-                                <p>Let's chat</p>                                <div id="chat">
-                                    <a href="#"><img src={call} alt="" /></a>
-                                    <a href="#"><img src={tele} alt="" /></a>
-                                    <a href="#"><img src={whtapp} alt="" /></a>
+                                </div>
+                                <div id="folChat">
+                                    <p>Let's chat</p>                                <div id="chat">
+                                        <a href="#"><img src={call} alt="" /></a>
+                                        <a href="#"><img src={tele} alt="" /></a>
+                                        <a href="#"><img src={whtapp} alt="" /></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        </RevealOnScroll> 
+                        </RevealOnScroll>
                     </div>
-                    </RevealOnScroll>
+                </RevealOnScroll>
 
-                </div>
-            <RevealOnScroll>
-            <div id="loc">
-                <NewsLetter 
-                 onShowPP={() =>
-                    setShowPP(true)}
-                             onShowP={() =>
-                    setShowP(true)} />
-                            {showP && (
-            <PPandTC 
-            isActive={showP}
-            onClose={() =>
-                setShowP(false)}/>
-        )}
-        {showPP && (
-<TC onClose={() =>
-    setShowPP(false)}/>
-        )}
-                <div className="dav">
-                    <p>Location</p>
-                    <p id='david'>
-                        David's Court 2 Orchid road Lekki
-                    </p>
-                </div>
             </div>
+            <RevealOnScroll>
+                <div id="loc">
+                    <NewsLetter
+                        onShowPP={() =>
+                            setShowPP(true)}
+                        onShowP={() =>
+                            setShowP(true)} />
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                    <div className="dav">
+                        <p>Location</p>
+                        <p id='david'>
+                            David's Court 2 Orchid road Lekki
+                        </p>
+                    </div>
+                </div>
             </RevealOnScroll>
             <RevealOnScroll>
                 <div id="footTwo">
@@ -165,6 +165,16 @@ const Footer = ({ onShowP, onShowPP }) => {
                     </div>
                 </div>
             </RevealOnScroll>
+              {showP && (
+      <PPandTC
+          isActive={showP}
+          onClose={() =>
+              setShowP(false)} />
+  )}
+  {showPP && (
+      <TC onClose={() =>
+          setShowPP(false)} />
+  )}
         </div>
     )
 }

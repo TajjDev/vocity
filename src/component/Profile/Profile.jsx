@@ -142,7 +142,6 @@ function UserProfile({ userId}) {
 
                 <div id="img">
                     <img
-                        style={{objectFit: "cover", objectPosition: "center"}}
                         id='dp'
                         className='profile'
                         src={user.thumbnail?.url ? `https://api.votecity.ng${user.thumbnail?.url}` : alt}
@@ -191,7 +190,6 @@ function UserProfile({ userId}) {
                             {shots.map(shot => (
                                 <div key={shot.id} className="shot-item">
                                     <img
-                                        style={{objectFit: "cover", objectPosition: "center"}}
                                         src={`https://api.votecity.ng${shot.photo.url}`}
                                         alt={shot.text || "User shot"}
                                         className="shot-thumbnail"
@@ -224,13 +222,12 @@ function UserProfile({ userId}) {
                 <div className="tab-content">
                     {activeTab === "listings" ? (
                         <div id="Tt">
-                            <div id='butt' style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
+                            <div id='butt' style={{ display: "flex", marginBottom: "10px" }}>
                                 {["upcoming", "ongoing", "ended"].map(option => (
                                     <button
                                         key={option}
                                         onClick={() => setSort(option)}
                                         style={{
-                                            padding: "8px 15px",
                                             borderRadius: "5px",
                                             fontWeight: sort === option ? "bolder" : "",
                                             border: "none",
@@ -325,9 +322,9 @@ function UserProfile({ userId}) {
                                     padding: "15px 12px",
                                     width: "100%",
                                     display: "block",
-                                    borderRadius: "5px",
-                                    border: "1px solid rgba(141, 141, 141, 1)",
-                                    background: "rgb(13, 18, 28)",
+                                    borderRadius: "10px",
+                                    border: "1px solid rgba(141, 141, 141, 0.5)",
+                                    background: "rgba(13, 18, 28, 0.6)",
                                     color: "#ffffff99",
                                     outline: "none",
                                 }}
@@ -354,7 +351,6 @@ function UserProfile({ userId}) {
                                               alignItems: "center",
                                               gap: "10px",
                                               marginBottom: "15px",
-                                              background: "rgba(255,255,255,0.02)",
                                               padding: "10px",
                                               borderRadius: "8px",
                                               width: "100%",
@@ -430,4 +426,3 @@ function UserProfile({ userId}) {
 }
 
 export default UserProfile;
-

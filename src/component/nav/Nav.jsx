@@ -2,14 +2,28 @@ import { useLocation } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import vocityLogo from '/src/assets/image/logoVC.png'
 import "./nav.css"
+import { useNavigate } from 'react-router-dom';
 import MobileMenu from './MobileMenu'
 
 const Nav = () => {
   const location = useLocation();
   const isUserProfile = location.pathname.startsWith("/profile/")
   const [activeLink, setActiveLink] = useState('home')
+  const navigate = useNavigate(); 
+
+
   const handleLinkClick = (link) => {
     setActiveLink(link)
+  };
+
+  const goToSection = (sectionId) => {
+    navigate("/"); // Go to homepage
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 500); // Wait for homepage to load
   };
   const [scrolled, setScrolled] = useState(false);
 
@@ -62,62 +76,75 @@ const Nav = () => {
         <p>Vocity</p>
       </div>
 
-      {!isUserProfile &&  (
-      <div id="navs">
-        <a
-          className={`nav-link ${activeLink === 'home' ? 'active' : ''}`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToHeader();
-            handleLinkClick('home');
-          }}
-          href="#"
-        >
-          Home
-        </a>
+      {!isUserProfile && (
+        <div id="navs">
+          <a
+            className={`nav-link ${activeLink === 'home' ? 'active' : ''}`}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToHeader();
+              handleLinkClick('home');
+            }}
+            href="#"
+          >
+            Home
+          </a>
 
-        <a
-          className={`nav-link ${activeLink === 'features' ? 'active' : ''}`}
-          onClick={() => {
-            scrollToFeatures();
-            handleLinkClick('features');
-          }}
-          href="#features"
-        >
-          Features
-        </a>
+          <a
+            className={`nav-link ${activeLink === 'features' ? 'active' : ''}`}
+            onClick={() => {
+              scrollToFeatures();
+              handleLinkClick('features');
+            }}
+            href="#features"
+          >
+            Features
+          </a>
 
-        <a
-          className={`nav-link ${activeLink === 'About' ? 'active' : ''}`}
-          onClick={() => {
-            scrollToAbout();
-            handleLinkClick('About');
-          }}
-          href="#aboutus"
-        >
-          About us
-        </a>
+          <a
+            className={`nav-link ${activeLink === 'About' ? 'active' : ''}`}
+            onClick={() => {
+              scrollToAbout();
+              handleLinkClick('About');
+            }}
+            href="#aboutus"
+          >
+            About us
+          </a>
 
-        <a
-          className={`nav-link ${activeLink === 'howitwork' ? 'active' : ''}`}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToHowItWorks();
-            handleLinkClick('howitwork');
-          }}
-          href="#howitwork"
-        >
-          How it works
-        </a>
-      </div>
+          <a
+            className={`nav-link ${activeLink === 'howitwork' ? 'active' : ''}`}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToHowItWorks();
+              handleLinkClick('howitwork');
+            }}
+            href="#howitwork"
+          >
+            How it works
+          </a>
+        </div>
       )}
-      <div id="downNav">
-        <a id='downloadNav' href="#">Download now</a>
+      <div style={{ display: "flex", width:!isUserProfile ? "18%" : "35%", justifyContent: "end" }}>
+        <div style={{width:!isUserProfile ? "100%" : "", }} id="downNav">
+          <a style={{width:!isUserProfile ? "100%" : "80%"}} id='downloadNav' href="#">Download now</a>
+        </div>
+        {isUserProfile && (
+          <a
+            className={`navi ${activeLink === 'About' ? 'active' : ''}`}
+            onClick={() => {
+              scrollToAbout();
+              goToSection('About');
+            }}
+            href="#aboutus"
+          >
+            About us
+          </a>
+        )}
       </div>
       <MobileMenu />
     </div>
   )
 }
-
 
 export default Nav

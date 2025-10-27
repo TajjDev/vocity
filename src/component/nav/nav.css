@@ -55,7 +55,7 @@
 #navImg img {
     width: 15%;
     height: 100%;
-    padding-right: 4px;
+    margin-right: 4px;
 }
 
 #navImg p {
@@ -65,19 +65,30 @@
 
 #downNav {
     display: flex;
-    width: 20%;
-    justify-content: end;
+    width: 55%;
+    /* justify-content: end; */
 }
 
 #downloadNav {
-    padding: 20px 30px;
+    padding: 15px 20px;
     border-radius: 40px;
     border: none;
+    width: 85%;
+    margin-left: 10px;
     background: linear-gradient(90deg,rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1)  50%, rgba(149, 109, 1, 1) 100%);
-    color: rgba(0, 0, 0, 1);
+    color: #000000;
     text-align: center;
 }
-
+.navi{
+    padding: 15px 20px;
+    border-radius: 40px;
+    border: none;
+    width: 35%;
+    background: transparent;
+    border: 1px solid rgba(141, 141, 141, 1);
+    color: rgb(247, 247, 247);
+    text-align: center;
+}
 .nav-link {
     color: white;
     padding: 2px 0;
@@ -126,23 +137,23 @@
     }
 
     #navImg img {
-        width: 16%;
+        width: 18%;
         height: 100%;
-        padding-right: 4px;
+        margin-right: 4px;
     }
 
     #navImg p {
         font-size: 1rem;
     }
 
-    #downloadNav {
-        padding: 18px 25px
+    #downloadNav, .navi {
+        padding: 15px 25px
     }
 }
 
 @media (max-width:1024px) and (min-width:900px) {
     .nav a {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         font-weight: 700;
     }
 
@@ -151,12 +162,19 @@
         gap: 40px;
     }
 
-    #downloadNav {
-        padding: 16px 25px;
+    #downloadNav, .navi {
+        padding: 14px 25px;
     }
-
+    #navImg img {
+        width: 19%;
+        height: 100%;
+        margin-right: 5px;
+    }
     #navImg p {
         font-size: 1rem;
+    }
+    #downNav{
+        width: 60%;
     }
 }
 
@@ -182,18 +200,27 @@
     }
 
     #navImg img {
-        width: 17%;
+        width: 20%;
         height: 100%;
-        padding-right: 4px;
+        margin-right: 4px;
     }
 
     #navImg p {
         font-size: 0.9rem;
     }
-
+    #downNav{
+        width: 60%;
+    }
+    .navi{
+        width: 40%;
+    }
     #downloadNav {
-        padding: 18px 0;
+        padding: 13px 0;
         width: 100%;
+    }
+    .navi{
+        padding: 13px 0;
+
     }
 }
 
@@ -201,7 +228,12 @@
     .nav {
         padding-top: 10px;
     }
-
+    #downNav{
+        width: 60%;
+    }
+    .navi{
+        width: 40%;
+    }
     #navs {
         padding: 15px;
         gap: 20px;
@@ -220,7 +252,7 @@
     #navImg img {
         width: 22%;
         height: 100%;
-        padding-right: 4px;
+        margin-right: 4px;
     }
 
     #navImg p {
@@ -259,7 +291,7 @@
     #navImg img {
         width: 28%;
         height: 100%;
-        padding-right: 4px;
+        margin-right: 5px;
     }
 
     #navImg p {
@@ -306,7 +338,7 @@
         z-index: 1000;
         /* height: 100%; */
     }
-    #downNav {
+    #downNav, .navi {
         display: none;
     }
     #navs {
@@ -523,7 +555,7 @@
     #navImg img {
         width: 40%;
         height: 100%;
-        padding-right: 4px;
+        margin-right: 4px;
     }
 
     #navImg p {
@@ -555,6 +587,6 @@
     #navImg img {
         width: 40%;
         height: 100%;
-        padding-right: 4px;
+        margin-right: 4px;
     }
 }
