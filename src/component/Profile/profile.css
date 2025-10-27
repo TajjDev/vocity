@@ -74,8 +74,8 @@
   width: 150px;
   height: 150px;
   border-radius: 100%;
-  objectFit: cover;
-  objectPosition: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 #dpp {
@@ -753,4 +753,5 @@
   /* transition: opacity 0.3s ease; */
 /* } */
 /*  */
+
 
