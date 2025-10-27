@@ -663,6 +663,9 @@
     border-radius: 12px;
     transition: transform 0.3s ease;
 }
+#popUp{
+  width: 370px;
+}
 
 }
 @media (max-width:425px) and (min-width:10px) {
@@ -670,7 +673,8 @@
     font-size: 1rem;
 }
   #popUp{
-    width: 300px;
+    width: 310px;
+    padding: 20px;
   }
   .listing-item {
     max-width: 90%;
@@ -687,6 +691,10 @@
 }
 
 @media (max-width:352px) and (min-width:200px) {
+  #popUp{
+    width: 280px;
+    padding: 20px;
+  }
   #butt{
     gap: 0;
     justify-content: space-between;
@@ -708,6 +716,10 @@
   }
 }
 @media (max-width:296px) and (min-Width:10px){
+  #popUp{
+    width: 260px;
+    padding: 20px;
+  }
   #links,#con{
     flex-direction: column;
   }
