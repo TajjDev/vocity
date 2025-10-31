@@ -17,7 +17,7 @@ import ongoing from '/src/assets/image/ongoing.png';
 import upcoming from '/src/assets/image/upcoming.png';
 import ended from '/src/assets/image/ended.png';
 
-function UserProfile({ userId}) {
+function UserProfile({ userId }) {
     const [user, setUser] = useState(null);
     const [listings, setListings] = useState([]);
     const [loadingUser, setLoadingUser] = useState(true);
@@ -34,6 +34,10 @@ function UserProfile({ userId}) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [list, setList] = useState([]);
+    const [popupOpen, setPopupOpen] = useState(false);
+    const [popupImages, setPopupImages] = useState([]); 
+    const [currentIndex, setCurrentIndex] = useState(0);
+
 
     const BASE_URL_USER = "https://api.votecity.ng/v1/user";
     const BASE_URL_LISTINGS = "https://api.votecity.ng/v1/post/create/listings";
@@ -125,81 +129,186 @@ function UserProfile({ userId}) {
             .catch(err => console.error("Fetch shots error:", err))
             .finally(() => setLoadingShots(false));
     }, [userId]);
+    const openPopup = (images, index = 0) => {
+        setPopupImages(images);
+        setCurrentIndex(index);
+        setPopupOpen(true);
+      };
+    
+      const closePopup = () => setPopupOpen(false);
+    
+      const nextImage = () => {
+        if (popupImages.length > 1)
+          setCurrentIndex((prev) => (prev + 1) % popupImages.length);
+      };
+    
+      const prevImage = () => {
+        if (popupImages.length > 1)
+          setCurrentIndex((prev) => (prev - 1 + popupImages.length) % popupImages.length);
+      };
+    
+      // SWIPE HANDLERS (for touch)
+      let touchStartX = 0;
+      let touchEndX = 0;
+    
+      const handleTouchStart = (e) => (touchStartX = e.changedTouches[0].screenX);
+      const handleTouchEnd = (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) nextImage();
+         // swipe left
+        if (touchEndX - touchStartX > 50) prevImage(); 
+        // swipe right
+      };
 
-    if (loadingUser) return <div  style={{width:"100%", height:"100vh", display:"flex", alignItems:"center", justifyContent:"center"}} > <img src={load} alt="" /></div>;
+    if (loadingUser) return <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }} > <img src={load} alt="" /></div>;
     if (!user) return <p>No user found</p>;
     userId = user.user_id
     return (
-        <div className="user-profile" style={{opacity:loadingUser ? 0.6 : 1, transition:"opacity 0.3s ease"}}>
+        <div className="user-profile" style={{ opacity: loadingUser ? 0.6 : 1, transition: "opacity 0.3s ease" }}>
             <div id="O">
-                <div id="name">
-                    <div id="userNaVe">
-                        <p id='full'>{user.fullname}</p>
-                        {user.id_verified === 1 && <img src={verified} alt="Verified" />}
-                    </div>
-                    <p id='userrr'>@{user.username}</p>
-                </div>
+  <div id="name">
+    <div id="userNaVe">
+      <p id="full">{user.fullname}</p>
+      {user.id_verified === 1 && <img src={verified} alt="Verified" />}
+    </div>
+    <p id="userrr">@{user.username}</p>
+  </div>
 
-                <div id="img">
-                    <img
-                        id='dp'
-                        className='profile'
-                        src={user.thumbnail?.url ? `https://api.votecity.ng${user.thumbnail?.url}` : alt}
-                        alt={user.fullname || "User avatar"}
-                    />
-                </div>
+  <div id="img">
+    <img
+      id="dp"
+      className="profile"
+      src={
+        user.thumbnail?.url
+          ? `https://api.votecity.ng${user.thumbnail?.url}`
+          : alt
+      }
+      alt={user.fullname || "User avatar"}
+      style={{ cursor: "pointer" }} // 🟢 clickable
+      onClick={() =>
+        openPopup([`https://api.votecity.ng${user.thumbnail?.url}`])
+      } // 🟢 Added popup trigger
+    />
+  </div>
 
-                <div id="followw">
-                    <div id="fol">
-                        <p><span>{user.following}</span> Following</p>
-                        <p><span>{user.followers}</span> Followers</p>
-                    </div>
-                    <div id="folBtn">
-                        <button className='bbb' onClick={() => setShowPopup(true)}>
-                            Follow <img id='btnn' src={follow} alt="" />
-                        </button>
+  <div id="followw">
+    <div id="fol">
+      <p>
+        <span>{user.following}</span> Following
+      </p>
+      <p>
+        <span>{user.followers}</span> Followers
+      </p>
+    </div>
 
-                        {showPopup && (
-                            <div id='popOver'>
-                                <div id='popUp'>
-                                    <p id='downn'>Download the App to follow</p>
-                                    <div id="apGo">
-                                        <a href="" className='goAp'><img src={google} alt="" /></a>
-                                        <a href="" className='goAp'><img src={apple} alt="" /></a>
-                                    </div>
-                                    <p>Available both on <br />Play store and Apple store</p>
-                                    <button id='cls' onClick={() => setShowPopup(false)}>Close</button>
-                                </div>
-                            </div>
-                        )}
+    <div id="folBtn">
+      <button className="bbb" onClick={() => setShowPopup(true)}>
+        Follow <img id="btnn" src={follow} alt="" />
+      </button>
 
-                        <button onClick={handleCopy} className='bbb' id='btnT'>
-                            Share Profile <img src={share} alt="" />
-                        </button>
-                    </div>
-                </div>
-
-                {/* 🔹 Shots */}
-                <div id="shots-section">
-                    {loadingShots ? (
-                        <p>Loading shots...</p>
-                    ) : shots.length === 0 ? (
-                        <p style={{ textAlign: "center" }}></p>
-                    ) : (
-                        <div className="shots-scroll">
-                            {shots.map(shot => (
-                                <div key={shot.id} className="shot-item">
-                                    <img
-                                        src={`https://api.votecity.ng${shot.photo.url}`}
-                                        alt={shot.text || "User shot"}
-                                        className="shot-thumbnail"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
+      {showPopup && (
+        <div id="popOver">
+          <div id="popUp">
+            <p id="downn">Download the App to follow</p>
+            <div id="apGo">
+              <a href="" className="goAp">
+                <img src={google} alt="" />
+              </a>
+              <a href="" className="goAp">
+                <img src={apple} alt="" />
+              </a>
             </div>
+            <p>
+              Available both on <br />
+              Play store and Apple store
+            </p>
+            <button id="cls" onClick={() => setShowPopup(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      <button onClick={handleCopy} className="bbb" id="btnT">
+        Share Profile <img src={share} alt="" />
+      </button>
+    </div>
+  </div>
+
+  {/* 🔹 Shots */}
+  <div id="shots-section">
+    {loadingShots ? (
+      <p>Loading shots...</p>
+    ) : shots.length === 0 ? (
+      <p style={{ textAlign: "center" }}></p>
+    ) : (
+      <div className="shots-scroll">
+        {shots.map((shot, index) => (
+          <div key={shot.id} className="shot-item">
+            <img
+              src={`https://api.votecity.ng${shot.photo.url}`}
+              alt={shot.text || "User shot"}
+              className="shot-thumbnail"
+              style={{
+                cursor: "pointer",
+                objectFit: "cover",
+                
+                
+              }}
+              onClick={() =>
+                openPopup(
+                  shots.map(
+                    (s) => `https://api.votecity.ng${s.photo.url}`
+                  ),
+                  index
+                )
+              } // 🟢 Added popup trigger for shots
+            />
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+  {/* 🟢 Popup Overlay */}
+  {popupOpen && (
+    <div
+      className="popup-overlay"
+      onClick={closePopup}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        className="popup-content"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={popupImages[currentIndex]}
+          alt="popup"
+          style={{
+            // width: "300px",
+            // height: "450px",
+            objectFit: "cover",
+            borderRadius: "10px",
+          }}
+        />
+        {popupImages.length > 1 && (
+          <>
+            <button className="popup-arrow left" onClick={prevImage}>
+              ‹
+            </button>
+            <button className="popup-arrow right" onClick={nextImage}>
+              ›
+            </button>
+          </>
+        )}
+        <button className="popup-close" onClick={closePopup}>
+          ✕
+        </button>
+      </div>
+    </div>
+  )}
+</div>
 
             {/* 🔹 Tabs Section */}
             <div id="T">
@@ -278,13 +387,13 @@ function UserProfile({ userId}) {
                     ) : (
                         <div id="follow">
                             {/* <h3 style={{ textAlign: "center", marginBottom: "15px", color: "#fff" }}> */}
-                                {/* {sortII === "followers" ? "Followers" : "Following"} */}
+                            {/* {sortII === "followers" ? "Followers" : "Following"} */}
                             {/* </h3> */}
 
                             {/* Toggle between Followers / Following */}
-                            <div style={{ marginTop:"20px", display: "flex", justifyContent: "center", gap: "10px" }}>
+                            <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "10px" }}>
                                 <button
-                                    onClick={() => {setSortII("followers"); setQ("")}}
+                                    onClick={() => { setSortII("followers"); setQ("") }}
                                     style={{
                                         padding: "8px 16px",
                                         borderRadius: "6px",
@@ -298,7 +407,7 @@ function UserProfile({ userId}) {
                                     Followers
                                 </button>
                                 <button
-                                    onClick={() => {setSortII("following"); setQ("")}}
+                                    onClick={() => { setSortII("following"); setQ("") }}
                                     style={{
                                         padding: "8px 16px",
                                         borderRadius: "6px",
@@ -341,78 +450,78 @@ function UserProfile({ userId}) {
                                         {sortII === "followers" ? "No followers found" : "No followings found"}
                                     </p>
                                 ) : (
-                                    <ul style={{ listStyle: "none",width: "100%", padding: 0 }}>
+                                    <ul style={{ listStyle: "none", width: "100%", padding: 0 }}>
                                         {list.map((item) => (
                                             <li
-                                            key={item.user_id}
-                                            onClick={() => (window.location.href = `https://vocity.vercel.app/profile/${item.user_id}`)}
-                                            style={{
-                                              display: "flex",
-                                              alignItems: "center",
-                                              gap: "10px",
-                                              marginBottom: "15px",
-                                              padding: "10px",
-                                              borderRadius: "8px",
-                                              width: "100%",
-                                              marginInline: "auto",
-                                              cursor: "pointer",
-                                              textDecoration: "none",     // removes any underline on hover
-                                              color: "inherit",           // keeps inherited text color
-                                              transition: "background 0.2s ease",
-                                            }}
-                                            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
-                                            onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.02)")}
-                                          >
-                                            <img
-                                              src={
-                                                item.thumbnail?.url
-                                                  ? `https://api.votecity.ng${item.thumbnail.url}`
-                                                  : alt
-                                              }
-                                              alt={item.username}
-                                              style={{
-                                                width: "45px",
-                                                height: "45px",
-                                                borderRadius: "50%",
-                                                objectFit: "cover",
-                                              }}
-                                            />
-                                          
-                                            <div>
-                                              <p
+                                                key={item.user_id}
+                                                onClick={() => (window.location.href = `https://vocity.vercel.app/profile/${item.user_id}`)}
                                                 style={{
-                                                  margin: 0,
-                                                  display: "flex",
-                                                  fontSize: "0.9rem",
-                                                  fontWeight: "bold",
-                                                  color: "#fff",
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "10px",
+                                                    marginBottom: "15px",
+                                                    padding: "10px",
+                                                    borderRadius: "8px",
+                                                    width: "100%",
+                                                    marginInline: "auto",
+                                                    cursor: "pointer",
+                                                    textDecoration: "none",     // removes any underline on hover
+                                                    color: "inherit",           // keeps inherited text color
+                                                    transition: "background 0.2s ease",
                                                 }}
-                                              >
-                                                {item.fullname}
-                                                {item.id_verified === 1 && (
-                                                  <img
+                                                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+                                                onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.02)")}
+                                            >
+                                                <img
+                                                    src={
+                                                        item.thumbnail?.url
+                                                            ? `https://api.votecity.ng${item.thumbnail.url}`
+                                                            : alt
+                                                    }
+                                                    alt={item.username}
                                                     style={{
-                                                      height: "15px",
-                                                      paddingLeft: "2px",
-                                                      display: "flex",
-                                                      alignSelf: "center",
+                                                        width: "45px",
+                                                        height: "45px",
+                                                        borderRadius: "50%",
+                                                        objectFit: "cover",
                                                     }}
-                                                    src={verified}
-                                                    alt="Verified"
-                                                  />
-                                                )}
-                                              </p>
-                                              <p
-                                                style={{
-                                                  margin: 0,
-                                                  fontSize: "0.75rem",
-                                                  color: "rgba(255,255,255,0.6)",
-                                                }}
-                                              >
-                                                @{item.username}
-                                              </p>
-                                            </div>
-                                          </li>
+                                                />
+
+                                                <div>
+                                                    <p
+                                                        style={{
+                                                            margin: 0,
+                                                            display: "flex",
+                                                            fontSize: "0.9rem",
+                                                            fontWeight: "bold",
+                                                            color: "#fff",
+                                                        }}
+                                                    >
+                                                        {item.fullname}
+                                                        {item.id_verified === 1 && (
+                                                            <img
+                                                                style={{
+                                                                    height: "15px",
+                                                                    paddingLeft: "2px",
+                                                                    display: "flex",
+                                                                    alignSelf: "center",
+                                                                }}
+                                                                src={verified}
+                                                                alt="Verified"
+                                                            />
+                                                        )}
+                                                    </p>
+                                                    <p
+                                                        style={{
+                                                            margin: 0,
+                                                            fontSize: "0.75rem",
+                                                            color: "rgba(255,255,255,0.6)",
+                                                        }}
+                                                    >
+                                                        @{item.username}
+                                                    </p>
+                                                </div>
+                                            </li>
                                         ))}
                                     </ul>
                                 )
