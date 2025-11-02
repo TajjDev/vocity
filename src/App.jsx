@@ -6,6 +6,7 @@ import { BrowserRouter as Router,Routes, Route  } from 'react-router-dom'
 import EventII from './component/Profile/Event/EventII'
 import Nav from './component/nav/Nav'
 import Footer from './component/footer/Footer'
+import ScrollToTop from './ScrollToTop'
 // import UserCreation from './component/Profile/UserCreation'
 // import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 // import Modal from './component/footer/PPandTC'
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <>
     <Router>
+      <ScrollToTop/>
       <Nav /> {/* Always visible */}
 
       <Routes>
