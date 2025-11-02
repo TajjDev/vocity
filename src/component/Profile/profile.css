@@ -1,893 +1,125 @@
-.profile {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-}
-
-.verified {
-  width: 15px;
-  height: 15px;
-  margin: 3px;
-}
-
-.user-profile h2 {
-  display: flex;
-  align-items: center;
-}
-
-.user-profile {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  width: 100%;
-  color: rgba(16, 16, 16, 1);
-}
-#fol p{
-  font-size: 1.2rem;
-}
-#O,
-#T {
+#Op,
+#Tp {
   width: 50%;
   /* background: red; */
-  padding: 20px;
+  padding: 50px;
 }
-
-#O {
-  /* padding: 10px; */
-  display: flex;
-  gap: 25px;
-  flex-direction: column;
-  align-items: center;
+.post{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
 }
-
-#userNaVe {
-  display: flex;
-  gap: 3px;
+#Op .thUrl{
+    height: 250px;
+    width: 100%;
+    border-radius: 20px;
 }
-
-#userNaVe img {
-  /* width: 100%; */
-  display: flex;
-  align-self: center;
-  height: 100%;
+#imOp img{
+    object-fit: cover;
+object-position: center;
 }
-
-#name p {
-  text-align: center;
+#OpP{
+    font-size: 1.2rem;
 }
-
-#name {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap:3px;
+#urlTit{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
-
-#img {
-  display: flex;
-  justify-content: center;
+#titUser{
+    /* width: 47%; */
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
 }
-
-#img #dp {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  object-fit: cover;
-  object-position: center;
+#tit{
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    align-self: flex-end;
+    background: #0d121c;
+    border-radius: 20px;
+    height: 100px;
+    padding: 20px 0;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    padding-left: 10px;
 }
-
-#dpp {
-  width: 70px;
-  height: 70px;
-  border-radius: 100%;
+#ev{
+    display: flex;
+    gap: 10px;
 }
-#g{
-  position: absolute;
+#ev img{
+    height: 30px;
+}
+#Op{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  
+  .thUrl {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  /* Date badge (top-left corner) */
+  .date-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px 6px;
+    width: 40px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .date-badge .day {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .date-badge .month {
+    font-size: 0.7rem;
+    margin: 0;
+  }
+  
+  /* Post type badge (bottom-right corner) */
+  .type-badge {
+    position: absolute;
     bottom: 8px;
     right: 8px;
-    background: rgba(0, 0, 0, 0.77);
+    background: rgba(0, 0, 0, 0.8);
     color: #fff;
-    padding: 7px 10px;
-    font-size: 0.8rem;
+    padding: 7px 15px;
+    font-size: 0.7rem;
     border-radius: 8px;
     text-transform: capitalize;
-}
-#followw {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  gap: 25px;
-}
-#follow {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: start;
-  gap: 15px;
-}
-#follow input::placeholder{
-  color:#ffffff99 ;
-}
-#fol {
-  display: flex;
-  gap: 12px;
-}
-
-#fol p span {
-  font-weight: bold;
-}
-
-#folBtn {
-  width: 100%;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-#folBtn .bbb,
-#cls {
-  width: 190px;
-  background: linear-gradient(90deg, rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1) 50%, rgba(149, 109, 1, 1) 100%);
-  border: 1px solid rgba(41, 41, 41, 1);
-  color: rgba(41, 41, 41, 1);
-  display: flex;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1rem;
-  gap: 12px;
-}
-
-#folBtn img {
-  width: 25px;
-  height: 25px;
-}
-
-#folBtn #btnn {
-  width: 20px;
-  height: 20px;
-}
-
-#folBtn #btnT {
-  background: none;
-  color: rgba(141, 141, 141, 1);
-  border: 1px solid rgba(141, 141, 141, 1);
-}
-
-#full {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-#popOver {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#popUp {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex-direction: column;
-  /* gap: 15px; */
-  width: 400px;
-  height: 40%;
-  background: rgba(16, 16, 16, 1);
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
-
-#apGo {
-  display: flex;
-  gap: 10px;
-}
-
-#popUp .goAp {
-  background: #fff;
-  /* width: 0; */
-  padding: 12px;
-  display: flex;
-  border: none;
-  border-radius: 100%;
-  /* height: 0; */
-}
-
-#downn {
-  font-weight: bold;
-}
-
-#folBtn .goAp img {
-  width: 20px;
-  height: 20px;
-}
-
-#cls {
-  width: 90px;
-  padding: 10px;
-  background: linear-gradient(90deg, rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1) 50%, rgba(149, 109, 1, 1) 100%);
-}
-
-/* =========================
-   📸 HORIZONTAL LISTINGS SCROLL (2 at a time)
-   ========================= */
-.listings-scroll {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  overflow-x: auto;
-  border-radius: 100%;
-  /* 👈 horizontal scroll */
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  padding: 0 15px 15px 0;
-  max-width: 80%;
-  height: 400px;
-  border-radius: 12px;
-  /* background: #020202be; */
-  color: #000;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* 📦 Each Listing Card */
-.listing-item {
-  flex: 0 0 calc(100% - 10px);
-  /* 👈 shows 2 items per view */
-  /* height: 130px; */
-  border-radius: 10px;
-  flex-direction: column;
-  color: #000;
-  max-width: 100%;
-  /* height: 100%; */
-  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
-  position: relative;
-  display: inline-block;
-  /* justify-content: center; */
-  align-items: center;
-  gap: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* text-align: start; */
-}
-
-.listing-item:hover {
-  transform: translateY(-4px);
-  /* box-shadow: 0 5px 15px rgb(0, 0, 0); */
-}
-
-.listing-image-container {
-  position: relative;
-  width: 100%;
-  display: inline-block;
-}
-.listing-item #views{
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-}
-/* 🖼️ Image */
-.listing-item .listing-title {
-  color: #ffffff;
-  text-align: start;
-  justify-content: space-between;
-  width: 100%;
-  background: rgb(13, 18, 28);
-  border-radius: 10px;
-  height: 90px;
-  display: flex;
-  flex-direction: column;
-  padding-left: 10px;
-  margin-top: 5px;
-  border: 1px solid #ffffff11;
-  /* border-radius: 40px; */
-  padding: 10px 30px 10px 10px;
-}
-
-.listing-item .listing-image-container img {
-  width: 100%;
-  display: flex;
-  align-self: self-start;
-  justify-self: self-start;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-.listing-title #views p{
-  display: flex;
-  font-size: 0.75rem;
-  align-items: center;
-  /* font-weight: bold; */
-}
-.listing-title img{
-  /* width: 20px; */
-  padding-right: 6px;
-  padding-left: 10px;
-  height: 15px;
-}
-.status-label {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  padding: 10px 25px;
-  border-radius: 5px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-  text-transform: capitalize;
-}
-
-/* Optional: color variations for each status */
-.status-label.ended {
-  background: rgb(31, 1, 1) !important;
-  color: #ff0000;
-}
-
-.status-label.ongoing {
-  background: rgb(1, 18, 1) !important;
-  color: #008000;
-}
-
-.status-label.upcoming {
-  background: rgba(158, 155, 155, 0.8) !important;
-  color: white;
-}
-#us img{
-  padding-left: 3px;
-  /* width: 10px; */
-  height: 20px;
-}
-#userus {
-  display: flex;
-  /* margin-top: 20px; */
-  /* border: 1px solid rgba(128, 128, 128, 0.182); */
-  gap: 20px;
-  padding: 6px 6px 6px 0;
-  border-radius: 10px;
-  align-items: center;
-  /* justify-content: center; */
-}
-
-#uss {
-  display: flex;
-  align-items: center;
-}
-#userrr{
-  color: #ffffffb4;
-}
-#userus .profilee {
-  width: 60px;
-  /* border-radius: ; */
-  height: 60px;
-}
-
-#butt {
-  margin-top: 20px;
-  /* background: rgb(13, 18, 28); */
-  /* border: 1px solid #ffffff11; */
-  /* padding: 15px; */
-  display: flex;
-  gap: 10px;
-  /* justify-content: center; */
-  border-radius: 10px;
-}
-
-
-
-/* =========================
-     🌈 FANCY SCROLLBAR
-     ========================= */
-.listings-scroll::-webkit-scrollbar {
-  height: 8px;
-}
-
-.listings-scroll::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-}
-
-.listings-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #8e44ad, #3498db);
-  border-radius: 10px;
-}
-
-.listings-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(90deg, #9b59b6, #2980b9);
-}
-
-/* Firefox scrollbar */
-.listings-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(108, 69, 0, 1) rgba(0, 0, 0, 0.1);
-}
-
-#T .tab-btn img {
-  width: 20px;
-  height: 20px;
-}
-
-#T .tab-btn {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.shot-item img {
-  object-fit: cover;
-  object-position: center;
-  width: 96px;
-  padding: 3px;
-  height: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.397);
-  border-radius: 5px;
-}
-
-#shots-section {
-  width: 100%;
-}
-
-/* 📦 Each Listing Card */
-.shots-scroll {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  overflow-x: auto;
-  border-radius: 100%;
-  /* 👈 horizontal scroll */
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  padding: 3px;
-  max-width: 100%;
-  height: 150px;
-  border-radius: 5px;
-  /* background: #020202be; */
-  color: #000;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-.shot-item {
-  display: flex;
-  gap: 10px;
-  max-width: 100%;
-  /* flex: 0 0 calc(100% - 10px); */
-
-}
-
-#T button {
-  background: none;
-  cursor: pointer;
-  /* padding: 8px 15px; */
-  padding-bottom: 15px;
-  border: none;
-  font-size: 0.9rem;
-}
-#butt button{
-  padding: 8px 15px;
-}
-#T .active {
-  /* color: red; */
-  text-decoration: underline;
-  text-underline-offset: 7px;
-  text-decoration-color: #fff;
-  font-weight: bolder;
-}
-
-#Tt {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.profile-tabs {
-  gap: 20px;
-  border-bottom: 1px solid #fff;
-  display: flex;
-  justify-content: center;
-}
-/* 🟢 POPUP OVERLAY STYLING */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.92);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  backdrop-filter: blur(4px);
-  animation: fadeIn 0.2s ease-in-out;
-}
-
-/* 🟢 POPUP CONTENT BOX */
-.popup-content {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 90%;
-  max-height: 90%;
-  overflow: hidden;
-}
-
-/* 🟢 POPUP IMAGE */
-.popup-content img {
-  width: 300px;
-  height: 450px;
-  border: 1px solid #ffffff67;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-  /* transition: transform 0.3s ease; */
-}
-
-/* 🟢 NAVIGATION ARROWS */
-.popup-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-  border: none;
-  font-size: 2.5rem;
-  padding: 5px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  user-select: none;
-  transition: background 0.2s ease;
-}
-
-.popup-arrow:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.popup-arrow.left {
-  left: -50px;
-}
-
-.popup-arrow.right {
-  right: -50px;
-}
-
-/* 🟢 CLOSE BUTTON */
-.popup-close {
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.popup-close:hover {
-  background: rgba(255, 255, 255, 0.35);
-}
-
-/* 🟢 ANIMATION */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
   }
-  to {
-    opacity: 1;
-  }
-}
-
-/* 🟢 MOBILE RESPONSIVENESS */
-@media (max-width: 600px) {
-  .popup-content img {
-    width: 300px;
-    border: 1px solid #ffffff7f;
-    height: 450px;
-  }
-
-  .popup-arrow.left {
-    left: 10px;
-  }
-
-  .popup-arrow.right {
-    right: 10px;
-  }
-
-  .popup-close {
-    top: 10px;
-    right: 10px;
-  }
-}
-@media (max-width:900px) and (min-width:769px) {
-  .listings-scroll{
-    max-width: 100%;
-  }
-  .tab-content{
+  @media (max-width:425px) and (min-width:10px) {
+    .post{
+        flex-direction: column;
+    }
+  #Op,#Tp{
     width: 100%;
+    padding: 15px;
   }
-  #Tt{
-    width: 100%;
-  }
-  #folBtn .bbb, #cls{
-    width: 180px;
-    padding: 12px;
-  }
-  #follow{
-    width: 100%;
-  }
-  .listing-item{
-    margin-top: 7px;
-    max-width: 85%;
+  #Op .thUrl{
+    height: 242px;
   }
 }
-
-@media (max-width:768px) and (min-width:650px) {
-  .user-profile {
-    flex-direction: column;
-  }
-
-  #O,
-  #T {
-    width: 100%;
-  }
-
-  .listings-scroll {
-    max-width: 100%;
-    height: 330px;
-  }
-
-  .listing-item {
-    max-width: 55%;
-    height: 300px;
-
-
-  }
-  #follow{
-    width: 60%;
-  }
-  #folBtn .bbb,
-  #cls {
-    width: 180px;
-    padding: 12px 10x;
-    font-size: 1.1rem;
-    gap: 10px;
-  }
-  #T button{
-    font-size: 1.05rem;
-  }
-  #folBtn #btnn {
-    width: 15px;
-    height: 15px;
-  }
-
-  #folBtn img {
-    width: 20px;
-    height: 20px;
-  }
-
-}
-@media (max-width:649px) and (min-width:520px) {
-  .user-profile {
-    flex-direction: column;
-  }
-  #fol p {
-    font-size: 1rem;
-}
-  #O,
-  #T {
-    width: 100%;
-  }
-  #follow{
-    width: 75%;
-  }
-  .listings-scroll {
-    max-width: 100%;
-    height: 330px;
-  }
-
-  .listing-item {
-    max-width: 55%;
-    height: 300px;
-
-
-  }
-
-  #folBtn .bbb,
-  #cls {
-    width: 150px;
-    padding: 12px;
-    font-size: 0.9rem;
-    gap: 10px;
-  }
-
-  #folBtn #btnn {
-    width: 15px;
-    height: 15px;
-  }
-
-  #folBtn img {
-    width: 20px;
-    height: 20px;
-  }
-  .listing-item .listing-image-container img {
-    width: 100%;
-    display: flex;
-    align-self: self-start;
-    justify-self: self-start;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-}
-
-}
-@media (max-width:519px) and (min-width:10px) {
-  #fol p {
-    font-size: 1rem;
-}
-  .user-profile {
-    flex-direction: column;
-  }
-  #follow{
-    width: 90%;
-  }
-
-  #O,
-  #T {
-    width: 100%;
-  }
-
-  .listings-scroll {
-    max-width: 100%;
-    height: 330px;
-  }
-
-  .listing-item {
-    max-width: 65%;
-    height: 300px;
-  }
-
-  #folBtn .bbb,
-  #cls {
-    width: 150px;
-    padding: 12px;
-    font-size: 0.9rem;
-    gap: 10px;
-  }
-
-  #folBtn #btnn {
-    width: 15px;
-    height: 15px;
-  }
-
-  #folBtn img {
-    width: 20px;
-    height: 20px;
-  }
-  .listing-item .listing-image-container img {
-    width: 100%;
-    display: flex;
-    align-self: self-start;
-    justify-self: self-start;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-}
-#popUp{
-  width: 370px;
-}
-
-}
-@media (max-width:425px) and (min-width:10px) {
-  .listing-item .listing-title{
-    height: 80px;
-  }
-  #fol p {
-    font-size: 1rem;
-}
-  #popUp{
-    width: 310px;
-    padding: 20px;
-  }
-  .listing-item {
-    max-width: 90%;
-    height: 300px;
-  }
-  #follow{
-    width: 100%;
-  }
-  #butt{
-    gap: 15px;
-    justify-content: start;
-    margin: 20px o 10px;
-  }
-}
-
-@media (max-width:352px) and (min-width:200px) {
-  .popup-content img {
-    width: 280px;
-    border: 1px solid #ffffff7f;
-    height: 430px;
-  }
-  #popUp{
-    width: 280px;
-    padding: 20px;
-  }
-  #butt{
-    gap: 0;
-    justify-content: space-between;
-    margin: 20px 10px ;
-  }
-  #folBtn{
-    flex-direction: column;
-    align-items: center;
-  }
-  #butt button{
-    padding: 8px 8px;
-  }
-  .listing-item {
-    max-width: 95%;
-    height: 300px;
-  }
-  .listing-item .listing-title {
-    height: 80px;
-  }
-}
-@media (max-width:296px) and (min-Width:10px){
-  #popUp{
-    width: 260px;
-    padding: 20px;
-  }
-  #links,#con{
-    flex-direction: column;
-  }
-}
-
-/* Skeleton shimmer animation */
-/* .skeleton { */
-  /* background: linear-gradient( */
-    /* 90deg, */
-    /* rgba(40, 40, 40, 0.25) 25%, */
-    /* rgba(90, 90, 90, 0.4) 50%, */
-    /* rgba(40, 40, 40, 0.25) 75% */
-  /* ); */
-  /* background-size: 200% 100%; */
-  /* animation: skeletonLoading 1.4s ease infinite; */
-  /* border-radius: 6px; */
-/* } */
-/*  */
-/* @keyframes skeletonLoading { */
-  /* 0% { */
-    /* background-position: 200% 0; */
-  /* } */
-  /* 100% { */
-    /* background-position: -200% 0; */
-  /* } */
-/* } */
-/*  */
-/* .skeleton-container { */
-  /* transition: opacity 0.3s ease; */
-/* } */
-/*  */
-
-
