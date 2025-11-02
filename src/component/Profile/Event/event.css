@@ -36,6 +36,7 @@ object-position: center;
 }
 #tit{
     width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     align-self: flex-end;
     background: #0d121c;
     border-radius: 20px;
@@ -105,7 +106,7 @@ object-position: center;
     right: 8px;
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
-    padding: 7px 10px;
+    padding: 7px 15px;
     font-size: 0.7rem;
     border-radius: 8px;
     text-transform: capitalize;
