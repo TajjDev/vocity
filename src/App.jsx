@@ -7,6 +7,7 @@ import EventII from './component/Profile/Event/EventII'
 import Nav from './component/nav/Nav'
 import Footer from './component/footer/Footer'
 import ScrollToTop from './ScrollToTop'
+import ReloadOnBack from './ReloadOnBack'
 // import UserCreation from './component/Profile/UserCreation'
 // import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 // import Modal from './component/footer/PPandTC'
@@ -15,8 +16,9 @@ const App = () => {
     <>
     <Router>
       <ScrollToTop/>
-      <Nav /> {/* Always visible */}
 
+      <Nav /> {/* Always visible */}
+      <ReloadOnBack/>
       <Routes>
         <Route path="/" element={<RenderAll />} />
         <Route path="/profile/*" element={<ProfileII />} />
