@@ -1,4 +1,5 @@
 import './profile.css';
+import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import verified from '/src/assets/image/verified.png';
 import share from '/src/assets/image/share.png';
@@ -35,14 +36,14 @@ function UserProfile({ userId }) {
     const [error, setError] = useState("");
     const [list, setList] = useState([]);
     const [popupOpen, setPopupOpen] = useState(false);
-    const [popupImages, setPopupImages] = useState([]); 
+    const [popupImages, setPopupImages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
 
     const BASE_URL_USER = "https://api.votecity.ng/v1/user";
     const BASE_URL_LISTINGS = "https://api.votecity.ng/v1/post/create/listings";
     const BASE_URL_SHOTS = "https://api.votecity.ng/v1/shot/user";
-    const Link = `https://vocity.vercel.app/profile/${userId}`;
+    const PLink = `https://vocity.vercel.app/profile/${userId}`;
 
     // 🔹 Fetch followers/following
     const fetchFollowData = () => {
@@ -79,10 +80,10 @@ function UserProfile({ userId }) {
 
     // 🔹 Copy profile link
     const handleCopy = () => {
-        navigator.clipboard.writeText(Link);
+        navigator.clipboard.writeText(PLink);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
-        alert("Link copied: " + Link);
+        alert("Link copied: " + PLink);
     };
 
     // 🔹 Fetch User Profile
@@ -133,32 +134,32 @@ function UserProfile({ userId }) {
         setPopupImages(images);
         setCurrentIndex(index);
         setPopupOpen(true);
-      };
-    
-      const closePopup = () => setPopupOpen(false);
-    
-      const nextImage = () => {
+    };
+
+    const closePopup = () => setPopupOpen(false);
+
+    const nextImage = () => {
         if (popupImages.length > 1)
-          setCurrentIndex((prev) => (prev + 1) % popupImages.length);
-      };
-    
-      const prevImage = () => {
+            setCurrentIndex((prev) => (prev + 1) % popupImages.length);
+    };
+
+    const prevImage = () => {
         if (popupImages.length > 1)
-          setCurrentIndex((prev) => (prev - 1 + popupImages.length) % popupImages.length);
-      };
-    
-      // SWIPE HANDLERS (for touch)
-      let touchStartX = 0;
-      let touchEndX = 0;
-    
-      const handleTouchStart = (e) => (touchStartX = e.changedTouches[0].screenX);
-      const handleTouchEnd = (e) => {
+            setCurrentIndex((prev) => (prev - 1 + popupImages.length) % popupImages.length);
+    };
+
+    // SWIPE HANDLERS (for touch)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const handleTouchStart = (e) => (touchStartX = e.changedTouches[0].screenX);
+    const handleTouchEnd = (e) => {
         touchEndX = e.changedTouches[0].screenX;
         if (touchStartX - touchEndX > 50) nextImage();
-         // swipe left
-        if (touchEndX - touchStartX > 50) prevImage(); 
+        // swipe left
+        if (touchEndX - touchStartX > 50) prevImage();
         // swipe right
-      };
+    };
 
     if (loadingUser) return <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }} > <img src={load} alt="" /></div>;
     if (!user) return <p>No user found</p>;
@@ -166,149 +167,148 @@ function UserProfile({ userId }) {
     return (
         <div className="user-profile" style={{ opacity: loadingUser ? 0.6 : 1, transition: "opacity 0.3s ease" }}>
             <div id="O">
-  <div id="name">
-    <div id="userNaVe">
-      <p id="full">{user.fullname}</p>
-      {user.id_verified === 1 && <img src={verified} alt="Verified" />}
-    </div>
-    <p id="userrr">@{user.username}</p>
-  </div>
+                <div id="name">
+                    <div id="userNaVe">
+                        <p id="full">{user.fullname}</p>
+                        {user.id_verified === 1 && <img src={verified} alt="Verified" />}
+                    </div>
+                    <p id="userrr">@{user.username}</p>
+                </div>
 
-  <div id="img">
-    <img
-      id="dp"
-      className="profile"
-      src={
-        user.thumbnail?.url
-          ? `https://api.votecity.ng${user.thumbnail?.url}`
-          : alt
-      }
-      alt={user.fullname || "User avatar"}
-      style={{ cursor: "pointer" }} // 🟢 clickable
-      onClick={() =>
-        openPopup([`https://api.votecity.ng${user.thumbnail?.url}`])
-      } // 🟢 Added popup trigger
-    />
-  </div>
+                <div id="img">
+                    <img
+                        id="dp"
+                        className="profile"
+                        src={
+                            user.thumbnail?.url ? `https://api.votecity.ng${user.thumbnail?.url}`
+                                : alt
+                        }
+                        alt={user.fullname || "User avatar"}
+                        style={{ cursor: "pointer" }} // 🟢 clickable
+                        onClick={() =>
+                            openPopup([`https://api.votecity.ng${user.thumbnail?.url}`])
+                        } // 🟢 Added popup trigger
+                    />
+                </div>
 
-  <div id="followw">
-    <div id="fol">
-      <p>
-        <span>{user.following}</span> Following
-      </p>
-      <p>
-        <span>{user.followers}</span> Followers
-      </p>
-    </div>
+                <div id="followw">
+                    <div id="fol">
+                        <p>
+                            <span>{user.following}</span> Following
+                        </p>
+                        <p>
+                            <span>{user.followers}</span> Followers
+                        </p>
+                    </div>
 
-    <div id="folBtn">
-      <button className="bbb" onClick={() => setShowPopup(true)}>
-        Follow <img id="btnn" src={follow} alt="" />
-      </button>
+                    <div id="folBtn">
+                        <button className="bbb" onClick={() => setShowPopup(true)}>
+                            Follow <img id="btnn" src={follow} alt="" />
+                        </button>
 
-      {showPopup && (
-        <div id="popOver">
-          <div id="popUp">
-            <p id="downn">Download the App to follow</p>
-            <div id="apGo">
-              <a href="" className="goAp">
-                <img src={google} alt="" />
-              </a>
-              <a href="" className="goAp">
-                <img src={apple} alt="" />
-              </a>
+                        {showPopup && (
+                            <div id="popOver">
+                                <div id="popUp">
+                                    <p id="downn">Download the App to follow</p>
+                                    <div id="apGo">
+                                        <a href="" className="goAp">
+                                            <img src={google} alt="" />
+                                        </a>
+                                        <a href="" className="goAp">
+                                            <img src={apple} alt="" />
+                                        </a>
+                                    </div>
+                                    <p>
+                                        Available both on <br />
+                                        Play store and Apple store
+                                    </p>
+                                    <button id="cls" onClick={() => setShowPopup(false)}>
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        <button onClick={handleCopy} className="bbb" id="btnT">
+                            Share Profile <img src={share} alt="" />
+                        </button>
+                    </div>
+                </div>
+
+                {/* 🔹 Shots */}
+                <div id="shots-section">
+                    {loadingShots ? (
+                        <p>Loading shots...</p>
+                    ) : shots.length === 0 ? (
+                        <p style={{ textAlign: "center" }}></p>
+                    ) : (
+                        <div className="shots-scroll">
+                            {shots.map((shot, index) => (
+                                <div key={shot.id} className="shot-item">
+                                    <img
+                                        src={`https://api.votecity.ng${shot.photo.url}`}
+                                        alt={shot.text || "User shot"}
+                                        className="shot-thumbnail"
+                                        style={{
+                                            cursor: "pointer",
+                                            objectFit: "cover",
+
+
+                                        }}
+                                        onClick={() =>
+                                            openPopup(
+                                                shots.map(
+                                                    (s) => `https://api.votecity.ng${s.photo.url}`
+                                                ),
+                                                index
+                                            )
+                                        } // 🟢 Added popup trigger for shots
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                {/* 🟢 Popup Overlay */}
+                {popupOpen && (
+                    <div
+                        className="popup-overlay"
+                        onClick={closePopup}
+                        onTouchStart={handleTouchStart}
+                        onTouchEnd={handleTouchEnd}
+                    >
+                        <div
+                            className="popup-content"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <img
+                                src={popupImages[currentIndex]}
+                                alt="popup"
+                                style={{
+                                    // width: "300px",
+                                    // height: "450px",
+                                    objectFit: "cover",
+                                    borderRadius: "10px",
+                                }}
+                            />
+                            {popupImages.length > 1 && (
+                                <>
+                                    <button className="popup-arrow left" onClick={prevImage}>
+                                        ‹
+                                    </button>
+                                    <button className="popup-arrow right" onClick={nextImage}>
+                                        ›
+                                    </button>
+                                </>
+                            )}
+                            <button className="popup-close" onClick={closePopup}>
+                                ✕
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
-            <p>
-              Available both on <br />
-              Play store and Apple store
-            </p>
-            <button id="cls" onClick={() => setShowPopup(false)}>
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-
-      <button onClick={handleCopy} className="bbb" id="btnT">
-        Share Profile <img src={share} alt="" />
-      </button>
-    </div>
-  </div>
-
-  {/* 🔹 Shots */}
-  <div id="shots-section">
-    {loadingShots ? (
-      <p>Loading shots...</p>
-    ) : shots.length === 0 ? (
-      <p style={{ textAlign: "center" }}></p>
-    ) : (
-      <div className="shots-scroll">
-        {shots.map((shot, index) => (
-          <div key={shot.id} className="shot-item">
-            <img
-              src={`https://api.votecity.ng${shot.photo.url}`}
-              alt={shot.text || "User shot"}
-              className="shot-thumbnail"
-              style={{
-                cursor: "pointer",
-                objectFit: "cover",
-                
-                
-              }}
-              onClick={() =>
-                openPopup(
-                  shots.map(
-                    (s) => `https://api.votecity.ng${s.photo.url}`
-                  ),
-                  index
-                )
-              } // 🟢 Added popup trigger for shots
-            />
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
-
-  {/* 🟢 Popup Overlay */}
-  {popupOpen && (
-    <div
-      className="popup-overlay"
-      onClick={closePopup}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
-      <div
-        className="popup-content"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <img
-          src={popupImages[currentIndex]}
-          alt="popup"
-          style={{
-            // width: "300px",
-            // height: "450px",
-            objectFit: "cover",
-            borderRadius: "10px",
-          }}
-        />
-        {popupImages.length > 1 && (
-          <>
-            <button className="popup-arrow left" onClick={prevImage}>
-              ‹
-            </button>
-            <button className="popup-arrow right" onClick={nextImage}>
-              ›
-            </button>
-          </>
-        )}
-        <button className="popup-close" onClick={closePopup}>
-          ✕
-        </button>
-      </div>
-    </div>
-  )}
-</div>
 
             {/* 🔹 Tabs Section */}
             <div id="T">
@@ -360,18 +360,25 @@ function UserProfile({ userId }) {
                                     {listings.map(listing => (
                                         <div key={listing.id} className='listing-item'>
                                             <div className="listing-image-container">
+                                            <div key={listing.post_id}>
+                                                <Link to={`/post/${listing.post_id}`}>
+                                                    
                                                 <img
                                                     src={`https://api.votecity.ng${listing.thumbnail?.url}`}
                                                     alt="Listing thumbnail"
                                                     className="listing-image"
                                                 />
+                                                </Link>
+                                                </div>
                                                 <p className={`status-label ${sort}`}>
                                                     {listing.status ? listing.status.charAt(0).toUpperCase() + listing.status.slice(1) : sort}
                                                 </p>
+                                                <p id='g'>{listing.post_type}</p>
                                             </div>
 
                                             <div className="listing-title">
                                                 <p>{listing.title || listing.text || "Untitled post"}</p>
+                                                
                                                 <div id="views">
                                                     <p><img src={comment} alt="" />{listing.comments_count}</p>
                                                     <p><img src={participant} alt="" />{listing.participants_count}</p>

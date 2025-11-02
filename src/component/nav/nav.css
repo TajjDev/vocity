@@ -15,7 +15,7 @@
 .nav.scrolled {
     position: fixed;
     border-bottom: 1px solid rgba(255, 255, 255, 0.372);
-    background: rgba(10, 14, 21, 0.979);
+    background: rgba(10, 14, 21, 0.909);
     top: 0;
     z-index: 1;
     padding: 20px 80px;
@@ -439,6 +439,9 @@
 
 /* Show it only on small screens (≤ 424px) */
 @media (max-width: 430px) {
+    .nav{
+        border-bottom: none;
+    }
     .mobile-nav {
         display: block;
         position: fixed;

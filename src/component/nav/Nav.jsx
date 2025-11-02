@@ -7,7 +7,7 @@ import MobileMenu from './MobileMenu'
 
 const Nav = () => {
   const location = useLocation();
-  const isUserProfile = location.pathname.startsWith("/profile/")
+  const isUserProfile = location.pathname.startsWith("/profile/") || location.pathname.startsWith("/post/")
   const [activeLink, setActiveLink] = useState('home')
   const navigate = useNavigate(); 
 

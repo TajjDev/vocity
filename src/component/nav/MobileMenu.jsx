@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './nav.css';
+import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import menu from '/src/assets/image/menuPh.png'
 // import { c } from 'vite/dist/node/moduleRunnerTransport.d-DJ_mE5sf';
@@ -8,7 +9,27 @@ const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [animationOut, setAnimationOut] = useState(false);
   const [animationin, setAnimationin] = useState(false)
+  const location = useLocation();
   const isUserProfile = location.pathname.startsWith("/profile/")
+  const navigate = useNavigate(); 
+  
+  const scrolToAbout = () => {
+    const About = document.getElementById('About');
+    if (About) {
+      About.scrollIntoView
+        ({ behavior: "smooth" });
+    }
+  }
+
+  const goToSection = (sectionId) => {
+    navigate("/"); // Go to homepage
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 500); // Wait for homepage to load
+  };
 
   const openMenu = () => {
     // setAnimationOut(false);
@@ -94,6 +115,19 @@ const MobileMenu = () => {
           )}
           <div id="downNavM">
             <a onClick={closeMenu} id='downloadNavM' href="#">Download now</a>
+            {isUserProfile && (
+  <a
+    className={`nvi ${activeLink === 'About' ? 'active' : ''}`}
+    onClick={() => {
+      closeMenu();
+      scrolToAbout();
+      goToSection('About');
+    }}
+    href="#aboutus"
+  >
+    About us
+  </a>
+)}
           </div>
         </div>
       )}

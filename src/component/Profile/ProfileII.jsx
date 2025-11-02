@@ -8,16 +8,10 @@ import { Component } from 'react';
 console.log('UserProfile Component mounted');
 const ProfileII = () => {
     return (
-        <Router>
-            <Nav />         {/* Always visible */}
-
             <Routes>
                 <Route path='/' element={<RenderAll />} />
-                <Route path='/profile/:userID' element={<UserProWrap />} />
+                <Route path=':userID' element={<UserProWrap />} />
             </Routes>
-
-            <Footer />      {/* Always visible */}
-        </Router>
     );
 };
 

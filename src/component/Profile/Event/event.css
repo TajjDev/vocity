@@ -1,0 +1,124 @@
+#Op,
+#Tp {
+  width: 50%;
+  /* background: red; */
+  padding: 50px;
+}
+.post{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+#Op .thUrl{
+    height: 250px;
+    width: 100%;
+    border-radius: 20px;
+}
+#imOp img{
+    object-fit: cover;
+object-position: center;
+}
+#OpP{
+    font-size: 1.2rem;
+}
+#urlTit{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+#titUser{
+    /* width: 47%; */
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+}
+#tit{
+    width: 100%;
+    align-self: flex-end;
+    background: #0d121c;
+    border-radius: 20px;
+    height: 100px;
+    padding: 20px 0;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    padding-left: 10px;
+}
+#ev{
+    display: flex;
+    gap: 10px;
+}
+#ev img{
+    height: 30px;
+}
+#Op{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  
+  .thUrl {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  /* Date badge (top-left corner) */
+  .date-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px 6px;
+    width: 40px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .date-badge .day {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .date-badge .month {
+    font-size: 0.7rem;
+    margin: 0;
+  }
+  
+  /* Post type badge (bottom-right corner) */
+  .type-badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 7px 10px;
+    font-size: 0.7rem;
+    border-radius: 8px;
+    text-transform: capitalize;
+  }
+  @media (max-width:425px) and (min-width:10px) {
+    .post{
+        flex-direction: column;
+    }
+  #Op,#Tp{
+    width: 100%;
+    padding: 15px;
+  }
+  #Op .thUrl{
+    height: 242px;
+  }
+}
