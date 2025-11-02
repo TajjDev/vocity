@@ -93,7 +93,7 @@ const Event = ({ postId }) => {
                             <p style={{ fontSize: "1rem" }}>{post.title}</p>
                         </div>
                         <div style={{display:"flex",gap:"5px", alignItems:"center"}} id="useRx">
-                            <img style={{ height: "45px", objectFit: "cover", objectPosition: "center", borderRadius: "100px", width: "45px" }} src={ post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}`: alt} alt="" />
+                            <img style={{ height: "55px", objectFit: "cover", objectPosition: "center", borderRadius: "100px", width: "55px" }} src={ post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}`: alt} alt="" />
                             <div  id="pst">
                                 <p style={{display:"flex"}}>Posted by&nbsp;<span style={{ fontWeight: "bold" }}> {post.user?.fullname}</span> {post.user?.id_verified === 1 && (
                                     <img
@@ -115,5 +115,6 @@ const Event = ({ postId }) => {
         </div>
     );
 };
+
 
 export default Event;
