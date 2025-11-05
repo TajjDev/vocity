@@ -15,10 +15,11 @@ const App = () => {
   return (
     <>
     <Router>
-      {/*<ScrollToTop/>*/}
+
 
       <Nav /> {/* Always visible */}
        <ReloadOnBack/>
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<RenderAll />} />
         <Route path="/profile/*" element={<ProfileII />} />
