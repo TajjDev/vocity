@@ -18,9 +18,9 @@ const App = () => {
 
 
       <Nav /> {/* Always visible */}
-
+       <ReloadOnBack/>
       <Routes>
-        <ReloadOnBack/>
+
         
         <Route path="/" element={<RenderAll />} />
         <Route path="/profile/*" element={<ProfileII />} />
