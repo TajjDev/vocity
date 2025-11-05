@@ -20,6 +20,8 @@ const App = () => {
       <Nav /> {/* Always visible */}
 
       <Routes>
+        <ReloadOnBack/>
+        
         <Route path="/" element={<RenderAll />} />
         <Route path="/profile/*" element={<ProfileII />} />
         <Route path="/post/*" element={<EventII />} />
