@@ -18,8 +18,7 @@ const App = () => {
 
 
       <Nav /> {/* Always visible */}
-       <ReloadOnBack/>
-      <ScrollToTop/>
+
       <Routes>
         <Route path="/" element={<RenderAll />} />
         <Route path="/profile/*" element={<ProfileII />} />
