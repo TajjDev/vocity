@@ -18,7 +18,8 @@ const App = () => {
 
 
       <Nav /> {/* Always visible */}
-       <ReloadOnBack/>
+
+      <ScrollToTop/>
       <Routes>
 
         
