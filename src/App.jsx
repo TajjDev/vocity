@@ -15,10 +15,10 @@ const App = () => {
   return (
     <>
     <Router>
-      <ScrollToTop/>
+      {/*<ScrollToTop/>*/}
 
       <Nav /> {/* Always visible */}
-      <ReloadOnBack/>
+      {/* <ReloadOnBack/>*/}
       <Routes>
         <Route path="/" element={<RenderAll />} />
         <Route path="/profile/*" element={<ProfileII />} />
