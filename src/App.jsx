@@ -22,6 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<RenderAll />} />
         <Route path="/profile/*" element={<ProfileII />} />
+        <ReloadOnBack/>
         <Route path="/post/*" element={<EventII />} />
       </Routes>
 
