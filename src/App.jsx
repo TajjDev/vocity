@@ -18,11 +18,10 @@ const App = () => {
       {/*<ScrollToTop/>*/}
 
       <Nav /> {/* Always visible */}
-      {/* <ReloadOnBack/>*/}
+       <ReloadOnBack/>
       <Routes>
         <Route path="/" element={<RenderAll />} />
         <Route path="/profile/*" element={<ProfileII />} />
-        <ReloadOnBack/>
         <Route path="/post/*" element={<EventII />} />
       </Routes>
 
