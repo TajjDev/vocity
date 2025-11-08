@@ -300,7 +300,7 @@
   /* border-radius: 40px; */
   padding: 10px 30px 10px 10px;
 }
-.listing-title{
+.listing-title p{
   display: -webkit-box;
     -webkit-line-clamp: 1; /* clamp to one line */
     -webkit-box-orient: vertical;
@@ -904,6 +904,7 @@
   /* transition: opacity 0.3s ease; */
 /* } */
 /*  */
+
 
 
 
