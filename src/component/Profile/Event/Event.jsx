@@ -155,7 +155,7 @@ const Event = ({ postId }) => {
                 </div>
             </div>
             <div id="Tp">
-                <div style={{background:"#0c121ddc", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px", padding:"20px"}} id="countd">
+                <div style={{background:"#00000072", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px", padding:"20px"}} id="countd">
                     <p style={{textAlign:"center", color: "#ffffffb4"}}> POLL START IN APPROXIMATELY:</p>
                     <EventCountdown startTime={post.datetime_start}/>
                 </div>

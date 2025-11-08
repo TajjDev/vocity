@@ -432,12 +432,12 @@ function UserProfile({ userId }) {
                                 value={q}
                                 onChange={(e) => setQ(e.target.value)}
                                 style={{
-                                    padding: "15px 12px",
+                                    padding: "17px 12px",
                                     width: "100%",
                                     display: "block",
                                     borderRadius: "10px",
-                                    border: "1px solid rgba(141, 141, 141, 0.5)",
-                                    background: "rgba(13, 18, 28, 0.6)",
+                                    // border: "1px solid rgba(141, 141, 141, 0.5)",
+                                    background: "#00000072",
                                     color: "#ffffff99",
                                     outline: "none",
                                 }}
