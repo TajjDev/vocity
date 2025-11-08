@@ -14,6 +14,7 @@ import comment from '/src/assets/image/comment.png';
 import saved from '/src/assets/image/saves.png';
 import alt from '/src/assets/image/alt.jpg';
 import load from '/src/assets/image/load.png';
+import listload from '/src/assets/image/listingLoad.png';
 
 function UserProfile({ userId }) {
     const [user, setUser] = useState(null);
@@ -434,7 +435,7 @@ function UserProfile({ userId }) {
                                 onChange={(e) => setQ(e.target.value)}
                                 style={{
                                     padding: "17px 12px",
-                                    width: "100%",
+                                    // width: "100%",
                                     display: "block",
                                     borderRadius: "10px",
                                     // border: "1px solid rgba(141, 141, 141, 0.5)",
@@ -455,7 +456,7 @@ function UserProfile({ userId }) {
                                         {sortII === "followers" ? "No followers found" : "No followings found"}
                                     </p>
                                 ) : (
-                                    <ul style={{ listStyle: "none", width: "100%", padding: 0 }}>
+                                    <ul id='ull' style={{ listStyle: "none", width: "100%", padding: 0 }}>
                                         {list.map((item) => (
                                             <li
                                                 key={item.user_id}

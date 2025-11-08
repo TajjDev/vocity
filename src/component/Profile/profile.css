@@ -301,7 +301,10 @@
   /* border-radius: 40px; */
   padding: 10px 30px 10px 10px;
 }
-
+#ull{
+  height: 360px;
+  overflow-y: auto;
+}
 .listing-item .listing-image-container img {
   width: 100%;
   display: flex;
@@ -404,26 +407,26 @@
 /* =========================
      🌈 FANCY SCROLLBAR
      ========================= */
-.listings-scroll::-webkit-scrollbar {
+.listings-scroll::-webkit-scrollbar, #ull::-webkit-scrollbar {
   height: 8px;
 }
 
-.listings-scroll::-webkit-scrollbar-track {
+.listings-scroll::-webkit-scrollbar-track, #ull::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 10px;
 }
 
-.listings-scroll::-webkit-scrollbar-thumb {
+.listings-scroll::-webkit-scrollbar-thumb, #ull::-webkit-scrollbar-thumb {
   background: linear-gradient(90deg, #8e44ad, #3498db);
   border-radius: 10px;
 }
 
-.listings-scroll::-webkit-scrollbar-thumb:hover {
+.listings-scroll::-webkit-scrollbar-thumb:hover, #ull::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(90deg, #9b59b6, #2980b9);
 }
 
 /* Firefox scrollbar */
-.listings-scroll {
+.listings-scroll, #ull {
   scrollbar-width: thin;
   scrollbar-color: rgba(108, 69, 0, 1) rgba(0, 0, 0, 0.1);
 }
@@ -594,7 +597,9 @@
 .popup-close:hover {
   background: rgba(255, 255, 255, 0.35);
 }
-
+#follow #ino{
+  width: 100%;
+}
 /* 🟢 ANIMATION */
 @keyframes fadeIn {
   from {
@@ -675,11 +680,14 @@
     max-width: 42%;
     height: auto;
   }
+  #follow #ino{
+    width: 65%;  
+  }
  .listing-image-container img {
     height: 170px;
   }
   #follow{
-    width: 60%;
+    width: 100%;
   }
   #folBtn .bbb,
   #cls {
@@ -713,8 +721,11 @@
   #T {
     width: 100%;
   }
-  #follow{
+  #follow #ino{
     width: 75%;
+  }
+  #follow{
+    width: 100%;
   }
   .listings-scroll {
     max-width: 100%;
