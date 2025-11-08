@@ -238,8 +238,8 @@
   overflow-y: hidden;
   scroll-behavior: smooth;
   padding: 0 15px 15px 0;
-  max-width: 80%;
-  height: 400px;
+  max-width: 100%;
+  height: auto;
   border-radius: 12px;
   /* background: #020202be; */
   color: #000;
@@ -254,7 +254,7 @@
   border-radius: 10px;
   flex-direction: column;
   color: #000;
-  max-width: 100%;
+  max-width: 55%;
   /* height: 100%; */
   /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
   position: relative;
@@ -618,6 +618,13 @@
     right: 10px;
   }
 }
+@media (max-width:1024px) and (min-width:901px) {
+  .listing-item{
+    margin-top: 7px;
+    max-width: 80%;
+  }
+}
+
 @media (max-width:900px) and (min-width:769px) {
   .listings-scroll{
     max-width: 100%;
@@ -637,7 +644,7 @@
   }
   .listing-item{
     margin-top: 7px;
-    max-width: 85%;
+    max-width: 90%;
   }
 }
 
@@ -650,17 +657,18 @@
   #T {
     width: 100%;
   }
-
+  
   .listings-scroll {
     max-width: 100%;
-    height: 330px;
+    height: auto;
   }
 
   .listing-item {
-    max-width: 55%;
-    height: 300px;
-
-
+    max-width: 42%;
+    height: auto;
+  }
+ .listing-image-container img {
+    height: 170px;
   }
   #follow{
     width: 60%;
@@ -702,7 +710,7 @@
   }
   .listings-scroll {
     max-width: 100%;
-    height: 330px;
+    height: auto;
   }
 
   .listing-item {
@@ -729,7 +737,7 @@
     width: 20px;
     height: 20px;
   }
-  .listing-item .listing-image-container img {
+.listing-image-container img {
     width: 100%;
     display: flex;
     align-self: self-start;
@@ -759,12 +767,12 @@
 
   .listings-scroll {
     max-width: 100%;
-    height: 330px;
+    height: auto;
   }
 
   .listing-item {
     max-width: 65%;
-    height: 300px;
+    height: auto;
   }
 
   #folBtn .bbb,
@@ -784,12 +792,12 @@
     width: 20px;
     height: 20px;
   }
-  .listing-item .listing-image-container img {
+ .listing-image-container img {
     width: 100%;
     display: flex;
     align-self: self-start;
     justify-self: self-start;
-    height: 150px;
+    height: auto;
     object-fit: cover;
     border-radius: 12px;
     transition: transform 0.3s ease;
@@ -800,7 +808,7 @@
 
 }
 @media (max-width:425px) and (min-width:10px) {
-  .listing-item .listing-title{
+.listing-title{
     height: 80px;
   }
   #fol p {
@@ -812,7 +820,7 @@
   }
   .listing-item {
     max-width: 90%;
-    height: 300px;
+    height: auto;
   }
   #follow{
     width: 100%;
@@ -848,9 +856,9 @@
   }
   .listing-item {
     max-width: 95%;
-    height: 300px;
+    height: auto;
   }
-  .listing-item .listing-title {
+.listing-title {
     height: 80px;
   }
 }

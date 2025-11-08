@@ -14,9 +14,6 @@ import comment from '/src/assets/image/comment.png';
 import saved from '/src/assets/image/saves.png';
 import alt from '/src/assets/image/alt.jpg';
 import load from '/src/assets/image/load.png';
-import ongoing from '/src/assets/image/ongoing.png';
-import upcoming from '/src/assets/image/upcoming.png';
-import ended from '/src/assets/image/ended.png';
 
 function UserProfile({ userId }) {
     const [user, setUser] = useState(null);

@@ -1,0 +1,67 @@
+import React, { useEffect, useState } from "react";
+
+const EventCountdown = ({ startTime }) => {
+  const calculateTimeLeft = () => {
+    const difference = new Date(startTime) - new Date();
+    if (difference <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / (1000 * 60)) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [startTime]);
+
+  return (
+    <div style={styles.container}>
+      {Object.entries(timeLeft).map(([label, value]) => (
+        <div key={label} style={styles.timeBox}>
+          <div style={styles.value}>{String(value).padStart(2, "0")}</div>
+          <div style={styles.label}>{label}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// --- Inline Styles ---
+const styles = {
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "20px",
+    marginTop: "20px",
+  },
+  timeBox: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    background: "rgb(10, 14, 21)",
+    color: "#fff",
+    borderRadius: "10px",
+    width: "60px",
+    padding: "10px 0",
+  },
+  value: {
+    fontSize: "23px",
+    fontWeight: "bold",
+  },
+  label: {
+    fontSize: "12px",
+    textTransform: "uppercase",
+    marginTop: "5px",
+    // opacity: 0.8,
+  },
+};
+
+export default EventCountdown;

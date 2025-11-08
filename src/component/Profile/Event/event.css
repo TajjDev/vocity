@@ -4,122 +4,158 @@
   /* background: red; */
   padding: 50px;
 }
-.post{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
+#Tp{
+  padding-right: 0;
 }
-#Op .thUrl{
-    height: 250px;
-    width: 100%;
-    border-radius: 20px;
+.post {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
 }
-#imOp img{
-    object-fit: cover;
-object-position: center;
+
+#Op .thUrl {
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
 }
-#OpP{
-    font-size: 1.2rem;
+
+#imOp img {
+  object-fit: cover;
+  object-position: center;
 }
-#urlTit{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
+
+#OpP {
+  font-size: 1.2rem;
 }
-#titUser{
-    /* width: 47%; */
-    gap: 30px;
-    display: flex;
-    flex-direction: column;
+
+#urlTit {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
-#tit{
-    width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    align-self: flex-end;
-    background: #0d121c;
-    border-radius: 20px;
-    height: 100px;
-    padding: 20px 0;
-    /* text-align: center; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-    padding-left: 10px;
+
+#titUser {
+  /* width: 47%; */
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
 }
-#ev{
-    display: flex;
-    gap: 10px;
+
+#bn:hover svg {
+  transform: translateX(-3px);
+  transition: transform 0.2s ease;
 }
-#ev img{
-    height: 30px;
+
+#discb {
+  width: 100%;
+  /* border: 1px solid rgb(58, 58, 58); */
+  display: flex;
+  flex-direction: column;
+  background: #0c121ddc;
+  /* height: 120px; */
+  border-radius: 10px;
+  justify-content: center;
+  gap: 10px;
+  padding:15px 15px;
 }
-#Op{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+#tit {
+  width: 100%;
+  /* border: 1px solid rgb(58, 58, 58); */
+  align-self: flex-end;
+  background: #0c121ddc;
+  border-radius: 10px;
+  height: 100px;
+  padding: 20px 0;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 15px;
 }
+
+#ev {
+  display: flex;
+  gap: 10px;
+}
+
+#ev img {
+  height: 30px;
+}
+
+#Op {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .image-wrapper {
-    position: relative;
-    width: 100%;
-    height: auto;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.thUrl {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Date badge (top-left corner) */
+.date-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 8px;
+  padding: 5px 6px;
+  width: 40px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.date-badge .day {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.date-badge .month {
+  font-size: 0.7rem;
+  margin: 0;
+}
+
+/* Post type badge (bottom-right corner) */
+.type-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 7px 15px;
+  font-size: 0.7rem;
+  border-radius: 8px;
+  text-transform: capitalize;
+}
+
+@media (max-width:425px) and (min-width:10px) {
+  .post {
+    flex-direction: column;
   }
-  
-  .thUrl {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-  
-  /* Date badge (top-left corner) */
-  .date-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    border-radius: 8px;
-    padding: 5px 6px;
-    width: 40px;
-    text-align: center;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  .date-badge .day {
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .date-badge .month {
-    font-size: 0.7rem;
-    margin: 0;
-  }
-  
-  /* Post type badge (bottom-right corner) */
-  .type-badge {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 7px 15px;
-    font-size: 0.7rem;
-    border-radius: 8px;
-    text-transform: capitalize;
-  }
-  @media (max-width:425px) and (min-width:10px) {
-    .post{
-        flex-direction: column;
-    }
-  #Op,#Tp{
+
+  #Op,
+  #Tp {
     width: 100%;
     padding: 15px;
   }
-  #Op .thUrl{
+
+  #Op .thUrl {
     height: 242px;
   }
 }
