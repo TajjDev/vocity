@@ -374,7 +374,7 @@ function UserProfile({ userId }) {
                                             </div>
 
                                             <div className="listing-title">
-                                                <p>{listing.title || listing.text || "Untitled post"}</p>
+                                                <p id='short'>{listing.title || listing.text || "Untitled post"}</p>
                                                 
                                                 <div id="views">
                                                     <p><img src={comment} alt="" />{listing.comments_count}</p>
@@ -539,3 +539,4 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
+
