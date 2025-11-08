@@ -158,4 +158,12 @@
   #Op .thUrl {
     height: 242px;
   }
+  #discb, #tit{
+    border: 1px solid #ffffff3f;
+
+  }
+  #countd{
+    border: 1px solid #ffffff3f;
+    border-radius: 10px;
+  }
 }

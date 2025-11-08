@@ -428,6 +428,7 @@ function UserProfile({ userId }) {
 
                             {/* Search box */}
                             <input
+                            id='ino'
                                 placeholder={`Search ${sortII}...`}
                                 value={q}
                                 onChange={(e) => setQ(e.target.value)}
@@ -539,4 +540,3 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
-
