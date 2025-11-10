@@ -145,7 +145,7 @@ const formatDateTime = (isoString) => {
                         <p>From</p>
                         <p className="timee">{formatDateTime(post.datetime_start)}</p>
                     </div>
-                    <hr style={{borderRight:"none",width:"5%",height:"50px",borderLeft:"0.1rem solid #fff", borderTop:"none", borderBottom:"none", display:"flex", alignSelf:"center"}} />
+                    <hr style={{borderRight:"none",width:"5%",height:"50px",borderLeft:"0.1rem solid #fff", borderTop:"none", borderBottom:"none", display:"flex", alignSelf:"center",justifySelf:"center"}} />
                     <div style={{width:"45%",flexDirection:"column", display:"flex",alignItems:"end", justifyContent:"space-between"}} id="to">
                         <p>To</p>
                         <p className="timee">{formatDateTime(post.datetime_end)}</p>
@@ -193,5 +193,6 @@ const formatDateTime = (isoString) => {
         </div>
     );
 };
+
 
 export default Event;
