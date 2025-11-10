@@ -152,7 +152,7 @@ const formatDateTime = (isoString) => {
                     </div>
                 </div>
                 <div className="post-title">
-                    <p style={{ textTransform: "uppercase", fontSize:"0.9rem"}} id='short'>{post.title || post.text || "Untitled post"}</p>
+                    <p style={{ textTransform: "uppercase", fontSize:"0.8rem"}} id='short'>{post.title || post.text || "Untitled post"}</p>
                     <div className="views">
                         <p><img src={comment} alt="" />{post.comments_count}</p>
                         <p><img src={participant} alt="" />{post.participants_count}</p>
@@ -196,6 +196,7 @@ const formatDateTime = (isoString) => {
 
 
 export default Event;
+
 
 
 
