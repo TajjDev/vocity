@@ -10,6 +10,10 @@
 body{
     background: rgb(10, 14, 21);
 }
+html {
+    scroll-behavior: smooth;
+  }
+  
 #render{
 
     gap: 50px;

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import load from '/src/assets/image/load.png';
+import view from '/src/assets/image/view.png';
+import participant from '/src/assets/image/participant.png';
+import comment from '/src/assets/image/comment.png';
+import saved from '/src/assets/image/saves.png';
 import alt from '/src/assets/image/alt.jpg';
 import event from '/src/assets/image/eventMenu.png';
 import verified from '/src/assets/image/verified.png';
@@ -21,7 +25,20 @@ const Event = ({ postId }) => {
         navigate(-1); // go to previous page
     };
 
-
+// Utility function
+const formatDateTime = (isoString) => {
+    if (!isoString) return "";
+    const date = new Date(isoString);
+    const options = {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    };
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  };
     useEffect(() => {
         if (!postId) return; // Safety: don't fetch without ID
 
@@ -53,6 +70,7 @@ const Event = ({ postId }) => {
         .replace(' ', '')
     //   .toLowerCase();
 
+    
     console.log(timeOnly);
     // 🌀 Loading state
 
@@ -123,12 +141,24 @@ const Event = ({ postId }) => {
                     </div>
                 </div>
                 <div id="tit">
-                    <p style={{ color: "#ffffffb4" }}>Starting time: {new Date(post.datetime_start)
-                        .toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
-                        .replace(' ', '')
-                        .toLowerCase()}
-                    </p>
-                    <p style={{ fontSize: "1rem" }}>{post.title}</p>
+                    <div style={{width:"45%", display:"flex",flexDirection:"column", justifyContent:"space-between"}} id="from">
+                        <p>From</p>
+                        <p className="timee">{formatDateTime(post.datetime_start)}</p>
+                    </div>
+                    <hr style={{borderRight:"none",width:"5%",height:"50px",borderLeft:"0.1rem solid #fff", borderTop:"none", borderBottom:"none", display:"flex", alignSelf:"center"}} />
+                    <div style={{width:"45%",flexDirection:"column", display:"flex",alignItems:"end", justifyContent:"space-between"}} id="to">
+                        <p>To</p>
+                        <p className="timee">{formatDateTime(post.datetime_end)}</p>
+                    </div>
+                </div>
+                <div className="post-title">
+                    <p style={{ textTransform: "uppercase" }} id='short'>{post.title || post.text || "Untitled post"}</p>
+                    <div className="views">
+                        <p><img src={comment} alt="" />{post.comments_count}</p>
+                        <p><img src={participant} alt="" />{post.participants_count}</p>
+                        <p><img src={saved} alt="" />{post.saves_count}</p>
+                        <p><img src={view} alt="" />{post.view_count}</p>
+                    </div>
                 </div>
                 <div style={{ display: "flex", gap: "5px", alignItems: "center" }} id="useRx">
                     <img style={{ height: "55px", objectFit: "cover", objectPosition: "center", borderRadius: "100px", width: "55px" }} src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" />
@@ -150,14 +180,14 @@ const Event = ({ postId }) => {
                     </div>
                 </div>
                 <div id="discb">
-                    <p style={{fontSize:"1.1rem"}}>Event Description</p>
+                    <p style={{ fontSize: "1.1rem" }}>Event Description</p>
                     <p style={{ color: "rgb(192, 192, 197)" }}>{post.description}</p>
                 </div>
             </div>
             <div id="Tp">
-                <div style={{background:"#00000072", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px", padding:"20px"}} id="countd">
-                    <p style={{textAlign:"center", color: "#ffffffb4"}}> POLL START IN APPROXIMATELY:</p>
-                    <EventCountdown startTime={post.datetime_start}/>
+                <div style={{ background: "#0000003d", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", padding: "20px" }} id="countd">
+                    <p style={{ textAlign: "center", color: "#ffffffb4" }}> POLL START IN APPROXIMATELY:</p>
+                    <EventCountdown startTime={post.datetime_start} />
                 </div>
             </div>
         </div>

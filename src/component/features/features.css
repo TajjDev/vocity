@@ -3,12 +3,14 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    scroll-margin-top: 100px; 
     gap: 56px;
 }
 
 #feat {
     display: flex;
     flex-direction: column;
+    scroll-margin-top: 100px;
     width: 100%;
     gap: 32px;
 }

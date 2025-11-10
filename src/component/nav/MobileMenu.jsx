@@ -10,7 +10,9 @@ const MobileMenu = () => {
   const [animationOut, setAnimationOut] = useState(false);
   const [animationin, setAnimationin] = useState(false)
   const location = useLocation();
-  const isUserProfile = location.pathname.startsWith("/profile/")
+  const isUserProfile =
+  location.pathname.startsWith("/profile/") ||
+  location.pathname.startsWith("/post/");
   const navigate = useNavigate(); 
   
   const scrolToAbout = () => {

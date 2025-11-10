@@ -192,10 +192,10 @@ function UserProfile({ userId }) {
                 <div id="followw">
                     <div id="fol">
                         <p>
-                            <span>{user.following}</span> Following
+                            <span style={{ fontSize: "0.9rem" }}>{user.followers}</span> Followers
                         </p>
                         <p>
-                            <span>{user.followers}</span> Followers
+                            <span style={{ fontSize: "0.9rem" }}>{user.following}</span> Following
                         </p>
                     </div>
 
@@ -356,17 +356,19 @@ function UserProfile({ userId }) {
                             ) : (
                                 <div className='listings-scroll'>
                                     {listings.map(listing => (
-                                        <div key={listing.id} className='listing-item'>
+                                        <div key={`${listing.id}-${listing.post_id}`}
+                                            className='listing-item'>
+                                                                                        <Link to={`/post/${listing.post_id}`}>
                                             <div className="listing-image-container">
-                                            <div key={listing.post_id}>
-                                                <Link to={`/post/${listing.post_id}`}>
+                                                <div key={listing.post_id}>
+                                                   
+
+                                                        <img
+                                                            src={`https://api.votecity.ng${listing.thumbnail?.url}`}
+                                                            alt="Listing thumbnail"
+                                                            className="listing-image"
+                                                        />
                                                     
-                                                <img
-                                                    src={`https://api.votecity.ng${listing.thumbnail?.url}`}
-                                                    alt="Listing thumbnail"
-                                                    className="listing-image"
-                                                />
-                                                </Link>
                                                 </div>
                                                 <p className={`status-label ${sort}`}>
                                                     {listing.status ? listing.status.charAt(0).toUpperCase() + listing.status.slice(1) : sort}
@@ -375,8 +377,9 @@ function UserProfile({ userId }) {
                                             </div>
 
                                             <div className="listing-title">
-                                                <p id='short'>{listing.title || listing.text || "Untitled post"}</p>
-                                                
+
+                                                <p style={{textTransform:"uppercase"}} id='short'>{listing.title || listing.text || "Untitled post"}</p>
+
                                                 <div id="views">
                                                     <p><img src={comment} alt="" />{listing.comments_count}</p>
                                                     <p><img src={participant} alt="" />{listing.participants_count}</p>
@@ -384,6 +387,7 @@ function UserProfile({ userId }) {
                                                     <p><img src={view} alt="" />{listing.view_count}</p>
                                                 </div>
                                             </div>
+                                            </Link>
                                         </div>
                                     ))}
                                 </div>
@@ -429,7 +433,7 @@ function UserProfile({ userId }) {
 
                             {/* Search box */}
                             <input
-                            id='ino'
+                                id='ino'
                                 placeholder={`Search ${sortII}...`}
                                 value={q}
                                 onChange={(e) => setQ(e.target.value)}
