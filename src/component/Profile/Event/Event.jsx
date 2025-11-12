@@ -189,6 +189,7 @@ const Event = ({ postId }) => {
                                 padding: "8px 16px",
                                 borderRadius: "6px",
                                 border: "none",
+                                fontSize:"0.9rem",
                                 cursor: "pointer",
                                 background: activeSubTab === tab ? "#fff" : "none",
                                 color: activeSubTab === tab ? "#000" : "#fff",
