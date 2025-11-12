@@ -142,17 +142,17 @@ const formatDateTime = (isoString) => {
                 </div>
                 <div id="tit">
                     <div style={{width:"45%", display:"flex",flexDirection:"column", justifyContent:"space-between"}} id="from">
-                        <p style={{fontSize:"0.8rem"}}>From</p>
+                        <p className="frTo">From</p>
                         <p className="timee">{formatDateTime(post.datetime_start)}</p>
                     </div>
-                    <hr style={{borderRight:"none",height:"30px",borderLeft:"0.1rem solid #fff", borderTop:"none", borderBottom:"none", display:"flex", alignSelf:"center",justifySelf:"center"}} />
+                    <hr style={{borderRight:"none",height:"35px",borderLeft:"0.1rem solid #fff", borderTop:"none", borderBottom:"none", display:"flex", alignSelf:"center",justifySelf:"center"}} />
                     <div style={{width:"45%",flexDirection:"column", display:"flex",alignItems:"end", justifyContent:"space-between"}} id="to">
-                        <p style={{fontSize:"0.8rem"}}>To</p>
+                        <p className="frTo">To</p>
                         <p className="timee">{formatDateTime(post.datetime_end)}</p>
                     </div>
                 </div>
                 <div className="post-title">
-                    <p style={{ textTransform: "uppercase", fontSize:"0.8rem"}} id='short'>{post.title || post.text || "Untitled post"}</p>
+                    <p className="frTo" style={{ textTransform: "uppercase"}} id='short'>{post.title || post.text || "Untitled post"}</p>
                     <div className="views">
                         <p><img src={comment} alt="" />{post.comments_count}</p>
                         <p><img src={participant} alt="" />{post.participants_count}</p>
@@ -163,7 +163,7 @@ const formatDateTime = (isoString) => {
                 <div style={{ display: "flex", gap: "5px", alignItems: "center" }} id="useRx">
                     <img style={{ height: "55px", objectFit: "cover", objectPosition: "center", borderRadius: "100px", width: "55px" }} src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" />
                     <div id="pst">
-                        <p style={{ display: "flex" }}>Posted by&nbsp;<span style={{ fontWeight: "bold" }}> {post.user?.fullname}</span> {post.user?.id_verified === 1 && (
+                        <p className="frTo" style={{ display: "flex" }}>Posted by&nbsp;<span style={{ fontWeight: "bold" }}> {post.user?.fullname}</span> {post.user?.id_verified === 1 && (
                             <img
                                 style={{
                                     height: "15px",
@@ -176,16 +176,16 @@ const formatDateTime = (isoString) => {
                             />
                         )}
                         </p>
-                        <p style={{ color: "#ffffffb4" }}>@{post.user?.username}</p>
+                        <p className="timee" style={{ color: "#ffffffb4" }}>@{post.user?.username}</p>
                     </div>
                 </div>
                 <div id="discb">
-                    <p style={{ fontSize: "1.1rem" }}>Event Description</p>
-                    <p style={{ color: "rgb(192, 192, 197)" }}>{post.description}</p>
+                    <p className="desci" >Event Description</p>
+                    <p className="frTo" style={{ color: "rgb(192, 192, 197)" }}>{post.description}</p>
                 </div>
             </div>
             <div id="Tp">
-                <div style={{ background: "#0000003d", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", padding: "20px" }} id="countd">
+                <div style={{ background: "#0000003d", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", padding: "15px" }} id="countd">
                     <p style={{ textAlign: "center", color: "#ffffffb4" }}> POLL START IN APPROXIMATELY:</p>
                     <EventCountdown startTime={post.datetime_start} />
                 </div>
@@ -196,7 +196,6 @@ const formatDateTime = (isoString) => {
 
 
 export default Event;
-
 
 
 
