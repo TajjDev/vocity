@@ -186,6 +186,12 @@ padding: 10px 30px 10px 10px;
 .desci{
   font-size: 1rem;
 }
+#uuu{
+  font-size: 1;
+}
+#uu{
+  font-size: 0.9rem;
+}
 #label{
   font-size: 0.7rem;
 }
@@ -194,6 +200,13 @@ padding: 10px 30px 10px 10px;
 }
 #cap::first-letter{
   text-transform: capitalize;
+}
+#desci{
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 @media (max-width:425px) and (min-width:10px) {
   .post {
@@ -228,5 +241,10 @@ padding: 10px 30px 10px 10px;
     font-size:0.8rem ;
     text-transform: capitalize;
   }
+  #uuu{
+    font-size: 0.9rem;
+  }
+  #uu{
+    font-size: 0.8rem;
+  }
 }
-

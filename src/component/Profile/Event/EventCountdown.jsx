@@ -45,6 +45,7 @@ const styles = {
   },
   timeBox: {
     display: "flex",
+    border:"1px solid #fffff22",
     flexDirection: "column",
     alignItems: "center",
     background: "rgb(10, 14, 21)",

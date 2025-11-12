@@ -3,202 +3,265 @@ import { useNavigate } from "react-router-dom";
 import load from '/src/assets/image/load.png';
 import view from '/src/assets/image/view.png';
 import participant from '/src/assets/image/participant.png';
-import comment from '/src/assets/image/comment.png';
+import commentIcon from '/src/assets/image/comment.png';
 import saved from '/src/assets/image/saves.png';
 import alt from '/src/assets/image/alt.jpg';
-import event from '/src/assets/image/eventMenu.png';
 import verified from '/src/assets/image/verified.png';
-
-import "./event.css"
 import EventCountdown from "./EventCountdown";
+import "./event.css";
+
 const Event = ({ postId }) => {
+    const [activeSubTab, setActiveSubTab] = useState("comments");
     const [post, setPost] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [resolvedPostId, setResolvedPostId] = useState(null); // ✅ store the true post_id here
+    const [isLoadingPost, setIsLoadingPost] = useState(true);
+    const [resolvedPostId, setResolvedPostId] = useState(null);
+    const [subTabData, setSubTabData] = useState([]);
+    const [isLoadingSubTab, setIsLoadingSubTab] = useState(false);
     const [error, setError] = useState("");
 
+    const navigate = useNavigate();
     const BASE_URL_POST = "https://api.votecity.ng/v1/post";
 
-    const navigate = useNavigate();
+    const handleGoBack = () => navigate(-1);
 
-    const handleGoBack = () => {
-        navigate(-1); // go to previous page
+    const formatDateTime = (isoString) => {
+        if (!isoString) return "";
+        const date = new Date(isoString);
+        const options = { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: true };
+        return new Intl.DateTimeFormat("en-US", options).format(date);
     };
 
-// Utility function
-const formatDateTime = (isoString) => {
-    if (!isoString) return "";
-    const date = new Date(isoString);
-    const options = {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    };
-    return new Intl.DateTimeFormat("en-US", options).format(date);
-  };
+    // Fetch main post
     useEffect(() => {
-        if (!postId) return; // Safety: don't fetch without ID
+        if (!postId) return;
 
-        setIsLoading(true);
+        setIsLoadingPost(true);
         setError("");
-
         fetch(`${BASE_URL_POST}/${postId}`)
-            .then((res) => {
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                return res.json();
-            })
-            .then((data) => {
+            .then(res => res.ok ? res.json() : Promise.reject(`HTTP ${res.status}`))
+            .then(data => {
                 const postData = data?.data?.post || null;
                 setPost(postData);
-                console.log(data);
-                // ✅ This is the "React correct" version of: postId = post.post_id
-                if (postData?.post_id) {
-                    setResolvedPostId(postData.post_id);
-                }
+                if (postData?.post_id) setResolvedPostId(postData.post_id);
             })
-            .catch((err) => {
+            .catch(err => {
                 console.error("Fetch post error:", err);
                 setError("Failed to load post");
             })
-            .finally(() => setIsLoading(false));
+            .finally(() => setIsLoadingPost(false));
     }, [postId]);
-    const timeOnly = new Date(post?.datetime_start)
-        .toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
-        .replace(' ', '')
-    //   .toLowerCase();
 
-    
-    console.log(timeOnly);
-    // 🌀 Loading state
+    // Determine sub-tabs dynamically
+    const subTabs = post?.post_type === "event"
+        ? ["comments", "tickets"]
+        : post?.post_type === "project"
+            ? ["comments", "donations"]
+            : post?.post_type === "poll"
+                ? ["comments", "contestants", "leaderboard"]
+                : ["comments"];
 
-    // ⚠️ Error or missing post
-    if (isLoading) return <div style={{
-        width: "100%", height: "100vh", display: "flex", alignItems:
-            "center", justifyContent: "center"
-    }} > <img src={load} alt="" /></div>;
+    // Fetch sub-tab data whenever tab changes
+    useEffect(() => {
+        if (!resolvedPostId) return;
+
+        const fetchSubTabData = async () => {
+            let url = "";
+            switch (activeSubTab) {
+                case "comments": url = `${BASE_URL_POST}/comment/${resolvedPostId}`; break;
+                case "tickets": url = `${BASE_URL_POST}/create/ticket/${resolvedPostId}`; break;
+                case "donations": url = `${BASE_URL_POST}/process/donation/${resolvedPostId}`; break;
+                case "contestants": url = `${BASE_URL_POST}/create/contestant/${resolvedPostId}`; break;
+                default: url = ""; break;
+            }
+            if (!url) return setSubTabData([]);
+
+            setIsLoadingSubTab(true);
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                console.log(`Fetched ${activeSubTab}:`, data);
+
+                let result = [];
+                switch (activeSubTab) {
+                    case "comments": result = data?.data?.comments || []; break;
+                    case "tickets": result = data?.data?.tickets || []; break;
+                    case "donations": result = data?.data?.donations || []; break;
+                    case "contestants": result = data?.data?.contestants || []; break;
+                    case "leaderboard": result = data?.data || []; break;
+                    default: result = []; break;
+                }
+                setSubTabData(result);
+            } catch (err) {
+                console.error(`Error fetching ${activeSubTab}:`, err);
+                setSubTabData([]);
+            } finally {
+                setIsLoadingSubTab(false);
+            }
+        };
+
+        fetchSubTabData();
+    }, [activeSubTab, resolvedPostId]);
+
+    if (isLoadingPost) return (
+        <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img src={load} alt="Loading post..." />
+        </div>
+    );
+
     if (!post) return <p>No post found</p>;
-
-    // ✅ You can now use resolvedPostId anywhere you would have used postId = post.post_id
-    console.log("Resolved Post ID:", resolvedPostId);
 
     return (
         <div className="post">
+            {/* Main Post Info */}
             <div id="Op">
                 <div id="ev">
-                    <div style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
-                        <button id="bm"
-                            onClick={handleGoBack}
-                            style={{
-                                background: "none",
-                                border: "none",
-                                cursor: "pointer",
-                                display: "flex",
-                                alignItems: "center",
-                                color: "#fff",
-                            }}
-                        >
-                            {/* SVG Back Arrow */}
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={2}
-                                stroke="currentColor"
-                                style={{ width: "24px", height: "24px", marginRight: "8px" }}
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M15 19l-7-7 7-7"
-                                />
-                            </svg>
-                            <span style={{ fontSize: "1rem" }}>Back</span>
-                        </button>
-                    </div>
-
+                    <button onClick={handleGoBack} id="bm" style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", color: "#fff", marginBottom: "15px" }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" style={{ width: "24px", height: "24px", marginRight: "8px" }}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
                 </div>
-                <div id="imOp" className="image-wrapper">
-                    <img
-                        className="thUrl"
-                        src={`https://api.votecity.ng${post.thumbnail?.url}`}
-                        alt={post.title}
-                    />
 
+                <div id="imOp" className="image-wrapper">
+                    <img className="thUrl" src={`https://api.votecity.ng${post.thumbnail?.url}`} alt={post.title} />
                     <div className="date-badge">
                         <p className="day">{new Date(post.datetime_start).getDate()}</p>
-                        <p className="month">
-                            {new Date(post.datetime_start)
-                                .toLocaleString("en-US", { month: "short" })
-                                .toUpperCase()}
-                        </p>
+                        <p className="month">{new Date(post.datetime_start).toLocaleString("en-US", { month: "short" }).toUpperCase()}</p>
                     </div>
-
-                    <div className="type-badge">
-                        {post.post_type}
-                    </div>
+                    <div className="type-badge">{post.post_type}</div>
                 </div>
+
                 <div id="tit">
-                    <div style={{width:"45%", display:"flex",flexDirection:"column", justifyContent:"space-between"}} id="from">
+                    <div style={{ width: "45%" }}>
                         <p className="frTo">From</p>
                         <p className="timee">{formatDateTime(post.datetime_start)}</p>
                     </div>
-                    <hr style={{borderRight:"none",height:"35px",borderLeft:"0.1rem solid #fff", borderTop:"none", borderBottom:"none", display:"flex", alignSelf:"center",justifySelf:"center"}} />
-                    <div style={{width:"45%",flexDirection:"column", display:"flex",alignItems:"end", justifyContent:"space-between"}} id="to">
+                    <div style={{ width: "45%", textAlign: "end" }}>
                         <p className="frTo">To</p>
                         <p className="timee">{formatDateTime(post.datetime_end)}</p>
                     </div>
                 </div>
+
                 <div className="post-title">
-                    <p className="frTo" style={{ textTransform: "uppercase"}} id='short'>{post.title || post.text || "Untitled post"}</p>
+                    <p className="frTo" style={{ textTransform: "uppercase" }}>{post.title || post.text || "Untitled post"}</p>
                     <div className="views">
-                        <p><img src={comment} alt="" />{post.comments_count}</p>
+                        <p><img src={commentIcon} alt="" />{post.comments_count}</p>
                         <p><img src={participant} alt="" />{post.participants_count}</p>
                         <p><img src={saved} alt="" />{post.saves_count}</p>
                         <p><img src={view} alt="" />{post.view_count}</p>
                     </div>
                 </div>
+
                 <div style={{ display: "flex", gap: "5px", alignItems: "center" }} id="useRx">
-                    <img style={{ height: "55px", objectFit: "cover", objectPosition: "center", borderRadius: "100px", width: "55px" }} src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" />
+                    <img src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" style={{ height: "55px", width: "55px", objectFit: "cover", borderRadius: "100px" }} />
                     <div id="pst">
-                        <p className="frTo" style={{ display: "flex" }}>Posted by&nbsp;<span style={{ fontWeight: "bold" }}> {post.user?.fullname}</span> {post.user?.id_verified === 1 && (
-                            <img
-                                style={{
-                                    height: "15px",
-                                    paddingLeft: "4px",
-                                    display: "flex",
-                                    alignSelf: "center",
-                                }}
-                                src={verified}
-                                alt="Verified"
-                            />
-                        )}
+                        <p className="frTo" style={{ display: "flex" }}>
+                            Posted by <span style={{ fontWeight: "bold" }}>{post.user?.fullname}</span>
+                            {post.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />}
                         </p>
                         <p className="timee" style={{ color: "#ffffffb4" }}>@{post.user?.username}</p>
                     </div>
                 </div>
+
                 <div id="discb">
-                    <p className="desci" >Event Description</p>
-                    <p className="frTo" id="cap" style={{ color: "rgb(192, 192, 197)" }}>{post.description}</p>
+                    <p className="desci">Event Description</p>
+                    <p className="frTo" style={{ color: "rgb(192, 192, 197)" }}>{post.description}</p>
                 </div>
             </div>
+
+            {/* Countdown & Tabs */}
             <div id="Tp">
-                <div style={{ background: "#0000003d", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", padding: "15px" }} id="countd">
-                    <p style={{ textAlign: "center", color: "#ffffffb4" }}> POLL START IN APPROXIMATELY:</p>
-                    <EventCountdown startTime={post.datetime_start} />
+                {post.post_type === "poll" && (
+                    <div style={{ background: "#0000003d", border:"1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px", padding: "15px", marginBottom: "15px" }}>
+                        <p style={{ textAlign: "center", color: "#ffffffb4" }}>POLL START IN APPROXIMATELY:</p>
+                        <EventCountdown startTime={post.datetime_start} />
+                    </div>
+                )}
+
+                <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "15px" }}>
+                    {subTabs.map(tab => (
+                        <button
+                            key={tab}
+                            onClick={() => setActiveSubTab(tab)}
+                            style={{
+                                padding: "8px 16px",
+                                borderRadius: "6px",
+                                border: "none",
+                                cursor: "pointer",
+                                background: activeSubTab === tab ? "#fff" : "none",
+                                color: activeSubTab === tab ? "#000" : "#fff",
+                                fontWeight: activeSubTab === tab ? "bold" : "normal",
+                            }}
+                        >
+                            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                        </button>
+                    ))}
                 </div>
+
+                {/* Sub-tab Content */}
+                <div style={{ textAlign: "center", color: "#fff", marginTop: "10px" }}>
+                    {isLoadingSubTab ? (
+                        <p>Loading {activeSubTab}...</p>
+                    ) : (
+                        activeSubTab === "comments" ? (
+                            subTabData.length === 0 || subTabData.every(c => !c.comment) ? (
+                                <p>No comment found</p>
+                            ) : (
+                                subTabData.map(c => (
+                                    <div key={c.id} style={{borderRadius:"10px",border:"1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex",flexDirection:"row",justifyContent:"space-between", textAlign: "left", padding:"15px 20px" }}>
+                                            <div style={{width:"20%"}}>
+                                            <img src={c.user?.thumbnail?.url ? `https://api.votecity.ng${c.user?.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }}></img>
+                                            </div>
+                                            <div style={{width:"80%"}}>
+                                                <p  style={{display:"flex", flexDirection:"column"}}>
+                                                   <span id="uuu" style={{ fontWeight: "bold" }}>  {c.user?.fullname || "Anonymous"}</span>  <span id="uu" style={{color: "rgba(255, 255, 255, 0.706)"}} > {c.user?.username ? ` @${c.user.username}` : ""}</span>
+                                                </p>
+                                                <p>{c.comment}</p>
+                                            </div>
+                                    </div>
+                                ))
+                            )
+                        ) : activeSubTab === "tickets" ? (
+                            subTabData.length === 0 ? <p>No ticket found</p> :
+                                subTabData.map(t => (
+                                    <div key={t.id} style={{ marginBottom: "10px", textAlign: "left" }}>
+                                        <p style={{ fontWeight: "bold" }}>{t.name}</p>
+                                        <p>{t.description}</p>
+                                        <p>Price: {t.price}</p>
+                                    </div>
+                                ))
+                        ) : activeSubTab === "donations" ? (
+                            subTabData.length === 0 ? <p>No donation found</p> :
+                                subTabData.map(d => (
+                                    <div key={d.id} style={{ marginBottom: "10px", textAlign: "left" }}>
+                                        <p>{d.user_name || "Anonymous"} donated {d.amount}</p>
+                                    </div>
+                                ))
+                        ) : activeSubTab === "contestants" ? (
+                            subTabData.length === 0 ? <p>No contestant found</p> :
+                                subTabData.map(c => (
+                                    <div key={c.id} style={{ borderRadius: "10px",border:"1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+                                        <div style={{ width: "20%" }}>
+                                            <img src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }}
+                                            />
+                                        </div>
+                                        <div style={{ width: "80%", display: "flex", flexDirection: "column", gap: "5px" }}>
+                                            <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{c.title}</p>
+                                            <p id="desci" style={{ fontSize: "0.85rem" }}>{c.description}</p>
+                                        </div>
+                                    </div>
+                                ))
+                        ) : (
+                            <p>No {activeSubTab} found</p>
+                        )
+                    )}
+                </div>
+
             </div>
         </div>
     );
 };
 
-
 export default Event;
-
-
-
-
-
-
