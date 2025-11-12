@@ -192,6 +192,9 @@ padding: 10px 30px 10px 10px;
 #counttt{
   font-size: 1.3rem;
 }
+#cap::first-letter{
+  text-transform: capitalize;
+}
 @media (max-width:425px) and (min-width:10px) {
   .post {
     flex-direction: column;
@@ -223,5 +226,7 @@ padding: 10px 30px 10px 10px;
   }
   .timee{
     font-size:0.8rem ;
+    text-transform: capitalize;
   }
 }
+
