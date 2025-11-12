@@ -173,7 +173,7 @@ const Event = ({ postId }) => {
 
             {/* Countdown & Tabs */}
             <div id="Tp">
-                {post.post_type === "poll" && (
+                {post.post_type  && (
                     <div style={{ background: "#0000003d", border:"1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px", padding: "15px", marginBottom: "15px" }}>
                         <p style={{ textAlign: "center", color: "#ffffffb4" }}>POLL START IN APPROXIMATELY:</p>
                         <EventCountdown startTime={post.datetime_start} />
@@ -266,3 +266,4 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
