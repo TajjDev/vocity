@@ -26,8 +26,8 @@ const EventCountdown = ({ startTime }) => {
     <div style={styles.container}>
       {Object.entries(timeLeft).map(([label, value]) => (
         <div key={label} style={styles.timeBox}>
-          <div style={styles.value}>{String(value).padStart(2, "0")}</div>
-          <div style={styles.label}>{label}</div>
+          <div id="counttt" style={styles.value}>{String(value).padStart(2, "0")}</div>
+          <div id="label" style={styles.label}>{label}</div>
         </div>
       ))}
     </div>
@@ -38,9 +38,10 @@ const EventCountdown = ({ startTime }) => {
 const styles = {
   container: {
     display: "flex",
-    justifyContent: "center",
-    gap: "20px",
-    marginTop: "20px",
+    justifyContent: "space-between",
+    // gap: "40px",
+    padding:" 0 10px",
+    marginTop: "15px",
   },
   timeBox: {
     display: "flex",
@@ -50,16 +51,17 @@ const styles = {
     color: "#fff",
     borderRadius: "10px",
     width: "60px",
-    padding: "10px 0",
+    // padding: "10px 0",
   },
   value: {
-    fontSize: "23px",
-    fontWeight: "bold",
+    // fontSize: "23px",
+    fontWeight: "600",
   },
   label: {
-    fontSize: "12px",
     textTransform: "uppercase",
     marginTop: "5px",
+    display:"flex",
+
     // opacity: 0.8,
   },
 };
