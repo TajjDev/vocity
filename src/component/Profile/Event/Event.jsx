@@ -181,7 +181,7 @@ const formatDateTime = (isoString) => {
                 </div>
                 <div id="discb">
                     <p className="desci" >Event Description</p>
-                    <p className="frTo" style={{ color: "rgb(192, 192, 197)" }}>{post.description}</p>
+                    <p className="frTo" id="cap" style={{ color: "rgb(192, 192, 197)" }}>{post.description}</p>
                 </div>
             </div>
             <div id="Tp">
