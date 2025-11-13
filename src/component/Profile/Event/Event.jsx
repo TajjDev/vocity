@@ -155,7 +155,7 @@ const Event = ({ postId }) => {
                 </div>
 
                 <div style={{ display: "flex", gap: "5px", alignItems: "center" }} id="useRx">
-                    <img src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" style={{ height: "55px", width: "55px", objectFit: "cover", borderRadius: "100px" }} />
+                    <img className="fitt" src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" style={{ height: "55px", width: "55px", objectFit: "cover", borderRadius: "100px" }} />
                     <div id="pst">
                         <p className="frTo" style={{ display: "flex" }}>
                             Posted by <span style={{ fontWeight: "bold" }}>{post.user?.fullname}</span>
@@ -213,7 +213,7 @@ const Event = ({ postId }) => {
                                 subTabData.map(c => (
                                     <div key={c.id} style={{borderRadius:"10px",border:"1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex",flexDirection:"row",justifyContent:"space-between", textAlign: "left", padding:"15px 20px" }}>
                                             <div style={{width:"20%"}}>
-                                            <img src={c.user?.thumbnail?.url ? `https://api.votecity.ng${c.user?.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }}></img>
+                                            <img className="fitt" src={c.user?.thumbnail?.url ? `https://api.votecity.ng${c.user?.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }}></img>
                                             </div>
                                             <div style={{width:"80%"}}>
                                                 <p  style={{display:"flex", flexDirection:"column"}}>
@@ -245,7 +245,7 @@ const Event = ({ postId }) => {
                                 subTabData.map(c => (
                                     <div key={c.id} style={{ borderRadius: "10px",border:"1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
                                         <div style={{ width: "20%" }}>
-                                            <img src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }}
+                                            <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }}
                                             />
                                         </div>
                                         <div style={{ width: "80%", display: "flex", flexDirection: "column", gap: "5px" }}>
@@ -266,4 +266,5 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
