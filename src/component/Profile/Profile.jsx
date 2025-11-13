@@ -494,8 +494,6 @@ function UserProfile({ userId }) {
                                                         height: "45px",
                                                         borderRadius: "50%",
                                                         objectFit: "cover",
-                                                        border:"1px solid #fff",
-                                                        padding:"2px"
                                                     }}
                                                 />
 
@@ -547,6 +545,7 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
+
 
 
 
