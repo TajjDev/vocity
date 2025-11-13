@@ -239,7 +239,7 @@ const Event = ({ postId }) => {
     </div>
 )}
 
-                <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "15px" }}>
+                <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "15px", borrerBottom:"1px solod #fff"}}>
                     {subTabs.map(tab => (
                         <button
                             key={tab}
@@ -259,7 +259,7 @@ const Event = ({ postId }) => {
                         </button>
                     ))}
                 </div>
-                <hr style={{border:"1px solid #fff"}}/>
+               
 
                 {/* Sub-tab Content */}
                 <div style={{ textAlign: "center", color: "#fff", marginTop: "10px" }}>
@@ -326,6 +326,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
