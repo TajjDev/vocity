@@ -239,7 +239,7 @@ const Event = ({ postId }) => {
     </div>
 )}
 
-                <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "15px", borrerBottom:"1px solod #fff"}}>
+                <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "15px", borderBottom:"1px solod #fff"}}>
                     {subTabs.map(tab => (
                         <button
                             key={tab}
@@ -326,6 +326,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
