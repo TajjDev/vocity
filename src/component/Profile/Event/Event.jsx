@@ -138,6 +138,7 @@ const Event = ({ postId }) => {
                         <p className="frTo">From</p>
                         <p className="timee">{formatDateTime(post.datetime_start)}</p>
                     </div>
+                          <hr style={{borderRight:"none",height:"30px",borderLeft:"0.1rem solid #fff", borderTop:"none", borderBottom:"none", display:"flex", alignSelf:"center",justifySelf:"center"}} />
                     <div style={{ width: "45%", textAlign: "end" }}>
                         <p className="frTo">To</p>
                         <p className="timee">{formatDateTime(post.datetime_end)}</p>
@@ -266,5 +267,6 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
