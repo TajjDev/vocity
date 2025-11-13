@@ -4,6 +4,10 @@
   /* background: red; */
   padding: 50px;
 }
+.fitt{
+  object-fit: cover;
+  object-position: center;
+}
 #Tp{
   padding-right: 0;
 }
@@ -248,3 +252,4 @@ padding: 10px 30px 10px 10px;
     font-size: 0.8rem;
   }
 }
+
