@@ -18,6 +18,7 @@ const Event = ({ postId }) => {
     const [subTabData, setSubTabData] = useState([]);
     const [isLoadingSubTab, setIsLoadingSubTab] = useState(false);
     const [error, setError] = useState("");
+    const [countdownPhase, setCountdownPhase] = useState("start"); // "start" or "end"
 
     const navigate = useNavigate();
     const BASE_URL_POST = "https://api.votecity.ng/v1/post";
@@ -31,6 +32,28 @@ const Event = ({ postId }) => {
         return new Intl.DateTimeFormat("en-US", options).format(date);
     };
 
+
+    useEffect(() => {
+    if (!post?.datetime_start || !post?.datetime_end) return;
+
+    const checkPhase = () => {
+        const now = new Date();
+        const startTime = new Date(post.datetime_start);
+        const endTime = new Date(post.datetime_end);
+
+        if (now >= startTime && now < endTime) {
+            setCountdownPhase("end");
+        } else if (now >= endTime) {
+            setCountdownPhase("ended");
+        } else {
+            setCountdownPhase("start");
+        }
+    };
+
+    checkPhase(); // run immediately
+    const interval = setInterval(checkPhase, 1000);
+    return () => clearInterval(interval);
+}, [post]);
     // Fetch main post
     useEffect(() => {
         if (!postId) return;
@@ -174,12 +197,47 @@ const Event = ({ postId }) => {
 
             {/* Countdown & Tabs */}
             <div id="Tp">
-                {post.post_type  && (
-                    <div style={{ background: "#0000003d", border:"1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px", padding: "15px", marginBottom: "15px" }}>
-                        <p style={{ textAlign: "center", color: "#ffffffb4", textTransform:"uppercase", fontSize:"0.9rem"}}>{post.post_type} START IN APPROXIMATELY:</p>
-                        <EventCountdown startTime={post.datetime_start} />
-                    </div>
-                )}
+                {post.post_type && countdownPhase !== "ended" && (
+    <div style={{
+        background: "#0000003d",
+        border: "1px solid rgba(255, 255, 255, 0.133)",
+        borderRadius: "10px",
+        padding: "15px",
+        marginBottom: "15px"
+    }}>
+        <p style={{
+            textAlign: "center",
+            color: "#ffffffb4",
+            textTransform: "uppercase",
+            fontSize: "0.9rem"
+        }}>
+            {post.post_type} {countdownPhase === "start" ? "STARTS" : "ENDS"} IN APPROXIMATELY:
+        </p>
+
+        <EventCountdown
+            startTime={countdownPhase === "start" ? post.datetime_start : post.datetime_end}
+        />
+    </div>
+)}
+
+{countdownPhase === "ended" && (
+    <div style={{
+        background: "#0000003d",
+        border: "1px solid rgba(255, 255, 255, 0.133)",
+        borderRadius: "10px",
+        padding: "15px",
+        marginBottom: "15px"
+    }}>
+        <p style={{
+            textAlign: "center",
+            color: "#ffffffb4",
+            textTransform: "uppercase",
+            fontSize: "0.9rem"
+        }}>
+            {post.post_type} HAS ENDED
+        </p>
+    </div>
+)}
 
                 <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "15px" }}>
                     {subTabs.map(tab => (
@@ -267,6 +325,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
