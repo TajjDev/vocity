@@ -182,7 +182,7 @@ function UserProfile({ userId }) {
                                 : alt
                         }
                         alt={user.fullname || "User avatar"}
-                        style={{ cursor: "pointer" }} // 🟢 clickable
+                        style={{ cursor: "pointer", border:"1px solid #fff" }} // 🟢 clickable
                         onClick={() =>
                             openPopup([`https://api.votecity.ng${user.thumbnail?.url}`])
                         } // 🟢 Added popup trigger
@@ -545,5 +545,6 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
+
 
 
