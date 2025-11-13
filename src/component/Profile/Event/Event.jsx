@@ -168,7 +168,7 @@ const Event = ({ postId }) => {
 
                 <div id="discb">
                     <p className="desci">Event Description</p>
-                    <p className="frTo" style={{ color: "rgb(192, 192, 197)" }}>{post.description}</p>
+                    <p id="cap" className="frTo" style={{ color: "rgb(192, 192, 197)" }}>{post.description}</p>
                 </div>
             </div>
 
@@ -267,6 +267,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
