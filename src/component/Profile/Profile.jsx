@@ -292,15 +292,15 @@ function UserProfile({ userId }) {
                             />
                             {popupImages.length > 1 && (
                                 <>
-                                    <button className="popup-arrow left" onClick={prevImage}>
+                                    <button style={{color:"#808080"}} className="popup-arrow left" onClick={prevImage}>
                                         ‹
                                     </button>
-                                    <button className="popup-arrow right" onClick={nextImage}>
+                                    <button style={{color:"#808080"}} className="popup-arrow right" onClick={nextImage}>
                                         ›
                                     </button>
                                 </>
                             )}
-                            <button className="popup-close" onClick={closePopup}>
+                            <button style={{color:"#808080"}} className="popup-close" onClick={closePopup}>
                                 ✕
                             </button>
                         </div>
@@ -545,3 +545,4 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
+
