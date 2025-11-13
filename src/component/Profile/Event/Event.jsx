@@ -259,6 +259,7 @@ const Event = ({ postId }) => {
                         </button>
                     ))}
                 </div>
+                <hr style={{border:"1px solid #fff"}}/>
 
                 {/* Sub-tab Content */}
                 <div style={{ textAlign: "center", color: "#fff", marginTop: "10px" }}>
@@ -325,6 +326,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
