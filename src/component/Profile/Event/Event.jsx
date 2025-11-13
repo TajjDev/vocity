@@ -159,7 +159,7 @@ const Event = ({ postId }) => {
                     <img className="fitt" src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" style={{ height: "55px", width: "55px", objectFit: "cover", borderRadius: "100px" }} />
                     <div id="pst">
                         <p className="frTo" style={{ display: "flex" }}>
-                            Posted by <span style={{ fontWeight: "bold" }}>{post.user?.fullname}</span>
+                            Posted by &nbsp;<span style={{ fontWeight: "bold" }}>{post.user?.fullname}</span>
                             {post.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />}
                         </p>
                         <p className="timee" style={{ color: "#ffffffb4" }}>@{post.user?.username}</p>
@@ -267,6 +267,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
