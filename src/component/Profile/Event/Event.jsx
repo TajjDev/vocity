@@ -511,7 +511,7 @@ const Event = ({ postId }) => {
                                             {/* {c.user?.fullname || "Anonymous"} */}
                                             {/* {c.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />} */}
                                             {/* </span> */}
-                                            <span key={c.id} style={{ color: "#fff", fontSize: "0.9rem" }}>
+                                            <span id="sk" key={c.id} style={{ color: "#fff", fontSize: "0.9rem" }}>
                                                 <Link to={`/profile/${c?.user.user_id}`} style={{ display: "flex", gap: "5px", alignItems: "center" }}>
 
                                                     {c.user?.username ? `@${c.user.username}` : ""}
