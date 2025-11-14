@@ -536,7 +536,7 @@ const Event = ({ postId }) => {
                                                         <img className="fitt"
                                                             src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt}
                                                             alt={c.title}
-                                                            style={{maxWidth:"30%", width: "50px", height: "50px", borderRadius: "50%" }}
+                                                            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
                                                         />
                                                         <div style={{ display: "flex", flexDirection: "column", alignItems: "start", width:"70%" }}>
                                                             <span style={{ fontWeight: "bold", textAlign:"start", fontSize:"0.85rem" }}>{c.title}</span>
@@ -564,6 +564,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
