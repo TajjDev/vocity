@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import load from '/src/assets/image/load.png';
@@ -43,6 +44,30 @@ const Event = ({ postId }) => {
         const options = { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: true };
         return new Intl.DateTimeFormat("en-US", options).format(date);
     };
+    // Convert ISO date → "time ago"
+    const timeAgo = (dateString) => {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diff = (now - date) / 1000; // seconds
+
+        const minutes = Math.floor(diff / 60);
+        const hours = Math.floor(diff / 3600);
+        const days = Math.floor(diff / 86400);
+        const months = Math.floor(diff / 2592000);
+
+        if (diff < 60) return "Just now";
+        if (minutes < 60) return `${minutes} min ago`;
+        if (hours < 24) return `${hours} hrs ago`;
+        if (days < 30) return `${days} days ago`;
+        return `${months} months ago`;
+    };
+    const formatDonationDate = (isoString) => {
+        if (!isoString) return "";
+        const date = new Date(isoString);
+        const options = { day: "2-digit", month: "short", year: "numeric" };
+        return date.toLocaleDateString("en-US", options); // e.g., "01 Oct, 2025"
+      };
+      
 
     // ---------- POST FETCH ----------
     useEffect(() => {
@@ -293,6 +318,7 @@ const Event = ({ postId }) => {
                         <p className="month">{new Date(post.datetime_start).toLocaleString("en-US", { month: "short" }).toUpperCase()}</p>
                     </div>
                     <div className="type-badge">{post.post_type}</div>
+
                 </div>
 
                 <div id="tit">
@@ -317,15 +343,17 @@ const Event = ({ postId }) => {
                     </div>
                 </div>
 
-                <div style={{ display: "flex", gap: "5px", alignItems: "center" }} id="useRx">
-                    <img className="fitt" src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" style={{ height: "45px", width: "45px", objectFit: "cover", borderRadius: "100px" }} />
-                    <div id="pst">
-                        <p className="frTo" style={{ display: "flex", alignItems: "center" }}>
-                            Posted by &nbsp;<span style={{ fontWeight: "bold" }}>{post.user?.fullname}</span>
-                            {post.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />}
-                        </p>
-                        <p className="timee" style={{ color: "#ffffffb4" }}>@{post.user?.username}</p>
-                    </div>
+                <div key={post.id} id="useRx">
+                    <Link to={`/profile/${post?.user.user_id}`} style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                        <img className="fitt" src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" style={{ height: "45px", width: "45px", objectFit: "cover", borderRadius: "100px" }} />
+                        <div id="pst">
+                            <p className="frTo" style={{ display: "flex", alignItems: "center" }}>
+                                Posted by &nbsp;<span style={{ fontWeight: "bold" }}>{post.user?.fullname}</span>
+                                {post.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />}
+                            </p>
+                            <p className="timee" style={{ color: "#ffffffb4" }}>@{post.user?.username}</p>
+                        </div>
+                    </Link>
                 </div>
 
                 <div id="discb">
@@ -378,7 +406,7 @@ const Event = ({ postId }) => {
                     </div>
                 )}
 
-                <div style={{ display: "flex", justifyContent: "center", gap: "10px", paddingBottom: "10px", marginBottom: "15px", borderBottom: "1px solid #fff" }}>
+                <div style={{ display: "flex", justifyContent: "center", gap: "10px", paddingBottom: "15px", marginBottom: "15px", borderBottom: "1px solid #fff" }}>
                     {subTabs.map(tab => (
                         <button
                             key={tab}
@@ -408,21 +436,24 @@ const Event = ({ postId }) => {
                             <p>No comment found</p>
                         ) : (
                             subTabData.map(c => (
-                                <div key={c.id} style={{ borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between", textAlign: "left", padding: "15px 20px" }}>
-                                    <div style={{ width: "20%", display: "flex" }}>
-                                        <img className="fitt" src={c.user?.thumbnail?.url ? `https://api.votecity.ng${c.user?.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }} />
+                                <div key={c.id} style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
+                                    <div style={{ display: "flex" }}>
+                                        <img className="fitt" src={c.user?.thumbnail?.url ? `https://api.votecity.ng${c.user?.thumbnail.url}` : alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
                                     </div>
-                                    <div style={{ width: "80%" }}>
+                                    <div>
                                         <p style={{ display: "flex", flexDirection: "column" }}>
-                                            <span style={{ fontWeight: "bold", display: "flex", alignItems: "center" }}>
-                                                {c.user?.fullname || "Anonymous"}
-                                                {c.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />}
-                                            </span>
-                                            <span style={{ color: "rgba(255, 255, 255, 0.706)" }}>
+                                            {/* <span style={{ fontWeight: "bold", display: "flex", alignItems: "center" }}> */}
+                                            {/* {c.user?.fullname || "Anonymous"} */}
+                                            {/* {c.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />} */}
+                                            {/* </span> */}
+                                            <span style={{ color: "#fff", fontSize: "0.9rem" }}>
                                                 {c.user?.username ? `@${c.user.username}` : ""}
                                             </span>
+                                            <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
+                                                {new Date(c.created_time).toLocaleDateString()} • {timeAgo(c.created_time)}
+                                            </p>
                                         </p>
-                                        <p style={{ paddingTop: "5px" }}>{c.comment}</p>
+                                        <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}>"{c.comment}"</p>
                                     </div>
                                 </div>
                             ))
@@ -443,8 +474,24 @@ const Event = ({ postId }) => {
                     ) : activeSubTab === "donations" ? (
                         subTabData.length === 0 ? <p>No donation found</p> :
                             subTabData.map(d => (
-                                <div key={d.id} style={{ marginBottom: "10px", textAlign: "left" }}>
-                                    <p>{d.user_name || "Anonymous"} donated {d.amount}</p>
+                                <div key={d.id} style={{ background:"rgba(0, 0, 0, 0.24)",border:"1px solid rgba(255, 255, 255, 0.133)",padding:"10px 10px", marginBottom: "10px",gap:"10px",display:"flex",flexDirection:"column", textAlign: "left", borderRadius:"10px"}}>
+                                    <div style={{ display: "flex", gap:"10px",alignItems:"center"}}>
+                                        <img className="fitt" src={d.user?.thumbnail?.url ? `https://api.votecity.ng${d.user?.thumbnail?.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                        <div >
+                                            <p style={{fontSize:"0.9rem"}}>{d.user?.fullname || "Anonymous"}</p>
+                                            <p style={{fontSize:"0.8rem", color:"rgba(255, 255, 255, 0.706)"}}>@{d.user?.username}</p>
+                                        </div>
+                                    </div>
+                                    <hr style={{width:"100%", borderBottom:"1px solid rgba(255, 255, 255, 0.133)", borderTop:"0", borderLeft:"0", borderRight:"0"}} />
+                                    <div style={{display:"flex", justifyContent:"space-between"}}>
+                                        <div>
+                                            <p style={{display:"flex", flexDirection:"column", fontWeight:"bold", fontSize:"0.9rem"}}>Paid on: <span style={{ fontWeight:"500", fontSize:"0.85rem"}}>{formatDonationDate(d.created_time)}</span></p>
+                                            
+                                        </div>
+                                        <div>
+                                            <p style={{display:"flex", flexDirection:"column", fontWeight:"bold", fontSize:"0.9rem"}}>Amount <span style={{ fontWeight:"500", fontSize:"0.85rem"}}>₦{d.amount}</span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             ))
                     ) : activeSubTab === "contestants" ? (
@@ -457,12 +504,12 @@ const Event = ({ postId }) => {
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     style={{
-                                        padding: "20px 12px",
-                                        borderRadius: "6px",
+                                        padding: "15px 15px",
+                                        borderRadius: "10px",
                                         border: "1px solid #ffffff22",
-                                        background: "#0000003d",
+                                        background: " rgba(0, 0, 0, 0.447)",
                                         color: "#fff",
-                                        fontSize:"0.9rem",
+                                        fontSize: "0.9rem",
                                         width: "100%",
                                         maxWidth: "400px",
                                     }}
@@ -472,12 +519,12 @@ const Event = ({ postId }) => {
                             {/* Filtered contestants */}
                             {subTabData.length === 0 ? <p>No contestant found</p> :
                                 subTabData
-                                .filter(c => (c.title || "").toLowerCase().includes(searchQuery.toLowerCase()))                                    .map(c => (
-                                        <div key={c.id} style={{ borderRadius: "10px", border: "1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-                                            <div style={{ width: "20%" }}>
-                                                <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }} />
+                                    .filter(c => (c.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(c => (
+                                        <div key={c.id} style={{ gap: "10px", borderRadius: "10px", border: "1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "start", alignItems: "center" }}>
+                                            <div>
+                                                <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
                                             </div>
-                                            <div style={{ width: "80%", display: "flex", flexDirection: "column", gap: "5px" }}>
+                                            <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
                                                 <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{c.title}</p>
                                                 <p id="desci" style={{ fontSize: "0.85rem" }}>{c.description}</p>
                                             </div>
@@ -489,68 +536,79 @@ const Event = ({ postId }) => {
                         <>
                             {isLoadingSubTab ? (
                                 <p>Loading leaderboard...</p>
-                            ) :
-                                leaderboardData.length === 0 ? (
-                                    <p>No leaderboard data found</p>
-                                )
+                            ) : leaderboardData.length === 0 ? (
+                                <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "10px", padding: "10px", justifyContent: "space-between" }}>
+                                    <div>
+                                        <img className="fitt"
+                                            src={alt}
+                                            // alt={c.title}
+                                            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+                                        />
+                                    </div>
+                                    <div style={{ width: "85%", display: "flex", flexDirection: "column", alignItems: "start" }}>
+                                        <span style={{ fontWeight: "bold", textAlign: "start", fontSize: "0.85rem" }}>Title</span>
+                                        <span style={{ color: " rgb(192, 192, 197)" }}> votes</span>
+                                    </div>
+                                </div>
+                            )
+                                : (
+                                    leaderboardData.map((c) => {
+                                        const movedUp = c.prevRank !== undefined && c.rank < c.prevRank;
+                                        const movedDown = c.prevRank !== undefined && c.rank > c.prevRank;
 
-                                    : (
-                                        leaderboardData.map((c) => {
-                                            const movedUp = c.prevRank !== undefined && c.rank < c.prevRank;
-                                            const movedDown = c.prevRank !== undefined && c.rank > c.prevRank;
-
-                                            return (
-                                                <div key={c.id} style={{
-                                                    position: "relative",
+                                        return (
+                                            <div key={c.id} style={{
+                                                position: "relative",
+                                                display: "flex",
+                                                justifyContent: "space-between",
+                                                padding: "5px 15px",
+                                                background: "#0000003d",
+                                                border: "1px solid #ffffff22",
+                                                borderRadius: "10px",
+                                                marginTop: "20px",
+                                                marginBottom: "20px"
+                                            }}>
+                                                {/* Hanging Rank Badge */}
+                                                <div style={{
+                                                    position: "absolute",
+                                                    top: "-10px",
+                                                    right: "15px",
+                                                    background: "#fff",
+                                                    color: "#000",
+                                                    width: "25px",
+                                                    height: "25px",
+                                                    borderTopRightRadius: "30%",
+                                                    borderBottomLeftRadius: "30%",
                                                     display: "flex",
-                                                    justifyContent: "space-between",
-                                                    padding: "10px 15px",
-                                                    background: "#0000003d",
-                                                    border: "1px solid #ffffff22",
-                                                    borderRadius: "10px",
-                                                    marginTop: "20px",
-                                                    marginBottom: "20px"
+                                                    alignItems: "center",
+                                                    justifyContent: "center",
+                                                    fontWeight: "bold",
+                                                    fontSize: "0.9rem",
+                                                    boxShadow: "0 2px 5px rgba(0,0,0,0.2)"
                                                 }}>
-                                                    {/* Hanging Rank Badge */}
-                                                    <div style={{
-                                                        position: "absolute",
-                                                        top: "-10px",
-                                                        right: "15px",
-                                                        background: "#fff",
-                                                        color: "#000",
-                                                        width: "25px",
-                                                        height: "25px",
-                                                        borderTopRightRadius: "30%",
-                                                        borderBottomLeftRadius: "30%",
-                                                        display: "flex",
-                                                        alignItems: "center",
-                                                        justifyContent: "center",
-                                                        fontWeight: "bold",
-                                                        fontSize: "0.9rem",
-                                                        boxShadow: "0 2px 5px rgba(0,0,0,0.2)"
-                                                    }}>
-                                                        {c.rank}
-                                                    </div>
-
-                                                    <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px", justifyContent:"space-between" }}>
-
-                                                            <img className="fitt"
-                                                            src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt}
-                                                            alt={c.title}
-                                                            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-                                                        />
-                                                     
-                                                        
-                                                        <div style={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
-                                                            <span style={{ fontWeight: "bold", textAlign:"start", fontSize:"0.85rem" }}>{c.title}</span>
-                                                            <span style={{ color: " rgb(192, 192, 197)" }}>{c.total_votes} votes</span>
-                                                        </div>
-                                                    </div>
+                                                    {c.rank}
                                                 </div>
 
-                                            );
-                                        })
-                                    )}
+                                                <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "10px", padding: "10px", justifyContent: "space-between" }}>
+                                                    <div>
+                                                        <img className="fitt"
+                                                            src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt}
+                                                            // alt={c.title}
+                                                            style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+                                                        />
+                                                    </div>
+
+
+                                                    <div style={{ width: "85%", display: "flex", flexDirection: "column", alignItems: "start" }}>
+                                                        <span style={{ fontWeight: "bold", textAlign: "start", fontSize: "0.85rem" }}>{c.title}</span>
+                                                        <span style={{ color: " rgb(192, 192, 197)" }}>{c.total_votes} votes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        );
+                                    })
+                                )}
                         </>
                     ) : (
                         <p>No {activeSubTab} found</p>
@@ -562,7 +620,6 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
-
 
 
 

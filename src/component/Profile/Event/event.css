@@ -108,7 +108,14 @@
   border-radius: 10px;
   object-fit: cover;
 }
-
+.date-badge,
+.type-badge {
+  pointer-events: none;
+}
+#useRx a {
+  text-decoration: none;
+  color: inherit;
+}
 /* Date badge (top-left corner) */
 .date-badge {
   position: absolute;
