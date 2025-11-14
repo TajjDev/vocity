@@ -532,11 +532,11 @@ const Event = ({ postId }) => {
                                                         {c.rank}
                                                     </div>
 
-                                                    <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px", width:"30%" }}>
+                                                    <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px" }}>
                                                         <img className="fitt"
                                                             src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt}
                                                             alt={c.title}
-                                                            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+                                                            style={{maxWidth:"30%", width: "50px", height: "50px", borderRadius: "50%" }}
                                                         />
                                                         <div style={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
                                                             <span style={{ fontWeight: "bold", textAlign:"start", fontSize:"0.9rem" }}>{c.title}</span>
@@ -564,6 +564,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
