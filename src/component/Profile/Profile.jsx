@@ -357,23 +357,25 @@ function UserProfile({ userId }) {
                                     }}>Following</button>
                             </div>
 
-                            <input
-                                id='ino'
-                                placeholder={`Search ${sortII}...`}
-                                value={q}
-                                onChange={e => setQ(e.target.value)}
-                                style={{
-                                    padding: "17px 12px",
-                                    display: "block",
-                                    borderRadius: "10px",
-                                    background: "#00000072",
-                                    color: "#ffffff99",
-                                    outline: "none",
-                                }}
-                            />
-
-                            {isLoadingFollow && <p style={{ textAlign: "center", color: "#aaa" }}>Loading...</p>}
-                            {errorCurrentFollow && <p style={{ textAlign: "center", color: "red" }}>{errorCurrentFollow}</p>}
+                            {isLoadingFollow && <>
+                                <div style={{ width: "100%", gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
+                                    <div style={{ display: "flex" }}>
+                                        <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                    </div>
+                                    <div>
+                                        <p style={{ display: "flex", flexDirection: "column" }}>
+                                            <span style={{ color: "#fff", fontSize: "0.9rem" }}>
+                                                {/* username */}
+                                            </span>
+                                            <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
+                                                {/* date */}
+                                            </p>
+                                        </p>
+                                        <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+                                    </div>
+                                </div>
+                            </>}
+                            {/* {errorCurrentFollow && <p style={{ textAlign: "center", color: "red" }}>{errorCurrentFollow}</p>} */}
 
                             {!isLoadingFollow && !errorCurrentFollow && (
                                 currentFollowList.length === 0 ? (
