@@ -28,6 +28,8 @@ const Event = ({ postId }) => {
     const [leaderboardLoaded, setLeaderboardLoaded] = useState(false);
     const [leaderboardData, setLeaderboardData] = useState([]);
 
+    const [searchQuery, setSearchQuery] = useState(""); // Added for contestant search
+
     const esRef = useRef(null);
     const prevLeaderboardRef = useRef({});
 
@@ -139,7 +141,6 @@ const Event = ({ postId }) => {
                     const raw = await fetchSubTabSnapshot("leaderboard", resolvedPostId);
                     const prevRanks = { ...prevLeaderboardRef.current };
 
-                    // --- Correct dense ranking ---
                     const sorted = raw.slice().sort((a, b) => (b.total_votes || 0) - (a.total_votes || 0));
                     let currentRank = 0;
                     let lastVotes = null;
@@ -447,18 +448,43 @@ const Event = ({ postId }) => {
                                 </div>
                             ))
                     ) : activeSubTab === "contestants" ? (
-                        subTabData.length === 0 ? <p>No contestant found</p> :
-                            subTabData.map(c => (
-                                <div key={c.id} style={{ borderRadius: "10px", border: "1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-                                    <div style={{ width: "20%" }}>
-                                        <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }} />
-                                    </div>
-                                    <div style={{ width: "80%", display: "flex", flexDirection: "column", gap: "5px" }}>
-                                        <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{c.title}</p>
-                                        <p style={{ fontSize: "0.85rem" }}>{c.description}</p>
-                                    </div>
-                                </div>
-                            ))
+                        <>
+                            {/* Search Bar */}
+                            <div style={{ marginBottom: "15px", textAlign: "center" }}>
+                                <input
+                                    type="text"
+                                    placeholder="Search for contestants..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    style={{
+                                        padding: "20px 12px",
+                                        borderRadius: "6px",
+                                        border: "1px solid #ffffff22",
+                                        background: "#0000003d",
+                                        color: "#fff",
+                                        fontSize:"0.9rem",
+                                        width: "100%",
+                                        maxWidth: "400px",
+                                    }}
+                                />
+                            </div>
+
+                            {/* Filtered contestants */}
+                            {subTabData.length === 0 ? <p>No contestant found</p> :
+                                subTabData
+                                .filter(c => (c.title || "").toLowerCase().includes(searchQuery.toLowerCase()))                                    .map(c => (
+                                        <div key={c.id} style={{ borderRadius: "10px", border: "1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+                                            <div style={{ width: "20%" }}>
+                                                <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }} />
+                                            </div>
+                                            <div style={{ width: "80%", display: "flex", flexDirection: "column", gap: "5px" }}>
+                                                <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{c.title}</p>
+                                                <p style={{ fontSize: "0.85rem" }}>{c.description}</p>
+                                            </div>
+                                        </div>
+                                    ))
+                            }
+                        </>
                     ) : activeSubTab === "leaderboard" ? (
                         <>
                             {isLoadingSubTab ? (
@@ -473,37 +499,35 @@ const Event = ({ postId }) => {
                                             const movedUp = c.prevRank !== undefined && c.rank < c.prevRank;
                                             const movedDown = c.prevRank !== undefined && c.rank > c.prevRank;
 
-
                                             return (
                                                 <div key={c.id} style={{
-                                                    position: "relative", // for the badge
+                                                    position: "relative",
                                                     display: "flex",
                                                     justifyContent: "space-between",
                                                     padding: "10px 15px",
                                                     background: "#0000003d",
                                                     border: "1px solid #ffffff22",
                                                     borderRadius: "10px",
-                                                    marginTop:"20px",
-                                                    marginBottom: "20px" // add extra space so badge doesn't overlap next item
+                                                    marginTop: "20px",
+                                                    marginBottom: "20px"
                                                 }}>
                                                     {/* Hanging Rank Badge */}
                                                     <div style={{
                                                         position: "absolute",
-                                                        top: "-10px",      // moves it above the div
-                                                        right: "15px",    // moves it outside the right edge
+                                                        top: "-10px",
+                                                        right: "15px",
                                                         background: "#fff",
                                                         color: "#000",
                                                         width: "25px",
                                                         height: "25px",
-                                                        // borderRadius: "10%",
-                                                        borderTopRightRadius:"30%",
-                                                        borderBottomLeftRadius:"30%",
+                                                        borderTopRightRadius: "30%",
+                                                        borderBottomLeftRadius: "30%",
                                                         display: "flex",
                                                         alignItems: "center",
                                                         justifyContent: "center",
                                                         fontWeight: "bold",
                                                         fontSize: "0.9rem",
-                                                        boxShadow: "0 2px 5px rgba(0,0,0,0.2)" // optional shadow for floating effect
+                                                        boxShadow: "0 2px 5px rgba(0,0,0,0.2)"
                                                     }}>
                                                         {c.rank}
                                                     </div>
@@ -516,7 +540,7 @@ const Event = ({ postId }) => {
                                                         />
                                                         <div style={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
                                                             <span style={{ fontWeight: "bold" }}>{c.title}</span>
-                                                            <span style={{color:" rgb(192, 192, 197)"}}>{c.total_votes} votes</span>
+                                                            <span style={{ color: " rgb(192, 192, 197)" }}>{c.total_votes} votes</span>
                                                         </div>
                                                     </div>
 
