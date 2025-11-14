@@ -541,7 +541,7 @@ const Event = ({ postId }) => {
                                                         />
                                                         </div>
                                                         
-                                                        <div style={{ display: "flex", flexDirection: "column", alignItems: "start", width:"70%" }}>
+                                                        <div style={{ display: "flex", flexDirection: "column", alignItems: "start", width:"60%" }}>
                                                             <span style={{ fontWeight: "bold", textAlign:"start", fontSize:"0.85rem" }}>{c.title}</span>
                                                             <span style={{ color: " rgb(192, 192, 197)" }}>{c.total_votes} votes</span>
                                                         </div>
@@ -567,6 +567,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
