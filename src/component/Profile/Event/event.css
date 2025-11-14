@@ -200,7 +200,7 @@ padding: 10px 30px 10px 10px;
   font-size: 0.7rem;
 }
 #counttt{
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 #cap::first-letter{
   text-transform: capitalize;
@@ -212,6 +212,16 @@ padding: 10px 30px 10px 10px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.titPr{
+  font-size: 0.9rem;
+}
+.titdis{
+  font-size: 0.85rem;
+}
+/* #constAll{ */
+  /* overflow-y: auto; */
+  /* height: 500px; */
+/* } */
 @media (max-width:425px) and (min-width:10px) {
   .post {
     flex-direction: column;
@@ -234,6 +244,12 @@ padding: 10px 30px 10px 10px;
   .frTo{
     font-size: 0.8rem;
   }
+  .titPr{
+    font-size: 0.85rem;
+  }
+  .titdis{
+    font-size: 0.8rem;
+  }
   #countd{
     border: 1px solid #ffffff22;
     border-radius: 10px;
@@ -252,4 +268,3 @@ padding: 10px 30px 10px 10px;
     font-size: 0.8rem;
   }
 }
-
