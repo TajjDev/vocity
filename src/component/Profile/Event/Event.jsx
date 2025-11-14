@@ -532,7 +532,7 @@ const Event = ({ postId }) => {
                                                         {c.rank}
                                                     </div>
 
-                                                    <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px" }}>
+                                                    <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px", width:"30%" }}>
                                                         <img className="fitt"
                                                             src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt}
                                                             alt={c.title}
@@ -564,6 +564,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
