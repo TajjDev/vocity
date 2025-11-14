@@ -479,7 +479,7 @@ const Event = ({ postId }) => {
                                             </div>
                                             <div style={{ width: "80%", display: "flex", flexDirection: "column", gap: "5px" }}>
                                                 <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{c.title}</p>
-                                                <p style={{ fontSize: "0.85rem" }}>{c.description}</p>
+                                                <p id="desci" style={{ fontSize: "0.85rem" }}>{c.description}</p>
                                             </div>
                                         </div>
                                     ))
@@ -564,3 +564,4 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
