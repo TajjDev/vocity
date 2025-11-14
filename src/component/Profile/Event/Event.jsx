@@ -514,7 +514,7 @@ const Event = ({ postId }) => {
                                             <span id="sk" key={c.id} style={{ color: "#fff", fontSize: "0.9rem" }}>
                                                 <Link to={`/profile/${c?.user.user_id}`} style={{ display: "flex", gap: "5px", alignItems: "center" }}>
 
-                                                    {c.user?.username ? `@${c.user.username}` : ""}
+                                                    {c.user?.fullname ? `@${c.user.fullname}` : ""}
                                                 </Link>
                                             </span>
                                             <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
@@ -676,3 +676,4 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
