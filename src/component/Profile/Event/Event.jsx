@@ -66,8 +66,8 @@ const Event = ({ postId }) => {
         const date = new Date(isoString);
         const options = { day: "2-digit", month: "short", year: "numeric" };
         return date.toLocaleDateString("en-US", options); // e.g., "01 Oct, 2025"
-      };
-      
+    };
+
 
     // ---------- POST FETCH ----------
     useEffect(() => {
@@ -430,7 +430,72 @@ const Event = ({ postId }) => {
                 {/* Sub-tab Content */}
                 <div id="constAll" style={{ textAlign: "center", color: "#fff", marginTop: "10px" }}>
                     {isLoadingSubTab ? (
-                        <p>Loading {activeSubTab}...</p>
+                        <>
+                            <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
+                                <div style={{ display: "flex" }}>
+                                    <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                </div>
+                                <div>
+                                    <p style={{ display: "flex", flexDirection: "column" }}>
+                                        <span style={{ color: "#fff", fontSize: "0.9rem" }}>
+                                            {/* username */}
+                                        </span>
+                                        <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
+                                            {/* date */}
+                                        </p>
+                                    </p>
+                                    <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+                                </div>
+                            </div>
+                            <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
+                                <div style={{ display: "flex" }}>
+                                    <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                </div>
+                                <div>
+                                    <p style={{ display: "flex", flexDirection: "column" }}>
+                                        <span style={{ color: "#fff", fontSize: "0.9rem" }}>
+                                            {/* username */}
+                                        </span>
+                                        <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
+                                            {/* date */}
+                                        </p>
+                                    </p>
+                                    <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+                                </div>
+                            </div>
+                            <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
+                                <div style={{ display: "flex" }}>
+                                    <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                </div>
+                                <div>
+                                    <p style={{ display: "flex", flexDirection: "column" }}>
+                                        <span style={{ color: "#fff", fontSize: "0.9rem" }}>
+                                            {/* username */}
+                                        </span>
+                                        <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
+                                            {/* date */}
+                                        </p>
+                                    </p>
+                                    <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+                                </div>
+                            </div>
+                            <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
+                                <div style={{ display: "flex" }}>
+                                    <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                </div>
+                                <div>
+                                    <p style={{ display: "flex", flexDirection: "column" }}>
+                                        <span style={{ color: "#fff", fontSize: "0.9rem" }}>
+                                            {/* username */}
+                                        </span>
+                                        <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
+                                            {/* date */}
+                                        </p>
+                                    </p>
+                                    <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+                                </div>
+                            </div>
+                        </>
                     ) : activeSubTab === "comments" ? (
                         subTabData.length === 0 || subTabData.every(c => !c.comment) ? (
                             <p>No comment found</p>
@@ -447,10 +512,10 @@ const Event = ({ postId }) => {
                                             {/* {c.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />} */}
                                             {/* </span> */}
                                             <span key={c.id} style={{ color: "#fff", fontSize: "0.9rem" }}>
-                                            <Link to={`/profile/${c?.user.user_id}`} style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                                                <Link to={`/profile/${c?.user.user_id}`} style={{ display: "flex", gap: "5px", alignItems: "center" }}>
 
-                                                {c.user?.username ? `@${c.user.username}` : ""}
-                                            </Link>
+                                                    {c.user?.username ? `@${c.user.username}` : ""}
+                                                </Link>
                                             </span>
                                             <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
                                                 {new Date(c.created_time).toLocaleDateString()} • {timeAgo(c.created_time)}
@@ -477,22 +542,22 @@ const Event = ({ postId }) => {
                     ) : activeSubTab === "donations" ? (
                         subTabData.length === 0 ? <p>No donation found</p> :
                             subTabData.map(d => (
-                                <div key={d.id} style={{ background:"rgba(0, 0, 0, 0.24)",border:"1px solid rgba(255, 255, 255, 0.133)",padding:"10px 10px", marginBottom: "10px",gap:"10px",display:"flex",flexDirection:"column", textAlign: "left", borderRadius:"10px"}}>
-                                    <div style={{ display: "flex", gap:"10px",alignItems:"center"}}>
+                                <div key={d.id} style={{ background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", padding: "10px 10px", marginBottom: "10px", gap: "10px", display: "flex", flexDirection: "column", textAlign: "left", borderRadius: "10px" }}>
+                                    <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                                         <img className="fitt" src={d.user?.thumbnail?.url ? `https://api.votecity.ng${d.user?.thumbnail?.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
                                         <div >
-                                            <p style={{fontSize:"0.9rem"}}>{d.user?.fullname || "Anonymous"}</p>
-                                            <p style={{fontSize:"0.8rem", color:"rgba(255, 255, 255, 0.706)"}}>@{d.user?.username}</p>
+                                            <p style={{ fontSize: "0.9rem" }}>{d.user?.fullname || "Anonymous"}</p>
+                                            <p style={{ fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.706)" }}>@{d.user?.username}</p>
                                         </div>
                                     </div>
-                                    <hr style={{width:"100%", borderBottom:"1px solid rgba(255, 255, 255, 0.133)", borderTop:"0", borderLeft:"0", borderRight:"0"}} />
-                                    <div style={{display:"flex", justifyContent:"space-between"}}>
+                                    <hr style={{ width: "100%", borderBottom: "1px solid rgba(255, 255, 255, 0.133)", borderTop: "0", borderLeft: "0", borderRight: "0" }} />
+                                    <div style={{ display: "flex", justifyContent: "space-between" }}>
                                         <div>
-                                            <p style={{display:"flex", flexDirection:"column", fontWeight:"bold", fontSize:"0.9rem"}}>Paid on: <span style={{ fontWeight:"500", fontSize:"0.85rem"}}>{formatDonationDate(d.created_time)}</span></p>
-                                            
+                                            <p style={{ display: "flex", flexDirection: "column", fontWeight: "bold", fontSize: "0.9rem" }}>Paid on: <span style={{ fontWeight: "500", fontSize: "0.85rem" }}>{formatDonationDate(d.created_time)}</span></p>
+
                                         </div>
                                         <div>
-                                            <p style={{display:"flex", flexDirection:"column", fontWeight:"bold", fontSize:"0.9rem"}}>Amount <span style={{ fontWeight:"500", fontSize:"0.85rem"}}>₦{d.amount}</span></p>
+                                            <p style={{ display: "flex", flexDirection: "column", fontWeight: "bold", fontSize: "0.9rem" }}>Amount <span style={{ fontWeight: "500", fontSize: "0.85rem" }}>₦{d.amount}</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -540,19 +605,7 @@ const Event = ({ postId }) => {
                             {isLoadingSubTab ? (
                                 <p>Loading leaderboard...</p>
                             ) : leaderboardData.length === 0 ? (
-                                <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "10px", padding: "10px", justifyContent: "space-between" }}>
-                                    <div>
-                                        <img className="fitt"
-                                            src={alt}
-                                            // alt={c.title}
-                                            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-                                        />
-                                    </div>
-                                    <div style={{ width: "85%", display: "flex", flexDirection: "column", alignItems: "start" }}>
-                                        <span style={{ fontWeight: "bold", textAlign: "start", fontSize: "0.85rem" }}>Title</span>
-                                        <span style={{ color: " rgb(192, 192, 197)" }}> votes</span>
-                                    </div>
-                                </div>
+                                <p></p>
                             )
                                 : (
                                     leaderboardData.map((c) => {
@@ -623,16 +676,3 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
-
-
-
-
-
-
-
-
-
-
-
-
-
