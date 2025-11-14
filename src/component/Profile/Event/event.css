@@ -112,7 +112,7 @@
 .type-badge {
   pointer-events: none;
 }
-#useRx a {
+#useRx a, #sk a {
   text-decoration: none;
   color: inherit;
 }
