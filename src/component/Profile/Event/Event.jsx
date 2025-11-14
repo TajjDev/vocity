@@ -546,11 +546,6 @@ const Event = ({ postId }) => {
                                                             <span style={{ color: " rgb(192, 192, 197)" }}>{c.total_votes} votes</span>
                                                         </div>
                                                     </div>
-
-                                                    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                                        {movedUp && <span style={{ color: "limegreen", fontWeight: "bold" }}>⬆</span>}
-                                                        {movedDown && <span style={{ color: "red", fontWeight: "bold" }}>⬇</span>}
-                                                    </div>
                                                 </div>
 
                                             );
@@ -567,6 +562,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
