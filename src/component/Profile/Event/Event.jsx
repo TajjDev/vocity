@@ -18,21 +18,18 @@ const Event = ({ postId }) => {
     const [isLoadingPost, setIsLoadingPost] = useState(true);
     const [resolvedPostId, setResolvedPostId] = useState(null);
 
-    // Subtab state & cache
-    const [subTabCache, setSubTabCache] = useState({}); // { comments: [...], tickets: [...], ... }
+    const [subTabCache, setSubTabCache] = useState({});
     const [subTabData, setSubTabData] = useState([]);
     const [isLoadingSubTab, setIsLoadingSubTab] = useState(false);
     const [subTabError, setSubTabError] = useState("");
 
-    const [countdownPhase, setCountdownPhase] = useState("start"); // "start" | "end" | "ended"
+    const [countdownPhase, setCountdownPhase] = useState("start");
 
-    // Leaderboard-specific persistent state
     const [leaderboardLoaded, setLeaderboardLoaded] = useState(false);
-    const [leaderboardData, setLeaderboardData] = useState([]); // persistent UI state for leaderboard
+    const [leaderboardData, setLeaderboardData] = useState([]);
 
-    // Refs for SSE and previous ranks
     const esRef = useRef(null);
-    const prevLeaderboardRef = useRef({}); // { [contestantId]: previousRank }
+    const prevLeaderboardRef = useRef({});
 
     const navigate = useNavigate();
 
@@ -59,9 +56,7 @@ const Event = ({ postId }) => {
                 setPost(postData);
                 if (postData?.post_id) setResolvedPostId(postData.post_id);
             })
-            .catch(err => {
-                console.error("Fetch post error:", err);
-            })
+            .catch(err => console.error("Fetch post error:", err))
             .finally(() => setIsLoadingPost(false));
     }, [postId]);
 
@@ -74,13 +69,9 @@ const Event = ({ postId }) => {
             const startTime = new Date(post.datetime_start);
             const endTime = new Date(post.datetime_end);
 
-            if (now >= startTime && now < endTime) {
-                setCountdownPhase("end");
-            } else if (now >= endTime) {
-                setCountdownPhase("ended");
-            } else {
-                setCountdownPhase("start");
-            }
+            if (now >= startTime && now < endTime) setCountdownPhase("end");
+            else if (now >= endTime) setCountdownPhase("ended");
+            else setCountdownPhase("start");
         };
 
         checkPhase();
@@ -88,7 +79,7 @@ const Event = ({ postId }) => {
         return () => clearInterval(interval);
     }, [post]);
 
-    // ---------- SUB-TABS (dynamic) ----------
+    // ---------- SUB-TABS ----------
     const subTabs = post?.post_type === "event"
         ? ["comments", "tickets"]
         : post?.post_type === "project"
@@ -97,55 +88,45 @@ const Event = ({ postId }) => {
                 ? ["comments", "contestants", "leaderboard"]
                 : ["comments"];
 
-    // ---------- HELPER: fetch generic subtab endpoint ----------
+    // ---------- FETCH SUBTAB ----------
     const fetchSubTabSnapshot = async (tab, id) => {
-        // returns array or throws
         let url = "";
         switch (tab) {
             case "comments": url = `${BASE_URL_POST}/comment/${id}`; break;
             case "tickets": url = `${BASE_URL_POST}/create/ticket/${id}`; break;
             case "donations": url = `${BASE_URL_POST}/process/donation/${id}`; break;
             case "contestants": url = `${BASE_URL_POST}/create/contestant/${id}`; break;
-case "leaderboard": url = `https://api.votecity.ng/v1/leaderboard/${id}`; break;            default: throw new Error("Unknown tab");
+            case "leaderboard": url = `https://api.votecity.ng/v1/leaderboard/${id}`; break;
+            default: throw new Error("Unknown tab");
         }
 
         const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        // Map to expected shapes per tab
+
         switch (tab) {
             case "comments": return data?.data?.comments || [];
             case "tickets": return data?.data?.tickets || [];
             case "donations": return data?.data?.donations || [];
             case "contestants": return data?.data?.contestants || [];
-            case "leaderboard":
-                return (
-                    data?.data?.leaderboard ||
-                    data?.data?.contestants ||
-                    data?.leaderboard ||
-                    data?.contestants ||
-                    []
-                );
-
+            case "leaderboard": return data?.data?.leaderboard || data?.data?.contestants || data?.leaderboard || data?.contestants || [];
             default: return [];
         }
     };
 
-    // ---------- SUB-TAB EFFECT (fetch + caching + leaderboard SSE) ----------
+    // ---------- SUB-TAB EFFECT ----------
     useEffect(() => {
         if (!resolvedPostId) return;
 
-        let isMounted = true; // guard for setting state after unmount
+        let isMounted = true;
 
         const loadTab = async () => {
             setSubTabError("");
             setIsLoadingSubTab(true);
 
-            // If cached, use that immediately
             if (subTabCache[activeSubTab]) {
                 setSubTabData(subTabCache[activeSubTab]);
                 setIsLoadingSubTab(false);
-                // For leaderboard, ensure leaderboardData syncs with cache
                 if (activeSubTab === "leaderboard" && subTabCache.leaderboard) {
                     setLeaderboardData(subTabCache.leaderboard);
                     setLeaderboardLoaded(true);
@@ -153,34 +134,35 @@ case "leaderboard": url = `https://api.votecity.ng/v1/leaderboard/${id}`; break;
                 return;
             }
 
-            // Special handling for leaderboard: fetch initial snapshot and then set up SSE
             if (activeSubTab === "leaderboard") {
                 try {
                     const raw = await fetchSubTabSnapshot("leaderboard", resolvedPostId);
-                    // raw should be an array of contestants
-                    // sort and assign rank, use prev ref if present
                     const prevRanks = { ...prevLeaderboardRef.current };
 
-                    const ranked = raw
-                        .slice()
-                        .sort((a, b) => (b.total_votes || 0) - (a.total_votes || 0))
-                        .map((c, idx) => ({
-                            ...c,
-                            rank: idx + 1,
-                            prevRank: prevRanks[c.id] ?? idx + 1
-                        }));
+                    // --- Correct dense ranking ---
+                    const sorted = raw.slice().sort((a, b) => (b.total_votes || 0) - (a.total_votes || 0));
+                    let currentRank = 0;
+                    let lastVotes = null;
 
-                    // set persistent leaderboard state & cache
+                    const ranked = sorted.map((c) => {
+                        if (c.total_votes !== lastVotes) {
+                            currentRank += 1;
+                            lastVotes = c.total_votes;
+                        }
+                        return {
+                            ...c,
+                            rank: currentRank,
+                            prevRank: prevRanks[c.id] ?? currentRank
+                        };
+                    });
+
                     if (!isMounted) return;
                     setLeaderboardData(ranked);
                     setSubTabData(ranked);
                     setSubTabCache(prev => ({ ...prev, leaderboard: ranked }));
                     setLeaderboardLoaded(true);
 
-                    // update prev ref AFTER updating state so arrows calculate against old values next time
-                    ranked.forEach(c => {
-                        prevLeaderboardRef.current[c.id] = c.rank;
-                    });
+                    ranked.forEach(c => prevLeaderboardRef.current[c.id] = c.rank);
 
                 } catch (err) {
                     console.error("Initial leaderboard fetch error:", err);
@@ -192,43 +174,43 @@ case "leaderboard": url = `https://api.votecity.ng/v1/leaderboard/${id}`; break;
                     if (isMounted) setIsLoadingSubTab(false);
                 }
 
-                // SETUP SSE: open only if not already open for this post
-                // If an EventSource exists for a prior post, close it first
+                // --- SSE Setup ---
                 if (esRef.current && esRef.current.postId !== resolvedPostId) {
-                    try { esRef.current.instance.close(); } catch (e) { /* ignore */ }
+                    try { esRef.current.instance.close(); } catch { }
                     esRef.current = null;
                 }
 
                 if (!esRef.current) {
                     const es = new EventSource(`https://api.votecity.ng/v1/sse/leaderboard/${resolvedPostId}`);
-                    // store wrapper so we can attach postId
                     esRef.current = { instance: es, postId: resolvedPostId };
+
                     es.addEventListener("leaderboard", (e) => {
                         try {
                             const payload = JSON.parse(e.data);
                             if (!Array.isArray(payload)) return;
 
-                            // snapshot prev ranks
                             const prevRanks = { ...prevLeaderboardRef.current };
+                            const sorted = payload.slice().sort((a, b) => (b.total_votes || 0) - (a.total_votes || 0));
+                            let currentRank = 0;
+                            let lastVotes = null;
 
-                            const ranked = payload
-                                .slice()
-                                .sort((a, b) => (b.total_votes || 0) - (a.total_votes || 0))
-                                .map((c, idx) => ({
+                            const ranked = sorted.map((c) => {
+                                if (c.total_votes !== lastVotes) {
+                                    currentRank += 1;
+                                    lastVotes = c.total_votes;
+                                }
+                                return {
                                     ...c,
-                                    rank: idx + 1,
-                                    prevRank: prevRanks[c.id] ?? idx + 1
-                                }));
+                                    rank: currentRank,
+                                    prevRank: prevRanks[c.id] ?? currentRank
+                                };
+                            });
 
-                            // Update UI state
                             setLeaderboardData(ranked);
                             setSubTabData(ranked);
                             setSubTabCache(prev => ({ ...prev, leaderboard: ranked }));
+                            ranked.forEach(c => prevLeaderboardRef.current[c.id] = c.rank);
 
-                            // After updating state, update previous ranks ref
-                            ranked.forEach(c => {
-                                prevLeaderboardRef.current[c.id] = c.rank;
-                            });
                         } catch (err) {
                             console.error("Error parsing SSE data:", err);
                         }
@@ -236,7 +218,7 @@ case "leaderboard": url = `https://api.votecity.ng/v1/leaderboard/${id}`; break;
 
                     es.onerror = (err) => {
                         console.error("Leaderboard SSE error:", err);
-                        try { es.close(); } catch (e) { /* ignore */ }
+                        try { es.close(); } catch { }
                         esRef.current = null;
                     };
                 }
@@ -244,7 +226,7 @@ case "leaderboard": url = `https://api.votecity.ng/v1/leaderboard/${id}`; break;
                 return;
             }
 
-            // non-leaderboard tabs
+            // Non-leaderboard tabs
             try {
                 const items = await fetchSubTabSnapshot(activeSubTab, resolvedPostId);
                 if (!isMounted) return;
@@ -264,26 +246,23 @@ case "leaderboard": url = `https://api.votecity.ng/v1/leaderboard/${id}`; break;
 
         return () => {
             isMounted = false;
-            // When leaving leaderboard tab, close SSE (to avoid multiple live connections).
-            // We keep prevLeaderboardRef so when user returns arrows compare correctly.
             if (activeSubTab !== "leaderboard" && esRef.current) {
-                try { esRef.current.instance.close(); } catch (e) { /* ignore */ }
+                try { esRef.current.instance.close(); } catch { }
                 esRef.current = null;
             }
         };
-    }, [activeSubTab, resolvedPostId]); // intentionally not including subTabCache (we read it inside)
+    }, [activeSubTab, resolvedPostId]);
 
     // Close SSE on unmount
     useEffect(() => {
         return () => {
             if (esRef.current) {
-                try { esRef.current.instance.close(); } catch (e) { /* ignore */ }
+                try { esRef.current.instance.close(); } catch { }
                 esRef.current = null;
             }
         };
     }, []);
 
-    // UI guards
     if (isLoadingPost) return (
         <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <img src={load} alt="Loading post..." />
@@ -429,7 +408,7 @@ case "leaderboard": url = `https://api.votecity.ng/v1/leaderboard/${id}`; break;
                         ) : (
                             subTabData.map(c => (
                                 <div key={c.id} style={{ borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between", textAlign: "left", padding: "15px 20px" }}>
-                                    <div style={{ width: "20%", display: "flex", alignItems: "center" }}>
+                                    <div style={{ width: "20%", display: "flex" }}>
                                         <img className="fitt" src={c.user?.thumbnail?.url ? `https://api.votecity.ng${c.user?.thumbnail.url}` : alt} alt={c.title} style={{ width: "50px", height: "50px", borderRadius: "100px", marginTop: "5px" }} />
                                     </div>
                                     <div style={{ width: "80%" }}>
@@ -497,29 +476,56 @@ case "leaderboard": url = `https://api.votecity.ng/v1/leaderboard/${id}`; break;
 
                                             return (
                                                 <div key={c.id} style={{
+                                                    position: "relative", // for the badge
                                                     display: "flex",
                                                     justifyContent: "space-between",
                                                     padding: "10px 15px",
                                                     background: "#0000003d",
                                                     border: "1px solid #ffffff22",
                                                     borderRadius: "10px",
-                                                    marginBottom: "10px"
+                                                    marginTop:"20px",
+                                                    marginBottom: "20px" // add extra space so badge doesn't overlap next item
                                                 }}>
-                                                    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                                        <span style={{ fontWeight: "bold", width: "25px" }}>{c.rank}</span>
+                                                    {/* Hanging Rank Badge */}
+                                                    <div style={{
+                                                        position: "absolute",
+                                                        top: "-10px",      // moves it above the div
+                                                        right: "15px",    // moves it outside the right edge
+                                                        background: "#fff",
+                                                        color: "#000",
+                                                        width: "25px",
+                                                        height: "25px",
+                                                        // borderRadius: "10%",
+                                                        borderTopRightRadius:"30%",
+                                                        borderBottomLeftRadius:"30%",
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        justifyContent: "center",
+                                                        fontWeight: "bold",
+                                                        fontSize: "0.9rem",
+                                                        boxShadow: "0 2px 5px rgba(0,0,0,0.2)" // optional shadow for floating effect
+                                                    }}>
+                                                        {c.rank}
+                                                    </div>
+
+                                                    <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px" }}>
                                                         <img className="fitt"
                                                             src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt}
                                                             alt={c.title}
                                                             style={{ width: "50px", height: "50px", borderRadius: "50%" }}
                                                         />
-                                                        <span style={{ fontWeight: "bold" }}>{c.title}</span>
+                                                        <div style={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
+                                                            <span style={{ fontWeight: "bold" }}>{c.title}</span>
+                                                            <span style={{color:" rgb(192, 192, 197)"}}>{c.total_votes} votes</span>
+                                                        </div>
                                                     </div>
+
                                                     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                                        <span>{c.total_votes} votes</span>
                                                         {movedUp && <span style={{ color: "limegreen", fontWeight: "bold" }}>⬆</span>}
                                                         {movedDown && <span style={{ color: "red", fontWeight: "bold" }}>⬇</span>}
                                                     </div>
                                                 </div>
+
                                             );
                                         })
                                     )}
