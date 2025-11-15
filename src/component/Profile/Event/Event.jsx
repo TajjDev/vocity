@@ -515,7 +515,7 @@ const Event = ({ postId }) => {
                                                 <Link to={`/profile/${c?.user.user_id}`} style={{ display: "flex", gap: "5px", alignItems: "center" }}>
 
                                                     {c.user?.username ? `@${c.user.username}` : ""}
-                                                    {c.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "-1px" }} />}
+                                                    {c.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "-3px" }} />}
                                                 </Link>
                                             </span>
                                             <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
@@ -677,6 +677,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
