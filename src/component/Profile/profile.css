@@ -82,6 +82,7 @@
 #img {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 #img #dp {
@@ -906,6 +907,56 @@
   }
   #links,#con{
     flex-direction: column;
+  }
+}
+@media (max-width: 300px) {
+  .listings-scroll{
+    flex-direction: column;
+    padding: 0;
+  }
+  .listing-item{
+    max-width: 100%;
+  }
+}
+@media (max-width: 300px) {
+  #butt{
+    flex-direction: column;
+    width: 50%;
+    align-self: center;
+  }
+  #img #dp {
+    width: 120px;
+    height: 120px;
+  }
+}
+/* 📱 POPUP DP FULL-WIDTH FOR SMALL SCREENS */
+@media (max-width: 425px) {
+  .popup-content {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+
+  .popup-content img {
+    width: 100% !important;
+    height: 70% !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+  }
+
+  /* Bring arrows inside the screen */
+  .popup-arrow.left {
+    left: 10px !important;
+  }
+
+  .popup-arrow.right {
+    right: 10px !important;
+  }
+
+  /* Close button visible */
+  .popup-close {
+    top: 10px !important;
+    right: 10px !important;
   }
 }
 
