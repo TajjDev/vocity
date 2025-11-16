@@ -433,65 +433,49 @@ const Event = ({ postId }) => {
                         <>
                             <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
                                 <div style={{ display: "flex" }}>
-                                    <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                    <img className="fitt" src="" /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
                                 </div>
-                                <div>
-                                    <p style={{ display: "flex", flexDirection: "column" }}>
-                                        <span style={{ color: "#fff", fontSize: "0.9rem" }}>
-                                            {/* username */}
-                                        </span>
-                                        <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
-                                            {/* date */}
-                                        </p>
+                                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                                    {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
+                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+
                                     </p>
+                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        {/* date */}
+                                    </p>
+                                    {/* </p> */}
                                     <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
                                 </div>
                             </div>
                             <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
                                 <div style={{ display: "flex" }}>
-                                    <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                    <img className="fitt" src="" /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
                                 </div>
-                                <div>
-                                    <p style={{ display: "flex", flexDirection: "column" }}>
-                                        <span style={{ color: "#fff", fontSize: "0.9rem" }}>
-                                            {/* username */}
-                                        </span>
-                                        <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
-                                            {/* date */}
-                                        </p>
+                                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                                    {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
+                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+
                                     </p>
+                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        {/* date */}
+                                    </p>
+                                    {/* </p> */}
                                     <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
                                 </div>
                             </div>
                             <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
                                 <div style={{ display: "flex" }}>
-                                    <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                    <img className="fitt" src="" /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
                                 </div>
-                                <div>
-                                    <p style={{ display: "flex", flexDirection: "column" }}>
-                                        <span style={{ color: "#fff", fontSize: "0.9rem" }}>
-                                            {/* username */}
-                                        </span>
-                                        <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
-                                            {/* date */}
-                                        </p>
+                                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                                    {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
+                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+
                                     </p>
-                                    <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
-                                </div>
-                            </div>
-                            <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
-                                <div style={{ display: "flex" }}>
-                                    <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
-                                </div>
-                                <div>
-                                    <p style={{ display: "flex", flexDirection: "column" }}>
-                                        <span style={{ color: "#fff", fontSize: "0.9rem" }}>
-                                            {/* username */}
-                                        </span>
-                                        <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
-                                            {/* date */}
-                                        </p>
+                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        {/* date */}
                                     </p>
+                                    {/* </p> */}
                                     <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
                                 </div>
                             </div>
@@ -677,7 +661,6 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
-
 
 
 
