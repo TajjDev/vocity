@@ -1,3 +1,4 @@
+
 import './profile.css';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
@@ -37,9 +38,12 @@ function UserProfile({ userId }) {
         followers: [],
         following: []
     });
+
     const [loadingFollow, setLoadingFollow] = useState({
-        followers: false,
-        following: false
+        followers: true,
+        following: false,
+        following: [],
+        followers: [""]
     });
     const [errorFollow, setErrorFollow] = useState({
         followers: "",
@@ -304,7 +308,29 @@ function UserProfile({ userId }) {
                                 ))}
                             </div>
                             {isLoadingListings ? (
-                                <p>Loading {sort} listings...</p>
+                                <>
+                                    <div className='listings-scroll'>
+                                        {/* {currentListings.map(listing => ( */}
+                                            <div className='listing-item'>
+                                                    <div className="listing-image-container">
+                                                        <img style={{background:"#fff", opacity:"0.3"}}   src={``} alt="" className="listing-image" />
+                                                        <p className={`status-label ${sort}`}></p>
+                                                        <p id='g'></p>
+                                                    </div>
+                                                    <div style={{background:"#fff", opacity:"0.3"}} className="listing-title">
+                                                        <p style={{ textTransform: "uppercase" }} id='short'></p>
+                                                        <div id="views">
+                                                            <p><img src={""} alt="" /></p>
+                                                            <p><img src={""} alt="" /></p>
+                                                            <p><img src={""} alt="" /></p>
+                                                            <p><img src={""} alt="" /></p>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        {/* ))} */}
+                                    </div>
+                                    
+                                </>
                             ) : currentListings.length === 0 ? (
                                 <p style={{ textAlign: "center" }}>No {sort} posts found</p>
                             ) : (
@@ -358,20 +384,51 @@ function UserProfile({ userId }) {
                             </div>
 
                             {isLoadingFollow && <>
-                                <div style={{ width: "100%", gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
+                                <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px", width: "100%" }}>
                                     <div style={{ display: "flex" }}>
-                                        <img className="fitt" src={alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                        <img className="fitt" src="" /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
                                     </div>
-                                    <div>
-                                        <p style={{ display: "flex", flexDirection: "column" }}>
-                                            <span style={{ color: "#fff", fontSize: "0.9rem" }}>
-                                                {/* username */}
-                                            </span>
-                                            <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
-                                                {/* date */}
-                                            </p>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                                        {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
+                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+
                                         </p>
-                                        <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                            {/* date */}
+                                        </p>
+                                        {/* </p> */}
+                                        {/* <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p> */}
+                                    </div>
+                                </div>
+                                <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px", width: "100%" }}>
+                                    <div style={{ display: "flex" }}>
+                                        <img className="fitt" src="" /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
+                                    </div>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                                        {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
+                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+
+                                        </p>
+                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                            {/* date */}
+                                        </p>
+                                        {/* </p> */}
+                                        {/* <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p> */}
+                                    </div>
+                                </div>
+                                <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px", width: "100%" }}>
+                                    <div style={{ display: "flex" }}>
+                                        <img className="fitt" src="" /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
+                                    </div>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                                        {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
+                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        </p>
+                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                            {/* date */}
+                                        </p>
+                                        {/* </p> */}
+                                        {/* <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p> */}
                                     </div>
                                 </div>
                             </>}
@@ -379,7 +436,7 @@ function UserProfile({ userId }) {
 
                             {!isLoadingFollow && !errorCurrentFollow && (
                                 currentFollowList.length === 0 ? (
-                                    <p style={{ textAlign: "center", color: "#fff", marginTop: "20px" }}>
+                                    <p style={{ textAlign: "center", color: "#fff", marginTop: "5px" }}>
                                         {sortII === "followers" ? "No followers found" : "No followings found"}
                                     </p>
                                 ) : (
