@@ -203,7 +203,7 @@ function UserProfile({ userId }) {
                         src={user.thumbnail?.url ? `https://api.votecity.ng${user.thumbnail.url}` : alt}
                         alt={user.fullname || "User avatar"}
                         style={{ cursor: "pointer", border: "2px solid #fff", padding: "3px" }}
-                        onClick={() => openPopup([`https://api.votecity.ng${user.thumbnail?.url}`])}
+                        onClick={() => openPopup([user.thumbnail?.url ? `https://api.votecity.ng${user.thumbnail?.url}` : alt])}
                     />
                 </div>
                 {/* Follow & Share */}
@@ -258,7 +258,7 @@ function UserProfile({ userId }) {
                 {popupOpen && (
                     <div className="popup-overlay" onClick={closePopup} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
                         <div className="popup-content" onClick={e => e.stopPropagation()}>
-                            <img src={popupImages[currentIndex]} alt="popup" style={{ objectFit: "cover", borderRadius: "10px" }} />
+                            <img src={popupImages[currentIndex]} alt="popup" style={{ objectFit: "cover" }} />
                             {popupImages.length > 1 && (
                                 <>
                                     <button style={{ background: "#808080" }} className="popup-arrow left" onClick={prevImage}>‹</button>

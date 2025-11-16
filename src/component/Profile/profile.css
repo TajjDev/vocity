@@ -570,7 +570,7 @@
   background: rgba(255, 255, 255, 0.15);
   color: white;
   border: none;
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding: 5px 15px;
   border-radius: 8px;
   cursor: pointer;
@@ -598,7 +598,7 @@
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -930,19 +930,36 @@
   }
 }
 /* 📱 POPUP DP FULL-WIDTH FOR SMALL SCREENS */
-@media (max-width: 425px) {
-  .popup-content {
-    width: 100% !important;
-    height: auto !important;
-    padding: 0 !important;
-  }
+@media (max-width: 430px) {
 
-  .popup-content img {
-    width: 100% !important;
-    height: 70% !important;
-    object-fit: cover !important;
-    border-radius: 0 !important;
-  }
+  /* Popup content container */
+.popup-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  background: rgb(0, 0, 0);
+  height: 70%;
+  border: 1px solid #fff;
+  overflow: hidden;
+}
+
+/* Popup image */
+.popup-content img {
+     /* Maximum width */
+      /* Responsive width */
+     /* Height max 70% of viewport */
+  object-fit: cover;      /* Crop and maintain aspect ratio */
+  object-position: center;/* Center the image */
+  border-radius: 10px;
+  border: none;
+  box-shadow:none;
+  width: 100%;
+  border-radius: 0;
+  max-width: 100%;
+  height: 100%;
+}
 
   /* Bring arrows inside the screen */
   .popup-arrow.left {
