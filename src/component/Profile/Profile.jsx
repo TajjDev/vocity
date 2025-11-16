@@ -40,10 +40,10 @@ function UserProfile({ userId }) {
     });
 
     const [loadingFollow, setLoadingFollow] = useState({
-        followers: true,
+        followers: false,
         following: false,
         following: [],
-        followers: [""]
+        followers: []
     });
     const [errorFollow, setErrorFollow] = useState({
         followers: "",
