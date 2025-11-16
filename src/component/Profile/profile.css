@@ -940,7 +940,7 @@
   align-items: center;
   width: 90%;
   background: rgb(0, 0, 0);
-  height: 70%;
+  height: 80%;
   border: 1px solid #fff;
   overflow: hidden;
 }
@@ -1003,4 +1003,5 @@
   /* transition: opacity 0.3s ease; */
 /* } */
 /*  */
+
 
