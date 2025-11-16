@@ -637,10 +637,8 @@ const Event = ({ postId }) => {
                         <>
                             {isLoadingSubTab ? (
                                 <p>Loading leaderboard...</p>
-                            ) : leaderboardData.length === 0 ? (
-                                <p></p>
-                            )
-                                : (
+                            ) : 
+                                (
                                     leaderboardData.map((c) => {
                                         const movedUp = c.prevRank !== undefined && c.rank < c.prevRank;
                                         const movedDown = c.prevRank !== undefined && c.rank > c.prevRank;
@@ -709,6 +707,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
