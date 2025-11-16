@@ -225,11 +225,19 @@ padding: 10px 30px 10px 10px;
 .titdis{
   font-size: 0.85rem;
 }
-/* #constAll{ */
-  /* overflow-y: auto; */
-  /* height: 500px; */
-/* } */
-@media (max-width:425px) and (min-width:10px) {
+#butCom{
+  width: 95%;
+}
+#constAll{
+  width: 95%;
+}
+@media (max-width:425px) and (min-width:10px) {#butCom{
+  width: 100%;
+}
+#constAll{
+  width: 100%;
+}
+
   .post {
     flex-direction: column;
     gap: 0;
