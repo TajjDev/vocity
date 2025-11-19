@@ -32,7 +32,17 @@ const Event = ({ postId }) => {
     const handleGoBack = () => navigate(-1);
     const [selectedContestant, setSelectedContestant] = useState(null);
     
-    
+    useEffect(() => {
+        const handleTouchMove = (e) => {
+            if (selectedContestant) e.preventDefault();
+        };
+
+        document.body.addEventListener("touchmove", handleTouchMove, { passive: false });
+
+        return () => {
+            document.body.removeEventListener("touchmove", handleTouchMove);
+        };
+    }, [selectedContestant]);
     const formatDateTime = (isoString) => {
         if (!isoString) return "";
         const date = new Date(isoString);
@@ -743,6 +753,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
