@@ -231,6 +231,21 @@ padding: 10px 30px 10px 10px;
 #constAll{
   width: 95%;
 }
+#cooonn{
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100vh;
+ background: #0000009e;
+ display: flex;
+ flex-direction: column;
+ justify-content: end;
+}
+#connn{
+  height: 60%;
+  background: #000;
+}
 @media (max-width:425px) and (min-width:10px) {
   #butCom{
   width: 100%;
