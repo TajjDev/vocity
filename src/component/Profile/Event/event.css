@@ -236,7 +236,8 @@ padding: 10px 30px 10px 10px;
  top: 0;
  left: 0;
  width: 100%;
- height: 100vh;
+ z-index:1000;
+ height: 100%;
  background: #0000009e;
  display: flex;
  flex-direction: column;
@@ -299,3 +300,4 @@ padding: 10px 30px 10px 10px;
     font-size: 0.8rem;
   }
 }
+
