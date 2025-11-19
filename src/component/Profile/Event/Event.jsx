@@ -18,25 +18,38 @@ const Event = ({ postId }) => {
     const [post, setPost] = useState(null);
     const [isLoadingPost, setIsLoadingPost] = useState(true);
     const [resolvedPostId, setResolvedPostId] = useState(null);
-
     const [subTabCache, setSubTabCache] = useState({});
     const [subTabData, setSubTabData] = useState([]);
     const [isLoadingSubTab, setIsLoadingSubTab] = useState(false);
     const [subTabError, setSubTabError] = useState("");
-
     const [countdownPhase, setCountdownPhase] = useState("start");
-
     const [leaderboardLoaded, setLeaderboardLoaded] = useState(false);
     const [leaderboardData, setLeaderboardData] = useState([]);
-
     const [searchQuery, setSearchQuery] = useState(""); // Added for contestant search
-
     const esRef = useRef(null);
     const prevLeaderboardRef = useRef({});
-
     const navigate = useNavigate();
-
     const handleGoBack = () => navigate(-1);
+    const [selectedContestant, setSelectedContestant] = useState(null);
+    useEffect(() => {
+        if (selectedContestant) {
+            document.body.style.overflow = "hidden";   // stop scrolling
+        } else {
+            document.body.style.overflow = "auto";     // allow scrolling
+        }
+    }, [selectedContestant]);
+    useEffect(() => {
+        const handleTouchMove = (e) => {
+            if (selectedContestant) e.preventDefault();
+        };
+
+        document.body.addEventListener("touchmove", handleTouchMove, { passive: false });
+
+        return () => {
+            document.body.removeEventListener("touchmove", handleTouchMove);
+        };
+    }, [selectedContestant]);
+
 
     const formatDateTime = (isoString) => {
         if (!isoString) return "";
@@ -584,20 +597,36 @@ const Event = ({ postId }) => {
                                     }}
                                 />
                             </div>
-
+                            <p style={{ textAlign: "start", paddingBottom: "10px", fontWeight: "bold" }}>Vote Contestant</p>
                             {/* Filtered contestants */}
                             {subTabData.length === 0 ? <p>No contestant found</p> :
                                 subTabData
                                     .filter(c => (c.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(c => (
-                                        <div key={c.id} style={{ gap: "10px", borderRadius: "10px", border: "1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "start", alignItems: "center" }}>
-                                            <div>
-                                                <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
-                                            </div>
-                                            <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-                                                <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{c.title}</p>
-                                                <p id="desci" style={{ fontSize: "0.85rem" }}>{c.description}</p>
-                                            </div>
-                                        </div>
+                                        <>
+                                            <button onClick={() => setSelectedContestant(c)}
+                                                key={c.id} style={{ gap: "10px", borderRadius: "10px", border: "1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "start", alignItems: "center", width: "100%" }}>
+                                                <div>
+                                                    <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                                </div>
+                                                <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                                                    <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{c.title}</p>
+                                                    <p id="desci" style={{ fontSize: "0.85rem" }}>{c.description}</p>
+                                                </div>
+                                            </button>
+                                            {selectedContestant?.id === c.id && (
+                                                <div id="cooonn">
+                                                    <div id="connn">
+                                                        <p onClick={() => setSelectedContestant(null)}>Close</p>
+                                                        <div id="imageCon">
+                                                            <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            )}
+
+                                        </>
                                     ))
                             }
                         </>
