@@ -31,13 +31,7 @@ const Event = ({ postId }) => {
     const navigate = useNavigate();
     const handleGoBack = () => navigate(-1);
     const [selectedContestant, setSelectedContestant] = useState(null);
-    useEffect(() => {
-        if (selectedContestant) {
-            document.body.style.overflow = "hidden";   // stop scrolling
-        } else {
-            document.body.style.overflow = "auto";     // allow scrolling
-        }
-    }, [selectedContestant]);
+    
     
     const formatDateTime = (isoString) => {
         if (!isoString) return "";
@@ -749,6 +743,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
