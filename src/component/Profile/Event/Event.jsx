@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect, useRef } from "react";
+import apple from '/src/assets/image/Apple.png';
+import google from '/src/assets/image/Google.png';
 import { useNavigate } from "react-router-dom";
 import load from '/src/assets/image/load.png';
 import view from '/src/assets/image/view.png';
@@ -15,6 +17,7 @@ const BASE_URL_POST = "https://api.votecity.ng/v1/post";
 
 const Event = ({ postId }) => {
     const [sort, setSort] = useState("Photos")
+    const [showPopup, setShowPopup] = useState(false)
     const [activeSubTab, setActiveSubTab] = useState("comments");
     const [post, setPost] = useState(null);
     const [isLoadingPost, setIsLoadingPost] = useState(true);
@@ -39,25 +42,15 @@ const Event = ({ postId }) => {
     };
     setVh();
     window.addEventListener('resize', setVh);
-    useEffect(() => {
-        const handleTouchMove = (e) => {
-          // If modal is open
-          if (selectedContestant) {
-            // Allow scroll if the touch is inside the modal container
-            const modal = document.getElementById("connn"); // your modal id
-            if (!modal.contains(e.target)) {
-              e.preventDefault(); // block background scroll
-            }
-          }
-        };
-      
-        document.body.addEventListener("touchmove", handleTouchMove, { passive: false });
-      
-        return () => {
-          document.body.removeEventListener("touchmove", handleTouchMove);
-        };
-      }, [selectedContestant]);
-      
+    // useEffect(() => {
+        // const handleTouchMove = (e) => {
+            // if (selectedContestant) e.preventDefault();
+        // };
+        // document.body.addEventListener("touchmove", handleTouchMove, { passive: false });
+        // return () => {
+            // document.body.removeEventListener("touchmove", handleTouchMove);
+        // };
+    // }, [selectedContestant]);
 
 
     const formatDateTime = (isoString) => {
@@ -661,7 +654,7 @@ const Event = ({ postId }) => {
                                                                                     key={photo.id}
                                                                                     src={`https://api.votecity.ng${photo.url}`} // you might need to prepend your server URL if these are relative paths
                                                                                     alt="contestant photo"
-                                                                                    style={{ width: "150px", flex: "0 0 auto", height: "150px", margin: "5px", objectFit: "cover", border: "1px solid rgba(255, 255, 255, 0.4)", borderRadius: "px" }}
+                                                                                    style={{ width: "150px", flex: "0 0 auto", height: "150px", margin: "5px", objectFit: "cover", border: "1px solid rgba(255, 255, 255, 0.4)", borderRadius: "10px" }}
                                                                                 />
                                                                             ))
                                                                         ) : (
@@ -671,7 +664,7 @@ const Event = ({ postId }) => {
                                                                     )}
                                                                 </div>
                                                                 {sort === "Features" && (
-                                                                    <p style={{ color: "#fff", border:"1px solid" }}>
+                                                                    <p style={{ color: "#fff", border: "1px solid" }}>
                                                                         <span> {selectedContestant.features?.[0]?.name || "No features available"}</span>:
                                                                         <span>{selectedContestant.features?.[0]?.value || ""}</span>
                                                                     </p>
@@ -680,6 +673,24 @@ const Event = ({ postId }) => {
                                                                     <p style={{ color: "#fff" }}>
                                                                         {selectedContestant.description || "No description available"}
                                                                     </p>
+                                                                )}
+                                                            </div>
+                                                            <div>
+                                                                <button style={{justifyContent:"center",margin:"20px", width:"100%", background:"#4D4330",color:"#E8BD70", display:"flex",justifySelf:"center",textAlign:"center",padding:"10px",borderRadius:"10px", border:"none"}} onClick={() => setShowPopup(true)} type="button">
+                                                                    vote contestant
+                                                                </button>
+                                                                {showPopup && (
+                                                                    <div id="popOver">
+                                                                        <div id="popUp">
+                                                                            <p id="downn">Download the App to vote</p>
+                                                                            <div id="apGo">
+                                                                                <a href="" className="goAp"><img src={google} alt="" /></a>
+                                                                                <a href="" className="goAp"><img src={apple} alt="" /></a>
+                                                                            </div>
+                                                                            <p>Available both on <br /> Play store and Apple store</p>
+                                                                            <button id="cls" onClick={() => setShowPopup(false)}>Close</button>
+                                                                        </div>
+                                                                    </div>
                                                                 )}
                                                             </div>
                                                         </div>
