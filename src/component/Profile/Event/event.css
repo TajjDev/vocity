@@ -279,7 +279,20 @@ padding: 10px 30px 10px 10px;
   border-right: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.133);
 }
-@media (max-width:425px) and (min-width:10px) {
+#butCom{
+  gap: 8px;
+}
+#butcocole{
+  font-size: 0.9rem;
+  padding: 8px 14px;
+}
+.firstP{
+  width: 150px;
+}
+.secondP{
+  width: 200px;
+}
+@media (max-width:425px) {
   #butCom{
   width: 100%;
 }
@@ -330,5 +343,31 @@ padding: 10px 30px 10px 10px;
   }
   #uu{
     font-size: 0.8rem;
+  }
+}
+@media (max-width:360px) {
+  #butcocole{
+    font-size: 0.8rem;
+    padding: 8px 10px;
+
+  }
+  #butCom{
+    gap: 5px;
+  }
+  .firstP{
+    width: 150px;
+  }
+  .secondP{
+    width: 180px;
+  }
+}
+@media (max-width:300px) {
+  #butCom{
+    flex-direction: column;
+    /* width: 50%; */
+    align-items: center;
+  }
+  #butcocole{
+    width: 50%;
   }
 }
