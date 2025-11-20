@@ -423,16 +423,16 @@ const Event = ({ postId }) => {
                     </div>
                 )}
 
-                <div id="butCom" style={{ display: "flex", justifyContent: "center", gap: "10px", paddingBottom: "15px", marginBottom: "15px", borderBottom: "1px solid #fff" }}>
+                <div id="butCom" style={{ display: "flex", justifyContent: "center", paddingBottom: "15px", marginBottom: "15px", borderBottom: "1px solid #fff" }}>
                     {subTabs.map(tab => (
                         <button
+                            id="butcocole"
                             key={tab}
                             onClick={() => setActiveSubTab(tab)}
                             style={{
-                                padding: "8px 16px",
+
                                 borderRadius: "6px",
                                 border: "none",
-                                fontSize: "0.9rem",
                                 cursor: "pointer",
                                 background: activeSubTab === tab ? "#fff" : "none",
                                 color: activeSubTab === tab ? "#000" : "#fff",
@@ -454,14 +454,14 @@ const Event = ({ postId }) => {
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                     {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
                                     </p>
-                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p  className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         {/* date */}
                                     </p>
                                     {/* </p> */}
-                                    <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+
                                 </div>
                             </div>
                             <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -470,14 +470,14 @@ const Event = ({ postId }) => {
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                     {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
                                     </p>
-                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p  className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         {/* date */}
                                     </p>
                                     {/* </p> */}
-                                    <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+
                                 </div>
                             </div>
                             <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -486,14 +486,14 @@ const Event = ({ postId }) => {
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                     {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
                                     </p>
-                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         {/* date */}
                                     </p>
                                     {/* </p> */}
-                                    <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+
                                 </div>
                             </div>
                             <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -502,14 +502,14 @@ const Event = ({ postId }) => {
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                     {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
                                     </p>
-                                    <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p  className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         {/* date */}
                                     </p>
                                     {/* </p> */}
-                                    <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+
                                 </div>
                             </div>
                         </>
@@ -548,23 +548,23 @@ const Event = ({ postId }) => {
                         subTabData.length === 0 ? <p>No ticket found</p> :
                             subTabData.filter(t => (t.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(t => (
                                 <>
-                                <button onClick={()=>setSelectedContestantI(t)} key={t.id} style={{ marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px" }}>
-                                    <div>
-                                        <p style={{ fontWeight: "bold" }}>{t.title}</p>
-                                        <p style={{ color: "rgb(192, 192, 197)" }}>{t.description}</p>
-                                    </div>
-                                    <div>
-                                        <p>₦{t.price}</p>
-                                    </div>
-                                </button>
-                                {selectedContestantI?.id === t.id && (
-                                <div id="ticccc">
-                                    <div id="ticcc">
-                                    <p style={{ color: "#FF3838", textAlign: "end", padding: "20px" }} onClick={()=> setSelectedContestantI(null)}>close</p>
-                                    <hr />
-                                    </div>
-                                </div>
-                                )}
+                                    <button onClick={() => setSelectedContestantI(t)} key={t.id} style={{ marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px" }}>
+                                        <div>
+                                            <p style={{ fontWeight: "bold" }}>{t.title}</p>
+                                            <p style={{ color: "rgb(192, 192, 197)" }}>{t.description}</p>
+                                        </div>
+                                        <div>
+                                            <p>₦{t.price}</p>
+                                        </div>
+                                    </button>
+                                    {selectedContestantI?.id === t.id && (
+                                        <div id="ticccc">
+                                            <div id="ticcc">
+                                                <p style={{ color: "#FF3838", textAlign: "end", padding: "20px" }} onClick={() => setSelectedContestantI(null)}>close</p>
+                                                <hr />
+                                            </div>
+                                        </div>
+                                    )}
                                 </>
                             ))
                     ) : activeSubTab === "donations" ? (
@@ -624,7 +624,7 @@ const Event = ({ postId }) => {
                                                 </div>
                                                 <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
                                                     <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{c.title}</p>
-                                                    <p id="desci" style={{ fontSize: "0.85rem" , color:"rgb(192, 192, 197)"}}>{c.description}</p>
+                                                    <p id="desci" style={{ fontSize: "0.85rem", color: "rgb(192, 192, 197)" }}>{c.description}</p>
                                                 </div>
                                             </button>
                                             {selectedContestant?.id === c.id && (
@@ -677,44 +677,44 @@ const Event = ({ postId }) => {
                                                                     )}
                                                                 </div>
                                                                 <div>
-                                                                {sort === "Features" && (
-                                                                    selectedContestant.features && selectedContestant.features.length > 0 ? (
-                                                                        selectedContestant.features.map((item, index) => (
-                                                                            <div
-                                                                                key={index}
-                                                                                style={{
-                                                                                    border: "1px solid #ffffff22",
-                                                                                    padding: "10px",
-                                                                                    display: "flex",
-                                                                                    justifyContent: "space-between",
-                                                                                    marginBottom: "10px",
-                                                                                    flexDirection: 'column',
-                                                                                    borderRadius: "5px"
-                                                                                }}
-                                                                            >
-                                                                                <p style={{ fontWeight: "bold", display: 'flex', fontSize: "0.95rem" }}>{item.name}:</p>
-                                                                                <p style={{ textAlign: "start", fontSize: "0.9rem",color:"rgb(192, 192, 197)" }}>{item.value}</p>
-                                                                            </div>
-                                                                        ))
-                                                                    ) : (
-                                                                        <p style={{ color: "#fff" }}>No features available</p>
-                                                                    )
-                                                                )}
+                                                                    {sort === "Features" && (
+                                                                        selectedContestant.features && selectedContestant.features.length > 0 ? (
+                                                                            selectedContestant.features.map((item, index) => (
+                                                                                <div
+                                                                                    key={index}
+                                                                                    style={{
+                                                                                        border: "1px solid #ffffff22",
+                                                                                        padding: "10px",
+                                                                                        display: "flex",
+                                                                                        justifyContent: "space-between",
+                                                                                        marginBottom: "10px",
+                                                                                        flexDirection: 'column',
+                                                                                        borderRadius: "5px"
+                                                                                    }}
+                                                                                >
+                                                                                    <p style={{ fontWeight: "bold", display: 'flex', fontSize: "0.95rem" }}>{item.name}:</p>
+                                                                                    <p style={{ textAlign: "start", fontSize: "0.9rem", color: "rgb(192, 192, 197)" }}>{item.value}</p>
+                                                                                </div>
+                                                                            ))
+                                                                        ) : (
+                                                                            <p style={{ color: "#fff" }}>No features available</p>
+                                                                        )
+                                                                    )}
                                                                 </div>
                                                                 <div>
-                                                                {sort === "Description" && (
-                                                                    <p style={{
-                                                                        color: "#fff", fontSize: "0.9rem", textAlign: "start", border: "1px solid #ffffff22",
-                                                                        padding: "10px",
-                                                                        display: "flex",
-                                                                        justifyContent: "space-between",
-                                                                        marginBottom: "10px",
-                                                                        flexDirection: 'column',
-                                                                        borderRadius: "5px",
-                                                                    }}>
-                                                                        {selectedContestant.description || "No description available"}
-                                                                    </p>
-                                                                )}
+                                                                    {sort === "Description" && (
+                                                                        <p style={{
+                                                                            color: "#fff", fontSize: "0.9rem", textAlign: "start", border: "1px solid #ffffff22",
+                                                                            padding: "10px",
+                                                                            display: "flex",
+                                                                            justifyContent: "space-between",
+                                                                            marginBottom: "10px",
+                                                                            flexDirection: 'column',
+                                                                            borderRadius: "5px",
+                                                                        }}>
+                                                                            {selectedContestant.description || "No description available"}
+                                                                        </p>
+                                                                    )}
                                                                 </div>
                                                             </div>
                                                             <div>
@@ -755,13 +755,13 @@ const Event = ({ postId }) => {
                                     </div>
                                     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                         {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         </p>
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                             {/* date */}
                                         </p>
                                         {/* </p> */}
-                                        <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+    
                                     </div>
                                 </div>
                                 <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -770,13 +770,13 @@ const Event = ({ postId }) => {
                                     </div>
                                     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                         {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         </p>
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                             {/* date */}
                                         </p>
                                         {/* </p> */}
-                                        <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+    
                                     </div>
                                 </div>
                                 <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -785,13 +785,13 @@ const Event = ({ postId }) => {
                                     </div>
                                     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                         {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         </p>
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                             {/* date */}
                                         </p>
                                         {/* </p> */}
-                                        <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+    
                                     </div>
                                 </div>
                                 <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -800,13 +800,13 @@ const Event = ({ postId }) => {
                                     </div>
                                     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                         {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         </p>
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "40px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                             {/* date */}
                                         </p>
                                         {/* </p> */}
-                                        <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p>
+    
                                     </div>
                                 </div>
                             </> :
