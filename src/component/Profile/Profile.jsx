@@ -31,7 +31,7 @@ function UserProfile({ userId }) {
         ongoing: false,
         ended: false
     });
-    const [sort, setSort] = useState("ongoing");
+    const [sort, setSort] = useState("upcoming");
 
     // Followers/Following caching
     const [followCache, setFollowCache] = useState({
