@@ -231,7 +231,7 @@ padding: 10px 30px 10px 10px;
 #constAll{
   width: 95%;
 }
-#cooonn{
+#cooonn,#ticccc{
  position: fixed;
  top: 0;
  left: 0;
@@ -250,10 +250,11 @@ padding: 10px 30px 10px 10px;
 :root {
   --vh: 1vh;
 }
-#connn{
+#connn, #ticcc{
   padding-bottom: 20px;
-  height: 70%;
+  height: auto;
   max-height: 80vh;  
+  width: 100%;
     overflow-y: auto;
   /* overflow-y: auto; */
   /* overflow-x: hidden; */
@@ -272,7 +273,7 @@ padding: 10px 30px 10px 10px;
   align-items: start;
 
 }
-#connn hr{
+#connn hr,#ticcc hr{
   border-bottom: 0;
   border-left: 0;
   border-right: 0;
