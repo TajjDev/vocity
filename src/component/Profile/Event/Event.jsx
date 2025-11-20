@@ -14,6 +14,7 @@ import "./event.css";
 const BASE_URL_POST = "https://api.votecity.ng/v1/post";
 
 const Event = ({ postId }) => {
+    const [sort, setSort] = useState("Photos")
     const [activeSubTab, setActiveSubTab] = useState("comments");
     const [post, setPost] = useState(null);
     const [isLoadingPost, setIsLoadingPost] = useState(true);
@@ -31,18 +32,34 @@ const Event = ({ postId }) => {
     const navigate = useNavigate();
     const handleGoBack = () => navigate(-1);
     const [selectedContestant, setSelectedContestant] = useState(null);
-    
+
+    // Set --vh on page load and on resize
+    const setVh = () => {
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    };
+    setVh();
+    window.addEventListener('resize', setVh);
     useEffect(() => {
         const handleTouchMove = (e) => {
-            if (selectedContestant) e.preventDefault();
+          // If modal is open
+          if (selectedContestant) {
+            // Allow scroll if the touch is inside the modal container
+            const modal = document.getElementById("connn"); // your modal id
+            if (!modal.contains(e.target)) {
+              e.preventDefault(); // block background scroll
+            }
+          }
         };
-
+      
         document.body.addEventListener("touchmove", handleTouchMove, { passive: false });
-
+      
         return () => {
-            document.body.removeEventListener("touchmove", handleTouchMove);
+          document.body.removeEventListener("touchmove", handleTouchMove);
         };
-    }, [selectedContestant]);
+      }, [selectedContestant]);
+      
+
+
     const formatDateTime = (isoString) => {
         if (!isoString) return "";
         const date = new Date(isoString);
@@ -595,7 +612,7 @@ const Event = ({ postId }) => {
                                 subTabData
                                     .filter(c => (c.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(c => (
                                         <>
-                                            <button onClick={() => setSelectedContestant(c)}
+                                            <button onClick={() => { setSelectedContestant(c); setSort("Photos") }}
                                                 key={c.id} style={{ gap: "10px", borderRadius: "10px", border: "1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "start", alignItems: "center", width: "100%" }}>
                                                 <div>
                                                     <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
@@ -608,13 +625,66 @@ const Event = ({ postId }) => {
                                             {selectedContestant?.id === c.id && (
                                                 <div id="cooonn">
                                                     <div id="connn">
-                                                        <p onClick={() => setSelectedContestant(null)}>Close</p>
-                                                        <div id="imageCon">
-                                                            <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
-
+                                                        <p style={{ color: "#FF3838", textAlign: "end", margin: "20px" }} onClick={() => setSelectedContestant(null)}>Close</p>
+                                                        <hr />
+                                                        <div style={{ margin: "20px" }} id="imageCon">
+                                                            <img id="imgCon" className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ borderRadius: "100px", marginTop: "5px" }} />
                                                         </div>
-                                                    </div>
+                                                        <div id="titvot" style={{ margin: "20px" }}>
+                                                            <p>{c.title}</p>
+                                                            <p style={{ color: "rgb(192, 192, 197)" }}>{c.total_votes} votes</p>
+                                                        </div>
+                                                        <div style={{ margin: "20px" }} id="photosFeat">
+                                                            <div id='butt' style={{ display: "flex", marginBottom: "10px" }}>
+                                                                {["Photos", "Features", "Description"].map(option => (
+                                                                    <button key={option} onClick={() => setSort(option)}
+                                                                        style={{
+                                                                            borderRadius: "5px",
+                                                                            fontWeight: sort === option ? "bolder" : "",
+                                                                            border: "none",
+                                                                            background: sort === option ? "#fff" : "transparent",
+                                                                            color: sort === option ? "rgba(41, 41, 41, 1)" : "#fff",
+                                                                            cursor: "pointer"
+                                                                        }}>
+                                                                        {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                                    </button>
+                                                                ))}
+                                                            </div>
+                                                            <div style={{ marginTop: "15px" }}>
+                                                                <div style={{ display: "flex", overflowX: "auto", overflowY: "hidden", scrollBehavior: "smooth", width: "100%" }}>
+                                                                    {sort === "Photos" && (
 
+                                                                        selectedContestant.photos?.length > 0 ? (
+
+                                                                            selectedContestant.photos.map((photo) => (
+                                                                                <img
+                                                                                    key={photo.id}
+                                                                                    src={`https://api.votecity.ng${photo.url}`} // you might need to prepend your server URL if these are relative paths
+                                                                                    alt="contestant photo"
+                                                                                    style={{ width: "150px", flex: "0 0 auto", height: "150px", margin: "5px", objectFit: "cover", border: "1px solid rgba(255, 255, 255, 0.4)", borderRadius: "px" }}
+                                                                                />
+                                                                            ))
+                                                                        ) : (
+                                                                            <p>No photos available</p>
+                                                                        )
+
+                                                                    )}
+                                                                </div>
+                                                                {sort === "Features" && (
+                                                                    <p style={{ color: "#fff", border:"1px solid" }}>
+                                                                        <span> {selectedContestant.features?.[0]?.name || "No features available"}</span>:
+                                                                        <span>{selectedContestant.features?.[0]?.value || ""}</span>
+                                                                    </p>
+                                                                )}
+                                                                {sort === "Description" && (
+                                                                    <p style={{ color: "#fff" }}>
+                                                                        {selectedContestant.description || "No description available"}
+                                                                    </p>
+                                                                )}
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
                                             )}
 
@@ -753,7 +823,6 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
-
 
 
 
