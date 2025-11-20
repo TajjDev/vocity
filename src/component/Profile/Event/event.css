@@ -236,16 +236,38 @@ padding: 10px 30px 10px 10px;
  top: 0;
  left: 0;
  width: 100%;
- z-index:1000;
- height: 100%;
+ height: calc(var(--vh, 1vh) * 100);
  background: #0000009e;
  display: flex;
+ z-index: 1000;
  flex-direction: column;
  justify-content: end;
 }
+:root {
+  --vh: 1vh;
+}
 #connn{
-  height: 60%;
+  height: auto;
+  z-index: 10000;
   background: #000;
+  /* position: relative; */
+  /* top: 0; */
+}
+#imgCon{
+  width: 120px;
+  height: 120px;
+}
+#titvot{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+}
+#connn hr{
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.133);
 }
 @media (max-width:425px) and (min-width:10px) {
   #butCom{
@@ -300,4 +322,3 @@ padding: 10px 30px 10px 10px;
     font-size: 0.8rem;
   }
 }
-
