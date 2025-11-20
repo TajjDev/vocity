@@ -18,6 +18,7 @@ const BASE_URL_POST = "https://api.votecity.ng/v1/post";
 const Event = ({ postId }) => {
     const [sort, setSort] = useState("Photos")
     const [showPopup, setShowPopup] = useState(false)
+    const [popTicket, setPopTicket] = useState(false)
     const [activeSubTab, setActiveSubTab] = useState("comments");
     const [post, setPost] = useState(null);
     const [isLoadingPost, setIsLoadingPost] = useState(true);
@@ -35,6 +36,7 @@ const Event = ({ postId }) => {
     const navigate = useNavigate();
     const handleGoBack = () => navigate(-1);
     const [selectedContestant, setSelectedContestant] = useState(null);
+    const [selectedContestantI, setSelectedContestantI] = useState(null);
 
     // Set --vh on page load and on resize
     const setVh = () => {
@@ -43,13 +45,13 @@ const Event = ({ postId }) => {
     setVh();
     window.addEventListener('resize', setVh);
     // useEffect(() => {
-        // const handleTouchMove = (e) => {
-            // if (selectedContestant) e.preventDefault();
-        // };
-        // document.body.addEventListener("touchmove", handleTouchMove, { passive: false });
-        // return () => {
-            // document.body.removeEventListener("touchmove", handleTouchMove);
-        // };
+    // const handleTouchMove = (e) => {
+    // if (selectedContestant) e.preventDefault();
+    // };
+    // document.body.addEventListener("touchmove", handleTouchMove, { passive: false });
+    // return () => {
+    // document.body.removeEventListener("touchmove", handleTouchMove);
+    // };
     // }, [selectedContestant]);
 
 
@@ -544,8 +546,9 @@ const Event = ({ postId }) => {
                         )
                     ) : activeSubTab === "tickets" ? (
                         subTabData.length === 0 ? <p>No ticket found</p> :
-                            subTabData.map(t => (
-                                <div key={t.id} style={{ marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px" }}>
+                            subTabData.filter(t => (t.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(t => (
+                                <>
+                                <button onClick={()=>setSelectedContestantI(t)} key={t.id} style={{ marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px" }}>
                                     <div>
                                         <p style={{ fontWeight: "bold" }}>{t.title}</p>
                                         <p style={{ color: "rgb(192, 192, 197)" }}>{t.description}</p>
@@ -553,7 +556,16 @@ const Event = ({ postId }) => {
                                     <div>
                                         <p>₦{t.price}</p>
                                     </div>
+                                </button>
+                                {selectedContestantI?.id === t.id && (
+                                <div id="ticccc">
+                                    <div id="ticcc">
+                                    <p style={{ color: "#FF3838", textAlign: "end", padding: "20px" }} onClick={()=> setSelectedContestantI(null)}>close</p>
+                                    <hr />
+                                    </div>
                                 </div>
+                                )}
+                                </>
                             ))
                     ) : activeSubTab === "donations" ? (
                         subTabData.length === 0 ? <p>No donation found</p> :
@@ -612,7 +624,7 @@ const Event = ({ postId }) => {
                                                 </div>
                                                 <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
                                                     <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{c.title}</p>
-                                                    <p id="desci" style={{ fontSize: "0.85rem" }}>{c.description}</p>
+                                                    <p id="desci" style={{ fontSize: "0.85rem" , color:"rgb(192, 192, 197)"}}>{c.description}</p>
                                                 </div>
                                             </button>
                                             {selectedContestant?.id === c.id && (
@@ -627,8 +639,8 @@ const Event = ({ postId }) => {
                                                             <p>{c.title}</p>
                                                             <p style={{ color: "rgb(192, 192, 197)" }}>{c.total_votes} votes</p>
                                                         </div>
-                                                        <div style={{ padding: "20px", width:"100%" }} id="photosFeat">
-                                                            <div id='butt' style={{ display: "flex", marginBottom: "10px",flexDirection:"row" }}>
+                                                        <div style={{ padding: "20px", width: "100%" }} id="photosFeat">
+                                                            <div id='butt' style={{ display: "flex", marginBottom: "10px", flexDirection: "row" }}>
                                                                 {["Photos", "Features", "Description"].map(option => (
                                                                     <button key={option} onClick={() => setSort(option)}
                                                                         style={{
@@ -638,7 +650,7 @@ const Event = ({ postId }) => {
                                                                             background: sort === option ? "#fff" : "transparent",
                                                                             color: sort === option ? "rgba(41, 41, 41, 1)" : "#fff",
                                                                             cursor: "pointer",
-                                                                            
+
                                                                         }}>
                                                                         {option.charAt(0).toUpperCase() + option.slice(1)}
                                                                     </button>
@@ -664,20 +676,49 @@ const Event = ({ postId }) => {
 
                                                                     )}
                                                                 </div>
+                                                                <div>
                                                                 {sort === "Features" && (
-                                                                    <p style={{ color: "#fff", border: "1px solid" }}>
-                                                                        <span> {selectedContestant.features?.[0]?.name || "No features available"}</span>:
-                                                                        <span>{selectedContestant.features?.[0]?.value || ""}</span>
-                                                                    </p>
+                                                                    selectedContestant.features && selectedContestant.features.length > 0 ? (
+                                                                        selectedContestant.features.map((item, index) => (
+                                                                            <div
+                                                                                key={index}
+                                                                                style={{
+                                                                                    border: "1px solid #ffffff22",
+                                                                                    padding: "10px",
+                                                                                    display: "flex",
+                                                                                    justifyContent: "space-between",
+                                                                                    marginBottom: "10px",
+                                                                                    flexDirection: 'column',
+                                                                                    borderRadius: "5px"
+                                                                                }}
+                                                                            >
+                                                                                <p style={{ fontWeight: "bold", display: 'flex', fontSize: "0.95rem" }}>{item.name}:</p>
+                                                                                <p style={{ textAlign: "start", fontSize: "0.9rem",color:"rgb(192, 192, 197)" }}>{item.value}</p>
+                                                                            </div>
+                                                                        ))
+                                                                    ) : (
+                                                                        <p style={{ color: "#fff" }}>No features available</p>
+                                                                    )
                                                                 )}
+                                                                </div>
+                                                                <div>
                                                                 {sort === "Description" && (
-                                                                    <p style={{ color: "#fff" }}>
+                                                                    <p style={{
+                                                                        color: "#fff", fontSize: "0.9rem", textAlign: "start", border: "1px solid #ffffff22",
+                                                                        padding: "10px",
+                                                                        display: "flex",
+                                                                        justifyContent: "space-between",
+                                                                        marginBottom: "10px",
+                                                                        flexDirection: 'column',
+                                                                        borderRadius: "5px",
+                                                                    }}>
                                                                         {selectedContestant.description || "No description available"}
                                                                     </p>
                                                                 )}
+                                                                </div>
                                                             </div>
                                                             <div>
-                                                                <button style={{justifyContent:"center",marginTop:"10px", background:"#4D4330",color:"#E8BD70", display:"flex",justifySelf:"center",textAlign:"center",padding:"10px",borderRadius:"10px", border:"none",width:"100%"}} onClick={() => setShowPopup(true)} type="button">
+                                                                <button style={{ justifyContent: "center", marginTop: "10px", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%" }} onClick={() => setShowPopup(true)} type="button">
                                                                     vote contestant
                                                                 </button>
                                                                 {showPopup && (
