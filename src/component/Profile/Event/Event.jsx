@@ -550,11 +550,11 @@ const Event = ({ postId }) => {
                                 <>
                                     <button onClick={() => setSelectedContestantI(t)} key={t.id} style={{ width:"100%",marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px" }}>
                                         <div>
-                                            <p style={{ fontWeight: "bold" }}>{t.title}</p>
-                                            <p style={{ color: "rgb(192, 192, 197)" }}>{t.description}</p>
+                                            <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{t.title}</p>
+                                            <p style={{ color: "rgb(192, 192, 197)",fontSize: "0.85rem" }}>{t.description}</p>
                                         </div>
                                         <div>
-                                            <p>₦{t.price}</p>
+                                            <p style={{fontSize: "0.8rem" }} >₦{t.price}</p>
                                         </div>
                                     </button>
                                     {selectedContestantI?.id === t.id && (
@@ -876,6 +876,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
