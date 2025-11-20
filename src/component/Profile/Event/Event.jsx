@@ -618,12 +618,12 @@ const Event = ({ postId }) => {
                                             {selectedContestant?.id === c.id && (
                                                 <div id="cooonn">
                                                     <div id="connn">
-                                                        <p style={{ color: "#FF3838", textAlign: "end", margin: "20px" }} onClick={() => setSelectedContestant(null)}>Close</p>
+                                                        <p style={{ color: "#FF3838", textAlign: "end", padding: "20px" }} onClick={() => setSelectedContestant(null)}>Close</p>
                                                         <hr />
-                                                        <div style={{ margin: "20px" }} id="imageCon">
+                                                        <div style={{ padding: "20px" }} id="imageCon">
                                                             <img id="imgCon" className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ borderRadius: "100px", marginTop: "5px" }} />
                                                         </div>
-                                                        <div id="titvot" style={{ margin: "20px" }}>
+                                                        <div id="titvot" style={{ padding: "20px" }}>
                                                             <p>{c.title}</p>
                                                             <p style={{ color: "rgb(192, 192, 197)" }}>{c.total_votes} votes</p>
                                                         </div>
@@ -677,7 +677,7 @@ const Event = ({ postId }) => {
                                                                 )}
                                                             </div>
                                                             <div>
-                                                                <button style={{justifyContent:"center",margin:"20px", background:"#4D4330",color:"#E8BD70", display:"flex",justifySelf:"center",textAlign:"center",padding:"10px",borderRadius:"10px", border:"none",width:"100%"}} onClick={() => setShowPopup(true)} type="button">
+                                                                <button style={{justifyContent:"center",marginTop:"10px", background:"#4D4330",color:"#E8BD70", display:"flex",justifySelf:"center",textAlign:"center",padding:"10px",borderRadius:"10px", border:"none",width:"100%"}} onClick={() => setShowPopup(true)} type="button">
                                                                     vote contestant
                                                                 </button>
                                                                 {showPopup && (
