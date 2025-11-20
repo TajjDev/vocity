@@ -627,8 +627,8 @@ const Event = ({ postId }) => {
                                                             <p>{c.title}</p>
                                                             <p style={{ color: "rgb(192, 192, 197)" }}>{c.total_votes} votes</p>
                                                         </div>
-                                                        <div style={{ margin: "20px" }} id="photosFeat">
-                                                            <div id='butt' style={{ display: "flex", marginBottom: "10px" }}>
+                                                        <div style={{ padding: "20px", width:"100%" }} id="photosFeat">
+                                                            <div id='butt' style={{ display: "flex", marginBottom: "10px",flexDirection:"row" }}>
                                                                 {["Photos", "Features", "Description"].map(option => (
                                                                     <button key={option} onClick={() => setSort(option)}
                                                                         style={{
@@ -637,7 +637,8 @@ const Event = ({ postId }) => {
                                                                             border: "none",
                                                                             background: sort === option ? "#fff" : "transparent",
                                                                             color: sort === option ? "rgba(41, 41, 41, 1)" : "#fff",
-                                                                            cursor: "pointer"
+                                                                            cursor: "pointer",
+                                                                            
                                                                         }}>
                                                                         {option.charAt(0).toUpperCase() + option.slice(1)}
                                                                     </button>
@@ -676,7 +677,7 @@ const Event = ({ postId }) => {
                                                                 )}
                                                             </div>
                                                             <div>
-                                                                <button style={{justifyContent:"center",margin:"20px", width:"100%", background:"#4D4330",color:"#E8BD70", display:"flex",justifySelf:"center",textAlign:"center",padding:"10px",borderRadius:"10px", border:"none"}} onClick={() => setShowPopup(true)} type="button">
+                                                                <button style={{justifyContent:"center",margin:"20px", background:"#4D4330",color:"#E8BD70", display:"flex",justifySelf:"center",textAlign:"center",padding:"10px",borderRadius:"10px", border:"none",width:"100%"}} onClick={() => setShowPopup(true)} type="button">
                                                                     vote contestant
                                                                 </button>
                                                                 {showPopup && (
