@@ -125,10 +125,37 @@
   color: #fff;
   border-radius: 8px;
   padding: 5px 6px;
-  width: 40px;
+  width: 50px;
   text-align: center;
   font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
 }
+.popup-content img {
+  transition: opacity 0.25s ease-in-out;
+  opacity: 0;
+}
+
+.popup-content img.show {
+  opacity: 1;
+}
+
+/* When event is ongoing */
+.date-badge.ongoing {
+  background: rgb(1, 18, 1) !important;   /* Green */
+      color: #008000 ;
+      width: auto;
+      padding: 10px 12px;
+}
+
+/* When event has ended */
+.date-badge.ended {
+  background: rgb(31, 1, 1) !important;   /* Red */
+      color: #ff0000;
+      width: auto;
+      padding: 10px 12px;
+}
+
 
 .date-badge .day {
   font-size: 0.9rem;
@@ -270,7 +297,7 @@ padding: 10px 30px 10px 10px;
 #titvot{
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
 
 }
 #connn hr,#ticcc hr{
