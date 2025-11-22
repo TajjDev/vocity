@@ -54,7 +54,6 @@ const Event = ({ postId }) => {
     // };
     // }, [selectedContestant]);
 
-
     const formatDateTime = (isoString) => {
         if (!isoString) return "";
         const date = new Date(isoString);
@@ -312,8 +311,31 @@ const Event = ({ postId }) => {
         </div>
     );
 
-    if (!post) return <p>No post found</p>;
-
+    if (!post) return <p style={{ color: " rgb(192, 192, 197)", textAlign: "center" }}>No post found</p>;
+    const start = new Date(post.datetime_start);
+    const end = new Date(post.datetime_end);
+    const now = new Date();
+    let status = "";
+    let badgeClass = "date-badge";
+    if (now < start) {
+        // Upcoming → show normal date badge.
+        status = (
+            <>
+                <span style={{ fontWeight: "bolder" }}>
+                    {start.getDate()}
+                </span>{" "}
+                {start.toLocaleString("en-US", { month: "short" })}
+            </>
+        );
+    } else if (now >= start && now <= end) {
+        // Ongoing
+        status = "ONGOING";
+        badgeClass = "date-badge ongoing";
+    } else if (now > end) {
+        // Ended
+        status = "ENDED";
+        badgeClass = "date-badge ended";
+    }
     // ---------- Render ----------
     return (
         <div className="post">
@@ -330,10 +352,10 @@ const Event = ({ postId }) => {
 
                 <div id="imOp" className="image-wrapper">
                     <img className="thUrl" src={`https://api.votecity.ng${post.thumbnail?.url}`} alt={post.title} />
-                    <div className="date-badge">
-                        <p className="day">{new Date(post.datetime_start).getDate()}</p>
-                        <p className="month">{new Date(post.datetime_start).toLocaleString("en-US", { month: "short" }).toUpperCase()}</p>
+                    <div className={badgeClass}>
+                        <p>{status}</p>
                     </div>
+
                     <div className="type-badge">{post.post_type}</div>
 
                 </div>
@@ -457,7 +479,7 @@ const Event = ({ postId }) => {
                                     <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
                                     </p>
-                                    <p  className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         {/* date */}
                                     </p>
                                     {/* </p> */}
@@ -473,7 +495,7 @@ const Event = ({ postId }) => {
                                     <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
                                     </p>
-                                    <p  className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         {/* date */}
                                     </p>
                                     {/* </p> */}
@@ -489,7 +511,7 @@ const Event = ({ postId }) => {
                                     <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
                                     </p>
-                                    <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         {/* date */}
                                     </p>
                                     {/* </p> */}
@@ -505,7 +527,7 @@ const Event = ({ postId }) => {
                                     <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
                                     </p>
-                                    <p  className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         {/* date */}
                                     </p>
                                     {/* </p> */}
@@ -515,7 +537,7 @@ const Event = ({ postId }) => {
                         </>
                     ) : activeSubTab === "comments" ? (
                         subTabData.length === 0 || subTabData.every(c => !c.comment) ? (
-                            <p>No comment found</p>
+                            <p style={{ color: " rgb(192, 192, 197)" }}>No comment found</p>
                         ) : (
                             subTabData.map(c => (
                                 <div key={c.id} style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -545,16 +567,16 @@ const Event = ({ postId }) => {
                             ))
                         )
                     ) : activeSubTab === "tickets" ? (
-                        subTabData.length === 0 ? <p>No ticket found</p> :
+                        subTabData.length === 0 ? <p style={{ color: " rgb(192, 192, 197)" }}>No ticket found</p> :
                             subTabData.filter(t => (t.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(t => (
                                 <>
-                                    <button onClick={() => setSelectedContestantI(t)} key={t.id} style={{ width:"100%",marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px" }}>
+                                    <button onClick={() => setSelectedContestantI(t)} key={t.id} style={{ marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px" }}>
                                         <div>
-                                            <p style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{t.title}</p>
-                                            <p style={{ color: "rgb(192, 192, 197)",fontSize: "0.85rem" }}>{t.description}</p>
+                                            <p style={{ fontWeight: "bold" }}>{t.title}</p>
+                                            <p style={{ color: "rgb(192, 192, 197)" }}>{t.description}</p>
                                         </div>
                                         <div>
-                                            <p style={{fontSize: "0.8rem" }} >₦{t.price}</p>
+                                            <p>₦{t.price}</p>
                                         </div>
                                     </button>
                                     {selectedContestantI?.id === t.id && (
@@ -568,7 +590,7 @@ const Event = ({ postId }) => {
                                 </>
                             ))
                     ) : activeSubTab === "donations" ? (
-                        subTabData.length === 0 ? <p>No donation found</p> :
+                        subTabData.length === 0 ? <p style={{ color: " rgb(192, 192, 197)" }}>No donation found</p> :
                             subTabData.map(d => (
                                 <div key={d.id} style={{ background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", padding: "10px 10px", marginBottom: "10px", gap: "10px", display: "flex", flexDirection: "column", textAlign: "left", borderRadius: "10px" }}>
                                     <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
@@ -613,7 +635,7 @@ const Event = ({ postId }) => {
                             </div>
                             <p style={{ textAlign: "start", paddingBottom: "10px", fontWeight: "bold" }}>Vote Contestant</p>
                             {/* Filtered contestants */}
-                            {subTabData.length === 0 ? <p>No contestant found</p> :
+                            {subTabData.length === 0 ? <p style={{ color: " rgb(192, 192, 197)" }}>No contestant found</p> :
                                 subTabData
                                     .filter(c => (c.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(c => (
                                         <>
@@ -671,7 +693,7 @@ const Event = ({ postId }) => {
                                                                                 />
                                                                             ))
                                                                         ) : (
-                                                                            <p>No photos available</p>
+                                                                            <p style={{ textAlign: "center", width: "100%", color: " rgb(192, 192, 197)" }}>No photos available</p>
                                                                         )
 
                                                                     )}
@@ -757,11 +779,11 @@ const Event = ({ postId }) => {
                                         {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
                                         <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         </p>
-                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                             {/* date */}
                                         </p>
                                         {/* </p> */}
-    
+
                                     </div>
                                 </div>
                                 <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -772,11 +794,11 @@ const Event = ({ postId }) => {
                                         {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
                                         <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         </p>
-                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                             {/* date */}
                                         </p>
                                         {/* </p> */}
-    
+
                                     </div>
                                 </div>
                                 <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -787,11 +809,11 @@ const Event = ({ postId }) => {
                                         {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
                                         <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         </p>
-                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                             {/* date */}
                                         </p>
                                         {/* </p> */}
-    
+
                                     </div>
                                 </div>
                                 <div style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
@@ -802,11 +824,11 @@ const Event = ({ postId }) => {
                                         {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
                                         <p className="firstP" style={{ color: "#fff", fontSize: "0.9rem", height: "10px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                         </p>
-                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px",  background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                        <p className="secondP" style={{ color: "#fff", fontSize: "0.9rem", height: "40px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
                                             {/* date */}
                                         </p>
                                         {/* </p> */}
-    
+
                                     </div>
                                 </div>
                             </> :
@@ -867,7 +889,7 @@ const Event = ({ postId }) => {
 
                         // </>
                     ) : (
-                        <p>No {activeSubTab} found</p>
+                        <p style={{ color: " rgb(192, 192, 197)" }}>No {activeSubTab} found</p>
                     )}
                 </div>
             </div>
@@ -876,8 +898,6 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
-
-
 
 
 
