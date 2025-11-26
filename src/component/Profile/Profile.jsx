@@ -178,19 +178,7 @@ function UserProfile({ userId }) {
         alert("Link copied: " + PLink);
     };
 
-    if (loadingError) {
-        return (
-          <p style={{
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "red"
-          }}>
-            Refresh — Internet Error
-          </p>
-        );
-      }
+    
     if (loadingUser) return <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}><img src={load} alt="" /></div>;
     if (!user) return <p style={{height:'100vh',display:"flex",justifyContent:"center",alignItems:"center",color: " rgb(192, 192, 197)" }}>No user found</p>;
 
@@ -493,5 +481,6 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
+
 
 
