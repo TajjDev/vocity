@@ -567,7 +567,7 @@ const Event = ({ postId }) => {
                         subTabData.length === 0 ? <p style={{ color: " rgb(192, 192, 197)" }}>No ticket found</p> :
                             subTabData.filter(t => (t.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(t => (
                                 <>
-                                    <button onClick={() => setSelectedContestantI(t)} key={t.id} style={{ marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px" }}>
+                                    <button onClick={() => setSelectedContestantI(t)} key={t.id} style={{ marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px",width:"100%" }}>
                                         <div>
                                             <p style={{ fontWeight: "bold" }}>{t.title}</p>
                                             <p style={{ color: "rgb(192, 192, 197)" }}>{t.description}</p>
@@ -894,6 +894,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
