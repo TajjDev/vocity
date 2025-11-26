@@ -69,7 +69,25 @@ function UserProfile({ userId }) {
     const BASE_URL_LISTINGS = "https://api.votecity.ng/v1/post/create/listings";
     const BASE_URL_SHOTS = "https://api.votecity.ng/v1/shot/user";
     const PLink = `https://vocity.vercel.app/profile/${userId}`;
-
+useEffect(() => {
+            fetch(`https://api.votecity.ng/v1/user/follow/${userId}?${params}`)
+              .then(res => {
+                if (!res.ok) {
+                  throw new Error("Network error");
+                }
+                return res.json();
+              })
+              .then(data => {
+                // success
+                setLoadingUser(false);
+                setLoadingError(false);
+              })
+              .catch(() => {
+                setLoadingError(true);
+                setLoadingUser(false);
+              });
+          }, []);
+          
     // 🔹 Fetch user profile
     useEffect(() => {
         setLoadingUser(true);
@@ -119,25 +137,7 @@ function UserProfile({ userId }) {
         }
 
         setLoadingFollow(prev => ({ ...prev, [type]: true }));
-        useEffect(() => {
-            fetch(`https://api.votecity.ng/v1/user/follow/${userId}?${params}`)
-              .then(res => {
-                if (!res.ok) {
-                  throw new Error("Network error");
-                }
-                return res.json();
-              })
-              .then(data => {
-                // success
-                setLoadingUser(false);
-                setLoadingError(false);
-              })
-              .catch(() => {
-                setLoadingError(true);
-                setLoadingUser(false);
-              });
-          }, []);
-          
+        
         // setErrorFollow(prev => ({ ...prev, [type]: "" }));
 
         const params = new URLSearchParams({
@@ -511,3 +511,4 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
+
