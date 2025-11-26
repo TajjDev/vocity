@@ -380,7 +380,7 @@
 }
 @media (max-width:768px) {
   .post {
-    width: 95%;
+    width: 100%;
     justify-self: center;
     flex-direction: column;
     gap: 0;
@@ -516,3 +516,4 @@
     width: 50%;
   }
 }
+
