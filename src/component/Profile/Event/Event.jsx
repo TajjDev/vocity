@@ -404,11 +404,8 @@ const Event = ({ postId }) => {
             {/* Countdown & Tabs */}
             <div id="Tp">
                 {post.post_type && countdownPhase !== "ended" && (
-                    <div style={{
+                    <div id="countto" style={{
                         background: "#0000003d",
-                        border: "1px solid rgba(255, 255, 255, 0.133)",
-                        borderRadius: "10px",
-                        padding: "15px",
                         marginBottom: "15px"
                     }}>
                         <p style={{
@@ -629,7 +626,6 @@ const Event = ({ postId }) => {
                                         color: "#fff",
                                         fontSize: "0.9rem",
                                         width: "100%",
-                                        maxWidth: "400px",
                                     }}
                                 />
                             </div>
@@ -654,8 +650,8 @@ const Event = ({ postId }) => {
                                                     <div id="connn">
                                                         <p style={{ color: "#FF3838", textAlign: "end", padding: "20px" }} onClick={() => setSelectedContestant(null)}>Close</p>
                                                         <hr />
-                                                        <div style={{ padding: "20px" }} id="imageCon">
-                                                            <img id="imgCon" className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ borderRadius: "100px", marginTop: "5px" }} />
+                                                        <div style={{ padding: "10px" }} id="imageCon">
+                                                            <img id="imgCon"  src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ borderRadius: "100px", marginTop: "5px" }} />
                                                         </div>
                                                         <div id="titvot" style={{ padding: "20px" }}>
                                                             <p>{c.title}</p>
@@ -679,7 +675,7 @@ const Event = ({ postId }) => {
                                                                 ))}
                                                             </div>
                                                             <div style={{ marginTop: "15px" }}>
-                                                                <div style={{ display: "flex", overflowX: "auto", overflowY: "hidden", scrollBehavior: "smooth", width: "100%" }}>
+                                                                <div id="scrolling" style={{ display: "flex", overflowX: "auto", overflowY: "hidden", scrollBehavior: "smooth", width: "100%" }}>
                                                                     {sort === "Photos" && (
 
                                                                         selectedContestant.photos?.length > 0 ? (
@@ -867,7 +863,7 @@ const Event = ({ postId }) => {
                                             {c.rank}
                                         </div>
 
-                                        <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "10px", padding: "10px", justifyContent: "space-between" }}>
+                                        <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "10px", padding: "10px",alignItems:"center" }}>
                                             <div>
                                                 <img className="fitt"
                                                     src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt}
