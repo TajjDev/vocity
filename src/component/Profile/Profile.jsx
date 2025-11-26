@@ -19,7 +19,7 @@ import load from '/src/assets/image/load.png';
 function UserProfile({ userId }) {
     const [user, setUser] = useState(null);
     const [loadingUser, setLoadingUser] = useState(true);
-
+    const [loadingError, setLoadingError] = useState(false);
     // Listings caching
     const [listingsCache, setListingsCache] = useState({
         upcoming: [],
@@ -119,6 +119,25 @@ function UserProfile({ userId }) {
         }
 
         setLoadingFollow(prev => ({ ...prev, [type]: true }));
+        useEffect(() => {
+            fetch(`https://api.votecity.ng/v1/user/follow/${userId}?${params}`)
+              .then(res => {
+                if (!res.ok) {
+                  throw new Error("Network error");
+                }
+                return res.json();
+              })
+              .then(data => {
+                // success
+                setLoadingUser(false);
+                setLoadingError(false);
+              })
+              .catch(() => {
+                setLoadingError(true);
+                setLoadingUser(false);
+              });
+          }, []);
+          
         // setErrorFollow(prev => ({ ...prev, [type]: "" }));
 
         const params = new URLSearchParams({
@@ -177,8 +196,21 @@ function UserProfile({ userId }) {
         alert("Link copied: " + PLink);
     };
 
+    if (loadingError) {
+        return (
+          <p style={{
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "red"
+          }}>
+            Refresh — Internet Error
+          </p>
+        );
+      }
     if (loadingUser) return <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}><img src={load} alt="" /></div>;
-    if (!user) return <p>No user found</p>;
+    if (!user) return <p style={{height:'100vh',display:"flex",justifyContent:"center",alignItems:"center",color: " rgb(192, 192, 197)" }}>No user found</p>;
 
     const currentListings = listingsCache[sort] || [];
     const isLoadingListings = loadingListings[sort];
@@ -261,8 +293,24 @@ function UserProfile({ userId }) {
                             <img src={popupImages[currentIndex]} alt="popup" style={{ objectFit: "cover" }} />
                             {popupImages.length > 1 && (
                                 <>
-                                    <button style={{ background: "#808080" }} className="popup-arrow left" onClick={prevImage}>‹</button>
-                                    <button style={{ background: "#808080" }} className="popup-arrow right" onClick={nextImage}>›</button>
+                                <button
+    style={{ background: "#808080", opacity: currentIndex === 0 ? 0.4 : 1 }}
+    className="popup-arrow left"
+    onClick={currentIndex === 0 ? null : prevImage}
+    disabled={currentIndex === 0}
+>
+    ‹
+</button>
+
+<button
+    style={{ background: "#808080", opacity: currentIndex === popupImages.length - 1 ? 0.4 : 1 }}
+    className="popup-arrow right"
+    onClick={currentIndex === popupImages.length - 1 ? null : nextImage}
+    disabled={currentIndex === popupImages.length - 1}
+>
+    ›
+</button>
+
                                 </>
                             )}
                             <button style={{ background: "#808080" }} className="popup-close" onClick={closePopup}>✕</button>
@@ -325,7 +373,7 @@ function UserProfile({ userId }) {
                                     
                                 </>
                             ) : currentListings.length === 0 ? (
-                                <p style={{ textAlign: "center" }}>No {sort} posts yet</p>
+                                <p style={{ textAlign: "center",color: " rgb(192, 192, 197)" }}>No {sort} posts yet</p>
                             ) : (
                                 <div className='listings-scroll'>
                                     {currentListings.map(listing => (
@@ -426,7 +474,7 @@ function UserProfile({ userId }) {
                                     </div>
                                 </div>
                             </> ) : currentFollowList.length === 0 ? (
-                                    <p style={{ textAlign: "center", color: "#fff", marginTop: "5px" }}>
+                                    <p style={{ textAlign: "center", color: " rgb(192, 192, 197)" , marginTop: "5px",width:"100%" }}>
                                         {sortII === "followers" ? "No followers found" : "No followings found"}
                                     </p>
                                 ) : (
