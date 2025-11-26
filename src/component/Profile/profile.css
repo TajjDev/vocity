@@ -438,11 +438,21 @@
 }
 
 /* Firefox scrollbar */
-.listings-scroll, .shots-scroll{
+.listings-scroll, .shots-scroll, #scrolling{
   scrollbar-width: thin;
+  /* scrollbar-h; */
   scrollbar-color: rgba(108, 69, 0, 1) rgba(0, 0, 0, 0.1);
 }
-
+.popup-arrow.left {
+  left: 10px !important;
+}
+.popup-arrow.right {
+  right: 10px !important;
+}
+.popup-close {
+  top: 10px !important;
+  right: 10px !important;
+}
 #T .tab-btn img {
   width: 20px;
   height: 20px;
