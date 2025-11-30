@@ -622,11 +622,11 @@ const Event = ({ postId }) => {
                                                     </div>
                                                 </div>
                                                 <div style={{ margin: "0 10px" }}>
-                                                    <button style={{ margin: "0 20px", justifyContent: "center", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%", maxWidth: "550px" }} onClick={() => setShowPopup(true)} type="button">
+                                                    <button style={{ justifyContent: "center", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%", maxWidth: "550px" }} onClick={() => setShowPopup(true)} type="button">
                                                         Book Ticket
                                                     </button>
                                                     {showPopup && (
-                                                        <div id="popOver">
+                                                        <div style={{zIndex:"1000"}} id="popOver">
                                                             <div id="popUp">
                                                                 <p id="downn">Download the App to Book Ticket</p>
                                                                 <div id="apGo">
