@@ -56,8 +56,7 @@ input::placeholder {
 
 #Footer #form button {
     text-decoration: none;
-    color: transparent;
-    background: linear-gradient(90deg,rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1)  50%, rgba(149, 109, 1, 1) 100%);
+    color:#ffc830;
     background-clip: context;
     -webkit-background-clip: text;
     font-weight: 500;

@@ -75,7 +75,7 @@
     border: none;
     width: 85%;
     margin-left: 10px;
-    background: linear-gradient(90deg,rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1)  50%, rgba(149, 109, 1, 1) 100%);
+    background: #ffc830;
     color: #000000;
     text-align: center;
 }
@@ -99,7 +99,7 @@
 
 .nav-link.active {
     color: transparent;
-    background: linear-gradient(90deg,rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1)  50%, rgba(149, 109, 1, 1) 100%);
+    background: #ffc830;
     background-clip: text;
     -webkit-background-clip: text;
 }
@@ -111,7 +111,7 @@
     bottom: 0;
     height: 2px;
     width: 100%;
-    background: linear-gradient(90deg,rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1)  50%, rgba(149, 109, 1, 1) 100%);
+    background: #ffc830;
     border-radius: 2px;
 }
 

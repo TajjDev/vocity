@@ -307,6 +307,12 @@
   flex-direction: column;
   justify-content: end;
 }
+#ticcc{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: c;
+}
 #countto{
   border-top-left-radius: 10px;
   padding: 30px;
@@ -516,4 +522,3 @@
     width: 50%;
   }
 }
-

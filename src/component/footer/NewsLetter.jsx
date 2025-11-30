@@ -55,16 +55,15 @@ const NewsLetter = ({ onShowP, onShowPP }) => {
             <p id='nn'>Newsletter Signup</p>
             <form id='form' onSubmit={handleSubmit} action="">
                 <input placeholder='Enter your email address' value={Emails} onChange={(e) => setEmails(e.target.value)} type="email" />
-                <button>Suscribe</button>
+                <button>Subscribe</button>
 
             </form>
             {formError && <p style={{
-                color: 'transparent',
-                background: 'linear-gradient(90deg, rgb(232, 189, 112)0%, rgb(214, 158, 46)50%, rgb(237, 210, 135)100%)',
+                color: '#ffc830',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text'
             }}>{formError}</p>}
-            <p className='cc'>By clicking “suscribe” you are accepting Vocity.ng</p>
+            <p className='cc'>By clicking “subscribe” you are accepting Vocity.ng</p>
             <p className='cc'> <button className='cc' onClick={onShowP}>  Privacy policy</button> and <button className='cc' onClick={onShowPP}>  Terms & Conditions</button></p>
 
         </div>

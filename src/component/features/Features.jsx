@@ -38,7 +38,7 @@ const Features = () => {
                         </div>
 
                     </div>
-                    <p>These are the main features of the Vocity app</p>
+                    <p>These are the main features of the Vocity app:</p>
                 </div>
             </RevealOnScroll>
             <RevealOnScroll>

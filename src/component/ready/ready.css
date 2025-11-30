@@ -43,7 +43,7 @@
     border-radius: 40px;
     border: none;
     font-weight: 700;
-    background: linear-gradient(90deg,rgba(108, 69, 0, 1) 0%, rgba(251, 187, 58, 1)  50%, rgba(149, 109, 1, 1) 100%);
+    background: #ffc830;
     color: rgba(10, 14, 21, 1);
     text-align: center;
 }

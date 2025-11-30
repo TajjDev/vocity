@@ -54,7 +54,7 @@ const AboutUs = () => {
 
                     </div>
                     <div id="abtP">
-                        <p>"Vocity is a robust and integrated platform designed to facilitate seamless voting experiences, hosting of polls, event listing and booking, including projects like crowdfunding. By providing a comprehensive suite of tools, Vocity empowers individuals to participate in various activities with ease and efficiency."</p>
+                        <p>Vocity is a robust and integrated platform designed to facilitate seamless voting experiences, hosting of polls, event listing and booking, including projects like crowdfunding. By providing a comprehensive suite of tools, Vocity empowers individuals to participate in various activities with ease and efficiency.</p>
                     </div>
                 </div>
             </RevealOnScroll>

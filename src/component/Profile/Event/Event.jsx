@@ -16,6 +16,7 @@ import "./event.css";
 const BASE_URL_POST = "https://api.votecity.ng/v1/post";
 
 const Event = ({ postId }) => {
+    const [count, setCount] = useState(1);
     const [sort, setSort] = useState("Photos")
     const [showPopup, setShowPopup] = useState(false)
     const [popTicket, setPopTicket] = useState(false)
@@ -30,6 +31,7 @@ const Event = ({ postId }) => {
     const [countdownPhase, setCountdownPhase] = useState("start");
     const [leaderboardLoaded, setLeaderboardLoaded] = useState(false);
     const [leaderboardData, setLeaderboardData] = useState([]);
+    const [loadingError, setLoadingError] = useState(false);
     const [searchQuery, setSearchQuery] = useState(""); // Added for contestant search
     const esRef = useRef(null);
     const prevLeaderboardRef = useRef({});
@@ -306,12 +308,12 @@ const Event = ({ postId }) => {
     }, []);
 
     if (isLoadingPost) return (
-        <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <img src={load} alt="Loading post..." />
+        <div style={{ width: "100%", height: "90vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img style={{ height: "50px", width: "50px" }} src={load} alt="loading..." />
         </div>
     );
 
-    if (!post) return <p style={{ color: " rgb(192, 192, 197)", textAlign: "center" }}>No post found</p>;
+    if (!post) return <p style={{ width: "100%", height: "90vh", display: "flex", color: " rgb(192, 192, 197)", textAlign: "center", justifyContent: "center", alignItems: "center" }}>No post found</p>;
     const start = new Date(post.datetime_start);
     const end = new Date(post.datetime_end);
     const now = new Date();
@@ -567,13 +569,13 @@ const Event = ({ postId }) => {
                         subTabData.length === 0 ? <p style={{ color: " rgb(192, 192, 197)" }}>No ticket found</p> :
                             subTabData.filter(t => (t.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(t => (
                                 <>
-                                    <button onClick={() => setSelectedContestantI(t)} key={t.id} style={{ marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px",width:"100%" }}>
+                                    <button onClick={() => setSelectedContestantI(t)} key={t.id} style={{ marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "space-between", padding: "15px 20px", background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", borderRadius: "10px", width: "100%" }}>
                                         <div>
-                                            <p style={{ fontWeight: "bold" }}>{t.title}</p>
-                                            <p style={{ color: "rgb(192, 192, 197)" }}>{t.description}</p>
+                                            <p style={{ fontWeight: "bold", fontSize: "0.9rem", textTransform: "capitalize" }}>{t.title}</p>
+                                            <p style={{ color: "rgb(192, 192, 197)", fontSize: "0.8rem" }}>{t.description}</p>
                                         </div>
                                         <div>
-                                            <p>₦{t.price}</p>
+                                            <p style={{ fontSize: "0.85rem" }}>₦{t.price}</p>
                                         </div>
                                     </button>
                                     {selectedContestantI?.id === t.id && (
@@ -581,6 +583,62 @@ const Event = ({ postId }) => {
                                             <div id="ticcc">
                                                 <p style={{ color: "#FF3838", textAlign: "end", padding: "20px" }} onClick={() => setSelectedContestantI(null)}>close</p>
                                                 <hr />
+                                                <div id="overV" style={{ background: "rgba(128, 128, 128, 0.1)", width: "95%", height: "auto", display: "flex", flexDirection: "column", alignSelf: "center", borderRadius: "10px" }} >
+                                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 20px" }} id="ov">
+                                                        <hr style={{ flex: "1", borderTop: "1px solid #fff", height: "1px" }} />
+                                                        <p style={{ fontSize: "0.8rem", fontWeight: "bold", whiteSpace: "nowrap", paddingLeft: "20px" }}>BOOKING OVERVIEW</p>
+                                                    </div>
+                                                    <div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px 10px 20px" }} id="titN">
+                                                        <p style={{fontSize:"0.95rem"}}>Ticket Name</p>
+                                                        <p style={{ textTransform: "capitalize" }}>{t.title}</p>
+                                                    </div>
+                                                    <div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px 10px 20px" }} id="prOT">
+                                                        <p style={{fontSize:"0.95rem"}}>Price per Ticket</p>
+                                                        <p style={{fontSize:"0.9rem"}}>₦{t.price}</p>
+                                                    </div>
+                                                    <div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px 10px 20px" }}>
+                                                        <p style={{fontSize:"0.9rem"}}>Number of Ticket(s)</p>
+                                                        <p style={{fontSize:"0.9rem"}}>{count}</p>
+                                                    </div>
+                                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 20px" }} id="ov">
+                                                        <hr style={{ flex: "1", borderTop: "1px solid #fff", height: "1px" }} />
+                                                        <p style={{ fontSize: "0.8rem", fontWeight: "bold", whiteSpace: "nowrap", paddingLeft: "20px" }}>SUMMARY</p>
+                                                    </div>
+                                                    <div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px 10px 20px" }}>
+                                                        <p style={{fontSize:"0.95rem"}}>Total Amount</p>
+                                                        <p style={{fontSize:"0.9rem"}}>₦{count * t.price}</p>
+                                                    </div>
+                                                </div>
+                                                <div id="howMan" style={{ background: "rgba(128, 128, 128, 0.1)", width: "95%", height: "auto", display: "flex", flexDirection: "row", alignSelf: "center", borderRadius: "10px" }} >
+                                                    <div style={{ display: "flex", justifyContent: "space-between", width: "100%", padding: "10px 20px" }}>
+                                                        <p style={{fontSize:"0.9rem"}}>How many tickets?</p>
+                                                        <div style={{ display: "flex", alignItems: "center" }}>
+                                                            <button style={{ background: "grey", border: "0", padding: " 3px 10px", borderRadius: "5px", fontWeight: "bolder", fontSize: "15px" }} onClick={() => count > 1 && setCount(count - 1)}>-</button>
+                                                            <span style={{ fontSize: "0.9rem", minWidth: "20px", textAlign: "center", padding: "0 5px" }}>
+                                                                {count}
+                                                            </span>
+                                                            <button style={{ background: "rgb(171, 179, 179)", border: "0", padding: " 3px 10px", borderRadius: "5px", fontWeight: "bolder", color: "#000", fontSize: "15px" }} onClick={() => setCount(count + 1)}>+</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style={{ margin: "0 10px" }}>
+                                                    <button style={{ margin: "0 20px", justifyContent: "center", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%", maxWidth: "550px" }} onClick={() => setShowPopup(true)} type="button">
+                                                        Book Ticket
+                                                    </button>
+                                                    {showPopup && (
+                                                        <div id="popOver">
+                                                            <div id="popUp">
+                                                                <p id="downn">Download the App to Book Ticket</p>
+                                                                <div id="apGo">
+                                                                    <a href="" className="goAp"><img src={google} alt="" /></a>
+                                                                    <a href="" className="goAp"><img src={apple} alt="" /></a>
+                                                                </div>
+                                                                <p>Available both on <br /> Play store and Apple store</p>
+                                                                <button id="cls" onClick={() => setShowPopup(false)}>Close</button>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
                                     )}
@@ -651,7 +709,7 @@ const Event = ({ postId }) => {
                                                         <p style={{ color: "#FF3838", textAlign: "end", padding: "20px" }} onClick={() => setSelectedContestant(null)}>Close</p>
                                                         <hr />
                                                         <div style={{ padding: "10px" }} id="imageCon">
-                                                            <img id="imgCon"  src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ borderRadius: "100px", marginTop: "5px" }} />
+                                                            <img id="imgCon" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ borderRadius: "100px", marginTop: "5px" }} />
                                                         </div>
                                                         <div id="titvot" style={{ padding: "20px" }}>
                                                             <p>{c.title}</p>
@@ -736,8 +794,8 @@ const Event = ({ postId }) => {
                                                                 </div>
                                                             </div>
                                                             <div>
-                                                                <button style={{ justifyContent: "center", marginTop: "10px", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%" }} onClick={() => setShowPopup(true)} type="button">
-                                                                    vote contestant
+                                                                <button style={{ justifyContent: "center", marginTop: "10px", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%", maxWidth: "550px" }} onClick={() => setShowPopup(true)} type="button">
+                                                                    Vote Contestant
                                                                 </button>
                                                                 {showPopup && (
                                                                     <div id="popOver">
@@ -863,7 +921,7 @@ const Event = ({ postId }) => {
                                             {c.rank}
                                         </div>
 
-                                        <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "10px", padding: "10px",alignItems:"center" }}>
+                                        <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "10px", padding: "10px", alignItems: "center" }}>
                                             <div>
                                                 <img className="fitt"
                                                     src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt}
@@ -894,7 +952,6 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
-
 
 
 

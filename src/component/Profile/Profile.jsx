@@ -1,4 +1,3 @@
-
 import './profile.css';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
@@ -15,53 +14,55 @@ import comment from '/src/assets/image/comment.png';
 import saved from '/src/assets/image/saves.png';
 import alt from '/src/assets/image/alt.jpg';
 import load from '/src/assets/image/load.png';
+import reload from '/src/assets/image/reload.png';
 
 function UserProfile({ userId }) {
+
     const [user, setUser] = useState(null);
     const [loadingUser, setLoadingUser] = useState(true);
     const [loadingError, setLoadingError] = useState(false);
-    // Listings caching
+    const [notFound, setNotFound] = useState(false);         // 404
+    const [serverError, setServerError] = useState("")
+
     const [listingsCache, setListingsCache] = useState({
         upcoming: [],
         ongoing: [],
         ended: []
     });
+
     const [loadingListings, setLoadingListings] = useState({
         upcoming: false,
         ongoing: false,
         ended: false
     });
+
     const [sort, setSort] = useState("upcoming");
 
-    // Followers/Following caching
     const [followCache, setFollowCache] = useState({
         followers: [],
         following: []
     });
 
     const [loadingFollow, setLoadingFollow] = useState({
-        // followers: false,
-        // following: false,
+        followers: false,
+        following: false,
         following: [],
         followers: []
     });
+
     const [sortII, setSortII] = useState("followers");
     const [q, setQ] = useState("");
     const [list, setList] = useState([]);
 
-    // Shots
     const [shots, setShots] = useState([]);
     const [loadingShots, setLoadingShots] = useState(true);
 
-    // Tabs
     const [activeTab, setActiveTab] = useState("listings");
 
-    // Popup
     const [popupOpen, setPopupOpen] = useState(false);
     const [popupImages, setPopupImages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // Follow popup
     const [showPopup, setShowPopup] = useState(false);
     const [Copied, setCopied] = useState(false);
 
@@ -69,58 +70,100 @@ function UserProfile({ userId }) {
     const BASE_URL_LISTINGS = "https://api.votecity.ng/v1/post/create/listings";
     const BASE_URL_SHOTS = "https://api.votecity.ng/v1/shot/user";
     const PLink = `https://vocity.vercel.app/profile/${userId}`;
-          
-    // 🔹 Fetch user profile
-    useEffect(() => {
+
+
+    // ✅ USER FETCH
+    const fetchUser = () => {
         setLoadingUser(true);
+        setLoadingError(false);
+        setNotFound(false);
+        setServerError("");
+        setUser(null);
+
         fetch(`${BASE_URL_USER}/${userId}`)
             .then(res => {
-                if (!res.ok) throw new Error("Network response was not ok");
-                return res.json();
+                if (res.ok) return res.json();
+                if (res.status === 404) throw { type: "not-found" };
+                throw { type: "server", status: res.status };
             })
-            .then(data => setUser(data?.data?.user || null))
-            .catch(err => console.error("Fetch user error:", err))
+            .then(data => {
+                const userData = data?.data?.user || null;
+                setUser(userData);
+                if (!userData) throw { type: "not-found" };
+            })
+            .catch(err => {
+                if (err?.type === "not-found") {
+                    setNotFound(true);
+                } else if (err?.type === "server") {
+                    setServerError(`Server Error ${err.status}`);
+                } else {
+                    console.error("NETWORK ERROR:", err);
+                    setLoadingError(true);
+                }
+            })
             .finally(() => setLoadingUser(false));
-    }, [userId]);
+    };
 
-    // 🔹 Fetch listings with caching
     useEffect(() => {
+        if (userId) fetchUser();
+    }, [userId]);
+    // ✅ LISTINGS FETCH
+    useEffect(() => {
+
         if (listingsCache[sort]?.length > 0) return;
 
         setLoadingListings(prev => ({ ...prev, [sort]: true }));
 
         fetch(`${BASE_URL_LISTINGS}/${userId}?sort=${sort}&page=1`)
             .then(res => {
-                if (!res.ok) throw new Error("Network response was not ok");
+                if (!res.ok) throw new Error("Network error");
                 return res.json();
             })
             .then(data => {
                 setListingsCache(prev => ({ ...prev, [sort]: data?.data?.posts || [] }));
             })
-            .catch(err => console.error("Fetch listings error:", err))
-            .finally(() => setLoadingListings(prev => ({ ...prev, [sort]: false })));
-    }, [userId, sort]);
+            .catch(err => {
+                console.error("Listings fetch error:", err);
+                setLoadingError(true);
+            })
+            .finally(() => {
+                setLoadingListings(prev => ({ ...prev, [sort]: false }));
+            });
+    }, [sort, userId]);
 
-    // 🔹 Fetch shots
+
+    // ✅ SHOTS FETCH
     useEffect(() => {
+
         setLoadingShots(true);
+
         fetch(`${BASE_URL_SHOTS}/${userId}`)
-            .then(res => res.json())
-            .then(data => setShots(data?.data?.shots || []))
-            .catch(err => console.error("Fetch shots error:", err))
+            .then(res => {
+                if (!res.ok) throw new Error("Network error");
+                return res.json();
+            })
+            .then(data => {
+                setShots(data?.data?.shots || []);
+                setLoadingError(false);
+            })
+            .catch(err => {
+                console.error("Shots fetch error:", err);
+                setLoadingError(true);
+            })
             .finally(() => setLoadingShots(false));
+
     }, [userId]);
 
-    // 🔹 Fetch followers/following with caching
+
+    // ✅ FOLLOW FETCH
     const fetchFollowData = (type) => {
+
         if (followCache[type]?.length > 0) {
             setList(followCache[type]);
             return;
         }
 
         setLoadingFollow(prev => ({ ...prev, [type]: true }));
-        
-        // setErrorFollow(prev => ({ ...prev, [type]: "" }));
 
         const params = new URLSearchParams({
             sort: type,
@@ -129,38 +172,45 @@ function UserProfile({ userId }) {
 
         fetch(`https://api.votecity.ng/v1/user/follow/${userId}?${params}`)
             .then(res => {
-                if (!res.ok) throw new Error(`Status ${res.status}`);
+                if (!res.ok) throw new Error("Network error");
                 return res.json();
             })
             .then(data => {
-                const followList = data?.data?.follows || [];
-                setList(followList);
-                setFollowCache(prev => ({ ...prev, [type]: followList }));
+                const follows = data?.data?.follows || [];
+                setList(follows);
+                setFollowCache(prev => ({ ...prev, [type]: follows }));
+                setLoadingError(false);
             })
             .catch(err => {
-                console.error("Error fetching follow data:", err);
-                setErrorFollow(prev => ({ ...prev, [type]: "Failed to load followers/following" }));
+                console.error("Follow fetch error:", err);
+                setLoadingError(true);
             })
-            .finally(() => setLoadingFollow(prev => ({ ...prev, [type]: false })));
+            .finally(() => {
+                setLoadingFollow(prev => ({ ...prev, [type]: false }));
+            });
     };
 
+
+    // ✅ TRIGGER FOLLOW FETCH
     useEffect(() => {
         const timeout = setTimeout(() => {
             fetchFollowData(sortII);
-        }, 500);
+        }, 400);
+
         return () => clearTimeout(timeout);
     }, [sortII, q]);
 
-    // 🔹 Popup handlers
+
+    // ✅ POPUP HANDLERS
     const openPopup = (images, index = 0) => {
         setPopupImages(images);
         setCurrentIndex(index);
         setPopupOpen(true);
     };
+
     const closePopup = () => setPopupOpen(false);
     const nextImage = () => popupImages.length > 1 && setCurrentIndex(prev => (prev + 1) % popupImages.length);
     const prevImage = () => popupImages.length > 1 && setCurrentIndex(prev => (prev - 1 + popupImages.length) % popupImages.length);
-
     // 🔹 Swipe handlers
     let touchStartX = 0, touchEndX = 0;
     const handleTouchStart = e => touchStartX = e.changedTouches[0].screenX;
@@ -170,7 +220,7 @@ function UserProfile({ userId }) {
         if (touchEndX - touchStartX > 50) prevImage();
     };
 
-    // 🔹 Copy profile link
+    // ✅ COPY LINK
     const handleCopy = () => {
         navigator.clipboard.writeText(PLink);
         setCopied(true);
@@ -178,9 +228,73 @@ function UserProfile({ userId }) {
         alert("Link copied: " + PLink);
     };
 
-    
-    if (loadingUser) return <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}><img src={load} alt="" /></div>;
-    if (!user) return <p style={{height:'100vh',display:"flex",justifyContent:"center",alignItems:"center",color: " rgb(192, 192, 197)" }}>No user found</p>;
+
+    // ✅ UI STATES
+    if (loadingError) {
+        return (
+            <div style={{
+                height: "90vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                color: "crimson"
+            }}>
+                <p style={{ fontSize: "1.2rem" }}>Internet Error</p>
+                <button style={{ background: "none", marginTop: "10px", border: "none" }} onClick={fetchUser}>
+                    <img style={{ height: "40px", width: "40px" }} src={reload} alt="reload" />
+                </button>
+            </div>
+        );
+    }
+
+    if (loadingUser) {
+        return (
+            <div style={{
+                height: "90vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <img style={{ height: "50px", width: "50px" }} src={load} alt="loading..." />
+            </div>
+        );
+    }
+
+    if (notFound) {
+        return (
+            <p style={{ height: "90vh", display: "flex", justifyContent: "center", alignItems: "center", color: "rgb(192,192,197)" }}>
+                No user found
+            </p>
+        );
+    }
+
+    if (serverError) {
+        return (
+            <div style={{ height: "90vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "orange" }}>
+                <p>Server error</p>
+                <p>{serverError}</p>
+                <button onClick={fetchUser}>
+                    <img style={{ height: "40px", width: "40px" }} src={reload} alt="reload" />
+                </button>
+            </div>
+        );
+    }
+
+    if (!user) {
+        return (
+            <p style={{
+                height: '90vh',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color: "rgb(192,192,197)"
+            }}>
+                No user found
+            </p>
+        );
+    }
+
 
     const currentListings = listingsCache[sort] || [];
     const isLoadingListings = loadingListings[sort];
@@ -263,23 +377,23 @@ function UserProfile({ userId }) {
                             <img src={popupImages[currentIndex]} alt="popup" style={{ objectFit: "cover" }} />
                             {popupImages.length > 1 && (
                                 <>
-                                <button
-    style={{ background: "#808080", opacity: currentIndex === 0 ? 0.4 : 1 }}
-    className="popup-arrow left"
-    onClick={currentIndex === 0 ? null : prevImage}
-    disabled={currentIndex === 0}
->
-    ‹
-</button>
+                                    <button
+                                        style={{ background: "#808080", opacity: currentIndex === 0 ? 0.4 : 1 }}
+                                        className="popup-arrow left"
+                                        onClick={currentIndex === 0 ? null : prevImage}
+                                        disabled={currentIndex === 0}
+                                    >
+                                        ‹
+                                    </button>
 
-<button
-    style={{ background: "#808080", opacity: currentIndex === popupImages.length - 1 ? 0.4 : 1 }}
-    className="popup-arrow right"
-    onClick={currentIndex === popupImages.length - 1 ? null : nextImage}
-    disabled={currentIndex === popupImages.length - 1}
->
-    ›
-</button>
+                                    <button
+                                        style={{ background: "#808080", opacity: currentIndex === popupImages.length - 1 ? 0.4 : 1 }}
+                                        className="popup-arrow right"
+                                        onClick={currentIndex === popupImages.length - 1 ? null : nextImage}
+                                        disabled={currentIndex === popupImages.length - 1}
+                                    >
+                                        ›
+                                    </button>
 
                                 </>
                             )}
@@ -322,28 +436,28 @@ function UserProfile({ userId }) {
                                 <>
                                     <div className='listings-scroll'>
                                         {/* {currentListings.map(listing => ( */}
-                                            <div className='listing-item'>
-                                                    <div className="listing-image-container">
-                                                        <img style={{background:"#fff", opacity:"0.3"}}   src={null} alt="" className="listing-image" />
-                                                        <p className={`status-label ${sort}`}></p>
-                                                        <p id='g'></p>
-                                                    </div>
-                                                    <div style={{background:"#fff", opacity:"0.3"}} className="listing-title">
-                                                        <p style={{ textTransform: "uppercase" }} id='short'></p>
-                                                        <div id="views">
-                                                            <p><img src={null} alt="" /></p>
-                                                            <p><img src={null} alt="" /></p>
-                                                            <p><img src={null} alt="" /></p>
-                                                            <p><img src={null} alt="" /></p>
-                                                        </div>
-                                                    </div>
+                                        <div className='listing-item'>
+                                            <div className="listing-image-container">
+                                                <img style={{ background: "#fff", opacity: "0.3" }} src={null} alt="" className="listing-image" />
+                                                <p className={`status-label ${sort}`}></p>
+                                                <p id='g'></p>
                                             </div>
+                                            <div style={{ background: "#fff", opacity: "0.3" }} className="listing-title">
+                                                <p style={{ textTransform: "uppercase" }} id='short'></p>
+                                                <div id="views">
+                                                    <p><img src={null} alt="" /></p>
+                                                    <p><img src={null} alt="" /></p>
+                                                    <p><img src={null} alt="" /></p>
+                                                    <p><img src={null} alt="" /></p>
+                                                </div>
+                                            </div>
+                                        </div>
                                         {/* ))} */}
                                     </div>
-                                    
+
                                 </>
                             ) : currentListings.length === 0 ? (
-                                <p style={{ textAlign: "center",color: " rgb(192, 192, 197)" }}>No {sort} posts yet</p>
+                                <p style={{ textAlign: "center", color: " rgb(192, 192, 197)" }}>No {sort} posts yet</p>
                             ) : (
                                 <div className='listings-scroll'>
                                     {currentListings.map(listing => (
@@ -394,84 +508,84 @@ function UserProfile({ userId }) {
                                     }}>Following</button>
                             </div>
 
-                            {isLoadingFollow ? ( 
-                            <>
-                                <div style={{ gap: "15px", borderRadius: "10px", background: "#0000003d", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px", width: "100%" }}>
-                                    <div style={{ display: "flex" }}>
-                                        <img className="fitt" src={null} /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
-                                    </div>
-                                    <div style={{ display: "flex", flexDirection: "column", gap: "10px", justifyContent:"space-evenly" }}>
-                                        {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                            {isLoadingFollow ? (
+                                <>
+                                    <div style={{ gap: "15px", borderRadius: "10px", background: "#0000003d", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px", width: "100%" }}>
+                                        <div style={{ display: "flex" }}>
+                                            <img className="fitt" src={null} /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
+                                        </div>
+                                        <div style={{ display: "flex", flexDirection: "column", gap: "10px", justifyContent: "space-evenly" }}>
+                                            {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
+                                            <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
-                                        </p>
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
-                                            {/* date */}
-                                        </p>
-                                        {/* </p> */}
-                                        {/* <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p> */}
+                                            </p>
+                                            <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                                {/* date */}
+                                            </p>
+                                            {/* </p> */}
+                                            {/* <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p> */}
+                                        </div>
                                     </div>
-                                </div>
-                                <div style={{ gap: "15px", borderRadius: "10px", background: "#0000003d", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px", width: "100%" }}>
-                                    <div style={{ display: "flex" }}>
-                                        <img className="fitt" src={null} /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
-                                    </div>
-                                    <div style={{ display: "flex", flexDirection: "column", gap: "10px", justifyContent:"space-evenly" }}>
-                                        {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                    <div style={{ gap: "15px", borderRadius: "10px", background: "#0000003d", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px", width: "100%" }}>
+                                        <div style={{ display: "flex" }}>
+                                            <img className="fitt" src={null} /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
+                                        </div>
+                                        <div style={{ display: "flex", flexDirection: "column", gap: "10px", justifyContent: "space-evenly" }}>
+                                            {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
+                                            <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
 
-                                        </p>
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
-                                            {/* date */}
-                                        </p>
-                                        {/* </p> */}
-                                        {/* <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p> */}
+                                            </p>
+                                            <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                                {/* date */}
+                                            </p>
+                                            {/* </p> */}
+                                            {/* <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p> */}
+                                        </div>
                                     </div>
-                                </div>
-                                <div style={{ gap: "15px", borderRadius: "10px", background: "#0000003d", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px", width: "100%" }}>
-                                    <div style={{ display: "flex" }}>
-                                        <img className="fitt"src={null} /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
+                                    <div style={{ gap: "15px", borderRadius: "10px", background: "#0000003d", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px", width: "100%" }}>
+                                        <div style={{ display: "flex" }}>
+                                            <img className="fitt" src={null} /*alt={c.title}*/ style={{ width: "40px", height: "40px", opacity: "0.5", borderRadius: "100px", background: "#fff", marginTop: "5px" }} />
+                                        </div>
+                                        <div style={{ display: "flex", flexDirection: "column", gap: "10px", justifyContent: "space-evenly" }}>
+                                            {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
+                                            <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                            </p>
+                                            <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
+                                                {/* date */}
+                                            </p>
+                                            {/* </p> */}
+                                            {/* <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p> */}
+                                        </div>
                                     </div>
-                                    <div style={{ display: "flex", flexDirection: "column", gap: "10px", justifyContent:"space-evenly" }}>
-                                        {/* <p style={{ display: "flex", flexDirection: "column" }}> */}
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "150px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
-                                        </p>
-                                        <p style={{ color: "#fff", fontSize: "0.9rem", height: "10px", width: "200px", background: "#fff", opacity: "0.3", borderRadius: "10px" }}>
-                                            {/* date */}
-                                        </p>
-                                        {/* </p> */}
-                                        {/* <p style={{ paddingTop: "5px", textTransform: "capitalize", fontSize: "0.9rem" }}> </p> */}
-                                    </div>
-                                </div>
-                            </> ) : currentFollowList.length === 0 ? (
-                                    <p style={{ textAlign: "center", color: " rgb(192, 192, 197)" , marginTop: "5px",width:"100%" }}>
+                                </>) : currentFollowList.length === 0 ? (
+                                    <p style={{ textAlign: "center", color: " rgb(192, 192, 197)", marginTop: "5px", width: "100%" }}>
                                         {sortII === "followers" ? "No followers found" : "No followings found"}
                                     </p>
                                 ) : (
-                                    <ul id='ull' style={{ listStyle: "none", width: "100%", padding: 0 }}>
-                                        {currentFollowList.map(item => (
-                                            <li key={item.user_id} onClick={() => window.location.href = `https://vocity.vercel.app/profile/${item.user_id}`}
-                                                style={{
-                                                    display: "flex", alignItems: "center", gap: "10px",
-                                                    marginBottom: "15px", padding: "10px",
-                                                    borderRadius: "8px", width: "100%",
-                                                    cursor: "pointer", textDecoration: "none", color: "inherit",
-                                                    transition: "background 0.2s ease", background:"#0000003d"
-                                                }}
-                                            >
-                                                <img src={item.thumbnail?.url ? `https://api.votecity.ng${item.thumbnail.url}` : alt} alt={item.username}
-                                                    style={{ width: "45px", height: "45px", borderRadius: "50%", objectFit: "cover" }} />
-                                                <div>
-                                                    <p style={{ margin: 0, display: "flex", fontSize: "0.9rem", fontWeight: "bold", color: "#fff" }}>
-                                                        {item.fullname} {item.id_verified === 1 && <img style={{ height: "15px", paddingLeft: "2px", display: "flex", alignSelf: "center" }} src={verified} alt="Verified" />}
-                                                    </p>
-                                                    <p style={{ margin: 0, fontSize: "0.75rem", color: "rgba(255,255,255,0.6)" }}>@{item.username}</p>
-                                                </div>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            
+                                <ul id='ull' style={{ listStyle: "none", width: "100%", padding: 0 }}>
+                                    {currentFollowList.map(item => (
+                                        <li key={item.user_id} onClick={() => window.location.href = `https://vocity.vercel.app/profile/${item.user_id}`}
+                                            style={{
+                                                display: "flex", alignItems: "center", gap: "10px",
+                                                marginBottom: "15px", padding: "10px",
+                                                borderRadius: "8px", width: "100%",
+                                                cursor: "pointer", textDecoration: "none", color: "inherit",
+                                                transition: "background 0.2s ease", background: "#0000003d"
+                                            }}
+                                        >
+                                            <img src={item.thumbnail?.url ? `https://api.votecity.ng${item.thumbnail.url}` : alt} alt={item.username}
+                                                style={{ width: "45px", height: "45px", borderRadius: "50%", objectFit: "cover" }} />
+                                            <div>
+                                                <p style={{ margin: 0, display: "flex", fontSize: "0.9rem", fontWeight: "bold", color: "#fff" }}>
+                                                    {item.fullname} {item.id_verified === 1 && <img style={{ height: "15px", paddingLeft: "2px", display: "flex", alignSelf: "center" }} src={verified} alt="Verified" />}
+                                                </p>
+                                                <p style={{ margin: 0, fontSize: "0.75rem", color: "rgba(255,255,255,0.6)" }}>@{item.username}</p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+
                         </div>
                     )}
                 </div>
@@ -481,6 +595,3 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
-
-
-

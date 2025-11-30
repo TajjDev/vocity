@@ -77,7 +77,7 @@ const Footer = ({ onShowP, onShowPP }) => {
                                 <a href="#">Download</a>
                             </div>
                             <div id="linktwo">
-                                <a href="#">About Votcity</a>
+                                <a href="#">About Vocity</a>
                                 <a href="#">Gallery</a>
                                 <a href="#">Blogs</a>
                                 <a href="#">Contacts</a>
@@ -157,8 +157,8 @@ const Footer = ({ onShowP, onShowPP }) => {
                 <div id="footTwo">
                     <div id="copy">
                         <p>Copyright
-                            Vocity Ltd
-                            All rghts reserved</p>
+                            Vocity Ltd.
+                            All rights reserved</p>
                     </div>
                     <div id="enO">
                         <p>© 2025 vocity</p>
