@@ -77,7 +77,8 @@ const Event = ({ postId }) => {
         if (minutes < 60) return `${minutes} min ago`;
         if (hours < 24) return `${hours} hrs ago`;
         if (days < 30) return `${days} days ago`;
-        return `${month} month ago`;
+        if (days < 60) return `${month} month ago`;
+        return `${month} months ago`;
     };
     const formatDonationDate = (isoString) => {
         if (!isoString) return "";
@@ -954,6 +955,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
