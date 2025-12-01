@@ -125,7 +125,7 @@
 }
 
 #useRx a,
-#sk a {
+#sk a , #don a {
   text-decoration: none;
   color: inherit;
 }
