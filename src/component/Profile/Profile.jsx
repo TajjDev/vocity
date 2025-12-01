@@ -595,5 +595,3 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
-
-
