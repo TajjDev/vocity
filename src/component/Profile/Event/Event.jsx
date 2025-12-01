@@ -71,7 +71,7 @@ const Event = ({ postId }) => {
         const minutes = Math.floor(diff / 60);
         const hours = Math.floor(diff / 3600);
         const days = Math.floor(diff / 86400);
-        const months = Math.floor(diff / 2592000);
+        const month = Math.floor(diff / 2592000);
 
         if (diff < 60) return "Just now";
         if (minutes < 60) return `${minutes} min ago`;
@@ -954,6 +954,7 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
+
 
 
 
