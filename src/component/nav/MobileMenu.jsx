@@ -116,7 +116,7 @@ const MobileMenu = () => {
           </div>
           )}
           <div id="downNavM">
-            <a onClick={closeMenu} id='downloadNavM' href="#">Download now</a>
+            <a onClick={closeMenu} id='downloadNavM' href="https://api.votecity.ng/media/apps/vocity-app.apk">Download now</a>
             {isUserProfile && (
   <a
     className={`nvi ${activeLink === 'About' ? 'active' : ''}`}
