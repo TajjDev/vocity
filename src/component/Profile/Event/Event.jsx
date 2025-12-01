@@ -589,29 +589,29 @@ const Event = ({ postId }) => {
                                                         <p style={{ fontSize: "0.8rem", fontWeight: "bold", whiteSpace: "nowrap", paddingLeft: "20px" }}>BOOKING OVERVIEW</p>
                                                     </div>
                                                     <div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px 10px 20px" }} id="titN">
-                                                        <p style={{fontSize:"0.95rem"}}>Ticket Name</p>
+                                                        <p style={{ fontSize: "0.95rem" }}>Ticket Name</p>
                                                         <p style={{ textTransform: "capitalize" }}>{t.title}</p>
                                                     </div>
                                                     <div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px 10px 20px" }} id="prOT">
-                                                        <p style={{fontSize:"0.95rem"}}>Price per Ticket</p>
-                                                        <p style={{fontSize:"0.9rem"}}>₦{t.price}</p>
+                                                        <p style={{ fontSize: "0.95rem" }}>Price per Ticket</p>
+                                                        <p style={{ fontSize: "0.9rem" }}>₦{t.price}</p>
                                                     </div>
                                                     <div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px 10px 20px" }}>
-                                                        <p style={{fontSize:"0.9rem"}}>Number of Ticket(s)</p>
-                                                        <p style={{fontSize:"0.9rem"}}>{count}</p>
+                                                        <p style={{ fontSize: "0.9rem" }}>Number of Ticket(s)</p>
+                                                        <p style={{ fontSize: "0.9rem" }}>{count}</p>
                                                     </div>
                                                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 20px" }} id="ov">
                                                         <hr style={{ flex: "1", borderTop: "1px solid #fff", height: "1px" }} />
                                                         <p style={{ fontSize: "0.8rem", fontWeight: "bold", whiteSpace: "nowrap", paddingLeft: "20px" }}>SUMMARY</p>
                                                     </div>
                                                     <div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px 10px 20px" }}>
-                                                        <p style={{fontSize:"0.95rem"}}>Total Amount</p>
-                                                        <p style={{fontSize:"0.9rem"}}>₦{count * t.price}</p>
+                                                        <p style={{ fontSize: "0.95rem" }}>Total Amount</p>
+                                                        <p style={{ fontSize: "0.9rem" }}>₦{count * t.price}</p>
                                                     </div>
                                                 </div>
                                                 <div id="howMan" style={{ background: "rgba(128, 128, 128, 0.1)", width: "95%", height: "auto", display: "flex", flexDirection: "row", alignSelf: "center", borderRadius: "10px" }} >
                                                     <div style={{ display: "flex", justifyContent: "space-between", width: "100%", padding: "10px 20px" }}>
-                                                        <p style={{fontSize:"0.9rem"}}>How many tickets?</p>
+                                                        <p style={{ fontSize: "0.9rem" }}>How many tickets?</p>
                                                         <div style={{ display: "flex", alignItems: "center" }}>
                                                             <button style={{ background: "grey", border: "0", padding: " 3px 10px", borderRadius: "5px", fontWeight: "bolder", fontSize: "15px" }} onClick={() => count > 1 && setCount(count - 1)}>-</button>
                                                             <span style={{ fontSize: "0.9rem", minWidth: "20px", textAlign: "center", padding: "0 5px" }}>
@@ -626,7 +626,7 @@ const Event = ({ postId }) => {
                                                         Book Ticket
                                                     </button>
                                                     {showPopup && (
-                                                        <div style={{zIndex:"1000"}} id="popOver">
+                                                        <div style={{ zIndex: "1000" }} id="popOver">
                                                             <div id="popUp">
                                                                 <p id="downn">Download the App to Book Ticket</p>
                                                                 <div id="apGo">
@@ -650,9 +650,11 @@ const Event = ({ postId }) => {
                                 <div key={d.id} style={{ background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", padding: "10px 10px", marginBottom: "10px", gap: "10px", display: "flex", flexDirection: "column", textAlign: "left", borderRadius: "10px" }}>
                                     <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                                         <img className="fitt" src={d.user?.thumbnail?.url ? `https://api.votecity.ng${d.user?.thumbnail?.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
-                                        <div >
-                                            <p style={{ fontSize: "0.9rem" }}>{d.user?.fullname || "Anonymous"}</p>
-                                            <p style={{ fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.706)" }}>@{d.user?.username}</p>
+                                        <div id="don" key={d.id}>
+                                            <Link to={`/profile/${d?.user.user_id}`} style={{ display: "flex", alignItems: "center",flexDirection:"column" }}>
+                                                <p style={{ fontSize: "0.9rem" }}>{d.user?.fullname || "Anonymous"}</p>
+                                                <p style={{ fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.706)" }}>@{d.user?.username}</p>
+                                            </Link>
                                         </div>
                                     </div>
                                     <hr style={{ width: "100%", borderBottom: "1px solid rgba(255, 255, 255, 0.133)", borderTop: "0", borderLeft: "0", borderRight: "0" }} />
@@ -662,7 +664,7 @@ const Event = ({ postId }) => {
 
                                         </div>
                                         <div>
-                                            <p style={{ display: "flex", flexDirection: "column", fontWeight: "bold", fontSize: "0.9rem" }}>Amount <span style={{ fontWeight: "500", fontSize: "0.85rem",textAlign:"end" }}>₦{d.amount}</span></p>
+                                            <p style={{ display: "flex", flexDirection: "column", fontWeight: "bold", fontSize: "0.9rem" }}>Amount <span style={{ fontWeight: "500", fontSize: "0.85rem", textAlign: "end" }}>₦{d.amount}</span></p>
                                         </div>
                                     </div>
                                 </div>
