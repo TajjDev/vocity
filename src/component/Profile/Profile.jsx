@@ -462,7 +462,7 @@ function UserProfile({ userId }) {
                                 <div className='listings-scroll'>
                                     {currentListings.map(listing => (
                                         <div key={`${listing.id}-${listing.post_id}`} className='listing-item'>
-                                            <Link to={`/post/${listing.post_id}`}>
+                                            <Link to={`/post/${listing.post_id}`} target="blank">
                                                 <div className="listing-image-container">
                                                     <img src={`https://api.votecity.ng${listing.thumbnail?.url}`} alt="Listing thumbnail" className="listing-image" />
                                                     <p className={`status-label ${sort}`}>{listing.status ? listing.status.charAt(0).toUpperCase() + listing.status.slice(1) : sort}</p>
@@ -595,3 +595,4 @@ function UserProfile({ userId }) {
 }
 
 export default UserProfile;
+
