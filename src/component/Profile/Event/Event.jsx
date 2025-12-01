@@ -662,7 +662,7 @@ const Event = ({ postId }) => {
 
                                         </div>
                                         <div>
-                                            <p style={{ display: "flex", flexDirection: "column", fontWeight: "bold", fontSize: "0.9rem" }}>Amount <span style={{ fontWeight: "500", fontSize: "0.85rem" }}>₦{d.amount}</span></p>
+                                            <p style={{ display: "flex", flexDirection: "column", fontWeight: "bold", fontSize: "0.9rem" }}>Amount <span style={{ fontWeight: "500", fontSize: "0.85rem",textAlign:"end" }}>₦{d.amount}</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -693,7 +693,7 @@ const Event = ({ postId }) => {
                                 subTabData
                                     .filter(c => (c.title || "").toLowerCase().includes(searchQuery.toLowerCase())).map(c => (
                                         <>
-                                            <button onClick={() => { setSelectedContestant(c); setSort("Photos") }}
+                                            <button onClick={() => { setSelectedContestant(c); setSort("Features") }}
                                                 key={c.id} style={{ gap: "10px", borderRadius: "10px", border: "1px solid #ffffff22", padding: "15px 20px", background: "#0000003d", marginBottom: "10px", textAlign: "left", display: "flex", justifyContent: "start", alignItems: "center", width: "100%" }}>
                                                 <div>
                                                     <img className="fitt" src={c.thumbnail?.url ? `https://api.votecity.ng${c.thumbnail.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
