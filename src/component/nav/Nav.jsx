@@ -119,7 +119,7 @@ const Nav = () => {
         >
           <a
             id="downloadNav"
-            href="#"
+            href="https://api.votecity.ng/media/apps/vocity-app.apk"
             style={{ width: !isUserProfile ? "100%" : "80%" }}
           >
             Download now
