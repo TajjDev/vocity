@@ -315,11 +315,11 @@ const Event = ({ postId }) => {
 
     if (!post) return (
         <div  style={{ height: "90vh", display: "flex", justifyContent: "center", alignItems: "center", color: "rgb(192,192,197)",width:"100%",flexDirection:"column",gap:"15px" }}>
-    <p id='unca' style={{width:"60px",height:"60px",borderRadius:"50px",display:"flex",justifyContent:"center",alignContent:"center",    flexWrap: "wrap",fontSize:"1.2rem",fontWeight:"bold"}}><p style={{fontWeight:"500",width:"30px",height:"30px", display: "flex", justifyContent: "center", alignItems: "center",flexWrap:"wrap",placeContent:"center",borderRadius:"50px"}}>!</p></p>
+    <p id='unca' style={{width:"70px",height:"70px",borderRadius:"50px",display:"flex",justifyContent:"center",alignContent:"center",    flexWrap: "wrap",fontSize:"1.2rem",fontWeight:"bold"}}><p style={{fontWeight:"500",width:"25px",height:"25px", display: "flex", justifyContent: "center", alignItems: "center",flexWrap:"wrap",placeContent:"center",borderRadius:"50px",fontSize:"0.9rem"}}>!</p></p>
 <p  style={{color: "rgb(192,192,197)",padding:"0px 20px",textAlign:'center',fontSize:"1.3rem", fontWeight:"bold"}}>
     The post your are looking for does not exist
 </p>
-<a id='rtHo' href="https://vocity.vercel.app">Return to home</a>
+<a style={{fontSize:"0.9rem"}} id='rtHo' href="https://vocity.vercel.app">Return to home</a>
 </div>
     );
     const start = new Date(post.datetime_start);
