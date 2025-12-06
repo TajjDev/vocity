@@ -370,7 +370,7 @@
 }
 #unca p{
   border: 2px solid #000000a3;
-  color: #ffffffb1;
+  color: #000000a3;
 }
 .status-label.ongoing {
   background: rgb(1, 18, 1) !important;
@@ -378,7 +378,7 @@
 }
 #rtHo{
   text-decoration: none;
-  background: #2980b9;
+  background: #0c246b;
   padding: 10px 20px;
   border-radius: 10px;
 }
