@@ -1,148 +1,52 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import vocityLogo from "/src/assets/image/logoVC.png";
-import "./nav.css";
-import MobileMenu from "./MobileMenu";
+import {React,useEffect,useState} from 'react'
+import './header.css'
+import Phone from '/src/assets/image/background.png'
+import Phone3 from '/src/assets/image/background.png'
+import Phone2 from '/src/assets/image/background.png'
 
-const Nav = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isUserProfile =
-    location.pathname.startsWith("/profile/") ||
-    location.pathname.startsWith("/post/");
-
-  const [activeLink, setActiveLink] = useState("home");
-  const [scrolled, setScrolled] = useState(false);
-
-  // Scroll detection
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 0);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Scroll to a specific section
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+const Header = () => {
+    const mobileImage = Phone3
+    const tabletImage = Phone2
+    const defaultImage = Phone
+    const [imageSrc , setImageSrc] = useState(defaultImage)
+   
+   
+   
+    const handleResize = () =>{
+        const width = window.innerWidth;
+        if (width <= 424){
+            setImageSrc(mobileImage)
+        } else if (width <= 899){
+            setImageSrc(tabletImage)
+        } else {
+            setImageSrc(defaultImage)
+        }
     }
-  };
+    
+    useEffect (() =>{
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
-  // Navigate to home then scroll to section
-  const goToSection = (id) => {
-    navigate("/");
-    setTimeout(() => scrollToSection(id), 500);
-  };
-  const handleLinkClick = (link, sectionId) => {
-    setActiveLink(link);
-  
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 100; // the space you want above the section
-      const elementTop = element.getBoundingClientRect().top + window.scrollY;
-      const scrollTarget = elementTop - offset;
-  
-      window.scrollTo({
-        top: scrollTarget,
-        behavior: 'smooth'
-      });
-    }
-  };
-  
 
-  return (
-    <div className={`nav ${scrolled ? "scrolled" : ""}`}>
-      <div id="navImg">
-        <img id="iimg" src={vocityLogo} alt="Vocity Logo" />
-        <p>Vocity</p>
-      </div>
-
-      {!isUserProfile && (
-        <div id="navs">
-          <a
-            className={`nav-link ${activeLink === "home" ? "active" : ""}`}
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick("home", "render");
-            }}
-          >
-            Home
-          </a>
-
-          <a
-            className={`nav-link ${activeLink === "features" ? "active" : ""}`}
-            href="#features"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick("features", "Features");
-            }}
-          >
-            Features
-          </a>
-
-          <a
-            className={`nav-link ${activeLink === "about" ? "active" : ""}`}
-            href="#aboutus"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick("about", "useAbt");
-            }}
-          >
-            About us
-          </a>
-
-          <a
-            className={`nav-link ${activeLink === "howitwork" ? "active" : ""}`}
-            href="#howitwork"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick("howitwork", "howitwork");
-            }}
-          >
-            How it works
-          </a>
+    return (
+        <div id='header'>
+            <div id="headWord">
+                <h5>Join the movement with <span id='headSpan'>VOCITY</span></h5>
+                <p>Vocity empowers you to participate in community decisions, stay updated on events, support local causes, and engage in announcements</p>
+                
+                <div id="headBtn">
+                <a id='downloadHead' href="#">Download now</a>
+                <a id='downloadHead2' href="#">Learn more</a>
+               
+                </div>
+            </div>
+            <div id="phone">
+                <img src={imageSrc} alt="" />
+            </div>
         </div>
-      )}
+    )
+}
 
-      <div
-        style={{
-          display: "flex",
-          width: !isUserProfile ? "18%" : "35%",
-          justifyContent: "end",
-        }}
-      >
-        <div
-          id="downNav"
-          style={{ width: !isUserProfile ? "100%" : "" }}
-        >
-          <a
-            id="downloadNav"
-            href="https://api.votecity.ng/media/apps/vocity-app.apk"
-            style={{ width: !isUserProfile ? "100%" : "80%" }}
-          >
-            Download now
-          </a>
-        </div>
-
-        {isUserProfile && (
-          <a
-            className="navi"
-            href="#aboutus"
-            onClick={(e) => {
-              e.preventDefault();
-              goToSection("useAbt");
-            }}
-          >
-            About us
-          </a>
-        )}
-      </div>
-
-      <MobileMenu />
-    </div>
-  );
-};
-
-export default Nav;
+export default Header
