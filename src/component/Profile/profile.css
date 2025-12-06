@@ -364,12 +364,24 @@
   background: rgb(31, 1, 1) !important;
   color: #ff0000;
 }
-
+#unca{
+  background:#57565670 ;
+  color: #000;
+}
+#unca p{
+  border: 2px solid #000000a3;
+  color: #ffffffb1;
+}
 .status-label.ongoing {
   background: rgb(1, 18, 1) !important;
   color: #008000;
 }
-
+#rtHo{
+  text-decoration: none;
+  background: #2980b9;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
 .status-label.upcoming {
   background: rgba(158, 155, 155, 0.8) !important;
   color: white;

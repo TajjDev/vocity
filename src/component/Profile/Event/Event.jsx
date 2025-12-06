@@ -71,14 +71,13 @@ const Event = ({ postId }) => {
         const minutes = Math.floor(diff / 60);
         const hours = Math.floor(diff / 3600);
         const days = Math.floor(diff / 86400);
-        const month = Math.floor(diff / 2592000);
+        const months = Math.floor(diff / 2592000);
 
         if (diff < 60) return "Just now";
         if (minutes < 60) return `${minutes} min ago`;
         if (hours < 24) return `${hours} hrs ago`;
         if (days < 30) return `${days} days ago`;
-        if (days < 60) return `${month} month ago`;
-        return `${month} months ago`;
+        return `${months} months ago`;
     };
     const formatDonationDate = (isoString) => {
         if (!isoString) return "";
@@ -314,7 +313,15 @@ const Event = ({ postId }) => {
         </div>
     );
 
-    if (!post) return <p style={{ width: "100%", height: "90vh", display: "flex", color: " rgb(192, 192, 197)", textAlign: "center", justifyContent: "center", alignItems: "center" }}>No post found</p>;
+    if (!post) return (
+        <div  style={{ height: "90vh", display: "flex", justifyContent: "center", alignItems: "center", color: "rgb(192,192,197)",width:"100%",flexDirection:"column",gap:"15px" }}>
+    <p id='unca' style={{width:"60px",height:"60px",borderRadius:"50px",display:"flex",justifyContent:"center",alignContent:"center",    flexWrap: "wrap",fontSize:"1.2rem",fontWeight:"bold"}}><p style={{fontWeight:"500",width:"30px",height:"30px", display: "flex", justifyContent: "center", alignItems: "center",flexWrap:"wrap",placeContent:"center",borderRadius:"50px"}}>!</p></p>
+<p  style={{color: "rgb(192,192,197)",padding:"0px 20px",textAlign:'center',fontSize:"1.3rem", fontWeight:"bold"}}>
+    The post your are looking for does not exist
+</p>
+<a id='rtHo' href="https://vocity.vercel.app">Return to home</a>
+</div>
+    );
     const start = new Date(post.datetime_start);
     const end = new Date(post.datetime_end);
     const now = new Date();
@@ -955,10 +962,6 @@ const Event = ({ postId }) => {
 };
 
 export default Event;
-
-
-
-
 
 
 

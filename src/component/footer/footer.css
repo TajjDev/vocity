@@ -53,7 +53,10 @@ input::placeholder {
 #loc p {
     color: #ffffff66;
 }
-
+#folChat a img, #foll a img{
+    width: 20px;
+    height: 20px;
+}
 #Footer #form button {
     text-decoration: none;
     color:#ffc830;

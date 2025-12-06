@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 // import React from 'react'
 import "./footer.css"
 import face from "/src/assets/image/facebk.png"
-import call from "/src/assets/image/call.png"
-import google from "/src/assets/image/goofle.png"
+import linkedin from "/src/assets/image/linkedin.png"
+import twitter from "/src/assets/image/twitter.png"
 import insta from "/src/assets/image/insta.png"
 import ytbu from "/src/assets/image/youtube.png"
+import tiktok from "/src/assets/image/tiktok.png"
 import whtapp from "/src/assets/image/whatsapp.png"
 import tele from "/src/assets/image/telegram.png"
 import RevealOnScroll from '../onscroll/ReavealOnScroll'
@@ -108,18 +109,19 @@ const Footer = ({ onShowP, onShowPP }) => {
                                     <p>Follow us</p>
                                     <div id="foll">
                                         {/* <Link>hi</Link> */}
-                                        <a href="#"><img src={face} alt="" /></a>
-                                        <a href="#"><img src={google} alt="" /></a>
+                                        <a href="https://www.facebook.com/profile.php?id=61584048212055"><img src={face} alt="" /></a>
+                                        <a href="#"><img src={twitter} alt="" /></a>
                                         <a href="#"><img src={insta} alt="" /></a>
-                                        <a href="#"> <img src={ytbu} alt="" /></a>
+                                        <a href="https://youtube.com/@officialvocitylimited?si=-N7UBuYk_CtqpK43"> <img src={ytbu} alt="" /></a>
                                     </div>
 
                                 </div>
                                 <div id="folChat">
                                     <p>Let's chat</p>                                <div id="chat">
-                                        <a href="#"><img src={call} alt="" /></a>
-                                        <a href="#"><img src={tele} alt="" /></a>
+                                        <a href="https://www.linkedin.com/company/vocity-limited/"><img src={linkedin} alt="" /></a>
+                                        <a href="https://t.me/officialvocitylimited"><img src={tele} alt="" /></a>
                                         <a href="#"><img src={whtapp} alt="" /></a>
+                                        <a href="https://vm.tiktok.com/ZSHTpsfW3jH68-ciEEX/"><img src={tiktok} alt="" /></a>
                                     </div>
                                 </div>
                             </div>
