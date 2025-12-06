@@ -217,8 +217,8 @@
     }
 
     #headBtn {
-        gap: 5px;
-        flex-direction: column;
+        gap: 15px;
+        /* flex-direction: column; */
     }
 
     #headBtn a {
