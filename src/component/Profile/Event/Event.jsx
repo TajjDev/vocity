@@ -599,7 +599,7 @@ const Event = ({ postId }) => {
                                     {selectedContestantI?.id === t.id && (
                                         <div id="ticccc">
                                             <div id="ticcc">
-                                                <button style={{background:"none",border:"none", color: "#FF3838", textAlign: "end",fontSize:"15px", padding: "20px" }} onClick={() => setSelectedContestantI(null)}>close</button>
+                                                <button style={{background:"none",border:"none", color: "#FF3838", textAlign: "end",fontSize:"15px", padding: "20px" }} onClick={() =>{ setSelectedContestantI(null); count > 1 && setCount(0)}}>close</button>
                                                 <hr />
                                                 <div id="overV" style={{ background: "rgba(128, 128, 128, 0.1)", width: "95%", height: "auto", display: "flex", flexDirection: "column", alignSelf: "center", borderRadius: "10px" }} >
                                                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 20px" }} id="ov">
