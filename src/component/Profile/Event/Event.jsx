@@ -12,6 +12,7 @@ import alt from '/src/assets/image/alt.jpg';
 import verified from '/src/assets/image/verified.png';
 import EventCountdown from "./EventCountdown";
 import "./event.css";
+// import console from "console";
 
 const BASE_URL_POST = "https://api.votecity.ng/v1/post";
 
@@ -36,10 +37,18 @@ const Event = ({ postId }) => {
     const esRef = useRef(null);
     const prevLeaderboardRef = useRef({});
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
     const handleGoBack = () => navigate(-1);
     const [selectedContestant, setSelectedContestant] = useState(null);
     const [selectedContestantI, setSelectedContestantI] = useState(null);
-
+    useEffect(() => {
+        if (!post?.user_id) return;
+      
+        fetch(`https://api.votecity.ng/v1/user/${post.user_id}`)
+          .then(res => res.json())
+          .then(data => setUser(data?.data?.user))
+          .catch(console.error);
+      }, [post]);
     // Set --vh on page load and on resize
     const setVh = () => {
         document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
@@ -85,7 +94,7 @@ const Event = ({ postId }) => {
         const options = { day: "2-digit", month: "short", year: "numeric" };
         return date.toLocaleDateString("en-US", options); // e.g., "01 Oct, 2025"
     };
-
+  
 
     // ---------- POST FETCH ----------
     useEffect(() => {
@@ -296,7 +305,7 @@ const Event = ({ postId }) => {
             }
         };
     }, [activeSubTab, resolvedPostId]);
-
+    console.log("post", post);
     // Close SSE on unmount
     useEffect(() => {
         return () => {
@@ -350,15 +359,16 @@ const Event = ({ postId }) => {
     return (
         <div className="post">
             {/* Main Post Info */}
+            <div id="ev">
+    <button onClick={handleGoBack} id="bm" style={{  border: "none", cursor: "pointer", display: "flex", alignItems: "center", color: "#fff" }}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" style={{ width: "24px", height: "24px", marginRight: "8px" }}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back
+    </button>
+</div>
+        <div id="optp">
             <div id="Op">
-                <div id="ev">
-                    <button onClick={handleGoBack} id="bm" style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", color: "#fff", marginBottom: "15px" }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" style={{ width: "24px", height: "24px", marginRight: "8px" }}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                        </svg>
-                        Back
-                    </button>
-                </div>
 
                 <div id="imOp" className="image-wrapper">
                     <img className="thUrl" src={`https://api.votecity.ng${post.thumbnail?.url}`} alt={post.title} />
@@ -393,14 +403,14 @@ const Event = ({ postId }) => {
                 </div>
 
                 <div key={post.id} id="useRx">
-                    <Link to={`/profile/${post?.user.user_id}`} style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                        <img className="fitt" src={post?.user?.thumbnail?.url ? `https://api.votecity.ng${post?.user?.thumbnail?.url}` : alt} alt="" style={{ height: "45px", width: "45px", objectFit: "cover", borderRadius: "100px" }} />
+                <Link to={user ? `/profile/${user.user_id}` : "#"} style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                        <img className="fitt" src={user?.thumbnail?.url ? `https://api.votecity.ng${user?.thumbnail?.url}` : alt} alt="" style={{ height: "45px", width: "45px", objectFit: "cover", borderRadius: "100px" }} />
                         <div id="pst">
                             <p className="frTo" style={{ display: "flex", alignItems: "center" }}>
-                                Posted by &nbsp;<span style={{ fontWeight: "bold" }}>{post.user?.fullname}</span>
-                                {post.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />}
+                                Posted by &nbsp;<span style={{ fontWeight: "bold" }}>{user?.fullname}</span>
+                                {user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />}
                             </p>
-                            <p className="timee" style={{ color: "#ffffffb4" }}>@{post.user?.username}</p>
+                            <p className="timee" style={{ color: "#ffffffb4", textDecoration:"underline" }}>@{user?.username}</p>
                         </div>
                     </Link>
                 </div>
@@ -549,7 +559,7 @@ const Event = ({ postId }) => {
                             subTabData.map(c => (
                                 <div key={c.id} style={{ gap: "15px", borderRadius: "10px", border: "1px solid #ffffff22", background: "#0000003d", marginBottom: "10px", display: "flex", flexDirection: "row", justifyContent: "start", textAlign: "left", padding: "10px 20px" }}>
                                     <div style={{ display: "flex" }}>
-                                        <img className="fitt" src={c.user?.thumbnail?.url ? `https://api.votecity.ng${c.user?.thumbnail.url}` : alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                        <img className="fitt" src={user?.thumbnail?.url ? `https://api.votecity.ng${user?.thumbnail.url}` : alt} /*alt={c.title}*/ style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
                                     </div>
                                     <div>
                                         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -558,10 +568,10 @@ const Event = ({ postId }) => {
                                             {/* {c.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "4px" }} />} */}
                                             {/* </span> */}
                                             <span id="sk" key={c.id} style={{ color: "#fff", fontSize: "0.9rem" }}>
-                                                <Link to={`/profile/${c?.user.user_id}`} style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                                                <Link to={user ? `/profile/${user.user_id}` : "#"}  style={{ display: "flex", gap: "5px", alignItems: "center" }}>
 
-                                                    {c.user?.username ? `@${c.user.username}` : ""}
-                                                    {c.user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "-3px" }} />}
+                                                    {user?.username ? `@${user.username}` : ""}
+                                                    {user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "-3px" }} />}
                                                 </Link>
                                             </span>
                                             <p style={{ fontSize: "0.8rem", opacity: 0.5 }}>
@@ -589,7 +599,7 @@ const Event = ({ postId }) => {
                                     {selectedContestantI?.id === t.id && (
                                         <div id="ticccc">
                                             <div id="ticcc">
-                                                <p style={{ color: "#FF3838", textAlign: "end", padding: "20px" }} onClick={() => setSelectedContestantI(null)}>close</p>
+                                                <button style={{background:"none",border:"none", color: "#FF3838", textAlign: "end",fontSize:"15px", padding: "20px" }} onClick={() => setSelectedContestantI(null)}>close</button>
                                                 <hr />
                                                 <div id="overV" style={{ background: "rgba(128, 128, 128, 0.1)", width: "95%", height: "auto", display: "flex", flexDirection: "column", alignSelf: "center", borderRadius: "10px" }} >
                                                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 20px" }} id="ov">
@@ -630,7 +640,7 @@ const Event = ({ postId }) => {
                                                     </div>
                                                 </div>
                                                 <div style={{ margin: "0 10px" }}>
-                                                    <button style={{ justifyContent: "center", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%", maxWidth: "550px" }} onClick={() => setShowPopup(true)} type="button">
+                                                    <button style={{ justifyContent: "center", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%"}} onClick={() => setShowPopup(true)} type="button">
                                                         Book Ticket
                                                     </button>
                                                     {showPopup && (
@@ -657,11 +667,12 @@ const Event = ({ postId }) => {
                             subTabData.map(d => (
                                 <div key={d.id} style={{ background: "rgba(0, 0, 0, 0.24)", border: "1px solid rgba(255, 255, 255, 0.133)", padding: "10px 10px", marginBottom: "10px", gap: "10px", display: "flex", flexDirection: "column", textAlign: "left", borderRadius: "10px" }}>
                                     <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                                        <img className="fitt" src={d.user?.thumbnail?.url ? `https://api.votecity.ng${d.user?.thumbnail?.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
+                                        <img className="fitt" src={user?.thumbnail?.url ? `https://api.votecity.ng${user?.thumbnail?.url}` : alt} style={{ width: "40px", height: "40px", borderRadius: "100px", marginTop: "5px" }} />
                                         <div id="don" key={d.id}>
-                                            <Link to={`/profile/${d?.user.user_id}`} style={{ display: "flex", alignItems: "center",flexDirection:"column" }}>
-                                                <p style={{ fontSize: "0.9rem" }}>{d.user?.fullname || "Anonymous"}</p>
-                                                <p style={{ fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.706)" }}>@{d.user?.username}</p>
+                                            <Link to={user ? `/profile/${user.user_id}` : "#"}  style={{ display: "flex", alignItems: "start",flexDirection:"column" }}>
+                                                <p style={{ fontSize: "0.9rem", display:"flex",alignItems:"center",gap:"2px" }}>{user?.fullname || "Anonymous"} {user?.id_verified === 1 && <img src={verified} alt="Verified" style={{ height: "15px", paddingLeft: "-3px" }} />}
+</p>
+                                                <p style={{ fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.706)" }}>@{user?.username}</p>
                                             </Link>
                                         </div>
                                     </div>
@@ -956,6 +967,7 @@ const Event = ({ postId }) => {
                         <p style={{ color: " rgb(192, 192, 197)" }}>No {activeSubTab} found</p>
                     )}
                 </div>
+            </div>
             </div>
         </div>
     );

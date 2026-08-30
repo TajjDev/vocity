@@ -3,12 +3,10 @@
   width: 50%;
   /* background: red; */
   padding: 30px;
+  padding-top: 5px;
 }
 #Op{
   padding-right:20px ;
-}
-#Tp{
-  padding-top: 0;
 }
 .fitt {
   object-fit: cover;
@@ -22,12 +20,16 @@
 
 .post {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   gap: 10px;
   width: 100%;
 }
-
+#optp{
+  display: flex;
+  flex-direction: row;
+  /* padding-top: -20px; */
+}
 #Op .thUrl {
   height: 300px;
   width: 100%;
@@ -93,9 +95,18 @@
 
 #ev {
   display: flex;
+  padding: 20px;
+  padding-bottom: 0;
   gap: 10px;
 }
-
+#bm{
+  background: none;
+  padding: 10px;
+}
+#bm:hover{
+  background-color:#00000093 ;
+  border-radius: 10px;
+}
 #ev img {
   height: 30px;
 }
@@ -391,7 +402,12 @@
     flex-direction: column;
     gap: 0;
   }
-
+  #ev{
+    padding: 0;
+  }
+#optp{
+  flex-direction: column;
+}
   #container{
     justify-content: space-around;
   }
