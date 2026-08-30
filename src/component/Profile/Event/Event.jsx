@@ -640,9 +640,31 @@ const Event = ({ postId }) => {
                                                     </div>
                                                 </div>
                                                 <div style={{ margin: "0 10px" }}>
-                                                    <button style={{ justifyContent: "center", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%"}} onClick={() => setShowPopup(true)} type="button">
-                                                        Book Ticket
-                                                    </button>
+                                                <button
+  style={{
+    justifyContent: "center",
+    background: countdownPhase === "ended" ? "#555" : "#4D4330",
+    color: countdownPhase === "ended" ? "#ddd" : "#E8BD70",
+    display: "flex",
+    justifySelf: "center",
+    textAlign: "center",
+    padding: "10px",
+    borderRadius: "10px",
+    border: "none",
+    width: "100%",
+    cursor: countdownPhase === "ended" ? "not-allowed" : "pointer"
+  }}
+  disabled={countdownPhase === "ended"}
+  onClick={() => {
+    if (countdownPhase !== "ended") {
+      setShowPopup(true);
+    }
+  }}
+>
+  {countdownPhase === "ended"
+    ? "Can't Book — Event Ended"
+    : "Book Ticket"}
+</button>
                                                     {showPopup && (
                                                         <div style={{ zIndex: "1000" }} id="popOver">
                                                             <div id="popUp">
@@ -815,9 +837,33 @@ const Event = ({ postId }) => {
                                                                 </div>
                                                             </div>
                                                             <div>
-                                                                <button style={{ justifyContent: "center", marginTop: "10px", background: "#4D4330", color: "#E8BD70", display: "flex", justifySelf: "center", textAlign: "center", padding: "10px", borderRadius: "10px", border: "none", width: "100%", maxWidth: "550px" }} onClick={() => setShowPopup(true)} type="button">
-                                                                    Vote Contestant
-                                                                </button>
+                                                            <button
+  style={{
+    justifyContent: "center",
+    marginTop: "10px",
+    background: countdownPhase === "ended" ? "#555" : "#4D4330",
+    color: countdownPhase === "ended" ? "#ddd" : "#E8BD70",
+    display: "flex",
+    justifySelf: "center",
+    textAlign: "center",
+    padding: "10px",
+    borderRadius: "10px",
+    border: "none",
+    width: "100%",
+    maxWidth: "550px",
+    cursor: countdownPhase === "ended" ? "not-allowed" : "pointer"
+  }}
+  disabled={countdownPhase === "ended"}
+  onClick={() => {
+    if (countdownPhase !== "ended") {
+      setShowPopup(true);
+    }
+  }}
+>
+  {countdownPhase === "ended"
+    ? "Can't Vote — Event Ended"
+    : "Vote Contestant"}
+</button>
                                                                 {showPopup && (
                                                                     <div id="popOver">
                                                                         <div id="popUp">
